@@ -1,13 +1,24 @@
 ---
-title: "Minimum workflow for computational reproducibility in ecological projects"
+title: "Boas Práticas e Ferramentas da Ciência Aberta na Ecologia - BIE5798-1"
 ---
 
-Hello!
+Olá!
 
-Thanks for stopping by! This is the supplementary material designed to help the short course *Minimum workflow for computational reproducibility in ecological projects* that will be ministered virtually by me, [Gabriel Nakamura](https://main--gabrielnakamura.netlify.app/), at University of Toronto.
+Obrigado pelo interesse em participar da disciplina "Boas Práticas e Ferramentas da Ciência Aberta na Ecologia - BIE5798-1", que será 
+    ministrada entre os dias 07 e 10 de Agosto na USP, São Paulo.
+    
+O curso será ministrado por Melina Leite e Gabriel Nakamura. Este sítio contém todo o material necessário para você acompanhar as atividades
+    práticas que serão realizadas durante o curso.
 
 
-This website uses the amazing illustrations by [Allison Horst](https://allisonhorst.com/git-github)
+
+# Cronograma das aulas
+
+```{r}
+# kable aqui com o cronograma
+
+```
+
 
 
 
