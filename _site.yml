@@ -6,9 +6,9 @@ navbar:
     - text: "Início"
       href: index.html
     - text: "Dia 1"
-      href: basics_git.html
+      href: Organizacao_dir_local.html
     - text: "Dia 2"
-      href: Intro_Git.html
+      href: basics_git.html
     - text: "Dia 3"
       href: Creating_repo.html
     - text: "Dia 4"
