@@ -4,18 +4,24 @@ title: "Boas Práticas e Ferramentas da Ciência Aberta na Ecologia - BIE5798-1"
 
 Olá!
 
-Obrigado pelo interesse em participar da disciplina "Boas Práticas e Ferramentas da Ciência Aberta na Ecologia - BIE5798-1", que será 
-    ministrada entre os dias 07 e 10 de Agosto na USP, São Paulo.
-    
-O curso será ministrado por Melina Leite e Gabriel Nakamura. Este sítio contém todo o material necessário para você acompanhar as atividades
-    práticas que serão realizadas durante o curso.
+Obrigado pelo interesse em participar da disciplina "Boas Práticas e Ferramentas da Ciência Aberta na Ecologia - BIE5798-1", que será ministrada entre os dias 07 e 10 de Agosto na USP, São Paulo. Nesta disciplina serão abordados conceitos teóricos e ferramentas práticas para desenvolver pesquisas que vão ao encontro dos princípios de ciência aberta. 
 
+Este sítio servirá como um guia para nossas aulas. Nele vocês encontrarão os materiais necessários ([dados](https://github.com/GabrielNakamura/USP_reproducibility_BIE5791)) bem como os scripts que utilizaremos durante as aulas para as atividades práticas. Ah! O site continuará funcionando após o término da disciplina, portanto, sempre que tiver alguma dúvida é só voltar aqui e revisitar o que vimos nas aulas.
+
+# Ministrantes
+
+O curso será ministrado por Melina Leite e Gabriel Nakamura.
+
+[Melina](https://melinaleite.weebly.com/) é ecóloga e cientista de dados no departamento de Ecologia da USP. [Melina pode ficar a vontade para preencher aqui sua bio]
+
+Gabriel é formado em licenciatura em Ciências Biológicas (apesar da dúvida entre Ciências Sociais), fez algumas andanças de difícil reprodutibilidade para obter o mestrado (Ecologia e Conservação UFMS) e doutorado (Ecologia UFRGS). Após um tempo fora (posdoc Texas A&M University), a saudade do pequi e da guariroba do cerrado falaram mais alto e atualmente trabalha na Universidade Federal de Goiás como posdoc do INCT-EECBio. Atualmente vem desenvolvendo  métodos e ferramentas estatísticas em ecologia de comunidades, macroecologia e macroevolução. Tem interesse também em entender os viéses da dinâmica de produção científica. [Aqui]() um pouquinho mais do que vem desenvolvendo.
 
 
 # Cronograma das aulas
 
-```{r}
-# kable aqui com o cronograma
+```{r eval=TRUE, echo=FALSE}
+crono <- read.csv("cronograma.csv")
+knitr::kable(x = crono)
 
 ```
 
