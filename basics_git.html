@@ -30,6 +30,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <script src="site_libs/navigation-1.1/sourceembed.js"></script>
@@ -230,6 +233,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -237,6 +303,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -345,6 +421,8 @@ course</a></p>
 <div id="rmd-source-code">LS0tCnRpdGxlOiAnQmFzaWNzIG9mIHZlcnNpb24gY29udHJvbCcKYXV0aG9yOiAiR2FicmllbCBOYWthbXVyYSIKZGF0ZTogU3lzLkRhdGUoKQpvdXRwdXQ6IGh0bWxfZG9jdW1lbnQKLS0tCgpgYGB7ciBzZXR1cCwgaW5jbHVkZT1GQUxTRX0Ka25pdHI6Om9wdHNfY2h1bmskc2V0KGVjaG8gPSBUUlVFLCBldmFsID0gRkFMU0UpCmBgYAoKIyAxLiBQdWxsLCBQdXNoIGFuZCBDb21taXRzIC0gbm92b3Mgbm9tZXMgcGFyYSB2ZWxoYXMgcHLDoXRpY2FzCgpDb25jZWl0b3MgYsOhc2ljb3MgcGFyYSB1dGlsaXphw6fDo28gZGUgZmVycmFtZW50YXMgZGUgY29udHJvbGUgZGUgdmVyc8OjbwoKYGBge3IgZWNobz1GQUxTRSxldmFsPUZBTFNFLG91dC53aWR0aD0iNjAlIn0Ka25pdHI6OmluY2x1ZGVfZ3JhcGhpY3MoaGVyZTo6aGVyZSgiZmlncyIsICJjb21taXQtcHVsbC1wdXNoLnBuZyIpKQpgYGAKCgoKIyAyLiBDb21taXRzIC0gZXNjYWxhbmRvIHVtYSBtb250YW5oYSBkZSBhcnF1aXZvcwoKTyBxdWUgw6kgdW0gY29tbWl0PwoKQSBjb21taXQsIG9yICJyZXZpc2lvbiIsIGlzIGFuIGluZGl2aWR1YWwgY2hhbmdlIHRvIGEgZmlsZSAob3Igc2V0IG9mIGZpbGVzKS4KCgpgYGB7ciBlY2hvPUZBTFNFLCBldmFsPUZBTFNFLG91dC53aWR0aD0iNjAlIn0Ka25pdHI6OmluY2x1ZGVfZ3JhcGhpY3MoaGVyZTo6aGVyZSgiZmlncyIsICJjb21taXQtb25seS1jb25jZXB0LnBuZyIpKQpgYGAKClZhbW9zIHBlbnNhciBxdWUgbyBjb21taXQgw6kgbyBxdWUgbm9zIHByb3BvcmNpb25hIGEgc2VndXJhbsOnYSBuYSBlc2NhbGFkYSwgcG9ydGFudG8sIGFvIGZhemVybW9zIG11aXRvcyBjb21taXRzIHRlcmVtb3MgbXVpdGEgc2VndXJhbsOnYSBuYSBlc2NhbGFkYSwgbWFzIGZpY2FyZW1vcyBsZW50b3MuIFNlIGZpemVybW9zIHBvdWNvcyBjb21taXRzIGEgcXVlZGEgcG9kZSBzZXIgZmVpYSEgCgpgYGB7ciBlY2hvPUZBTFNFLCBldmFsPVRSVUV9CmtuaXRyOjppbmNsdWRlX2dyYXBoaWNzKGhlcmU6OmhlcmUoImZpZ3MiLCAiY29tbWl0LXNhZmUucG5nIikpCmBgYAoKCgojIyBFeHBsb3JhbmRvIGNvbW1pdHMKClRlcm1pbm9sb2dpYQoKLSAqKk9yaWdpbioqOiBUaGUgZGVmYXVsdCB1cHN0cmVhbSByZXBvc2l0b3J5CgotICoqTWFzdGVyKiogKHNvbWV0aW1lcyAqKk1haW4qKik6IHRoZSBtYWluIGJyYW5jaCBvZiB5b3VyIHJlcG8KCi0gKipkaWZmKio6IGRpZmZlcmVuY2VzIGJldHdlZW4gdHdvIGNvbW1pdHMgaW4gYSBmaWxlCgpgYGB7ciBlY2hvPUZBTFNFLGV2YWw9RkFMU0V9CmtuaXRyOjppbmNsdWRlX2dyYXBoaWNzKGhlcmU6OmhlcmUoImZpZ3VyZXMiLCAiY29tbWl0LW1vZGVsLnBuZyIpKQpgYGAKCiMjIFZpYWphbmRvIG5vIHRlbXBvIC0gbmF2ZWdhbmRvIHBlbG9zIGNvbW1pdHMKCgpgYGB7ciBlY2hvPUZBTFNFLGV2YWw9RkFMU0V9CmtuaXRyOjppbmNsdWRlX2dyYXBoaWNzKGhlcmU6OmhlcmUoImZpZ3VyZXMiLCAiaGlzdG9yeS1SU3R1ZGlvLnBuZyIpKQpgYGAKCgoKCiMgSW1wb3J0YW50IHJlZmVyZW5jZXMKCltEb3VnbGFzIE1jRG9uYWxkIHdlYnNpdGVdKGh0dHBzOi8vd3d3LmRvdWdhbmRkYXRhLmNvbS8yMDIyLzA3L29uLW5hbWluZy10aGluZ3MvKQoKW0plbm55IEJyeWFuIGFzIGFsd2F5c10oaHR0cDovL3d3dzIuc3RhdC5kdWtlLmVkdS9+cmNzNDYvbGVjdHVyZXNfMjAxNS8wMS1tYXJrZG93bi1naXQvc2xpZGVzL25hbWluZy1zbGlkZXMvbmFtaW5nLXNsaWRlcy5wZGYpCgpbSGFkbGV5IFdpY2toYW0gb2YgY291cnNlXShodHRwOi8vYWR2LXIuaGFkLmNvLm56L1N0eWxlLmh0bWwpCgoK</div>
 
 
+</div>
+</div>
 
 </div>
 
@@ -382,6 +460,35 @@ $(document).ready(function () {
 });
 </script>
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
