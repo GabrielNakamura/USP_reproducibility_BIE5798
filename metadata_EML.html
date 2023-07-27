@@ -11,13 +11,14 @@
 
 <meta name="author" content="Gabriel Nakamura" />
 
+<meta name="date" content="2023-07-27" />
 
 <title>Metadados com EML</title>
 
-<script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -31,6 +32,8 @@
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="site_libs/navigation-1.1/sourceembed.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
@@ -57,6 +60,11 @@ if (window.hljs) {
 
 
 
+<style type="text/css">
+#rmd-source-code {
+  display: none;
+}
+</style>
 
 
 
@@ -217,6 +225,9 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
 
 
@@ -271,11 +282,18 @@ $(document).ready(function () {
 
 <div id="header">
 
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-download-source" href="#">Download Rmd</a></li>
+</ul>
+</div>
+
 
 
 <h1 class="title toc-ignore">Metadados com EML</h1>
 <h4 class="author">Gabriel Nakamura</h4>
-<h4 class="date">5/17/2023</h4>
+<h4 class="date">2023-07-27</h4>
 
 </div>
 
@@ -309,6 +327,7 @@ Bryan as always</a></p>
 course</a></p>
 </div>
 
+<div id="rmd-source-code">LS0tCnRpdGxlOiAnTWV0YWRhZG9zIGNvbSBFTUwnCmF1dGhvcjogIkdhYnJpZWwgTmFrYW11cmEiCmRhdGU6ICJgciBTeXMuRGF0ZSgpYCIKb3V0cHV0OiBodG1sX2RvY3VtZW50Ci0tLQoKYGBge3Igc2V0dXAsIGluY2x1ZGU9RkFMU0V9CmtuaXRyOjpvcHRzX2NodW5rJHNldChlY2hvID0gVFJVRSwgZXZhbCA9IEZBTFNFKQpgYGAKCiMgTWV0YWRhZG9zCgpPcyBtZXRhZGFkb3MgY29uc2lzdGVtIGVtIGV4cGxpY2HDp8O1ZXMgc29icmUgYSBlc3RydXR1cmEgZGUgZGFkb3MuIFBvciBleGVtcGxvLCBvIHNpZ25pZmljYWRvIGRvcyBjw7NkaWdvcyBvdSBhYnJldmlhw6fDtWVzIHByZXNlbnRlcyBlbSB1bWEgZGF0YSB0YWJlbGEsIGRvIHF1ZSBzZSB0cmF0YSBhIGluZm9ybWHDp8OjbyBwcmVzZW50ZSBuYXMgbGluaGFzIGUgbmFzIGNvbHVuYXMsIG8gcXVlIHVtYSBkYWRhIGZ1bsOnw6NvIGZhei4gUmVwb3J0YXIgcHJlY2lzYW1lbnRlIG8gcXVlIGNhZGEgYXJxdWl2byBjb250w6ltIMOpIGRlIGV4dHJlbWEgaW1wb3J0w6JuY2lhIHBhcmEgZ2FyYW50aXIgY29tIHF1ZSBvdXRyYXMgcGVzc29hcywgb3UgbWVzbW8gbyB2b2PDqiBkbyBmdXR1cm8gc2FpYmEgbyBxdWUgZm9pL2VzdMOhIHNlbmRvIGZlaXRvIG5vIHByb2pldG8gY2llbnTDrWZpY28uCgoKIyBVc2FuZG8gbyBwYWNvdGUgRU1MIC0gRWNvbG9naWNhbCBNZXRhZGF0YSBMYW5ndWFnZQoKCiMjIERlc2NyZXZlbmRvIG9zIGRhZG9zIC0gUGFsbWVyIFBlbmd1aW5zCgoKCiMgUmVmZXLDqm5jaWFzIGltcG9ydGFudGVzCgpbRG91Z2xhcyBNY0RvbmFsZCB3ZWJzaXRlXShodHRwczovL3d3dy5kb3VnYW5kZGF0YS5jb20vMjAyMi8wNy9vbi1uYW1pbmctdGhpbmdzLykKCltKZW5ueSBCcnlhbiBhcyBhbHdheXNdKGh0dHA6Ly93d3cyLnN0YXQuZHVrZS5lZHUvfnJjczQ2L2xlY3R1cmVzXzIwMTUvMDEtbWFya2Rvd24tZ2l0L3NsaWRlcy9uYW1pbmctc2xpZGVzL25hbWluZy1zbGlkZXMucGRmKQoKW0hhZGxleSBXaWNraGFtIG9mIGNvdXJzZV0oaHR0cDovL2Fkdi1yLmhhZC5jby5uei9TdHlsZS5odG1sKQoKCg==</div>
 
 
 
@@ -342,6 +361,11 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeSourceEmbed("metadata_EML.Rmd");
+});
+</script>
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->

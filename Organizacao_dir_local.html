@@ -11,13 +11,14 @@
 
 <meta name="author" content="Gabriel Nakamura" />
 
+<meta name="date" content="2023-07-27" />
 
 <title>Organizando o seu trabalho localmente</title>
 
-<script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -31,6 +32,8 @@
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="site_libs/navigation-1.1/sourceembed.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
@@ -57,6 +60,11 @@ if (window.hljs) {
 
 
 
+<style type="text/css">
+#rmd-source-code {
+  display: none;
+}
+</style>
 
 
 
@@ -217,6 +225,9 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
 
 
@@ -271,11 +282,18 @@ $(document).ready(function () {
 
 <div id="header">
 
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-download-source" href="#">Download Rmd</a></li>
+</ul>
+</div>
+
 
 
 <h1 class="title toc-ignore">Organizando o seu trabalho localmente</h1>
 <h4 class="author">Gabriel Nakamura</h4>
-<h4 class="date">Sys.Date()</h4>
+<h4 class="date">2023-07-27</h4>
 
 </div>
 
@@ -311,11 +329,11 @@ perfeitamente a esta proposta. O mais importante de tudo é que os dados
 estejam organizados de uma maneira <strong>intuitiva</strong> e
 <strong>consistente</strong> no diretório, como o na figura
 seguinte.</p>
-<div class="figure">
+<div class="float">
 <img
 src="/Users/gabrielnakamura/OneDrive/Aulas/Disciplina_ppgEco/Curso_UFRGS_organizacao_de_dados/directory_org.jpg"
-alt="" />
-<p class="caption">Um diretório organizado.</p>
+alt="Um diretório organizado." />
+<div class="figcaption">Um diretório organizado.</div>
 </div>
 <p>Mas, qual a lógica por trás da organização desse diretório? Seguimos
 a proposta presente na figura seguinte <a
@@ -324,12 +342,12 @@ pode ser visto aqui)</a>.</p>
 <p>Nesta proposta os arquivos dentro de um projeto são organizados em 4
 pastas que contemplam quase todos os documentos que geramos ou que
 precisamos quando estamos desenvolvendo um projeto científico.</p>
-<div class="figure">
+<div class="float">
 <img
 src="/Users/gabrielnakamura/OneDrive/Aulas/Disciplina_ppgEco/Curso_UFRGS_organizacao_de_dados/template_general.jpg"
-alt="" />
-<p class="caption">Um template básico para um diretório bem
-organizado.</p>
+alt="Um template básico para um diretório bem organizado." />
+<div class="figcaption">Um template básico para um diretório bem
+organizado.</div>
 </div>
 </div>
 <div id="nomeando-arquivos" class="section level1">
@@ -379,29 +397,24 @@ Pense no seu trabalho, adicione ou edite esse checklist de acordo com
 seus propósitos.</p>
 <p>Minha proposta de checklist:</p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-Uma linha explicando o propósito do repositório</li>
-<li><input type="checkbox" disabled="" />
-Autores do repositório</li>
-<li><input type="checkbox" disabled="" />
-Ligações e contextualizações necessárias (por exemplo, se o repositório
-está linkado a um artigo)</li>
-<li><input type="checkbox" disabled="" />
-badges (opcional)</li>
-<li><input type="checkbox" disabled="" />
-Instruções de instalação (ou download se for um repo)</li>
-<li><input type="checkbox" disabled="" />
-Exemplo de utilização claro e <em>executável</em> (se estivermos falando
-de uma base de dados ou pacote)</li>
-<li><input type="checkbox" disabled="" />
-Estrutura de pastas e scripts (o que cada pasta contém, o que cada
-script faz)</li>
-<li><input type="checkbox" disabled="" />
-Status do projeto (finalizado/em andamento)</li>
-<li><input type="checkbox" disabled="" />
-Em caso de problema com algo no repositório, como reportar</li>
-<li><input type="checkbox" disabled="" />
-Licença</li>
+<li><input type="checkbox" />Uma linha explicando o propósito do
+repositório</li>
+<li><input type="checkbox" />Autores do repositório</li>
+<li><input type="checkbox" />Ligações e contextualizações necessárias
+(por exemplo, se o repositório está linkado a um artigo)</li>
+<li><input type="checkbox" />badges (opcional)</li>
+<li><input type="checkbox" />Instruções de instalação (ou download se
+for um repo)</li>
+<li><input type="checkbox" />Exemplo de utilização claro e
+<em>executável</em> (se estivermos falando de uma base de dados ou
+pacote)</li>
+<li><input type="checkbox" />Estrutura de pastas e scripts (o que cada
+pasta contém, o que cada script faz)</li>
+<li><input type="checkbox" />Status do projeto (finalizado/em
+andamento)</li>
+<li><input type="checkbox" />Em caso de problema com algo no
+repositório, como reportar</li>
+<li><input type="checkbox" />Licença</li>
 </ul>
 </div>
 <div id="ferramentas-para-organização-do-diretório-local"
@@ -456,9 +469,10 @@ course</a></p>
 <div id="onde-queremos-chegar-e-onde-estamos-agora"
 class="section level1">
 <h1>Onde queremos chegar e onde estamos agora?</h1>
-<p><img src="figs/local-remote-general.png" width="3024" /></p>
+<p><img src="figs/local-remote-general.png" /><!-- --></p>
 </div>
 
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiT3JnYW5pemFuZG8gbyBzZXUgdHJhYmFsaG8gbG9jYWxtZW50ZSIKYXV0aG9yOiAiR2FicmllbCBOYWthbXVyYSIKZGF0ZTogImByIFN5cy5EYXRlKClgIgpvdXRwdXQ6IGh0bWxfZG9jdW1lbnQKLS0tCgpgYGB7ciBzZXR1cCwgaW5jbHVkZT1GQUxTRX0Ka25pdHI6Om9wdHNfY2h1bmskc2V0KGVjaG8gPSBUUlVFKQpgYGAKCiMgT3JnYW5pemHDp8OjbyAtIHF1ZXN0w6NvIGRlIGVzdGlsbz8KCiJFdSBtZSBhY2hvIG5hIG1pbmhhIGJhZ3Vuw6dhIiwgcXVlbSBqw6Egb3V2aXUgZXNzYSBmcmFzZSwgb3UgasOhIHByb251bmNpb3U/IFByb3ZhdmVsbWVudGUgdG9kb3MgbsOzcy4gTWFzIG8gY29uY2VpdG8gZGUgKipvcmdhbml6YcOnw6NvKiogc2VyaWEgbWVzbW8gdW1hIHF1ZXN0w6NvIHBlc3NvYWw/IFBvZGVtb3MgZGlzY3V0aXIgaXNzbyBkdXJhbnRlIGhvcmFzIGEgZmlvIHNlIGVzdGl2ZXJtb3MgZmFsYW5kbyBkbyBzZXUgcXVhcnRvLCBkYSBzdWEgZXN0YW50ZSBvdSBkbyBzZXUgZ3VhcmRhLXJvdXBhLCBtYXMgcXVhbmRvIGZhbGFtb3MgZGUgY2nDqm5jaWEsIG91IHNlamEsIHVtYSBhdGl2aWRhZGUgY29sZXRpdmEsIG9yZ2FuaXphw6fDo28gKipuw6NvKiogw6kgdW1hIHF1ZXN0w6NvIHBlc3NvYWwsIGp1c3RhbWVudGUgcG9yIHNlciBjb2xldGl2YS4gU2VtcHJlIHRyYWJhbGhhbW9zIGVtIGNvbmp1bnRvLCBlIGlzc28gcG9kZSBzZXIgY29tIHVtIGdydXBvIGNvbXBvc3RvIHBvciBtdWl0YXMgcGVzc29hcyBxdWUgdHJhYmFsaGFtIGVtIHVtIGRldGVybWluYWRvIHByb2pldG8sIG91IHBvZGUgc2VyIGNvbnNpZ28gbWVzbW8sIG8gc2V1IGV1IGRvIGZ1dHVyby4gRGVzdGEgbWFuZWlyYSwgw6kgbmVjZXNzw6FyaW8gcXVlIHR1ZG8gcXVlIGZvaSB1dGlsaXphZG8gcGFyYSBvIGRlc2Vudm9sdmltZW50byBkbyBzZXUgcHJvamV0byBjaWVudMOtZmljbyBzZWphIGRlIGbDoWNpbCBjb21wcmVlbnPDo28gcGFyYSBzZXVzIGNvbGFib3JhZG9yZXMgb3UgcGFyYSBvIHNldSAiZXUiIGRvIGZ1dHVyby4gCgojIFVtIGVzcXVlbWEgZ2VyYWwgKG1hcyBuw6NvIGFic29sdXRvKSBwYXJhIG9yZ2FuaXphw6fDo28gZG8gZGlyZXTDs3JpbyBsb2NhbAoKTmVzc2Egc2XDp8OjbyBpcmVpIG1vc3RyYXIgdW1hIHByb3Bvc3RhIGRlIGVzcXVlbWEgZ2VyYWwgcGFyYSBvcmdhbml6YcOnw6NvIGRlIGRpcmV0w7NyaW9zLiBFc3NhIGVzdHJ1dHVyYSDDqSBiYXNlYWRhIG5lc3RhIHByb3Bvc3RhIGRvIFtHdXN0YXZvIFBhdGVybm9dKGh0dHBzOi8vZG9jcy5nb29nbGUuY29tL3ByZXNlbnRhdGlvbi9kLzFQeDlOcGFfQU5xbW1makNYbzlBLWVCbVd6Z1VtbWtDS2Q3ZkJJcV9nRzZrL2VkaXQjc2xpZGU9aWQuZzYyZmM2YmY3MmZfMF8xOTYpLgoKRGlnbyBxdWUgbsOjbyDDqSBhYnNvbHV0byBwb2lzIG1vZGlmaWNhw6fDtWVzIG5lc3NlIGVzcXVlbWEgcG9kZW0gc2VyIGZlaXRhIHBhcmEgYWp1c3RhciBhbyBjb25qdW50byBkZSBkYWRvcyBkZSBjYWRhIHBlc3NvYS4gQSBFY29sb2dpYSDDqSB1bSBjYW1wbyBtdWl0byBhbXBsbyBkZSBwZXNxdWlzYSwgZSBuZW0gdG9kb3Mgb3MgZGFkb3Mgc2UgYWp1c3RhcsOjbyBwZXJmZWl0YW1lbnRlIGEgZXN0YSBwcm9wb3N0YS4gTyBtYWlzIGltcG9ydGFudGUgZGUgdHVkbyDDqSBxdWUgb3MgZGFkb3MgZXN0ZWphbSBvcmdhbml6YWRvcyBkZSB1bWEgbWFuZWlyYSAqKmludHVpdGl2YSoqIGUgKipjb25zaXN0ZW50ZSoqIG5vIGRpcmV0w7NyaW8sIGNvbW8gbyBuYSBmaWd1cmEgc2VndWludGUuCgohW1VtIGRpcmV0w7NyaW8gb3JnYW5pemFkby5dKC9Vc2Vycy9nYWJyaWVsbmFrYW11cmEvT25lRHJpdmUvQXVsYXMvRGlzY2lwbGluYV9wcGdFY28vQ3Vyc29fVUZSR1Nfb3JnYW5pemFjYW9fZGVfZGFkb3MvZGlyZWN0b3J5X29yZy5qcGcpCgpNYXMsIHF1YWwgYSBsw7NnaWNhIHBvciB0csOhcyBkYSBvcmdhbml6YcOnw6NvIGRlc3NlIGRpcmV0w7NyaW8/IFNlZ3VpbW9zIGEgcHJvcG9zdGEgcHJlc2VudGUgbmEgZmlndXJhIHNlZ3VpbnRlIFsob3JpZ2luYWwgcG9kZSBzZXIgdmlzdG8gYXF1aSldKGh0dHBzOi8vZG9jcy5nb29nbGUuY29tL3ByZXNlbnRhdGlvbi9kLzFQeDlOcGFfQU5xbW1makNYbzlBLWVCbVd6Z1VtbWtDS2Q3ZkJJcV9nRzZrL2VkaXQjc2xpZGU9aWQuZzYyZmM2YmY3MmZfMF83KS4gCgpOZXN0YSBwcm9wb3N0YSBvcyBhcnF1aXZvcyBkZW50cm8gZGUgdW0gcHJvamV0byBzw6NvIG9yZ2FuaXphZG9zIGVtIDQgcGFzdGFzIHF1ZSBjb250ZW1wbGFtIHF1YXNlIHRvZG9zIG9zIGRvY3VtZW50b3MgcXVlIGdlcmFtb3Mgb3UgcXVlIHByZWNpc2Ftb3MgcXVhbmRvIGVzdGFtb3MgZGVzZW52b2x2ZW5kbyB1bSBwcm9qZXRvIGNpZW50w61maWNvLgoKIVtVbSB0ZW1wbGF0ZSBiw6FzaWNvIHBhcmEgdW0gZGlyZXTDs3JpbyBiZW0gb3JnYW5pemFkby5dKC9Vc2Vycy9nYWJyaWVsbmFrYW11cmEvT25lRHJpdmUvQXVsYXMvRGlzY2lwbGluYV9wcGdFY28vQ3Vyc29fVUZSR1Nfb3JnYW5pemFjYW9fZGVfZGFkb3MvdGVtcGxhdGVfZ2VuZXJhbC5qcGcpCgoKIyBOb21lYW5kbyBhcnF1aXZvcwoKQSBnb29kIHJ1bGUgaXM6IAoKKipIdW1hbiArIE1hY2hpbmUgcmVkYWJsZSoqCgpFeGFtcGxlOgoKYGBge3IgZWNobz1GQUxTRSxldmFsPUZBTFNFfQprbml0cjo6aW5jbHVkZV9ncmFwaGljcyhoZXJlOjpoZXJlKCJmaWd1cmVzIiwgIm5hbWluZy1maWxlcy1kYXRhLnBuZyIpKQpgYGAKCiMgTm9tZWFuZG8gc2NyaXB0cwoKUGVyc29uYWxseSwgSSB1c2UgdGhlIGZvbGxvd2luZyBydWxlCgoqKm51bWJlcl91cHBlci1jYXNlLWxldHRlcl9XaGF0LXRoZS1zY3JpcHQtZG9lcy5SKioKCi0gbnVtYmVyOiB1c2VkIHRvIGluZGljYXRlIHRoZSBzZXF1ZW5jZSB0byBydW4gdGhlIHNjcmlwdHMKCi0gdXBlciBjYXNlIGxldHRlcjogd2hhdCB0aGUgc2NyaXB0IGRvZXMgKHByb2NjZXNzLCBjbGVhbiwgYW5hbHlzaXMsIGZ1bmN0aW9uKQoKLSBXaGF0IHRoZSBzY3JpcHQgZG9lczogYSBicmllZiBkZXNjcmlwdGlvbiBvZiB3aGF0IHRoZSBzY3JpcHQgZG9lcwoKIyBPIFJFQURNRQoKTyBSRUFETUUgw6kgdW1hIGRhcyBwYXJ0ZXMgbWFpcyBpbXBvcnRhbnRlcyBkbyBzZXUgZGlyZXTDs3JpbywgZWxlIMOpIGVzY3JpdG8gZW0gY2FpeGEgYWx0YSBqdXN0YW1lbnRlIHBhcmEgcXVlIGEgcGVzc29hIHF1ZSBlc3RlamEgYWNlc3NzYW5kbyBvIHNldSBkaXJldMOzcmlvIG91w6dhIGEgc3VhIHZveiBncml0YW5kbyAqKk1lIGxlaWEgcG9yIGZhdm9yISEqKi4KCk5lc3RlIGFycXVpdm8gZGUgdGV4dG8gdm9jw6ogaXLDoSBlbmNvbnRyYXIgYXMgcHJpbmNpcGFpcyBpbnN0cnXDp8O1ZXMgc29icmUgYSBlc3RydXR1cmEgZG8gZGlyZXTDs3JpbywgaW5jbHVpbmRvIG9zIG5vbWVzIGRhcyBwZXNzb2FzIHF1ZSBtb250YXJhbSBvIGRpcmV0w7NyaW8sIGFsw6ltIGRlIGluc3RydcOnw7VlcyBiw6FzaWNhcyBzb2JyZSBvIHF1ZSBjb250w6ltIGVtIGNhZGEgcGFzdGEuIFtBcXVpIHZvY8OqIHBvZGUgZW5jb250cmFyIHVtIGV4ZW1wbG8gZGUgUkVBRE1FIGNvbnRlbmRvIGFzIGluZm9ybWHDp8O1ZXMgYsOhc2ljYXMgbmVjZXNzw6FyaWFzIHF1ZSBlbGUgZGV2ZSBjb250ZXIgZSBwb3JxdWVdKGh0dHBzOi8vd3d3Lm1ha2VhcmVhZG1lLmNvbS8pLiBbQXF1aSB1bSB0ZW1wbGF0ZSBxdWUgcG9kZSBzZXIgYWRhcHRhZG8gcGFyYSBvcyBzZXVzIHByb3DDs3NpdG9zXShodHRwczovL2dpdGh1Yi5jb20vamVobmEvcmVhZG1lLWJlc3QtcHJhY3RpY2VzL2Jsb2IvbWFzdGVyL1JFQURNRS1kZWZhdWx0Lm1kKS4gW0FxdWkgYWxndW1hcyBkaWNhcyBpbnRlcmVzc2FudGVzIGVtIHBvcnR1Z3XDqnNdKGh0dHBzOi8vYmxvZy5yb2NrZXRzZWF0LmNvbS5ici9jb21vLWZhemVyLXVtLWJvbS1yZWFkbWUvKS4KCsOJIGltcG9ydGFudGUgc2FiZXIgcXVlIHZvY8OqIG7Do28gaXLDoSBlbmNvbnRyYXIgYSByZXNwb3N0YSBmaW5hbCBwYXJhIG8gUkVBRE1FIHBlcmZlaXRvLiBPcyBkZXRhbGhlcyBkZSBjYWRhIFJFQURNRSB2w6NvIHZhcmlhciBkZXBlbmRlbmRvIGRvIHByb2pldG8gcXVlIGVzdMOhIGRlc2Vudm9sdmVuZG8gZSBhIGZvcm1hIGNvbW8gZWxlIGRldmUgc2VyIGFwcmVzZW50YWRvIGFvIHVzdcOhcmlvLiBQb3IgZXhlbXBsbywgc2UgbyBwcm9qZXRvIHNlIHRyYXRhIGRlIHVtIHJlcG9zaXTDs3JpbyBkZSBhcnF1aXZvcyBlIHNjcmlwdHMgZGUgdW0gbWFudXNjcml0bywgZSBuw6NvIGRlIHVtIFJFQURNRSBkZSB1bSBwcm9qZXRvIGRlIHNvZnR3YXJlLCBuw6NvIHByZWNpc2EgaGF2ZXIgYWxndW5zIGNhbXBvcyBkZSBleHBsaWNhw6fDo28sIHRhaXMgY29tbyBleGVtcGxvIGRlIHVzbyBvdSBhbnRpZ2FzIHZlcnPDtWVzIGRlIGxhbsOnYW1lbnRvLiBBcXVpIGNvbG9jbyB1bSBbKmNoZWNrbGlzdCogYWRhcHRhZG9dKGh0dHBzOi8vZ2l0aHViLmNvbS9oYWNrZXJncnJsL2FydC1vZi1yZWFkbWUvZWRpdC9tYXN0ZXIvUkVBRE1FLXB0LUJSLm1kKSBkZSBpdGVucyBxdWUganVsZ28gZXNzZW5jaWFpcyBwYXJhIHVtIFJFQURNRSBpbmZvcm1hdGl2by4gUGVuc2Ugbm8gc2V1IHRyYWJhbGhvLCBhZGljaW9uZSBvdSBlZGl0ZSBlc3NlIGNoZWNrbGlzdCBkZSBhY29yZG8gY29tIHNldXMgcHJvcMOzc2l0b3MuCgpNaW5oYSBwcm9wb3N0YSBkZSBjaGVja2xpc3Q6CgotIFsgXSBVbWEgbGluaGEgZXhwbGljYW5kbyBvIHByb3DDs3NpdG8gZG8gcmVwb3NpdMOzcmlvIAotIFsgXSBBdXRvcmVzIGRvIHJlcG9zaXTDs3JpbwotIFsgXSBMaWdhw6fDtWVzIGUgY29udGV4dHVhbGl6YcOnw7VlcyBuZWNlc3PDoXJpYXMgKHBvciBleGVtcGxvLCBzZSBvIHJlcG9zaXTDs3JpbyBlc3TDoSBsaW5rYWRvIGEgdW0gYXJ0aWdvKQotIFsgXSBiYWRnZXMgKG9wY2lvbmFsKQotIFsgXSBJbnN0cnXDp8O1ZXMgZGUgaW5zdGFsYcOnw6NvIChvdSBkb3dubG9hZCBzZSBmb3IgdW0gcmVwbykKLSBbIF0gRXhlbXBsbyBkZSB1dGlsaXphw6fDo28gY2xhcm8gZSAqZXhlY3V0w6F2ZWwqIChzZSBlc3RpdmVybW9zIGZhbGFuZG8gZGUgdW1hIGJhc2UgZGUgZGFkb3Mgb3UgcGFjb3RlKQotIFsgXSBFc3RydXR1cmEgZGUgcGFzdGFzIGUgc2NyaXB0cyAobyBxdWUgY2FkYSBwYXN0YSBjb250w6ltLCBvIHF1ZSBjYWRhIHNjcmlwdCBmYXopCi0gWyBdIFN0YXR1cyBkbyBwcm9qZXRvIChmaW5hbGl6YWRvL2VtIGFuZGFtZW50bykKLSBbIF0gRW0gY2FzbyBkZSBwcm9ibGVtYSBjb20gYWxnbyBubyByZXBvc2l0w7NyaW8sIGNvbW8gcmVwb3J0YXIKLSBbIF0gTGljZW7Dp2EKCiMgRmVycmFtZW50YXMgcGFyYSBvcmdhbml6YcOnw6NvIGRvIGRpcmV0w7NyaW8gbG9jYWwKClNvbWUgdG9vbHMgY2FuIGhlbHAgeW91IHRvIGdldCBhbiBhdXRvbWF0ZWQgc2NhZmZvbGQgZGlyZWN0b3J5IGZvciB5b3VyIHByb2plY3QsIGZvciBleGFtcGxlLCBzZWUgdGhpcyBvbmUgYnkgW0NhcmwgQm9ldHRpZ2VyXShodHRwczovL2dpdGh1Yi5jb20vY2JvZXR0aWcvdGVtcGxhdGUpLCBhbmQgdGhpcyBieSBbRnJhbmNpc2NvIFJvZHJpZ3Vlei1TYW5jaGV6XShodHRwczovL2dpdGh1Yi5jb20vUGFraWxsby90ZW1wbGF0ZSkuIEluIGVzc2VuY2UsIHlvdSB3aWxsIG5vdGljZSB0aGF0IHRoZSBzdHJ1Y3R1cmUgb2YgdGhlc2UgZGlyZWN0b3JpZXMgcmVzZW1ibGVzIHRoZSBzdHJ1Y3R1cmUgb2YgYW4gUiBwYWNrYWdlLgoKIyMgQ29uY2VpdG8gZGUgY2FtaW5ob3MgYWJzb2x1dG9zIGUgcmVsYXRpdm9zCgojIyBIZXJlCgpPIG1lbGhvciBwYWNvdGUgcGFyYSBvcmdhbml6YXIgY2FtaW5ob3MsIG8gaGVyZSEKCiMjIFJTdHVkaW8KCgojIE1ldGFkYWRvcwoKT3MgbWV0YWRhZG9zIGNvbnNpc3RlbSBlbSBleHBsaWNhw6fDtWVzIHNvYnJlIGEgZXN0cnV0dXJhIGRlIGRhZG9zLiBQb3IgZXhlbXBsbywgbyBzaWduaWZpY2FkbyBkb3MgY8OzZGlnb3Mgb3UgYWJyZXZpYcOnw7VlcyBwcmVzZW50ZXMgZW0gdW1hIGRhdGEgdGFiZWxhLCBkbyBxdWUgc2UgdHJhdGEgYSBpbmZvcm1hw6fDo28gcHJlc2VudGUgbmFzIGxpbmhhcyBlIG5hcyBjb2x1bmFzLCBvIHF1ZSB1bWEgZGFkYSBmdW7Dp8OjbyBmYXouIFJlcG9ydGFyIHByZWNpc2FtZW50ZSBvIHF1ZSBjYWRhIGFycXVpdm8gY29udMOpbSDDqSBkZSBleHRyZW1hIGltcG9ydMOibmNpYSBwYXJhIGdhcmFudGlyIGNvbSBxdWUgb3V0cmFzIHBlc3NvYXMsIG91IG1lc21vIG8gdm9jw6ogZG8gZnV0dXJvIHNhaWJhIG8gcXVlIGZvaS9lc3TDoSBzZW5kbyBmZWl0byBubyBwcm9qZXRvIGNpZW50w61maWNvLgoKCiMgVXNhbmRvIG8gcGFjb3RlIEVNTCAtIEVjb2xvZ2ljYWwgTWV0YWRhdGEgTGFuZ3VhZ2UKCgojIyBEZXNjcmV2ZW5kbyBvcyBkYWRvcyAtIFBhbG1lciBQZW5ndWlucwoKCgojIFJlZmVyw6puY2lhcyBpbXBvcnRhbnRlcwoKW0RvdWdsYXMgTWNEb25hbGQgd2Vic2l0ZV0oaHR0cHM6Ly93d3cuZG91Z2FuZGRhdGEuY29tLzIwMjIvMDcvb24tbmFtaW5nLXRoaW5ncy8pCgpbSmVubnkgQnJ5YW4gYXMgYWx3YXlzXShodHRwOi8vd3d3Mi5zdGF0LmR1a2UuZWR1L35yY3M0Ni9sZWN0dXJlc18yMDE1LzAxLW1hcmtkb3duLWdpdC9zbGlkZXMvbmFtaW5nLXNsaWRlcy9uYW1pbmctc2xpZGVzLnBkZikKCltIYWRsZXkgV2lja2hhbSBvZiBjb3Vyc2VdKGh0dHA6Ly9hZHYtci5oYWQuY28ubnovU3R5bGUuaHRtbCkKCgoKCiMgT25kZSBxdWVyZW1vcyBjaGVnYXIgZSBvbmRlIGVzdGFtb3MgYWdvcmE/CgpgYGB7ciBnZW5lcmFsLCBlY2hvPUZBTFNFLCBldmFsPVRSVUV9CmtuaXRyOjppbmNsdWRlX2dyYXBoaWNzKGhlcmU6OmhlcmUoImZpZ3MiLCAibG9jYWwtcmVtb3RlLWdlbmVyYWwucG5nIikpCgpgYGAKCgoK</div>
 
 
 
@@ -492,6 +506,11 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeSourceEmbed("Organizacao_dir_local.Rmd");
+});
+</script>
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->

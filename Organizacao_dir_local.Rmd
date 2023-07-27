@@ -1,7 +1,7 @@
 ---
 title: "Organizando o seu trabalho localmente"
 author: "Gabriel Nakamura"
-date: Sys.Date()
+date: "`r Sys.Date()`"
 output: html_document
 ---
 

@@ -14,10 +14,10 @@
 
 <title>Basics of version control</title>
 
-<script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -31,6 +31,8 @@
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="site_libs/navigation-1.1/sourceembed.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
@@ -57,6 +59,11 @@ if (window.hljs) {
 
 
 
+<style type="text/css">
+#rmd-source-code {
+  display: none;
+}
+</style>
 
 
 
@@ -217,6 +224,9 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
 
 
@@ -271,6 +281,13 @@ $(document).ready(function () {
 
 <div id="header">
 
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-download-source" href="#">Download Rmd</a></li>
+</ul>
+</div>
+
 
 
 <h1 class="title toc-ignore">Basics of version control</h1>
@@ -296,7 +313,7 @@ files).</p>
 escalada, portanto, ao fazermos muitos commits teremos muita segurança
 na escalada, mas ficaremos lentos. Se fizermos poucos commits a queda
 pode ser feia!</p>
-<p><img src="figs/commit-safe.png" width="4000" /></p>
+<p><img src="figs/commit-safe.png" /><!-- --></p>
 <div id="explorando-commits" class="section level2">
 <h2>Explorando commits</h2>
 <p>Terminologia</p>
@@ -325,6 +342,7 @@ Bryan as always</a></p>
 course</a></p>
 </div>
 
+<div id="rmd-source-code">LS0tCnRpdGxlOiAnQmFzaWNzIG9mIHZlcnNpb24gY29udHJvbCcKYXV0aG9yOiAiR2FicmllbCBOYWthbXVyYSIKZGF0ZTogU3lzLkRhdGUoKQpvdXRwdXQ6IGh0bWxfZG9jdW1lbnQKLS0tCgpgYGB7ciBzZXR1cCwgaW5jbHVkZT1GQUxTRX0Ka25pdHI6Om9wdHNfY2h1bmskc2V0KGVjaG8gPSBUUlVFLCBldmFsID0gRkFMU0UpCmBgYAoKIyAxLiBQdWxsLCBQdXNoIGFuZCBDb21taXRzIC0gbm92b3Mgbm9tZXMgcGFyYSB2ZWxoYXMgcHLDoXRpY2FzCgpDb25jZWl0b3MgYsOhc2ljb3MgcGFyYSB1dGlsaXphw6fDo28gZGUgZmVycmFtZW50YXMgZGUgY29udHJvbGUgZGUgdmVyc8OjbwoKYGBge3IgZWNobz1GQUxTRSxldmFsPUZBTFNFLG91dC53aWR0aD0iNjAlIn0Ka25pdHI6OmluY2x1ZGVfZ3JhcGhpY3MoaGVyZTo6aGVyZSgiZmlncyIsICJjb21taXQtcHVsbC1wdXNoLnBuZyIpKQpgYGAKCgoKIyAyLiBDb21taXRzIC0gZXNjYWxhbmRvIHVtYSBtb250YW5oYSBkZSBhcnF1aXZvcwoKTyBxdWUgw6kgdW0gY29tbWl0PwoKQSBjb21taXQsIG9yICJyZXZpc2lvbiIsIGlzIGFuIGluZGl2aWR1YWwgY2hhbmdlIHRvIGEgZmlsZSAob3Igc2V0IG9mIGZpbGVzKS4KCgpgYGB7ciBlY2hvPUZBTFNFLCBldmFsPUZBTFNFLG91dC53aWR0aD0iNjAlIn0Ka25pdHI6OmluY2x1ZGVfZ3JhcGhpY3MoaGVyZTo6aGVyZSgiZmlncyIsICJjb21taXQtb25seS1jb25jZXB0LnBuZyIpKQpgYGAKClZhbW9zIHBlbnNhciBxdWUgbyBjb21taXQgw6kgbyBxdWUgbm9zIHByb3BvcmNpb25hIGEgc2VndXJhbsOnYSBuYSBlc2NhbGFkYSwgcG9ydGFudG8sIGFvIGZhemVybW9zIG11aXRvcyBjb21taXRzIHRlcmVtb3MgbXVpdGEgc2VndXJhbsOnYSBuYSBlc2NhbGFkYSwgbWFzIGZpY2FyZW1vcyBsZW50b3MuIFNlIGZpemVybW9zIHBvdWNvcyBjb21taXRzIGEgcXVlZGEgcG9kZSBzZXIgZmVpYSEgCgpgYGB7ciBlY2hvPUZBTFNFLCBldmFsPVRSVUV9CmtuaXRyOjppbmNsdWRlX2dyYXBoaWNzKGhlcmU6OmhlcmUoImZpZ3MiLCAiY29tbWl0LXNhZmUucG5nIikpCmBgYAoKCgojIyBFeHBsb3JhbmRvIGNvbW1pdHMKClRlcm1pbm9sb2dpYQoKLSAqKk9yaWdpbioqOiBUaGUgZGVmYXVsdCB1cHN0cmVhbSByZXBvc2l0b3J5CgotICoqTWFzdGVyKiogKHNvbWV0aW1lcyAqKk1haW4qKik6IHRoZSBtYWluIGJyYW5jaCBvZiB5b3VyIHJlcG8KCi0gKipkaWZmKio6IGRpZmZlcmVuY2VzIGJldHdlZW4gdHdvIGNvbW1pdHMgaW4gYSBmaWxlCgpgYGB7ciBlY2hvPUZBTFNFLGV2YWw9RkFMU0V9CmtuaXRyOjppbmNsdWRlX2dyYXBoaWNzKGhlcmU6OmhlcmUoImZpZ3VyZXMiLCAiY29tbWl0LW1vZGVsLnBuZyIpKQpgYGAKCiMjIFZpYWphbmRvIG5vIHRlbXBvIC0gbmF2ZWdhbmRvIHBlbG9zIGNvbW1pdHMKCgpgYGB7ciBlY2hvPUZBTFNFLGV2YWw9RkFMU0V9CmtuaXRyOjppbmNsdWRlX2dyYXBoaWNzKGhlcmU6OmhlcmUoImZpZ3VyZXMiLCAiaGlzdG9yeS1SU3R1ZGlvLnBuZyIpKQpgYGAKCgoKCiMgSW1wb3J0YW50IHJlZmVyZW5jZXMKCltEb3VnbGFzIE1jRG9uYWxkIHdlYnNpdGVdKGh0dHBzOi8vd3d3LmRvdWdhbmRkYXRhLmNvbS8yMDIyLzA3L29uLW5hbWluZy10aGluZ3MvKQoKW0plbm55IEJyeWFuIGFzIGFsd2F5c10oaHR0cDovL3d3dzIuc3RhdC5kdWtlLmVkdS9+cmNzNDYvbGVjdHVyZXNfMjAxNS8wMS1tYXJrZG93bi1naXQvc2xpZGVzL25hbWluZy1zbGlkZXMvbmFtaW5nLXNsaWRlcy5wZGYpCgpbSGFkbGV5IFdpY2toYW0gb2YgY291cnNlXShodHRwOi8vYWR2LXIuaGFkLmNvLm56L1N0eWxlLmh0bWwpCgoK</div>
 
 
 
@@ -358,6 +376,11 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeSourceEmbed("basics_git.Rmd");
+});
+</script>
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->

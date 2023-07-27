@@ -1,7 +1,7 @@
 ---
 title: 'Metadados com EML'
 author: "Gabriel Nakamura"
-date: "5/17/2023"
+date: "`r Sys.Date()`"
 output: html_document
 ---
 

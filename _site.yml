@@ -1,4 +1,8 @@
 name: "Workshop_UofT"
+output:
+  html_document:
+    theme: flatly
+    code_download: true
 output_dir: "."
 navbar:
   title: "Boas Práticas e Ferramentas da Ciência Aberta na Ecologia - BIE5798-1"

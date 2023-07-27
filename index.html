@@ -13,10 +13,10 @@
 
 <title>Boas Práticas e Ferramentas da Ciência Aberta na Ecologia - BIE5798-1</title>
 
-<script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -30,6 +30,8 @@
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="site_libs/navigation-1.1/sourceembed.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
@@ -56,6 +58,11 @@ if (window.hljs) {
 
 
 
+<style type="text/css">
+#rmd-source-code {
+  display: none;
+}
+</style>
 
 
 
@@ -216,6 +223,9 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
 
 
@@ -270,6 +280,13 @@ $(document).ready(function () {
 
 <div id="header">
 
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-download-source" href="#">Download Rmd</a></li>
+</ul>
+</div>
+
 
 
 <h1 class="title toc-ignore">Boas Práticas e Ferramentas da Ciência
@@ -312,8 +329,8 @@ desenvolvendo.</p>
 </div>
 <div id="cronograma-das-aulas" class="section level1">
 <h1>Cronograma das aulas</h1>
-<pre><code>## Warning in read.table(file = file, header = header, sep = sep, quote = quote, : incomplete final line found by
-## readTableHeader on &#39;cronograma.csv&#39;</code></pre>
+<pre><code>## Warning in read.table(file = file, header = header, sep = sep, quote = quote, :
+## incomplete final line found by readTableHeader on &#39;cronograma.csv&#39;</code></pre>
 <table style="width:100%;">
 <colgroup>
 <col width="7%" />
@@ -354,6 +371,7 @@ desenvolvendo.</p>
 </table>
 </div>
 
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiQm9hcyBQcsOhdGljYXMgZSBGZXJyYW1lbnRhcyBkYSBDacOqbmNpYSBBYmVydGEgbmEgRWNvbG9naWEgLSBCSUU1Nzk4LTEiCi0tLQoKT2zDoSEKCk9icmlnYWRvIHBlbG8gaW50ZXJlc3NlIGVtIHBhcnRpY2lwYXIgZGEgZGlzY2lwbGluYSAiQm9hcyBQcsOhdGljYXMgZSBGZXJyYW1lbnRhcyBkYSBDacOqbmNpYSBBYmVydGEgbmEgRWNvbG9naWEgLSBCSUU1Nzk4LTEiLCBxdWUgc2Vyw6EgbWluaXN0cmFkYSBlbnRyZSBvcyBkaWFzIDA3IGUgMTAgZGUgQWdvc3RvIG5hIFVTUCwgU8OjbyBQYXVsby4gTmVzdGEgZGlzY2lwbGluYSBzZXLDo28gYWJvcmRhZG9zIGNvbmNlaXRvcyB0ZcOzcmljb3MgZSBmZXJyYW1lbnRhcyBwcsOhdGljYXMgcGFyYSBkZXNlbnZvbHZlciBwZXNxdWlzYXMgcXVlIHbDo28gYW8gZW5jb250cm8gZG9zIHByaW5jw61waW9zIGRlIGNpw6puY2lhIGFiZXJ0YS4gCgpFc3RlIHPDrXRpbyBzZXJ2aXLDoSBjb21vIHVtIGd1aWEgcGFyYSBub3NzYXMgYXVsYXMuIE5lbGUgdm9jw6pzIGVuY29udHJhcsOjbyBvcyBtYXRlcmlhaXMgbmVjZXNzw6FyaW9zIChbZGFkb3NdKGh0dHBzOi8vZ2l0aHViLmNvbS9HYWJyaWVsTmFrYW11cmEvVVNQX3JlcHJvZHVjaWJpbGl0eV9CSUU1NzkxKSkgYmVtIGNvbW8gb3Mgc2NyaXB0cyBxdWUgdXRpbGl6YXJlbW9zIGR1cmFudGUgYXMgYXVsYXMgcGFyYSBhcyBhdGl2aWRhZGVzIHByw6F0aWNhcy4gQWghIE8gc2l0ZSBjb250aW51YXLDoSBmdW5jaW9uYW5kbyBhcMOzcyBvIHTDqXJtaW5vIGRhIGRpc2NpcGxpbmEsIHBvcnRhbnRvLCBzZW1wcmUgcXVlIHRpdmVyIGFsZ3VtYSBkw7p2aWRhIMOpIHPDsyB2b2x0YXIgYXF1aSBlIHJldmlzaXRhciBvIHF1ZSB2aW1vcyBuYXMgYXVsYXMuCgojIE1pbmlzdHJhbnRlcwoKTyBjdXJzbyBzZXLDoSBtaW5pc3RyYWRvIHBvciBNZWxpbmEgTGVpdGUgZSBHYWJyaWVsIE5ha2FtdXJhLgoKW01lbGluYV0oaHR0cHM6Ly9tZWxpbmFsZWl0ZS53ZWVibHkuY29tLykgw6kgZWPDs2xvZ2EgZSBjaWVudGlzdGEgZGUgZGFkb3Mgbm8gZGVwYXJ0YW1lbnRvIGRlIEVjb2xvZ2lhIGRhIFVTUC4gW01lbGluYSBwb2RlIGZpY2FyIGEgdm9udGFkZSBwYXJhIHByZWVuY2hlciBhcXVpIHN1YSBiaW9dCgpHYWJyaWVsIMOpIGZvcm1hZG8gZW0gbGljZW5jaWF0dXJhIGVtIENpw6puY2lhcyBCaW9sw7NnaWNhcyAoYXBlc2FyIGRhIGTDunZpZGEgZW50cmUgQ2nDqm5jaWFzIFNvY2lhaXMpLCBmZXogYWxndW1hcyBhbmRhbsOnYXMgZGUgZGlmw61jaWwgcmVwcm9kdXRpYmlsaWRhZGUgcGFyYSBvYnRlciBvIG1lc3RyYWRvIChFY29sb2dpYSBlIENvbnNlcnZhw6fDo28gVUZNUykgZSBkb3V0b3JhZG8gKEVjb2xvZ2lhIFVGUkdTKS4gQXDDs3MgdW0gdGVtcG8gZm9yYSAocG9zZG9jIFRleGFzIEEmTSBVbml2ZXJzaXR5KSwgYSBzYXVkYWRlIGRvIHBlcXVpIGUgZGEgZ3Vhcmlyb2JhIGRvIGNlcnJhZG8gZmFsYXJhbSBtYWlzIGFsdG8gZSBhdHVhbG1lbnRlIHRyYWJhbGhhIG5hIFVuaXZlcnNpZGFkZSBGZWRlcmFsIGRlIEdvacOhcyBjb21vIHBvc2RvYyBkbyBJTkNULUVFQ0Jpby4gQXR1YWxtZW50ZSB2ZW0gZGVzZW52b2x2ZW5kbyAgbcOpdG9kb3MgZSBmZXJyYW1lbnRhcyBlc3RhdMOtc3RpY2FzIGVtIGVjb2xvZ2lhIGRlIGNvbXVuaWRhZGVzLCBtYWNyb2Vjb2xvZ2lhIGUgbWFjcm9ldm9sdcOnw6NvLiBUZW0gaW50ZXJlc3NlIHRhbWLDqW0gZW0gZW50ZW5kZXIgb3MgdmnDqXNlcyBkYSBkaW7Dom1pY2EgZGUgcHJvZHXDp8OjbyBjaWVudMOtZmljYS4gW0FxdWldKCkgdW0gcG91cXVpbmhvIG1haXMgZG8gcXVlIHZlbSBkZXNlbnZvbHZlbmRvLgoKCiMgQ3Jvbm9ncmFtYSBkYXMgYXVsYXMKCmBgYHtyIGV2YWw9VFJVRSwgZWNobz1GQUxTRX0KY3Jvbm8gPC0gcmVhZC5jc3YoImNyb25vZ3JhbWEuY3N2IikKa25pdHI6OmthYmxlKHggPSBjcm9ubykKCmBgYAoKCgoK</div>
 
 
 
@@ -387,6 +405,11 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeSourceEmbed("index.Rmd");
+});
+</script>
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
