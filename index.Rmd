@@ -20,7 +20,7 @@ Gabriel é formado em licenciatura em Ciências Biológicas (apesar da dúvida e
 # Cronograma das aulas
 
 ```{r eval=TRUE, echo=FALSE}
-crono <- read.csv("cronograma.csv", header = T, sep = ",")
+crono <- suppressWarnings(read.csv("cronograma.csv", header = T, sep = ","))  
 rownames(crono) <- c("Manhã", "Tarde")
 colnames(crono) <- paste(seq(7:11), ("Ago"), sep = " ")
 crono[1, 1] <- c("Apresentação da disciplina")
