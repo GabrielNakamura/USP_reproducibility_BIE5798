@@ -2,6 +2,8 @@
 title: "Boas Práticas e Ferramentas da Ciência Aberta na Ecologia - BIE5798-1"
 ---
 
+# Apresentação
+
 Olá!
 
 Obrigado pelo interesse em participar da disciplina "Boas Práticas e Ferramentas da Ciência Aberta na Ecologia - BIE5798-1", que será ministrada entre os dias 07 e 11 de Agosto na USP, São Paulo. Nesta disciplina serão abordados conceitos teóricos e ferramentas práticas para desenvolver pesquisas que vão ao encontro dos princípios de ciência aberta. 
@@ -12,12 +14,19 @@ Este sítio servirá como um guia para nossas aulas. Nele vocês encontrarão os
 
 O curso será ministrado por Melina Leite e Gabriel Nakamura.
 
+
+## Melina
+
 [Melina](https://melinaleite.weebly.com/) é ecóloga e cientista de dados no departamento de Ecologia da USP. [Melina pode ficar a vontade para preencher aqui sua bio]
 
+
+## Gabriel
 Gabriel é formado em licenciatura em Ciências Biológicas (apesar da dúvida entre Ciências Sociais e História), fez algumas andanças de difícil reprodutibilidade para obter o mestrado (Ecologia e Conservação UFMS) e doutorado (Ecologia UFRGS). Após um tempo fora (posdoc Texas A&M University), a saudade do pequi e da guariroba do cerrado falaram mais alto e atualmente trabalha na Universidade Federal de Goiás como posdoc do INCT-EECBio. Atualmente vem desenvolvendo  métodos e ferramentas estatísticas em ecologia de comunidades, macroecologia e macroevolução. Tem interesse também em entender os viéses da dinâmica de produção científica. [Aqui](http://lattes.cnpq.br/2456515948049565) um pouquinho mais do que vem desenvolvendo.
 
 
 # Cronograma das aulas
+
+Abaixo está um cronograma que iremos seguir. Algumas coisas podem mudar (mais ou menos tempo gasto) dependendo do andamento das atividades práticas.
 
 ```{r eval=TRUE, echo=FALSE}
 crono <- suppressWarnings(read.csv("cronograma.csv", header = T, sep = ","))  
@@ -28,8 +37,18 @@ crono[2, 1] <- c("Dados/Metadados/Plano de Gestão FAPESP")
 crono[1, 2] <- c("Organização local- scripts, pastas etc")
 crono[2, 2] <- c("Controle de versão")
 crono[1, 3] <- c("Git, Github, integração")
+crono[2, 3] <- c("Git, Github, integração - Prática")
+crono[2, 3] <- c("Prática em controle de versão/Ações básicas")
+crono[1, 4] <- c("Prática em controle de versão/Forks, commits, pull requests")
+crono[2, 4] <- c("Prática em controle de versão/Forks, commits, pull requests/Pacotes")
+crono[1, 4] <- c("Literate programming/Rmarkdown/Integração contínua")
+crono[2, 4] <- c("Dockers e Target")
+crono[1, 5] <- c("Open Access/Preprints/DOI/Armazenamento permanente")
+crono[2, 5] <- c("Finalização/Feedbacks")
 
-DT::datatable(crono)
+
+
+DT::datatable(crono, editable = "cell")
 
 ```
 
