@@ -1,13 +1,131 @@
 ---
 title: 'Basics of version control'
 author: "Gabriel Nakamura"
-date: Sys.Date()
+date: "`r Sys.Date()`"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+knitr::opts_chunk$set(echo = TRUE, fig.align = "center")
 ```
+
+Nesta primeira seção irei apresentar as principais ferramentas que utilizaremos para nos ajudar na organização de dados. Estas ferramenta irão auxiliar desde a organização local de seus dados até a disponibilização destes dados em plataformas de acesso aberto. Várias delas já devem ser velhas conhecidas por vocês, por exemplo, o RStudio, então dispensam maiores apresentações. Por isso, grande parte deste documento vai tratar de uma ferramenta até bem conhecida pelo nome, mas que pra muita gente pode parecer coisa de outro mundo: o **Git**. Vocês verão que conhecem mais dele do que imaginam, e que muitas das funções que ele possibilita realizar nós fazemos em nosso dia-a-dia através de outros aplicativos, porém, espero conseguir mostrar o quão o **Git** é mais eficiente.
+
+# Hello Git - Introdução ao uso de sistema de controle de versões
+
+O Git trata-se de um sistema de controle de versões, mas afinal, o que é um sistema de controle de versões? Estamos mais acostumados do que imaginamos quando o assunto é controle de versões, apesar de parecer algo de outro mundo. Um exemplo que todos nós estamos acostumados é oferecido pelo editor de texto Word, quando ligamos a opção "Track changes". Ao fazermos isso estamos controlando todas as modificações que fazemos em um documento. O Git faz a mesma coisa, porém para uma pasta inteira (ou *diretório*, na linguagem do controle de versões).
+
+Portanto, o Git nada mais é que um sistema criado para realizar o rastreio de toda e qualquer modificação de arquivos dentro de uma pasta, utilizando a terminologia do versionamento, tudo o que é feito em um diretório associado ao Git é *observado* (*watch* na linguagem do versionamento).
+
+## Git e GitHub
+
+Git e [GitHub](https://github.com/) são coisas distintas. O GitHub é o GoogleDrive (ou o OneDrive) dos códigos. Ele tem como função armazenar remotamente todos os trabalhos que são feitos localmente com o Git. Porém, com mais potencialidades e controle de armazenamento que as ferramentas do Bill Gates.
+
+## Git e Git client
+
+Uma simples analogia para entender a diferença entre um Git client e o Git é a diferença entre R e RStudio. O R é a ferramenta onde os processos são realizados, o RStudio é uma interface específica e amigável para o uso do R. Da mesma forma o Git é a ferramenta que realiza o controle de versão, já o Git client é a interface específica para que o usuário possa interagir de maneira mais amigável com o Git e GitHub. Existem vários Git clients que podemos utilizar para realizar essa interação, por exemplo, o [GitKraken](https://www.gitkraken.com/) e [GitLab](https://about.gitlab.com/). Cada um tem suas vantagens e desvantagens.
+
+Neste curso usaremos um Git client que é um velho conhecido nosso, o RStudio. Faremos isso  por se tratar da interface mais comum dentro dos estudos de ecologia, a que apresenta uma grande quantidade de materiais disponíveis na internet e também por ser aquela que o instrutor que vos fala tem mais familiaridade. 
+
+## Integrando Git, GitHub e RStudio
+
+Imagine um sistema que integra o seu programa favorito de análises estatísticas, o seu programa favorito de controle de versões e também o seu repositório remoto favorito. Pois é disso que se trata a integração do Git com o GitHub e RStudio. Tudo (quase tudo) pode ser feito no Git através do uso do RStudio e GitHub. Da mesma forma que tornamos nossos trabalhos locais, ou seja, aqueles que se encontram hospedados em nossos computadores, conectados a um serviço de nuvem para evitar possíveis dores de cabeça (por exemplo a morte do seu computador e perda do trabalho de um mestrado ou doutorado inteiro).
+
+# Mãos no teclado - Instalando e configurando o Git
+
+O primeiro passo antes de instalar o Git é saber se você já tem ele instalado em seu computador. Para tanto você deve acessar a linha de comando de seu sistema operacional (bash, prompt, isso vai variar dependendo do tipo de sistema que usa) e digitar o comando:
+
+```{r echo=TRUE, eval=FALSE}
+which git
+```
+
+Caso retorne uma mensagem indicando o local do git no seu computador, ótimo, uma tarefa a menos, caso contrário você terá que instalar o git de acordo com as especificidades do seu sistema operacional que serão apresentadas a seguir.
+
+## Instalação do Git no Windows
+
+Instale o Git acessando [aqui](https://gitforwindows.org/) 
+
+## Instação do Git no Mac OS
+
+Instale o Git no seu Mac baixando o Xcode command line tools caso você ainda não o tenha. Esta aplicação já vem com o git.
+
+Em seguida configure o git usando a linha de comando seguinte:
+
+```{r echo=TRUE, eval=FALSE}
+git --version
+git config --global user.name "Your name here"
+git config --global user.email "your_email@example.com"
+```
+
+Voilá, aceite as configurações e clique em instalar
+
+## Instalação do Git no Linux 
+
+Digite a seguinte linha de comando caso você tenha Ubuntu ou Debian Linux
+
+```{r echo=TRUE, eval=FALSE}
+sudo apt-get install git
+```
+
+Se tem Fedora ou HatLinux use:
+
+```{r echo=TRUE, eval=FALSE}
+sudo yum install git
+```
+
+## Configurando o git pelo RStudio
+
+### Utilizando o pacote `usethis`
+
+Após a instalação do git devemos configurá-lo no nosso computador. Para configurar o Git, ou seja, para que o Git saiba quem está o usando, abra o RStudio e digite:
+
+```{r echo=TRUE, eval=FALSE}
+library(usethis)
+use_git_config(user.name = "SeuNomeDeUsuario", user.email = "seuMail@example.br")
+```
+
+Lembre de substituir os campos que aparecerão no console do seu R com suas informações. 
+
+### Utilizando o pacote `gitcreds` - **Mais recomendada**
+
+Apesar de estarmos falando de ciência aberta, o seu perfil no GitHub é pessoal, portanto é importante que haja uma forma de autenticação onde o GitHub saiba que você é o dono do perfil. Isso geralmente é feito através do uso de senhas, porém senhas nem sempre são seguras (ok, provavelmente ninguém vai querer invadir nosso GitHub para tomar informações sobre uma função que calcula a dimensionalidade da biodiversidade, mas outras coisas são desenvolvidas e hospedadas no GitHub), e por isso a forma padrão de autenticação utilizada pelo GitHub é o chamado PAT (Personal Access Token). O PAT nada mais é que uma "senha" gerada pelo próprio github e que deve ser renovada com certa periodicidade. **O GitHub não permite mais autenticações via senha, apenas usando o PAT**. Portanto, o último passo para integrar o R, RStudio, Git e GitHub é informar o PAT. Precisaremos fazer isso apenas uma vez, e repetir apenas quando o PAT expirar. Vamos começar gerando o PAT.
+
+Para tanto vamos usar primeiro o `usethis` e depois vamos utilizar o pacote `gitcreds`.
+
+Digite a linha de código no seu console do R:
+```{r echo=TRUE, eval=FALSE}
+library(usethis)
+create_github_token()
+```
+
+Isso abrirá uma guia no seu navegador para que você gere um token, tal como mostrado na imagem abaixo
+
+```{r eval=TRUE, echo=FALSE, fig.cap="Gerando um token"}
+knitr::include_graphics("figs/PAT_Github.png")
+```
+
+Após gerado, **guarde esse token com carinho**, pois ele vai ser sua nova senha de entrada para o GitHub via RStudio, quando for requerido. Para armazenar senhas e dados eu sugiro o programa **LastPass**.
+
+Próximo passo é registar esse token gerado em nosso computador. Faça o seguinte:
+
+
+```{r PAT, echo=TRUE, eval=FALSE}
+library(gitcreds)
+gitcreds::gitcreds_set()
+```
+
+No console aparecerá a mensagem para digitar o token, copie o token e cole direto no navegador, pressione enter e pronto, seu RStudio está autenticado e agora está devidamente conectado com o repositório remoto.
+
+
+## Conectando Git, RStudio e Github pela primeira vez
+
+Para fazer isso você já precisa ter uma conta criada no GitHub e o Git instalado. Tendo sua conta feita vá o seu navegador de internet, acesse o site do GitHub e faça o login. Feito isso:
+
+1 - Crie um repositório 
+
+Crie um novo repositório clicando no botão destacado na figura abaixo
+
+![Criando um novo repositório.](/Users/gabrielnakamura/OneDrive/Aulas/Disciplina_ppgEco/Curso_UFRGS_organizacao_de_dados/Git1.png)
 
 # 1. Pull, Push and Commits - novos nomes para velhas práticas
 

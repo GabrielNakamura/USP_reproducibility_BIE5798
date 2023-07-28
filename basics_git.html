@@ -48,6 +48,107 @@
 
 
 
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 <style type="text/css">
@@ -361,6 +462,186 @@ div.tocify {
 </div>
 
 
+<p>Nesta primeira seção irei apresentar as principais ferramentas que
+utilizaremos para nos ajudar na organização de dados. Estas ferramenta
+irão auxiliar desde a organização local de seus dados até a
+disponibilização destes dados em plataformas de acesso aberto. Várias
+delas já devem ser velhas conhecidas por vocês, por exemplo, o RStudio,
+então dispensam maiores apresentações. Por isso, grande parte deste
+documento vai tratar de uma ferramenta até bem conhecida pelo nome, mas
+que pra muita gente pode parecer coisa de outro mundo: o
+<strong>Git</strong>. Vocês verão que conhecem mais dele do que
+imaginam, e que muitas das funções que ele possibilita realizar nós
+fazemos em nosso dia-a-dia através de outros aplicativos, porém, espero
+conseguir mostrar o quão o <strong>Git</strong> é mais eficiente.</p>
+<div
+id="hello-git---introdução-ao-uso-de-sistema-de-controle-de-versões"
+class="section level1">
+<h1>Hello Git - Introdução ao uso de sistema de controle de versões</h1>
+<p>O Git trata-se de um sistema de controle de versões, mas afinal, o
+que é um sistema de controle de versões? Estamos mais acostumados do que
+imaginamos quando o assunto é controle de versões, apesar de parecer
+algo de outro mundo. Um exemplo que todos nós estamos acostumados é
+oferecido pelo editor de texto Word, quando ligamos a opção “Track
+changes”. Ao fazermos isso estamos controlando todas as modificações que
+fazemos em um documento. O Git faz a mesma coisa, porém para uma pasta
+inteira (ou <em>diretório</em>, na linguagem do controle de
+versões).</p>
+<p>Portanto, o Git nada mais é que um sistema criado para realizar o
+rastreio de toda e qualquer modificação de arquivos dentro de uma pasta,
+utilizando a terminologia do versionamento, tudo o que é feito em um
+diretório associado ao Git é <em>observado</em> (<em>watch</em> na
+linguagem do versionamento).</p>
+<div id="git-e-github" class="section level2">
+<h2>Git e GitHub</h2>
+<p>Git e <a href="https://github.com/">GitHub</a> são coisas distintas.
+O GitHub é o GoogleDrive (ou o OneDrive) dos códigos. Ele tem como
+função armazenar remotamente todos os trabalhos que são feitos
+localmente com o Git. Porém, com mais potencialidades e controle de
+armazenamento que as ferramentas do Bill Gates.</p>
+</div>
+<div id="git-e-git-client" class="section level2">
+<h2>Git e Git client</h2>
+<p>Uma simples analogia para entender a diferença entre um Git client e
+o Git é a diferença entre R e RStudio. O R é a ferramenta onde os
+processos são realizados, o RStudio é uma interface específica e
+amigável para o uso do R. Da mesma forma o Git é a ferramenta que
+realiza o controle de versão, já o Git client é a interface específica
+para que o usuário possa interagir de maneira mais amigável com o Git e
+GitHub. Existem vários Git clients que podemos utilizar para realizar
+essa interação, por exemplo, o <a
+href="https://www.gitkraken.com/">GitKraken</a> e <a
+href="https://about.gitlab.com/">GitLab</a>. Cada um tem suas vantagens
+e desvantagens.</p>
+<p>Neste curso usaremos um Git client que é um velho conhecido nosso, o
+RStudio. Faremos isso por se tratar da interface mais comum dentro dos
+estudos de ecologia, a que apresenta uma grande quantidade de materiais
+disponíveis na internet e também por ser aquela que o instrutor que vos
+fala tem mais familiaridade.</p>
+</div>
+<div id="integrando-git-github-e-rstudio" class="section level2">
+<h2>Integrando Git, GitHub e RStudio</h2>
+<p>Imagine um sistema que integra o seu programa favorito de análises
+estatísticas, o seu programa favorito de controle de versões e também o
+seu repositório remoto favorito. Pois é disso que se trata a integração
+do Git com o GitHub e RStudio. Tudo (quase tudo) pode ser feito no Git
+através do uso do RStudio e GitHub. Da mesma forma que tornamos nossos
+trabalhos locais, ou seja, aqueles que se encontram hospedados em nossos
+computadores, conectados a um serviço de nuvem para evitar possíveis
+dores de cabeça (por exemplo a morte do seu computador e perda do
+trabalho de um mestrado ou doutorado inteiro).</p>
+</div>
+</div>
+<div id="mãos-no-teclado---instalando-e-configurando-o-git"
+class="section level1">
+<h1>Mãos no teclado - Instalando e configurando o Git</h1>
+<p>O primeiro passo antes de instalar o Git é saber se você já tem ele
+instalado em seu computador. Para tanto você deve acessar a linha de
+comando de seu sistema operacional (bash, prompt, isso vai variar
+dependendo do tipo de sistema que usa) e digitar o comando:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>which git</span></code></pre></div>
+<p>Caso retorne uma mensagem indicando o local do git no seu computador,
+ótimo, uma tarefa a menos, caso contrário você terá que instalar o git
+de acordo com as especificidades do seu sistema operacional que serão
+apresentadas a seguir.</p>
+<div id="instalação-do-git-no-windows" class="section level2">
+<h2>Instalação do Git no Windows</h2>
+<p>Instale o Git acessando <a
+href="https://gitforwindows.org/">aqui</a></p>
+</div>
+<div id="instação-do-git-no-mac-os" class="section level2">
+<h2>Instação do Git no Mac OS</h2>
+<p>Instale o Git no seu Mac baixando o Xcode command line tools caso
+você ainda não o tenha. Esta aplicação já vem com o git.</p>
+<p>Em seguida configure o git usando a linha de comando seguinte:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>git <span class="sc">--</span>version</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>git config <span class="sc">--</span>global user.name <span class="st">&quot;Your name here&quot;</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>git config <span class="sc">--</span>global user.email <span class="st">&quot;your_email@example.com&quot;</span></span></code></pre></div>
+<p>Voilá, aceite as configurações e clique em instalar</p>
+</div>
+<div id="instalação-do-git-no-linux" class="section level2">
+<h2>Instalação do Git no Linux</h2>
+<p>Digite a seguinte linha de comando caso você tenha Ubuntu ou Debian
+Linux</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>sudo apt<span class="sc">-</span>get install git</span></code></pre></div>
+<p>Se tem Fedora ou HatLinux use:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>sudo yum install git</span></code></pre></div>
+</div>
+<div id="configurando-o-git-pelo-rstudio" class="section level2">
+<h2>Configurando o git pelo RStudio</h2>
+<div id="utilizando-o-pacote-usethis" class="section level3">
+<h3>Utilizando o pacote <code>usethis</code></h3>
+<p>Após a instalação do git devemos configurá-lo no nosso computador.
+Para configurar o Git, ou seja, para que o Git saiba quem está o usando,
+abra o RStudio e digite:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">library</span>(usethis)</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">use_git_config</span>(<span class="at">user.name =</span> <span class="st">&quot;SeuNomeDeUsuario&quot;</span>, <span class="at">user.email =</span> <span class="st">&quot;seuMail@example.br&quot;</span>)</span></code></pre></div>
+<p>Lembre de substituir os campos que aparecerão no console do seu R com
+suas informações.</p>
+</div>
+<div id="utilizando-o-pacote-gitcreds---mais-recomendada"
+class="section level3">
+<h3>Utilizando o pacote <code>gitcreds</code> - <strong>Mais
+recomendada</strong></h3>
+<p>Apesar de estarmos falando de ciência aberta, o seu perfil no GitHub
+é pessoal, portanto é importante que haja uma forma de autenticação onde
+o GitHub saiba que você é o dono do perfil. Isso geralmente é feito
+através do uso de senhas, porém senhas nem sempre são seguras (ok,
+provavelmente ninguém vai querer invadir nosso GitHub para tomar
+informações sobre uma função que calcula a dimensionalidade da
+biodiversidade, mas outras coisas são desenvolvidas e hospedadas no
+GitHub), e por isso a forma padrão de autenticação utilizada pelo GitHub
+é o chamado PAT (Personal Access Token). O PAT nada mais é que uma
+“senha” gerada pelo próprio github e que deve ser renovada com certa
+periodicidade. <strong>O GitHub não permite mais autenticações via
+senha, apenas usando o PAT</strong>. Portanto, o último passo para
+integrar o R, RStudio, Git e GitHub é informar o PAT. Precisaremos fazer
+isso apenas uma vez, e repetir apenas quando o PAT expirar. Vamos
+começar gerando o PAT.</p>
+<p>Para tanto vamos usar primeiro o <code>usethis</code> e depois vamos
+utilizar o pacote <code>gitcreds</code>.</p>
+<p>Digite a linha de código no seu console do R:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">library</span>(usethis)</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">create_github_token</span>()</span></code></pre></div>
+<p>Isso abrirá uma guia no seu navegador para que você gere um token,
+tal como mostrado na imagem abaixo</p>
+<div class="figure" style="text-align: center">
+<img src="figs/PAT_Github.png" alt="Gerando um token"  />
+<p class="caption">
+Gerando um token
+</p>
+</div>
+<p>Após gerado, <strong>guarde esse token com carinho</strong>, pois ele
+vai ser sua nova senha de entrada para o GitHub via RStudio, quando for
+requerido. Para armazenar senhas e dados eu sugiro o programa
+<strong>LastPass</strong>.</p>
+<p>Próximo passo é registar esse token gerado em nosso computador. Faça
+o seguinte:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">library</span>(gitcreds)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>gitcreds<span class="sc">::</span><span class="fu">gitcreds_set</span>()</span></code></pre></div>
+<p>No console aparecerá a mensagem para digitar o token, copie o token e
+cole direto no navegador, pressione enter e pronto, seu RStudio está
+autenticado e agora está devidamente conectado com o repositório
+remoto.</p>
+</div>
+</div>
+<div id="conectando-git-rstudio-e-github-pela-primeira-vez"
+class="section level2">
+<h2>Conectando Git, RStudio e Github pela primeira vez</h2>
+<p>Para fazer isso você já precisa ter uma conta criada no GitHub e o
+Git instalado. Tendo sua conta feita vá o seu navegador de internet,
+acesse o site do GitHub e faça o login. Feito isso:</p>
+<p>1 - Crie um repositório</p>
+<p>Crie um novo repositório clicando no botão destacado na figura
+abaixo</p>
+<div class="float">
+<img
+src="/Users/gabrielnakamura/OneDrive/Aulas/Disciplina_ppgEco/Curso_UFRGS_organizacao_de_dados/Git1.png"
+alt="Criando um novo repositório." />
+<div class="figcaption">Criando um novo repositório.</div>
+</div>
+</div>
+</div>
 <div id="pull-push-and-commits---novos-nomes-para-velhas-práticas"
 class="section level1">
 <h1>1. Pull, Push and Commits - novos nomes para velhas práticas</h1>
@@ -377,7 +658,7 @@ files).</p>
 escalada, portanto, ao fazermos muitos commits teremos muita segurança
 na escalada, mas ficaremos lentos. Se fizermos poucos commits a queda
 pode ser feia!</p>
-<p><img src="figs/commit-safe.png" /><!-- --></p>
+<p><img src="figs/commit-safe.png" style="display: block; margin: auto;" /></p>
 <div id="explorando-commits" class="section level2">
 <h2>Explorando commits</h2>
 <p>Terminologia</p>
@@ -406,7 +687,7 @@ Bryan as always</a></p>
 course</a></p>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAnQmFzaWNzIG9mIHZlcnNpb24gY29udHJvbCcKYXV0aG9yOiAiR2FicmllbCBOYWthbXVyYSIKZGF0ZTogU3lzLkRhdGUoKQpvdXRwdXQ6IGh0bWxfZG9jdW1lbnQKLS0tCgpgYGB7ciBzZXR1cCwgaW5jbHVkZT1GQUxTRX0Ka25pdHI6Om9wdHNfY2h1bmskc2V0KGVjaG8gPSBUUlVFLCBldmFsID0gRkFMU0UpCmBgYAoKIyAxLiBQdWxsLCBQdXNoIGFuZCBDb21taXRzIC0gbm92b3Mgbm9tZXMgcGFyYSB2ZWxoYXMgcHLDoXRpY2FzCgpDb25jZWl0b3MgYsOhc2ljb3MgcGFyYSB1dGlsaXphw6fDo28gZGUgZmVycmFtZW50YXMgZGUgY29udHJvbGUgZGUgdmVyc8OjbwoKYGBge3IgZWNobz1GQUxTRSxldmFsPUZBTFNFLG91dC53aWR0aD0iNjAlIn0Ka25pdHI6OmluY2x1ZGVfZ3JhcGhpY3MoaGVyZTo6aGVyZSgiZmlncyIsICJjb21taXQtcHVsbC1wdXNoLnBuZyIpKQpgYGAKCgoKIyAyLiBDb21taXRzIC0gZXNjYWxhbmRvIHVtYSBtb250YW5oYSBkZSBhcnF1aXZvcwoKTyBxdWUgw6kgdW0gY29tbWl0PwoKQSBjb21taXQsIG9yICJyZXZpc2lvbiIsIGlzIGFuIGluZGl2aWR1YWwgY2hhbmdlIHRvIGEgZmlsZSAob3Igc2V0IG9mIGZpbGVzKS4KCgpgYGB7ciBlY2hvPUZBTFNFLCBldmFsPUZBTFNFLG91dC53aWR0aD0iNjAlIn0Ka25pdHI6OmluY2x1ZGVfZ3JhcGhpY3MoaGVyZTo6aGVyZSgiZmlncyIsICJjb21taXQtb25seS1jb25jZXB0LnBuZyIpKQpgYGAKClZhbW9zIHBlbnNhciBxdWUgbyBjb21taXQgw6kgbyBxdWUgbm9zIHByb3BvcmNpb25hIGEgc2VndXJhbsOnYSBuYSBlc2NhbGFkYSwgcG9ydGFudG8sIGFvIGZhemVybW9zIG11aXRvcyBjb21taXRzIHRlcmVtb3MgbXVpdGEgc2VndXJhbsOnYSBuYSBlc2NhbGFkYSwgbWFzIGZpY2FyZW1vcyBsZW50b3MuIFNlIGZpemVybW9zIHBvdWNvcyBjb21taXRzIGEgcXVlZGEgcG9kZSBzZXIgZmVpYSEgCgpgYGB7ciBlY2hvPUZBTFNFLCBldmFsPVRSVUV9CmtuaXRyOjppbmNsdWRlX2dyYXBoaWNzKGhlcmU6OmhlcmUoImZpZ3MiLCAiY29tbWl0LXNhZmUucG5nIikpCmBgYAoKCgojIyBFeHBsb3JhbmRvIGNvbW1pdHMKClRlcm1pbm9sb2dpYQoKLSAqKk9yaWdpbioqOiBUaGUgZGVmYXVsdCB1cHN0cmVhbSByZXBvc2l0b3J5CgotICoqTWFzdGVyKiogKHNvbWV0aW1lcyAqKk1haW4qKik6IHRoZSBtYWluIGJyYW5jaCBvZiB5b3VyIHJlcG8KCi0gKipkaWZmKio6IGRpZmZlcmVuY2VzIGJldHdlZW4gdHdvIGNvbW1pdHMgaW4gYSBmaWxlCgpgYGB7ciBlY2hvPUZBTFNFLGV2YWw9RkFMU0V9CmtuaXRyOjppbmNsdWRlX2dyYXBoaWNzKGhlcmU6OmhlcmUoImZpZ3VyZXMiLCAiY29tbWl0LW1vZGVsLnBuZyIpKQpgYGAKCiMjIFZpYWphbmRvIG5vIHRlbXBvIC0gbmF2ZWdhbmRvIHBlbG9zIGNvbW1pdHMKCgpgYGB7ciBlY2hvPUZBTFNFLGV2YWw9RkFMU0V9CmtuaXRyOjppbmNsdWRlX2dyYXBoaWNzKGhlcmU6OmhlcmUoImZpZ3VyZXMiLCAiaGlzdG9yeS1SU3R1ZGlvLnBuZyIpKQpgYGAKCgoKCiMgSW1wb3J0YW50IHJlZmVyZW5jZXMKCltEb3VnbGFzIE1jRG9uYWxkIHdlYnNpdGVdKGh0dHBzOi8vd3d3LmRvdWdhbmRkYXRhLmNvbS8yMDIyLzA3L29uLW5hbWluZy10aGluZ3MvKQoKW0plbm55IEJyeWFuIGFzIGFsd2F5c10oaHR0cDovL3d3dzIuc3RhdC5kdWtlLmVkdS9+cmNzNDYvbGVjdHVyZXNfMjAxNS8wMS1tYXJrZG93bi1naXQvc2xpZGVzL25hbWluZy1zbGlkZXMvbmFtaW5nLXNsaWRlcy5wZGYpCgpbSGFkbGV5IFdpY2toYW0gb2YgY291cnNlXShodHRwOi8vYWR2LXIuaGFkLmNvLm56L1N0eWxlLmh0bWwpCgoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAnQmFzaWNzIG9mIHZlcnNpb24gY29udHJvbCcKYXV0aG9yOiAiR2FicmllbCBOYWthbXVyYSIKZGF0ZTogU3lzLkRhdGUoKQpvdXRwdXQ6IGh0bWxfZG9jdW1lbnQKLS0tCgpgYGB7ciBzZXR1cCwgaW5jbHVkZT1GQUxTRX0Ka25pdHI6Om9wdHNfY2h1bmskc2V0KGVjaG8gPSBUUlVFLCBmaWcuYWxpZ24gPSAiY2VudGVyIikKYGBgCgpOZXN0YSBwcmltZWlyYSBzZcOnw6NvIGlyZWkgYXByZXNlbnRhciBhcyBwcmluY2lwYWlzIGZlcnJhbWVudGFzIHF1ZSB1dGlsaXphcmVtb3MgcGFyYSBub3MgYWp1ZGFyIG5hIG9yZ2FuaXphw6fDo28gZGUgZGFkb3MuIEVzdGFzIGZlcnJhbWVudGEgaXLDo28gYXV4aWxpYXIgZGVzZGUgYSBvcmdhbml6YcOnw6NvIGxvY2FsIGRlIHNldXMgZGFkb3MgYXTDqSBhIGRpc3BvbmliaWxpemHDp8OjbyBkZXN0ZXMgZGFkb3MgZW0gcGxhdGFmb3JtYXMgZGUgYWNlc3NvIGFiZXJ0by4gVsOhcmlhcyBkZWxhcyBqw6EgZGV2ZW0gc2VyIHZlbGhhcyBjb25oZWNpZGFzIHBvciB2b2PDqnMsIHBvciBleGVtcGxvLCBvIFJTdHVkaW8sIGVudMOjbyBkaXNwZW5zYW0gbWFpb3JlcyBhcHJlc2VudGHDp8O1ZXMuIFBvciBpc3NvLCBncmFuZGUgcGFydGUgZGVzdGUgZG9jdW1lbnRvIHZhaSB0cmF0YXIgZGUgdW1hIGZlcnJhbWVudGEgYXTDqSBiZW0gY29uaGVjaWRhIHBlbG8gbm9tZSwgbWFzIHF1ZSBwcmEgbXVpdGEgZ2VudGUgcG9kZSBwYXJlY2VyIGNvaXNhIGRlIG91dHJvIG11bmRvOiBvICoqR2l0KiouIFZvY8OqcyB2ZXLDo28gcXVlIGNvbmhlY2VtIG1haXMgZGVsZSBkbyBxdWUgaW1hZ2luYW0sIGUgcXVlIG11aXRhcyBkYXMgZnVuw6fDtWVzIHF1ZSBlbGUgcG9zc2liaWxpdGEgcmVhbGl6YXIgbsOzcyBmYXplbW9zIGVtIG5vc3NvIGRpYS1hLWRpYSBhdHJhdsOpcyBkZSBvdXRyb3MgYXBsaWNhdGl2b3MsIHBvcsOpbSwgZXNwZXJvIGNvbnNlZ3VpciBtb3N0cmFyIG8gcXXDo28gbyAqKkdpdCoqIMOpIG1haXMgZWZpY2llbnRlLgoKIyBIZWxsbyBHaXQgLSBJbnRyb2R1w6fDo28gYW8gdXNvIGRlIHNpc3RlbWEgZGUgY29udHJvbGUgZGUgdmVyc8O1ZXMKCk8gR2l0IHRyYXRhLXNlIGRlIHVtIHNpc3RlbWEgZGUgY29udHJvbGUgZGUgdmVyc8O1ZXMsIG1hcyBhZmluYWwsIG8gcXVlIMOpIHVtIHNpc3RlbWEgZGUgY29udHJvbGUgZGUgdmVyc8O1ZXM/IEVzdGFtb3MgbWFpcyBhY29zdHVtYWRvcyBkbyBxdWUgaW1hZ2luYW1vcyBxdWFuZG8gbyBhc3N1bnRvIMOpIGNvbnRyb2xlIGRlIHZlcnPDtWVzLCBhcGVzYXIgZGUgcGFyZWNlciBhbGdvIGRlIG91dHJvIG11bmRvLiBVbSBleGVtcGxvIHF1ZSB0b2RvcyBuw7NzIGVzdGFtb3MgYWNvc3R1bWFkb3Mgw6kgb2ZlcmVjaWRvIHBlbG8gZWRpdG9yIGRlIHRleHRvIFdvcmQsIHF1YW5kbyBsaWdhbW9zIGEgb3DDp8OjbyAiVHJhY2sgY2hhbmdlcyIuIEFvIGZhemVybW9zIGlzc28gZXN0YW1vcyBjb250cm9sYW5kbyB0b2RhcyBhcyBtb2RpZmljYcOnw7VlcyBxdWUgZmF6ZW1vcyBlbSB1bSBkb2N1bWVudG8uIE8gR2l0IGZheiBhIG1lc21hIGNvaXNhLCBwb3LDqW0gcGFyYSB1bWEgcGFzdGEgaW50ZWlyYSAob3UgKmRpcmV0w7NyaW8qLCBuYSBsaW5ndWFnZW0gZG8gY29udHJvbGUgZGUgdmVyc8O1ZXMpLgoKUG9ydGFudG8sIG8gR2l0IG5hZGEgbWFpcyDDqSBxdWUgdW0gc2lzdGVtYSBjcmlhZG8gcGFyYSByZWFsaXphciBvIHJhc3RyZWlvIGRlIHRvZGEgZSBxdWFscXVlciBtb2RpZmljYcOnw6NvIGRlIGFycXVpdm9zIGRlbnRybyBkZSB1bWEgcGFzdGEsIHV0aWxpemFuZG8gYSB0ZXJtaW5vbG9naWEgZG8gdmVyc2lvbmFtZW50bywgdHVkbyBvIHF1ZSDDqSBmZWl0byBlbSB1bSBkaXJldMOzcmlvIGFzc29jaWFkbyBhbyBHaXQgw6kgKm9ic2VydmFkbyogKCp3YXRjaCogbmEgbGluZ3VhZ2VtIGRvIHZlcnNpb25hbWVudG8pLgoKIyMgR2l0IGUgR2l0SHViCgpHaXQgZSBbR2l0SHViXShodHRwczovL2dpdGh1Yi5jb20vKSBzw6NvIGNvaXNhcyBkaXN0aW50YXMuIE8gR2l0SHViIMOpIG8gR29vZ2xlRHJpdmUgKG91IG8gT25lRHJpdmUpIGRvcyBjw7NkaWdvcy4gRWxlIHRlbSBjb21vIGZ1bsOnw6NvIGFybWF6ZW5hciByZW1vdGFtZW50ZSB0b2RvcyBvcyB0cmFiYWxob3MgcXVlIHPDo28gZmVpdG9zIGxvY2FsbWVudGUgY29tIG8gR2l0LiBQb3LDqW0sIGNvbSBtYWlzIHBvdGVuY2lhbGlkYWRlcyBlIGNvbnRyb2xlIGRlIGFybWF6ZW5hbWVudG8gcXVlIGFzIGZlcnJhbWVudGFzIGRvIEJpbGwgR2F0ZXMuCgojIyBHaXQgZSBHaXQgY2xpZW50CgpVbWEgc2ltcGxlcyBhbmFsb2dpYSBwYXJhIGVudGVuZGVyIGEgZGlmZXJlbsOnYSBlbnRyZSB1bSBHaXQgY2xpZW50IGUgbyBHaXQgw6kgYSBkaWZlcmVuw6dhIGVudHJlIFIgZSBSU3R1ZGlvLiBPIFIgw6kgYSBmZXJyYW1lbnRhIG9uZGUgb3MgcHJvY2Vzc29zIHPDo28gcmVhbGl6YWRvcywgbyBSU3R1ZGlvIMOpIHVtYSBpbnRlcmZhY2UgZXNwZWPDrWZpY2EgZSBhbWlnw6F2ZWwgcGFyYSBvIHVzbyBkbyBSLiBEYSBtZXNtYSBmb3JtYSBvIEdpdCDDqSBhIGZlcnJhbWVudGEgcXVlIHJlYWxpemEgbyBjb250cm9sZSBkZSB2ZXJzw6NvLCBqw6EgbyBHaXQgY2xpZW50IMOpIGEgaW50ZXJmYWNlIGVzcGVjw61maWNhIHBhcmEgcXVlIG8gdXN1w6FyaW8gcG9zc2EgaW50ZXJhZ2lyIGRlIG1hbmVpcmEgbWFpcyBhbWlnw6F2ZWwgY29tIG8gR2l0IGUgR2l0SHViLiBFeGlzdGVtIHbDoXJpb3MgR2l0IGNsaWVudHMgcXVlIHBvZGVtb3MgdXRpbGl6YXIgcGFyYSByZWFsaXphciBlc3NhIGludGVyYcOnw6NvLCBwb3IgZXhlbXBsbywgbyBbR2l0S3Jha2VuXShodHRwczovL3d3dy5naXRrcmFrZW4uY29tLykgZSBbR2l0TGFiXShodHRwczovL2Fib3V0LmdpdGxhYi5jb20vKS4gQ2FkYSB1bSB0ZW0gc3VhcyB2YW50YWdlbnMgZSBkZXN2YW50YWdlbnMuCgpOZXN0ZSBjdXJzbyB1c2FyZW1vcyB1bSBHaXQgY2xpZW50IHF1ZSDDqSB1bSB2ZWxobyBjb25oZWNpZG8gbm9zc28sIG8gUlN0dWRpby4gRmFyZW1vcyBpc3NvICBwb3Igc2UgdHJhdGFyIGRhIGludGVyZmFjZSBtYWlzIGNvbXVtIGRlbnRybyBkb3MgZXN0dWRvcyBkZSBlY29sb2dpYSwgYSBxdWUgYXByZXNlbnRhIHVtYSBncmFuZGUgcXVhbnRpZGFkZSBkZSBtYXRlcmlhaXMgZGlzcG9uw612ZWlzIG5hIGludGVybmV0IGUgdGFtYsOpbSBwb3Igc2VyIGFxdWVsYSBxdWUgbyBpbnN0cnV0b3IgcXVlIHZvcyBmYWxhIHRlbSBtYWlzIGZhbWlsaWFyaWRhZGUuIAoKIyMgSW50ZWdyYW5kbyBHaXQsIEdpdEh1YiBlIFJTdHVkaW8KCkltYWdpbmUgdW0gc2lzdGVtYSBxdWUgaW50ZWdyYSBvIHNldSBwcm9ncmFtYSBmYXZvcml0byBkZSBhbsOhbGlzZXMgZXN0YXTDrXN0aWNhcywgbyBzZXUgcHJvZ3JhbWEgZmF2b3JpdG8gZGUgY29udHJvbGUgZGUgdmVyc8O1ZXMgZSB0YW1iw6ltIG8gc2V1IHJlcG9zaXTDs3JpbyByZW1vdG8gZmF2b3JpdG8uIFBvaXMgw6kgZGlzc28gcXVlIHNlIHRyYXRhIGEgaW50ZWdyYcOnw6NvIGRvIEdpdCBjb20gbyBHaXRIdWIgZSBSU3R1ZGlvLiBUdWRvIChxdWFzZSB0dWRvKSBwb2RlIHNlciBmZWl0byBubyBHaXQgYXRyYXbDqXMgZG8gdXNvIGRvIFJTdHVkaW8gZSBHaXRIdWIuIERhIG1lc21hIGZvcm1hIHF1ZSB0b3JuYW1vcyBub3Nzb3MgdHJhYmFsaG9zIGxvY2Fpcywgb3Ugc2VqYSwgYXF1ZWxlcyBxdWUgc2UgZW5jb250cmFtIGhvc3BlZGFkb3MgZW0gbm9zc29zIGNvbXB1dGFkb3JlcywgY29uZWN0YWRvcyBhIHVtIHNlcnZpw6dvIGRlIG51dmVtIHBhcmEgZXZpdGFyIHBvc3PDrXZlaXMgZG9yZXMgZGUgY2FiZcOnYSAocG9yIGV4ZW1wbG8gYSBtb3J0ZSBkbyBzZXUgY29tcHV0YWRvciBlIHBlcmRhIGRvIHRyYWJhbGhvIGRlIHVtIG1lc3RyYWRvIG91IGRvdXRvcmFkbyBpbnRlaXJvKS4KCiMgTcOjb3Mgbm8gdGVjbGFkbyAtIEluc3RhbGFuZG8gZSBjb25maWd1cmFuZG8gbyBHaXQKCk8gcHJpbWVpcm8gcGFzc28gYW50ZXMgZGUgaW5zdGFsYXIgbyBHaXQgw6kgc2FiZXIgc2Ugdm9jw6ogasOhIHRlbSBlbGUgaW5zdGFsYWRvIGVtIHNldSBjb21wdXRhZG9yLiBQYXJhIHRhbnRvIHZvY8OqIGRldmUgYWNlc3NhciBhIGxpbmhhIGRlIGNvbWFuZG8gZGUgc2V1IHNpc3RlbWEgb3BlcmFjaW9uYWwgKGJhc2gsIHByb21wdCwgaXNzbyB2YWkgdmFyaWFyIGRlcGVuZGVuZG8gZG8gdGlwbyBkZSBzaXN0ZW1hIHF1ZSB1c2EpIGUgZGlnaXRhciBvIGNvbWFuZG86CgpgYGB7ciBlY2hvPVRSVUUsIGV2YWw9RkFMU0V9CndoaWNoIGdpdApgYGAKCkNhc28gcmV0b3JuZSB1bWEgbWVuc2FnZW0gaW5kaWNhbmRvIG8gbG9jYWwgZG8gZ2l0IG5vIHNldSBjb21wdXRhZG9yLCDDs3RpbW8sIHVtYSB0YXJlZmEgYSBtZW5vcywgY2FzbyBjb250csOhcmlvIHZvY8OqIHRlcsOhIHF1ZSBpbnN0YWxhciBvIGdpdCBkZSBhY29yZG8gY29tIGFzIGVzcGVjaWZpY2lkYWRlcyBkbyBzZXUgc2lzdGVtYSBvcGVyYWNpb25hbCBxdWUgc2Vyw6NvIGFwcmVzZW50YWRhcyBhIHNlZ3Vpci4KCiMjIEluc3RhbGHDp8OjbyBkbyBHaXQgbm8gV2luZG93cwoKSW5zdGFsZSBvIEdpdCBhY2Vzc2FuZG8gW2FxdWldKGh0dHBzOi8vZ2l0Zm9yd2luZG93cy5vcmcvKSAKCiMjIEluc3Rhw6fDo28gZG8gR2l0IG5vIE1hYyBPUwoKSW5zdGFsZSBvIEdpdCBubyBzZXUgTWFjIGJhaXhhbmRvIG8gWGNvZGUgY29tbWFuZCBsaW5lIHRvb2xzIGNhc28gdm9jw6ogYWluZGEgbsOjbyBvIHRlbmhhLiBFc3RhIGFwbGljYcOnw6NvIGrDoSB2ZW0gY29tIG8gZ2l0LgoKRW0gc2VndWlkYSBjb25maWd1cmUgbyBnaXQgdXNhbmRvIGEgbGluaGEgZGUgY29tYW5kbyBzZWd1aW50ZToKCmBgYHtyIGVjaG89VFJVRSwgZXZhbD1GQUxTRX0KZ2l0IC0tdmVyc2lvbgpnaXQgY29uZmlnIC0tZ2xvYmFsIHVzZXIubmFtZSAiWW91ciBuYW1lIGhlcmUiCmdpdCBjb25maWcgLS1nbG9iYWwgdXNlci5lbWFpbCAieW91cl9lbWFpbEBleGFtcGxlLmNvbSIKYGBgCgpWb2lsw6EsIGFjZWl0ZSBhcyBjb25maWd1cmHDp8O1ZXMgZSBjbGlxdWUgZW0gaW5zdGFsYXIKCiMjIEluc3RhbGHDp8OjbyBkbyBHaXQgbm8gTGludXggCgpEaWdpdGUgYSBzZWd1aW50ZSBsaW5oYSBkZSBjb21hbmRvIGNhc28gdm9jw6ogdGVuaGEgVWJ1bnR1IG91IERlYmlhbiBMaW51eAoKYGBge3IgZWNobz1UUlVFLCBldmFsPUZBTFNFfQpzdWRvIGFwdC1nZXQgaW5zdGFsbCBnaXQKYGBgCgpTZSB0ZW0gRmVkb3JhIG91IEhhdExpbnV4IHVzZToKCmBgYHtyIGVjaG89VFJVRSwgZXZhbD1GQUxTRX0Kc3VkbyB5dW0gaW5zdGFsbCBnaXQKYGBgCgojIyBDb25maWd1cmFuZG8gbyBnaXQgcGVsbyBSU3R1ZGlvCgojIyMgVXRpbGl6YW5kbyBvIHBhY290ZSBgdXNldGhpc2AKCkFww7NzIGEgaW5zdGFsYcOnw6NvIGRvIGdpdCBkZXZlbW9zIGNvbmZpZ3Vyw6EtbG8gbm8gbm9zc28gY29tcHV0YWRvci4gUGFyYSBjb25maWd1cmFyIG8gR2l0LCBvdSBzZWphLCBwYXJhIHF1ZSBvIEdpdCBzYWliYSBxdWVtIGVzdMOhIG8gdXNhbmRvLCBhYnJhIG8gUlN0dWRpbyBlIGRpZ2l0ZToKCmBgYHtyIGVjaG89VFJVRSwgZXZhbD1GQUxTRX0KbGlicmFyeSh1c2V0aGlzKQp1c2VfZ2l0X2NvbmZpZyh1c2VyLm5hbWUgPSAiU2V1Tm9tZURlVXN1YXJpbyIsIHVzZXIuZW1haWwgPSAic2V1TWFpbEBleGFtcGxlLmJyIikKYGBgCgpMZW1icmUgZGUgc3Vic3RpdHVpciBvcyBjYW1wb3MgcXVlIGFwYXJlY2Vyw6NvIG5vIGNvbnNvbGUgZG8gc2V1IFIgY29tIHN1YXMgaW5mb3JtYcOnw7Vlcy4gCgojIyMgVXRpbGl6YW5kbyBvIHBhY290ZSBgZ2l0Y3JlZHNgIC0gKipNYWlzIHJlY29tZW5kYWRhKioKCkFwZXNhciBkZSBlc3Rhcm1vcyBmYWxhbmRvIGRlIGNpw6puY2lhIGFiZXJ0YSwgbyBzZXUgcGVyZmlsIG5vIEdpdEh1YiDDqSBwZXNzb2FsLCBwb3J0YW50byDDqSBpbXBvcnRhbnRlIHF1ZSBoYWphIHVtYSBmb3JtYSBkZSBhdXRlbnRpY2HDp8OjbyBvbmRlIG8gR2l0SHViIHNhaWJhIHF1ZSB2b2PDqiDDqSBvIGRvbm8gZG8gcGVyZmlsLiBJc3NvIGdlcmFsbWVudGUgw6kgZmVpdG8gYXRyYXbDqXMgZG8gdXNvIGRlIHNlbmhhcywgcG9yw6ltIHNlbmhhcyBuZW0gc2VtcHJlIHPDo28gc2VndXJhcyAob2ssIHByb3ZhdmVsbWVudGUgbmluZ3XDqW0gdmFpIHF1ZXJlciBpbnZhZGlyIG5vc3NvIEdpdEh1YiBwYXJhIHRvbWFyIGluZm9ybWHDp8O1ZXMgc29icmUgdW1hIGZ1bsOnw6NvIHF1ZSBjYWxjdWxhIGEgZGltZW5zaW9uYWxpZGFkZSBkYSBiaW9kaXZlcnNpZGFkZSwgbWFzIG91dHJhcyBjb2lzYXMgc8OjbyBkZXNlbnZvbHZpZGFzIGUgaG9zcGVkYWRhcyBubyBHaXRIdWIpLCBlIHBvciBpc3NvIGEgZm9ybWEgcGFkcsOjbyBkZSBhdXRlbnRpY2HDp8OjbyB1dGlsaXphZGEgcGVsbyBHaXRIdWIgw6kgbyBjaGFtYWRvIFBBVCAoUGVyc29uYWwgQWNjZXNzIFRva2VuKS4gTyBQQVQgbmFkYSBtYWlzIMOpIHF1ZSB1bWEgInNlbmhhIiBnZXJhZGEgcGVsbyBwcsOzcHJpbyBnaXRodWIgZSBxdWUgZGV2ZSBzZXIgcmVub3ZhZGEgY29tIGNlcnRhIHBlcmlvZGljaWRhZGUuICoqTyBHaXRIdWIgbsOjbyBwZXJtaXRlIG1haXMgYXV0ZW50aWNhw6fDtWVzIHZpYSBzZW5oYSwgYXBlbmFzIHVzYW5kbyBvIFBBVCoqLiBQb3J0YW50bywgbyDDumx0aW1vIHBhc3NvIHBhcmEgaW50ZWdyYXIgbyBSLCBSU3R1ZGlvLCBHaXQgZSBHaXRIdWIgw6kgaW5mb3JtYXIgbyBQQVQuIFByZWNpc2FyZW1vcyBmYXplciBpc3NvIGFwZW5hcyB1bWEgdmV6LCBlIHJlcGV0aXIgYXBlbmFzIHF1YW5kbyBvIFBBVCBleHBpcmFyLiBWYW1vcyBjb21lw6dhciBnZXJhbmRvIG8gUEFULgoKUGFyYSB0YW50byB2YW1vcyB1c2FyIHByaW1laXJvIG8gYHVzZXRoaXNgIGUgZGVwb2lzIHZhbW9zIHV0aWxpemFyIG8gcGFjb3RlIGBnaXRjcmVkc2AuCgpEaWdpdGUgYSBsaW5oYSBkZSBjw7NkaWdvIG5vIHNldSBjb25zb2xlIGRvIFI6CmBgYHtyIGVjaG89VFJVRSwgZXZhbD1GQUxTRX0KbGlicmFyeSh1c2V0aGlzKQpjcmVhdGVfZ2l0aHViX3Rva2VuKCkKYGBgCgpJc3NvIGFicmlyw6EgdW1hIGd1aWEgbm8gc2V1IG5hdmVnYWRvciBwYXJhIHF1ZSB2b2PDqiBnZXJlIHVtIHRva2VuLCB0YWwgY29tbyBtb3N0cmFkbyBuYSBpbWFnZW0gYWJhaXhvCgpgYGB7ciBldmFsPVRSVUUsIGVjaG89RkFMU0UsIGZpZy5jYXA9IkdlcmFuZG8gdW0gdG9rZW4ifQprbml0cjo6aW5jbHVkZV9ncmFwaGljcygiZmlncy9QQVRfR2l0aHViLnBuZyIpCmBgYAoKQXDDs3MgZ2VyYWRvLCAqKmd1YXJkZSBlc3NlIHRva2VuIGNvbSBjYXJpbmhvKiosIHBvaXMgZWxlIHZhaSBzZXIgc3VhIG5vdmEgc2VuaGEgZGUgZW50cmFkYSBwYXJhIG8gR2l0SHViIHZpYSBSU3R1ZGlvLCBxdWFuZG8gZm9yIHJlcXVlcmlkby4gUGFyYSBhcm1hemVuYXIgc2VuaGFzIGUgZGFkb3MgZXUgc3VnaXJvIG8gcHJvZ3JhbWEgKipMYXN0UGFzcyoqLgoKUHLDs3hpbW8gcGFzc28gw6kgcmVnaXN0YXIgZXNzZSB0b2tlbiBnZXJhZG8gZW0gbm9zc28gY29tcHV0YWRvci4gRmHDp2EgbyBzZWd1aW50ZToKCgpgYGB7ciBQQVQsIGVjaG89VFJVRSwgZXZhbD1GQUxTRX0KbGlicmFyeShnaXRjcmVkcykKZ2l0Y3JlZHM6OmdpdGNyZWRzX3NldCgpCmBgYAoKTm8gY29uc29sZSBhcGFyZWNlcsOhIGEgbWVuc2FnZW0gcGFyYSBkaWdpdGFyIG8gdG9rZW4sIGNvcGllIG8gdG9rZW4gZSBjb2xlIGRpcmV0byBubyBuYXZlZ2Fkb3IsIHByZXNzaW9uZSBlbnRlciBlIHByb250bywgc2V1IFJTdHVkaW8gZXN0w6EgYXV0ZW50aWNhZG8gZSBhZ29yYSBlc3TDoSBkZXZpZGFtZW50ZSBjb25lY3RhZG8gY29tIG8gcmVwb3NpdMOzcmlvIHJlbW90by4KCgojIyBDb25lY3RhbmRvIEdpdCwgUlN0dWRpbyBlIEdpdGh1YiBwZWxhIHByaW1laXJhIHZlegoKUGFyYSBmYXplciBpc3NvIHZvY8OqIGrDoSBwcmVjaXNhIHRlciB1bWEgY29udGEgY3JpYWRhIG5vIEdpdEh1YiBlIG8gR2l0IGluc3RhbGFkby4gVGVuZG8gc3VhIGNvbnRhIGZlaXRhIHbDoSBvIHNldSBuYXZlZ2Fkb3IgZGUgaW50ZXJuZXQsIGFjZXNzZSBvIHNpdGUgZG8gR2l0SHViIGUgZmHDp2EgbyBsb2dpbi4gRmVpdG8gaXNzbzoKCjEgLSBDcmllIHVtIHJlcG9zaXTDs3JpbyAKCkNyaWUgdW0gbm92byByZXBvc2l0w7NyaW8gY2xpY2FuZG8gbm8gYm90w6NvIGRlc3RhY2FkbyBuYSBmaWd1cmEgYWJhaXhvCgohW0NyaWFuZG8gdW0gbm92byByZXBvc2l0w7NyaW8uXSgvVXNlcnMvZ2FicmllbG5ha2FtdXJhL09uZURyaXZlL0F1bGFzL0Rpc2NpcGxpbmFfcHBnRWNvL0N1cnNvX1VGUkdTX29yZ2FuaXphY2FvX2RlX2RhZG9zL0dpdDEucG5nKQoKIyAxLiBQdWxsLCBQdXNoIGFuZCBDb21taXRzIC0gbm92b3Mgbm9tZXMgcGFyYSB2ZWxoYXMgcHLDoXRpY2FzCgpDb25jZWl0b3MgYsOhc2ljb3MgcGFyYSB1dGlsaXphw6fDo28gZGUgZmVycmFtZW50YXMgZGUgY29udHJvbGUgZGUgdmVyc8OjbwoKYGBge3IgZWNobz1GQUxTRSxldmFsPUZBTFNFLG91dC53aWR0aD0iNjAlIn0Ka25pdHI6OmluY2x1ZGVfZ3JhcGhpY3MoaGVyZTo6aGVyZSgiZmlncyIsICJjb21taXQtcHVsbC1wdXNoLnBuZyIpKQpgYGAKCgoKIyAyLiBDb21taXRzIC0gZXNjYWxhbmRvIHVtYSBtb250YW5oYSBkZSBhcnF1aXZvcwoKTyBxdWUgw6kgdW0gY29tbWl0PwoKQSBjb21taXQsIG9yICJyZXZpc2lvbiIsIGlzIGFuIGluZGl2aWR1YWwgY2hhbmdlIHRvIGEgZmlsZSAob3Igc2V0IG9mIGZpbGVzKS4KCgpgYGB7ciBlY2hvPUZBTFNFLCBldmFsPUZBTFNFLG91dC53aWR0aD0iNjAlIn0Ka25pdHI6OmluY2x1ZGVfZ3JhcGhpY3MoaGVyZTo6aGVyZSgiZmlncyIsICJjb21taXQtb25seS1jb25jZXB0LnBuZyIpKQpgYGAKClZhbW9zIHBlbnNhciBxdWUgbyBjb21taXQgw6kgbyBxdWUgbm9zIHByb3BvcmNpb25hIGEgc2VndXJhbsOnYSBuYSBlc2NhbGFkYSwgcG9ydGFudG8sIGFvIGZhemVybW9zIG11aXRvcyBjb21taXRzIHRlcmVtb3MgbXVpdGEgc2VndXJhbsOnYSBuYSBlc2NhbGFkYSwgbWFzIGZpY2FyZW1vcyBsZW50b3MuIFNlIGZpemVybW9zIHBvdWNvcyBjb21taXRzIGEgcXVlZGEgcG9kZSBzZXIgZmVpYSEgCgpgYGB7ciBlY2hvPUZBTFNFLCBldmFsPVRSVUV9CmtuaXRyOjppbmNsdWRlX2dyYXBoaWNzKGhlcmU6OmhlcmUoImZpZ3MiLCAiY29tbWl0LXNhZmUucG5nIikpCmBgYAoKCgojIyBFeHBsb3JhbmRvIGNvbW1pdHMKClRlcm1pbm9sb2dpYQoKLSAqKk9yaWdpbioqOiBUaGUgZGVmYXVsdCB1cHN0cmVhbSByZXBvc2l0b3J5CgotICoqTWFzdGVyKiogKHNvbWV0aW1lcyAqKk1haW4qKik6IHRoZSBtYWluIGJyYW5jaCBvZiB5b3VyIHJlcG8KCi0gKipkaWZmKio6IGRpZmZlcmVuY2VzIGJldHdlZW4gdHdvIGNvbW1pdHMgaW4gYSBmaWxlCgpgYGB7ciBlY2hvPUZBTFNFLGV2YWw9RkFMU0V9CmtuaXRyOjppbmNsdWRlX2dyYXBoaWNzKGhlcmU6OmhlcmUoImZpZ3VyZXMiLCAiY29tbWl0LW1vZGVsLnBuZyIpKQpgYGAKCiMjIFZpYWphbmRvIG5vIHRlbXBvIC0gbmF2ZWdhbmRvIHBlbG9zIGNvbW1pdHMKCgpgYGB7ciBlY2hvPUZBTFNFLGV2YWw9RkFMU0V9CmtuaXRyOjppbmNsdWRlX2dyYXBoaWNzKGhlcmU6OmhlcmUoImZpZ3VyZXMiLCAiaGlzdG9yeS1SU3R1ZGlvLnBuZyIpKQpgYGAKCgoKCiMgSW1wb3J0YW50IHJlZmVyZW5jZXMKCltEb3VnbGFzIE1jRG9uYWxkIHdlYnNpdGVdKGh0dHBzOi8vd3d3LmRvdWdhbmRkYXRhLmNvbS8yMDIyLzA3L29uLW5hbWluZy10aGluZ3MvKQoKW0plbm55IEJyeWFuIGFzIGFsd2F5c10oaHR0cDovL3d3dzIuc3RhdC5kdWtlLmVkdS9+cmNzNDYvbGVjdHVyZXNfMjAxNS8wMS1tYXJrZG93bi1naXQvc2xpZGVzL25hbWluZy1zbGlkZXMvbmFtaW5nLXNsaWRlcy5wZGYpCgpbSGFkbGV5IFdpY2toYW0gb2YgY291cnNlXShodHRwOi8vYWR2LXIuaGFkLmNvLm56L1N0eWxlLmh0bWwpCgoK</div>
 
 
 </div>
