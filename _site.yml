@@ -2,6 +2,7 @@ name: "Workshop_UofT"
 output:
   html_document:
     theme: flatly
+    highlight: tango
     toc: true
     toc_float: true
     code_download: true
