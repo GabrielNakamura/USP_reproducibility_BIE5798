@@ -21,6 +21,11 @@ O curso será ministrado por Melina Leite e Gabriel Nakamura.
 
 
 ## Gabriel
+
+```{r echo=FALSE,eval=TRUE,out.width="20%"}
+knitr::include_graphics("figs/gabriel-avatar.jpg")
+```
+
 Gabriel é formado em licenciatura em Ciências Biológicas (apesar da dúvida entre Ciências Sociais e História), fez algumas andanças de difícil reprodutibilidade para obter o mestrado (Ecologia e Conservação UFMS) e doutorado (Ecologia UFRGS). Após um tempo fora (posdoc Texas A&M University), a saudade do pequi e da guariroba do cerrado falaram mais alto e atualmente trabalha na Universidade Federal de Goiás como posdoc do INCT-EECBio. Atualmente vem desenvolvendo  métodos e ferramentas estatísticas em ecologia de comunidades, macroecologia e macroevolução. Tem interesse também em entender os viéses da dinâmica de produção científica. [Aqui](http://lattes.cnpq.br/2456515948049565) um pouquinho mais do que vem desenvolvendo.
 
 
@@ -52,6 +57,34 @@ DT::datatable(crono, editable = "cell")
 
 ```
 
+# Preparação pré-aula e materiais para práticas
 
+Aqui algumas informações sobre os materiais utilizados durante esta aula, os pacotes estatísticos necessários para realizar as atividades práticas e algumas coisas importantes para fazer antes do primeiro dia de aula.
+
+## Dados
+
+Com o intuito de manter o foco na compreensão dos conceitos e processos que serão ensinados, preferimos utilizar um material único compartilhado com toda turma. Para tanto vamos utilizar um conjunto de dados chamado **Palmer Penguins**, e em apenas algumas situações utilizaremos um outro conjunto de dados para demonstrar a funcionalidade de outras ferramentas (targets e docker).
+
+O Palmer Penguins é um conjunto de dados com informações sobre três espécies de pinguins (ilustrados na imagem abaixo). Estes dados foram elaborados com o intuito de ensinar visualização e exploração de dados e funciona como uma alternativa a famosa base de dados `iris`.
+
+```{r echo=FALSE,eval=TRUE}
+knitr::include_graphics("figs/lter_penguins.png")
+```
+
+Ao invés de utilizar diretamente o pacote `palmerpenguins`, pedimos que façam o download de uma tabela de dados extraída do pacote. Optamos por essa opção pois possibilita explorar algumas funcionalidades dentro do contexto de controle de versão e reprodutibilidade. 
+
+Para fazer o download da tabela é só clicar aqui
+
+```{r echo=FALSE,eval=TRUE}
+library(downloadthis)
+download_link(
+  link = "https://github.com/fmmattioni/downloadthis/raw/master/inst/example/file_1.pdf",
+  button_label = "Download pdf file",
+  button_type = "danger",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
 
 
