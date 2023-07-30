@@ -13,20 +13,30 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 
 Os metadados consistem em explicações sobre a estrutura de dados. Por exemplo, o significado dos códigos ou abreviações presentes em uma data tabela, do que se trata a informação presente nas linhas e nas colunas, o que uma dada função faz. Reportar precisamente o que cada arquivo contém é de extrema importância para garantir com que outras pessoas, ou mesmo o você do futuro saiba o que foi/está sendo feito no projeto científico.
 
+Os metadados não servem apenas para reportar o significado das variáveis em tabelas, isso por si só já seria um motivo relevante para termos metadados, mas também para facilitar a integração de bases diferentes de dados. Imagine só ter que navegar manualmente nos metadados de estudos de diferentes grupos, com dados coletados com diferentes métodos, tabelas que adotam diferentes códigos, com distantas escalas espaciais e temporais. Até seria possível, mas talvez a taxa com que perdemos espécies e habitats seja mais rápida (e está sendo) que nossa capacidade de síntese de dados. Portanto, os metadados não servem apenas para o nosso interesse próprio de organização, mas ao utilizarmos os metadados estamos contribuindo para um avanço mais rápido do processo científico.
 
-# Usando o pacote EML - Ecological Metadata Language
+Dada tais importâncias citadas acima, os metadados ideais devem seguir um esquema onde podem ser lidos por humanos (human-readable) e por computadores (machine-readable). Desta forma, nesta seção vamos praticar a elaboração de metadados que seguem essa característica, e que o formato foi pensado para satisfazer as especificidades dos dados ecológicos. Para tanto vamos utilizar o pacote EML. 
 
+## Leituras sugeridas
+
+Para uma itrodução mais completa sobre os metadados sugiro [este](https://sbclter.msi.ucsb.edu/external/EML/EML_documents/eml_metadata_guide.html) artigo. Para uma introdução da importância dos metadados para contruir conjuntos de dados integrados sugiro o artigo de [Jones et al. (2006)](https://www.annualreviews.org/doi/10.1146/annurev.ecolsys.37.091305.110031). Para um exemplo de base de dados online que se utiliza das potencialidades dos metadados sugiro visitar o [KNB - Knowledge Network Biocomplexity](https://knb.ecoinformatics.org/about).
+
+
+# Metadados na prática - utilizando o pacote EML
+
+Para uma introdução detalhada do EML sugiro acessar este []()
+
+Para instalar o pacote EML faça o seguinte:
+
+```{r echo=TRUE,eval=FALSE}
+install.packages("EML")
+
+library(EML)
+```
+
+Vamos utilizar um conjunto de dados simples para construir metadados usando o EML
 
 ## Descrevendo os dados - Palmer Penguins
 
-
-
-# Referências importantes
-
-[Douglas McDonald website](https://www.douganddata.com/2022/07/on-naming-things/)
-
-[Jenny Bryan as always](http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf)
-
-[Hadley Wickham of course](http://adv-r.had.co.nz/Style.html)
 
 
