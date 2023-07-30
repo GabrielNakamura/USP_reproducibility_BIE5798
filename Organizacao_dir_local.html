@@ -11,7 +11,7 @@
 
 <meta name="author" content="Gabriel Nakamura" />
 
-<meta name="date" content="2023-07-29" />
+<meta name="date" content="2023-07-30" />
 
 <title>Organizando o seu trabalho localmente</title>
 
@@ -37,6 +37,7 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <script src="site_libs/navigation-1.1/sourceembed.js"></script>
+<script src="site_libs/font-awesome-5.13.0/js/script.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -49,6 +50,107 @@
 
 
 
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 <style type="text/css">
@@ -357,7 +459,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Organizando o seu trabalho localmente</h1>
 <h4 class="author">Gabriel Nakamura</h4>
-<h4 class="date">2023-07-29</h4>
+<h4 class="date">2023-07-30</h4>
 
 </div>
 
@@ -509,32 +611,306 @@ o que uma dada função faz. Reportar precisamente o que cada arquivo
 contém é de extrema importância para garantir com que outras pessoas, ou
 mesmo o você do futuro saiba o que foi/está sendo feito no projeto
 científico.</p>
+<p>Os metadados não servem apenas para reportar o significado das
+variáveis em tabelas, isso por si só já seria um motivo relevante para
+termos metadados, mas também para facilitar a integração de bases
+diferentes de dados. Imagine só ter que navegar manualmente nos
+metadados de estudos de diferentes grupos, com dados coletados com
+diferentes métodos, tabelas que adotam diferentes códigos, com distantas
+escalas espaciais e temporais. Até seria possível, mas talvez a taxa com
+que perdemos espécies e habitats seja mais rápida (e está sendo) que
+nossa capacidade de síntese de dados. Portanto, os metadados não servem
+apenas para o nosso interesse próprio de organização, mas ao utilizarmos
+os metadados estamos contribuindo para um avanço mais rápido do processo
+científico.</p>
+<p>Dada tais importâncias citadas acima, os metadados ideais devem
+seguir um esquema onde podem ser lidos por humanos (human-readable) e
+por computadores (machine-readable). Desta forma, nesta seção vamos
+praticar a elaboração de metadados que seguem essa característica, e que
+o formato foi pensado para satisfazer as especificidades dos dados
+ecológicos. Para tanto vamos utilizar o pacote EML.</p>
+<div id="leituras-sugeridas" class="section level2">
+<h2>Leituras sugeridas</h2>
+<p>Para uma itrodução mais completa sobre os metadados sugiro <a
+href="https://sbclter.msi.ucsb.edu/external/EML/EML_documents/eml_metadata_guide.html">este</a>
+artigo. Para uma introdução da importância dos metadados para contruir
+conjuntos de dados integrados sugiro o artigo de <a
+href="https://www.annualreviews.org/doi/10.1146/annurev.ecolsys.37.091305.110031">Jones
+et al. (2006)</a>. Para um exemplo de base de dados online que se
+utiliza das potencialidades dos metadados sugiro visitar o <a
+href="https://knb.ecoinformatics.org/about">KNB - Knowledge Network
+Biocomplexity</a>.</p>
 </div>
-<div id="usando-o-pacote-eml---ecological-metadata-language"
+<div id="exemplos-de-metadados" class="section level2">
+<h2>Exemplos de metadados</h2>
+<p>Para um exemplo simples de como um metadado se parece veja <a
+href="https://github.com/ropensci/EML/blob/master/inst/examples/example-eml-2.1.1.xml">aqui</a>.
+Para um exemplo mais completo sugiro <a
+href="https://github.com/ropensci/EML/blob/master/inst/examples/hf205.xml">este
+arquivo</a>. Esta <a
+href="https://www.neonscience.org/resources/learning-hub/tutorials/dc-metadata-importance-eml-r">introdução</a>
+trazida pelo NEON (National Ecological Observatory) é muito interessante
+para compreender de maneira geral a importância de metadados para
+síntese e como eles podem ser obtidos facilmente com auxílio do pacote
+EML. O <a href="https://www.dataone.org/">DataOne</a> é uma plataforma
+de dados que também se utiliza dos arquivos XML para reportar as
+características gerais dos dados.</p>
+</div>
+</div>
+<div id="metadados-na-prática---utilizando-o-pacote-eml"
 class="section level1">
-<h1>Usando o pacote EML - Ecological Metadata Language</h1>
-<div id="descrevendo-os-dados---palmer-penguins" class="section level2">
-<h2>Descrevendo os dados - Palmer Penguins</h2>
+<h1>Metadados na prática - utilizando o pacote EML</h1>
+<p>Nesta seção iremos utilizar o conjunto de dados do artigo
+“Organic-matter loading determines regime shifts and alternative states
+in an aquatic ecosystem”. Optamos por usar este dado pois ele já
+apresenta um arquivo de metadados associado, assim podemos reconstruí-lo
+e verificar como fica. Além disso ele é o mesmo dado utilizado no
+tutorial original do pacote EML, sendo conveniente para fins didáticos.
+Ao final vamos praticar com um outro conjunto de dados.</p>
+<p>Para fazer o download dos dados clique no botão abaixo:</p>
+<a href="https://github.com/GabrielNakamura/USP_reproducibility_BIE5791">
+<button class="btn btn-danger"><i class="fa fa-save"></i> Download csv</button>
+</a>
+<p>Para instalar o pacote EML faça o seguinte:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;EML&quot;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">library</span>(EML)</span></code></pre></div>
+<p>Vamos utilizar um conjunto de dados contidos no próprio pacote EML
+para facilitar a compreensão dos passos necessários para construir um
+EML completo</p>
+<div id="construindo-um-eml---harvard-forest-data"
+class="section level2">
+<h2>Construindo um EML - Harvard Forest Data</h2>
+<div id="construindo-os-atributos" class="section level3">
+<h3>Construindo os Atributos</h3>
+<p>Os atributos são as descrições para as variáveis contidas na nossa
+tabela. Aquela aba contendo as informações das variáveis, pois então,
+esta seria os atributos da sua tabela de dados. Então, primeiro
+precisamos de uma tabela de atributos que define o significado geral de
+cada variável em nossa tabela de dados. Esta tabela pode ser gerada aqui
+no R direto, como no exemplo abaixo, mas pode ser importada a partir de
+uma tabela <code>.csv</code>. A tabela segue o formato a seguir:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>attributes <span class="ot">&lt;-</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="sc">~</span>attributeName, <span class="sc">~</span>attributeDefinition,                                                 <span class="sc">~</span>formatString, <span class="sc">~</span>definition,        <span class="sc">~</span>unit,   <span class="sc">~</span>numberType,</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>  <span class="st">&quot;run.num&quot;</span>,    <span class="st">&quot;which run number (=block). Range: 1 - 6. (integer)&quot;</span>,                 <span class="cn">NA</span>,            <span class="st">&quot;which run number&quot;</span>, <span class="cn">NA</span>,       <span class="cn">NA</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>  <span class="st">&quot;year&quot;</span>,       <span class="st">&quot;year, 2012&quot;</span>,                                                         <span class="st">&quot;YYYY&quot;</span>,        <span class="cn">NA</span>,                 <span class="cn">NA</span>,       <span class="cn">NA</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>  <span class="st">&quot;day&quot;</span>,        <span class="st">&quot;Julian day. Range: 170 - 209.&quot;</span>,                                      <span class="st">&quot;DDD&quot;</span>,         <span class="cn">NA</span>,                 <span class="cn">NA</span>,       <span class="cn">NA</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>  <span class="st">&quot;hour.min&quot;</span>,   <span class="st">&quot;hour and minute of observation. Range 1 - 2400 (integer)&quot;</span>,           <span class="st">&quot;hhmm&quot;</span>,        <span class="cn">NA</span>,                 <span class="cn">NA</span>,       <span class="cn">NA</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>  <span class="st">&quot;i.flag&quot;</span>,     <span class="st">&quot;is variable Real, Interpolated or Bad (character/factor)&quot;</span>,           <span class="cn">NA</span>,            <span class="cn">NA</span>,                 <span class="cn">NA</span>,       <span class="cn">NA</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>  <span class="st">&quot;variable&quot;</span>,   <span class="st">&quot;what variable being measured in what treatment (character/factor).&quot;</span>, <span class="cn">NA</span>,            <span class="cn">NA</span>,                 <span class="cn">NA</span>,       <span class="cn">NA</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>  <span class="st">&quot;value.i&quot;</span>,    <span class="st">&quot;value of measured variable for run.num on year/day/hour.min.&quot;</span>,       <span class="cn">NA</span>,            <span class="cn">NA</span>,                 <span class="cn">NA</span>,       <span class="cn">NA</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>  <span class="st">&quot;length&quot;</span>,    <span class="st">&quot;length of the species in meters (dummy example of numeric data)&quot;</span>,     <span class="cn">NA</span>,            <span class="cn">NA</span>,                 <span class="st">&quot;meter&quot;</span>,  <span class="st">&quot;real&quot;</span>)</span></code></pre></div>
+<p>Dê uma olhada na tabela de atributos (pode ser feito usano a função
+<code>View</code> ou abrindo no Excel). A maioria dos dados seguem este
+formato geral.</p>
+<p>A seguir precisamos descrever os atributos que apresentam níveis. Por
+exemplo o atributo chamado <code>variable</code> apresenta oito níveis.
+A estratégia seguida aqui foi criar vetores com os códigos usados para
+cada nível dos atributos e uma pequena explicação.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>i.flag <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">R =</span> <span class="st">&quot;real&quot;</span>,</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>            <span class="at">I =</span> <span class="st">&quot;interpolated&quot;</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>            <span class="at">B =</span> <span class="st">&quot;bad&quot;</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>variable <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>  <span class="at">control  =</span> <span class="st">&quot;no prey added&quot;</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>  <span class="at">low      =</span> <span class="st">&quot;0.125 mg prey added ml-1 d-1&quot;</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>  <span class="at">med.low  =</span> <span class="st">&quot;0,25 mg prey added ml-1 d-1&quot;</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>  <span class="at">med.high =</span> <span class="st">&quot;0.5 mg prey added ml-1 d-1&quot;</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a>  <span class="at">high     =</span> <span class="st">&quot;1.0 mg prey added ml-1 d-1&quot;</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a>  <span class="at">air.temp =</span> <span class="st">&quot;air temperature measured just above all plants (1 thermocouple)&quot;</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a>  <span class="at">water.temp =</span> <span class="st">&quot;water temperature measured within each pitcher&quot;</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a>  <span class="at">par       =</span> <span class="st">&quot;photosynthetic active radiation (PAR) measured just above all plants (1 sensor)&quot;</span></span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a>)</span>
+<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a>value.i <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a>  <span class="at">control  =</span> <span class="st">&quot;% dissolved oxygen&quot;</span>,</span>
+<span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a>  <span class="at">low      =</span> <span class="st">&quot;% dissolved oxygen&quot;</span>,</span>
+<span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a>  <span class="at">med.low  =</span> <span class="st">&quot;% dissolved oxygen&quot;</span>,</span>
+<span id="cb3-19"><a href="#cb3-19" tabindex="-1"></a>  <span class="at">med.high =</span> <span class="st">&quot;% dissolved oxygen&quot;</span>,</span>
+<span id="cb3-20"><a href="#cb3-20" tabindex="-1"></a>  <span class="at">high     =</span> <span class="st">&quot;% dissolved oxygen&quot;</span>,</span>
+<span id="cb3-21"><a href="#cb3-21" tabindex="-1"></a>  <span class="at">air.temp =</span> <span class="st">&quot;degrees C&quot;</span>,</span>
+<span id="cb3-22"><a href="#cb3-22" tabindex="-1"></a>  <span class="at">water.temp =</span> <span class="st">&quot;degrees C&quot;</span>,</span>
+<span id="cb3-23"><a href="#cb3-23" tabindex="-1"></a>  <span class="at">par      =</span> <span class="st">&quot;micromoles m-1 s-1&quot;</span></span>
+<span id="cb3-24"><a href="#cb3-24" tabindex="-1"></a>)</span>
+<span id="cb3-25"><a href="#cb3-25" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="#cb3-26" tabindex="-1"></a><span class="do">## Write these into the data.frame format</span></span>
+<span id="cb3-27"><a href="#cb3-27" tabindex="-1"></a>factors <span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
+<span id="cb3-28"><a href="#cb3-28" tabindex="-1"></a><span class="fu">data.frame</span>(</span>
+<span id="cb3-29"><a href="#cb3-29" tabindex="-1"></a>  <span class="at">attributeName =</span> <span class="st">&quot;i.flag&quot;</span>,</span>
+<span id="cb3-30"><a href="#cb3-30" tabindex="-1"></a>  <span class="at">code =</span> <span class="fu">names</span>(i.flag),</span>
+<span id="cb3-31"><a href="#cb3-31" tabindex="-1"></a>  <span class="at">definition =</span> <span class="fu">unname</span>(i.flag)</span>
+<span id="cb3-32"><a href="#cb3-32" tabindex="-1"></a>),</span>
+<span id="cb3-33"><a href="#cb3-33" tabindex="-1"></a><span class="fu">data.frame</span>(</span>
+<span id="cb3-34"><a href="#cb3-34" tabindex="-1"></a>  <span class="at">attributeName =</span> <span class="st">&quot;variable&quot;</span>,</span>
+<span id="cb3-35"><a href="#cb3-35" tabindex="-1"></a>  <span class="at">code =</span> <span class="fu">names</span>(variable),</span>
+<span id="cb3-36"><a href="#cb3-36" tabindex="-1"></a>  <span class="at">definition =</span> <span class="fu">unname</span>(variable)</span>
+<span id="cb3-37"><a href="#cb3-37" tabindex="-1"></a>),</span>
+<span id="cb3-38"><a href="#cb3-38" tabindex="-1"></a><span class="fu">data.frame</span>(</span>
+<span id="cb3-39"><a href="#cb3-39" tabindex="-1"></a>  <span class="at">attributeName =</span> <span class="st">&quot;value.i&quot;</span>,</span>
+<span id="cb3-40"><a href="#cb3-40" tabindex="-1"></a>  <span class="at">code =</span> <span class="fu">names</span>(value.i),</span>
+<span id="cb3-41"><a href="#cb3-41" tabindex="-1"></a>  <span class="at">definition =</span> <span class="fu">unname</span>(value.i)</span>
+<span id="cb3-42"><a href="#cb3-42" tabindex="-1"></a>)</span>
+<span id="cb3-43"><a href="#cb3-43" tabindex="-1"></a>)</span></code></pre></div>
+<p>Após especificadas as características das variáveis categóricas (as
+contínuas já estão especificadas na tabela geral de atributos
+<code>attributes</code>), usamos a função <code>set_attributes</code>
+para criar a lista de atributos geral dos dados, onde devemos
+especificar o tipo de atributo que estamos inserindo (se caracter, se
+data, se fator etc..)</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>attributeList <span class="ot">&lt;-</span> <span class="fu">set_attributes</span>(attributes, factors, <span class="at">col_classes =</span> <span class="fu">c</span>(<span class="st">&quot;character&quot;</span>, <span class="st">&quot;Date&quot;</span>, <span class="st">&quot;Date&quot;</span>, <span class="st">&quot;Date&quot;</span>, <span class="st">&quot;factor&quot;</span>, <span class="st">&quot;factor&quot;</span>, <span class="st">&quot;factor&quot;</span>, <span class="st">&quot;numeric&quot;</span>))</span></code></pre></div>
+</div>
+<div id="construindo-as-características-físicas-do-dado"
+class="section level3">
+<h3>Construindo as características físicas do dado</h3>
+<p>Aqui vamos especificar as características físicas do próprio arquivo
+de dados que utilizamos, ou seja, o formato, o tipo de compressão do
+arquivo, o separador etc. Resumindo, aqui é especificado a
+<strong>característica do arquivo</strong>. Isso é feito facilmente com
+a função <code>set_physical</code>. Se estivermos utilizando um arquivo
+.csv a função já extrai automaticamente a maior parte das
+características relevantes do arquivo de dados.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>physical <span class="ot">&lt;-</span> <span class="fu">set_physical</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;hf205-01-TPexp1-EML-Exemple.csv&quot;</span>))</span></code></pre></div>
+</div>
+<div id="juntando-atributos-e-características-físicas"
+class="section level3">
+<h3>Juntando Atributos e Características físicas</h3>
+<p>Com o objeto de atributos e o objeto de características físicas temos
+o essencial para descrever o nosso conjunto de dados. Agora vamos juntar
+ambos com mais algumas informações em uma única lista e denominar isso
+como sendo o nosso <code>dataTable</code></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>dataTable <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>                 <span class="at">entityName =</span> <span class="st">&quot;hf205-01-TPexp1.csv&quot;</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>                 <span class="at">entityDescription =</span> <span class="st">&quot;tipping point experiment 1&quot;</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>                 <span class="at">physical =</span> physical,</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>                 <span class="at">attributeList =</span> attributeList)</span></code></pre></div>
+</div>
+<div
+id="características-adicionais---extensão-geográfica-métodos-e-outros"
+class="section level3">
+<h3>Características adicionais - extensão geográfica, métodos e
+outros</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>geographicDescription <span class="ot">&lt;-</span> <span class="st">&quot;Harvard Forest Greenhouse, Tom Swamp Tract (Harvard Forest)&quot;</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>coverage <span class="ot">&lt;-</span> </span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>  <span class="fu">set_coverage</span>(<span class="at">begin =</span> <span class="st">&#39;2012-06-01&#39;</span>, <span class="at">end =</span> <span class="st">&#39;2013-12-31&#39;</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>               <span class="at">sci_names =</span> <span class="st">&quot;Sarracenia purpurea&quot;</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>               <span class="at">geographicDescription =</span> geographicDescription,</span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a>               <span class="at">west =</span> <span class="sc">-</span><span class="fl">122.44</span>, <span class="at">east =</span> <span class="sc">-</span><span class="fl">117.15</span>, </span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a>               <span class="at">north =</span> <span class="fl">37.38</span>, <span class="at">south =</span> <span class="fl">30.00</span>,</span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a>               <span class="at">altitudeMin =</span> <span class="dv">160</span>, <span class="at">altitudeMaximum =</span> <span class="dv">330</span>,</span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a>               <span class="at">altitudeUnits =</span> <span class="st">&quot;meter&quot;</span>)</span></code></pre></div>
+<p>Para descrever os métodos em metadados</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>methods_file <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;hf205-methods.docx&quot;</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>methods <span class="ot">&lt;-</span> <span class="fu">set_methods</span>(methods_file)</span></code></pre></div>
+<p>Identificação dos indivíduos endereço e outras informações sobre
+contatos</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>R_person <span class="ot">&lt;-</span> <span class="fu">person</span>(<span class="st">&quot;Aaron&quot;</span>, <span class="st">&quot;Ellison&quot;</span>, ,<span class="st">&quot;fakeaddress@email.com&quot;</span>, <span class="st">&quot;cre&quot;</span>, </span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>                  <span class="fu">c</span>(<span class="at">ORCID =</span> <span class="st">&quot;0000-0003-4151-6081&quot;</span>))</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>aaron <span class="ot">&lt;-</span> <span class="fu">as_emld</span>(R_person)</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>others <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">as.person</span>(<span class="st">&quot;Benjamin Baiser&quot;</span>), <span class="fu">as.person</span>(<span class="st">&quot;Jennifer Sirota&quot;</span>))</span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>associatedParty <span class="ot">&lt;-</span> <span class="fu">as_emld</span>(others)</span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>associatedParty[[<span class="dv">1</span>]]<span class="sc">$</span>role <span class="ot">&lt;-</span> <span class="st">&quot;Researcher&quot;</span></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>associatedParty[[<span class="dv">2</span>]]<span class="sc">$</span>role <span class="ot">&lt;-</span> <span class="st">&quot;Researcher&quot;</span></span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a>HF_address <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a>                  <span class="at">deliveryPoint =</span> <span class="st">&quot;324 North Main Street&quot;</span>,</span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a>                  <span class="at">city =</span> <span class="st">&quot;Petersham&quot;</span>,</span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a>                  <span class="at">administrativeArea =</span> <span class="st">&quot;MA&quot;</span>,</span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a>                  <span class="at">postalCode =</span> <span class="st">&quot;01366&quot;</span>,</span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a>                  <span class="at">country =</span> <span class="st">&quot;USA&quot;</span>)</span>
+<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a>publisher <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a>                 <span class="at">organizationName =</span> <span class="st">&quot;Harvard Forest&quot;</span>,</span>
+<span id="cb9-18"><a href="#cb9-18" tabindex="-1"></a>                 <span class="at">address =</span> HF_address)</span>
+<span id="cb9-19"><a href="#cb9-19" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="#cb9-20" tabindex="-1"></a></span>
+<span id="cb9-21"><a href="#cb9-21" tabindex="-1"></a>contact <span class="ot">&lt;-</span> </span>
+<span id="cb9-22"><a href="#cb9-22" tabindex="-1"></a>  <span class="fu">list</span>(</span>
+<span id="cb9-23"><a href="#cb9-23" tabindex="-1"></a>    <span class="at">individualName =</span> aaron<span class="sc">$</span>individualName,</span>
+<span id="cb9-24"><a href="#cb9-24" tabindex="-1"></a>    <span class="at">electronicMailAddress =</span> aaron<span class="sc">$</span>electronicMailAddress,</span>
+<span id="cb9-25"><a href="#cb9-25" tabindex="-1"></a>    <span class="at">address =</span> HF_address,</span>
+<span id="cb9-26"><a href="#cb9-26" tabindex="-1"></a>    <span class="at">organizationName =</span> <span class="st">&quot;Harvard Forest&quot;</span>,</span>
+<span id="cb9-27"><a href="#cb9-27" tabindex="-1"></a>    <span class="at">phone =</span> <span class="st">&quot;000-000-0000&quot;</span>)</span></code></pre></div>
+<p>criando keywords para os dados</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>keywordSet <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>    <span class="fu">list</span>(</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>        <span class="at">keywordThesaurus =</span> <span class="st">&quot;LTER controlled vocabulary&quot;</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>        <span class="at">keyword =</span> <span class="fu">list</span>(<span class="st">&quot;bacteria&quot;</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>                    <span class="st">&quot;carnivorous plants&quot;</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>                    <span class="st">&quot;genetics&quot;</span>,</span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>                    <span class="st">&quot;thresholds&quot;</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>        ),</span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a>    <span class="fu">list</span>(</span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a>        <span class="at">keywordThesaurus =</span> <span class="st">&quot;LTER core area&quot;</span>,</span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a>        <span class="at">keyword =</span>  <span class="fu">list</span>(<span class="st">&quot;populations&quot;</span>, <span class="st">&quot;inorganic nutrients&quot;</span>, <span class="st">&quot;disturbance&quot;</span>)</span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a>        ),</span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a>    <span class="fu">list</span>(</span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a>        <span class="at">keywordThesaurus =</span> <span class="st">&quot;HFR default&quot;</span>,</span>
+<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a>        <span class="at">keyword =</span> <span class="fu">list</span>(<span class="st">&quot;Harvard Forest&quot;</span>, <span class="st">&quot;HFR&quot;</span>, <span class="st">&quot;LTER&quot;</span>, <span class="st">&quot;USA&quot;</span>)</span>
+<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a>        ))</span></code></pre></div>
+<p>Outras informações relevantes como abstract etc</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>pubDate <span class="ot">&lt;-</span> <span class="st">&quot;2012&quot;</span> </span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>title <span class="ot">&lt;-</span> <span class="st">&quot;Thresholds and Tipping Points in a Sarracenia </span></span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="st">Microecosystem at Harvard Forest since 2012&quot;</span></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>abstract <span class="ot">&lt;-</span> <span class="st">&quot;The primary goal of this project is to determine</span></span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a><span class="st">  experimentally the amount of lead time required to prevent a state</span></span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a><span class="st">change. To achieve this goal, we will (1) experimentally induce state</span></span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a><span class="st">changes in a natural aquatic ecosystem - the Sarracenia microecosystem;</span></span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a><span class="st">(2) use proteomic analysis to identify potential indicators of states</span></span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a><span class="st">and state changes; and (3) test whether we can forestall state changes</span></span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a><span class="st">by experimentally intervening in the system. This work uses state-of-the</span></span>
+<span id="cb11-13"><a href="#cb11-13" tabindex="-1"></a><span class="st">art molecular tools to identify early warning indicators in the field</span></span>
+<span id="cb11-14"><a href="#cb11-14" tabindex="-1"></a><span class="st">of aerobic to anaerobic state changes driven by nutrient enrichment</span></span>
+<span id="cb11-15"><a href="#cb11-15" tabindex="-1"></a><span class="st">in an aquatic ecosystem. The study tests two general hypotheses: (1)</span></span>
+<span id="cb11-16"><a href="#cb11-16" tabindex="-1"></a><span class="st">proteomic biomarkers can function as reliable indicators of impending</span></span>
+<span id="cb11-17"><a href="#cb11-17" tabindex="-1"></a><span class="st">state changes and may give early warning before increasing variances</span></span>
+<span id="cb11-18"><a href="#cb11-18" tabindex="-1"></a><span class="st">and statistical flickering of monitored variables; and (2) well-timed</span></span>
+<span id="cb11-19"><a href="#cb11-19" tabindex="-1"></a><span class="st">intervention based on proteomic biomarkers can avert future state changes</span></span>
+<span id="cb11-20"><a href="#cb11-20" tabindex="-1"></a><span class="st">in ecological systems.&quot;</span>  </span>
+<span id="cb11-21"><a href="#cb11-21" tabindex="-1"></a></span>
+<span id="cb11-22"><a href="#cb11-22" tabindex="-1"></a>intellectualRights <span class="ot">&lt;-</span> <span class="st">&quot;This dataset is released to the public and may be freely</span></span>
+<span id="cb11-23"><a href="#cb11-23" tabindex="-1"></a><span class="st">  downloaded. Please keep the designated Contact person informed of any</span></span>
+<span id="cb11-24"><a href="#cb11-24" tabindex="-1"></a><span class="st">plans to use the dataset. Consultation or collaboration with the original</span></span>
+<span id="cb11-25"><a href="#cb11-25" tabindex="-1"></a><span class="st">investigators is strongly encouraged. Publications and data products</span></span>
+<span id="cb11-26"><a href="#cb11-26" tabindex="-1"></a><span class="st">that make use of the dataset must include proper acknowledgement. For</span></span>
+<span id="cb11-27"><a href="#cb11-27" tabindex="-1"></a><span class="st">more information on LTER Network data access and use policies, please</span></span>
+<span id="cb11-28"><a href="#cb11-28" tabindex="-1"></a><span class="st">see: http://www.lternet.edu/data/netpolicy.html.&quot;</span></span></code></pre></div>
+</div>
+<div id="criando-o-arquivo-xml" class="section level3">
+<h3>Criando o arquivo XML</h3>
+<p>juntando tudo</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>               <span class="at">title =</span> title,</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>               <span class="at">creator =</span> aaron,</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>               <span class="at">pubDate =</span> pubDate,</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>               <span class="at">intellectualRights =</span> intellectualRights,</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>               <span class="at">abstract =</span> abstract,</span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>               <span class="at">associatedParty =</span> associatedParty,</span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a>               <span class="at">keywordSet =</span> keywordSet,</span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a>               <span class="at">coverage =</span> coverage,</span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a>               <span class="at">contact =</span> contact,</span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a>               <span class="at">methods =</span> methods,</span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a>               <span class="at">dataTable =</span> dataTable)</span></code></pre></div>
+<p>Criando as informações do eml. Importante criar um uuid para o
+arquivo, como demosntrado a seguir. Para mais informações sobre o que é
+um uuid ver <a
+href="https://en.wikipedia.org/wiki/Universally_unique_identifier">esta
+explicação na Wikipedia</a></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>eml <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>           <span class="at">packageId =</span> uuid<span class="sc">::</span><span class="fu">UUIDgenerate</span>(),</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>           <span class="at">system =</span> <span class="st">&quot;uuid&quot;</span>, <span class="co"># type of identifier</span></span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>           <span class="at">dataset =</span> dataset)</span></code></pre></div>
+<p>Finalmente criando o arquivo eml e validando</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">write_eml</span>(eml, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;eml_tutorialHF205.xml&quot;</span>))</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="fu">eml_validate</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;eml_tutorialHF205.xml&quot;</span>))</span></code></pre></div>
 </div>
 </div>
-<div id="referências-importantes" class="section level1">
-<h1>Referências importantes</h1>
-<p><a
-href="https://www.douganddata.com/2022/07/on-naming-things/">Douglas
-McDonald website</a></p>
-<p><a
-href="http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf">Jenny
-Bryan as always</a></p>
-<p><a href="http://adv-r.had.co.nz/Style.html">Hadley Wickham of
-course</a></p>
-</div>
-<div id="onde-queremos-chegar-e-onde-estamos-agora"
-class="section level1">
-<h1>Onde queremos chegar e onde estamos agora?</h1>
-<p><img src="figs/local-remote-general.png" /><!-- --></p>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiT3JnYW5pemFuZG8gbyBzZXUgdHJhYmFsaG8gbG9jYWxtZW50ZSIKYXV0aG9yOiAiR2FicmllbCBOYWthbXVyYSIKZGF0ZTogImByIFN5cy5EYXRlKClgIgpvdXRwdXQ6IGh0bWxfZG9jdW1lbnQKLS0tCgpgYGB7ciBzZXR1cCwgaW5jbHVkZT1GQUxTRX0Ka25pdHI6Om9wdHNfY2h1bmskc2V0KGVjaG8gPSBUUlVFKQpgYGAKCiMgT3JnYW5pemHDp8OjbyAtIHF1ZXN0w6NvIGRlIGVzdGlsbz8KCiJFdSBtZSBhY2hvIG5hIG1pbmhhIGJhZ3Vuw6dhIiwgcXVlbSBqw6Egb3V2aXUgZXNzYSBmcmFzZSwgb3UgasOhIHByb251bmNpb3U/IFByb3ZhdmVsbWVudGUgdG9kb3MgbsOzcy4gTWFzIG8gY29uY2VpdG8gZGUgKipvcmdhbml6YcOnw6NvKiogc2VyaWEgbWVzbW8gdW1hIHF1ZXN0w6NvIHBlc3NvYWw/IFBvZGVtb3MgZGlzY3V0aXIgaXNzbyBkdXJhbnRlIGhvcmFzIGEgZmlvIHNlIGVzdGl2ZXJtb3MgZmFsYW5kbyBkbyBzZXUgcXVhcnRvLCBkYSBzdWEgZXN0YW50ZSBvdSBkbyBzZXUgZ3VhcmRhLXJvdXBhLCBtYXMgcXVhbmRvIGZhbGFtb3MgZGUgY2nDqm5jaWEsIG91IHNlamEsIHVtYSBhdGl2aWRhZGUgY29sZXRpdmEsIG9yZ2FuaXphw6fDo28gKipuw6NvKiogw6kgdW1hIHF1ZXN0w6NvIHBlc3NvYWwsIGp1c3RhbWVudGUgcG9yIHNlciBjb2xldGl2YS4gU2VtcHJlIHRyYWJhbGhhbW9zIGVtIGNvbmp1bnRvLCBlIGlzc28gcG9kZSBzZXIgY29tIHVtIGdydXBvIGNvbXBvc3RvIHBvciBtdWl0YXMgcGVzc29hcyBxdWUgdHJhYmFsaGFtIGVtIHVtIGRldGVybWluYWRvIHByb2pldG8sIG91IHBvZGUgc2VyIGNvbnNpZ28gbWVzbW8sIG8gc2V1IGV1IGRvIGZ1dHVyby4gRGVzdGEgbWFuZWlyYSwgw6kgbmVjZXNzw6FyaW8gcXVlIHR1ZG8gcXVlIGZvaSB1dGlsaXphZG8gcGFyYSBvIGRlc2Vudm9sdmltZW50byBkbyBzZXUgcHJvamV0byBjaWVudMOtZmljbyBzZWphIGRlIGbDoWNpbCBjb21wcmVlbnPDo28gcGFyYSBzZXVzIGNvbGFib3JhZG9yZXMgb3UgcGFyYSBvIHNldSAiZXUiIGRvIGZ1dHVyby4gCgojIyBVbSBlc3F1ZW1hIGdlcmFsIChtYXMgbsOjbyBhYnNvbHV0bykgcGFyYSBvcmdhbml6YcOnw6NvIGRvIGRpcmV0w7NyaW8gbG9jYWwKCk5lc3NhIHNlw6fDo28gaXJlaSBtb3N0cmFyIHVtYSBwcm9wb3N0YSBkZSBlc3F1ZW1hIGdlcmFsIHBhcmEgb3JnYW5pemHDp8OjbyBkZSBkaXJldMOzcmlvcy4gRXNzYSBlc3RydXR1cmEgw6kgYmFzZWFkYSBuZXN0YSBwcm9wb3N0YSBkbyBbR3VzdGF2byBQYXRlcm5vXShodHRwczovL2RvY3MuZ29vZ2xlLmNvbS9wcmVzZW50YXRpb24vZC8xUHg5TnBhX0FOcW1tZmpDWG85QS1lQm1XemdVbW1rQ0tkN2ZCSXFfZ0c2ay9lZGl0I3NsaWRlPWlkLmc2MmZjNmJmNzJmXzBfMTk2KS4KCkRpZ28gcXVlIG7Do28gw6kgYWJzb2x1dG8gcG9pcyBtb2RpZmljYcOnw7VlcyBuZXNzZSBlc3F1ZW1hIHBvZGVtIHNlciBmZWl0YSBwYXJhIGFqdXN0YXIgYW8gY29uanVudG8gZGUgZGFkb3MgZGUgY2FkYSBwZXNzb2EuIEEgRWNvbG9naWEgw6kgdW0gY2FtcG8gbXVpdG8gYW1wbG8gZGUgcGVzcXVpc2EsIGUgbmVtIHRvZG9zIG9zIGRhZG9zIHNlIGFqdXN0YXLDo28gcGVyZmVpdGFtZW50ZSBhIGVzdGEgcHJvcG9zdGEuIE8gbWFpcyBpbXBvcnRhbnRlIGRlIHR1ZG8gw6kgcXVlIG9zIGRhZG9zIGVzdGVqYW0gb3JnYW5pemFkb3MgZGUgdW1hIG1hbmVpcmEgKippbnR1aXRpdmEqKiBlICoqY29uc2lzdGVudGUqKiBubyBkaXJldMOzcmlvLCBjb21vIG8gbmEgZmlndXJhIHNlZ3VpbnRlLgoKYGBge3IgZWNobz1GQUxTRSxldmFsPVRSVUUsZmlnLmNhcD0gIlVtIGRpcmV0w7NyaW8gbWluaW1hbWVudGUgb3JnYW5pemFkbyJ9CmtuaXRyOjppbmNsdWRlX2dyYXBoaWNzKCJmaWdzL2RpcmVjdG9yeV9vcmcuanBnIikKYGBgCgpNYXMsIHF1YWwgYSBsw7NnaWNhIHBvciB0csOhcyBkYSBvcmdhbml6YcOnw6NvIGRlc3NlIGRpcmV0w7NyaW8/IFNlZ3VpbW9zIGEgcHJvcG9zdGEgcHJlc2VudGUgbmEgZmlndXJhIHNlZ3VpbnRlIFsob3JpZ2luYWwgcG9kZSBzZXIgdmlzdG8gYXF1aSldKGh0dHBzOi8vZG9jcy5nb29nbGUuY29tL3ByZXNlbnRhdGlvbi9kLzFQeDlOcGFfQU5xbW1makNYbzlBLWVCbVd6Z1VtbWtDS2Q3ZkJJcV9nRzZrL2VkaXQjc2xpZGU9aWQuZzYyZmM2YmY3MmZfMF83KS4gCgpOZXN0YSBwcm9wb3N0YSBvcyBhcnF1aXZvcyBkZW50cm8gZGUgdW0gcHJvamV0byBzw6NvIG9yZ2FuaXphZG9zIGVtIDQgcGFzdGFzIHF1ZSBjb250ZW1wbGFtIHF1YXNlIHRvZG9zIG9zIGRvY3VtZW50b3MgcXVlIGdlcmFtb3Mgb3UgcXVlIHByZWNpc2Ftb3MgcXVhbmRvIGVzdGFtb3MgZGVzZW52b2x2ZW5kbyB1bSBwcm9qZXRvIGNpZW50w61maWNvLgoKYGBge3IgZWNobz1GQUxTRSxldmFsPVRSVUUsZmlnLmNhcD0iVW0gbW9kZWxvIGdlcmFsIGRlIG9yZ2FuaXphw6fDo28gZG8gZGlyZXTDs3JpbyBsb2NhbCJ9CmtuaXRyOjppbmNsdWRlX2dyYXBoaWNzKCJmaWdzL3RlbXBsYXRlX2dlbmVyYWwuanBnIikKYGBgCgoKIyBOb21lYW5kbyBhcnF1aXZvcwoKQSBnb29kIHJ1bGUgaXM6IAoKKipIdW1hbiArIE1hY2hpbmUgcmVkYWJsZSoqCgpFeGFtcGxlOgoKYGBge3IgZWNobz1GQUxTRSxldmFsPUZBTFNFfQprbml0cjo6aW5jbHVkZV9ncmFwaGljcyhoZXJlOjpoZXJlKCJmaWd1cmVzIiwgIm5hbWluZy1maWxlcy1kYXRhLnBuZyIpKQpgYGAKCiMgTm9tZWFuZG8gc2NyaXB0cwoKUGVyc29uYWxseSwgSSB1c2UgdGhlIGZvbGxvd2luZyBydWxlCgoqKm51bWJlcl91cHBlci1jYXNlLWxldHRlcl9XaGF0LXRoZS1zY3JpcHQtZG9lcy5SKioKCi0gbnVtYmVyOiB1c2VkIHRvIGluZGljYXRlIHRoZSBzZXF1ZW5jZSB0byBydW4gdGhlIHNjcmlwdHMKCi0gdXBlciBjYXNlIGxldHRlcjogd2hhdCB0aGUgc2NyaXB0IGRvZXMgKHByb2NjZXNzLCBjbGVhbiwgYW5hbHlzaXMsIGZ1bmN0aW9uKQoKLSBXaGF0IHRoZSBzY3JpcHQgZG9lczogYSBicmllZiBkZXNjcmlwdGlvbiBvZiB3aGF0IHRoZSBzY3JpcHQgZG9lcwoKIyBPIFJFQURNRQoKTyBSRUFETUUgw6kgdW1hIGRhcyBwYXJ0ZXMgbWFpcyBpbXBvcnRhbnRlcyBkbyBzZXUgZGlyZXTDs3JpbywgZWxlIMOpIGVzY3JpdG8gZW0gY2FpeGEgYWx0YSBqdXN0YW1lbnRlIHBhcmEgcXVlIGEgcGVzc29hIHF1ZSBlc3RlamEgYWNlc3NzYW5kbyBvIHNldSBkaXJldMOzcmlvIG91w6dhIGEgc3VhIHZveiBncml0YW5kbyAqKk1lIGxlaWEgcG9yIGZhdm9yISEqKi4KCk5lc3RlIGFycXVpdm8gZGUgdGV4dG8gdm9jw6ogaXLDoSBlbmNvbnRyYXIgYXMgcHJpbmNpcGFpcyBpbnN0cnXDp8O1ZXMgc29icmUgYSBlc3RydXR1cmEgZG8gZGlyZXTDs3JpbywgaW5jbHVpbmRvIG9zIG5vbWVzIGRhcyBwZXNzb2FzIHF1ZSBtb250YXJhbSBvIGRpcmV0w7NyaW8sIGFsw6ltIGRlIGluc3RydcOnw7VlcyBiw6FzaWNhcyBzb2JyZSBvIHF1ZSBjb250w6ltIGVtIGNhZGEgcGFzdGEuIFtBcXVpIHZvY8OqIHBvZGUgZW5jb250cmFyIHVtIGV4ZW1wbG8gZGUgUkVBRE1FIGNvbnRlbmRvIGFzIGluZm9ybWHDp8O1ZXMgYsOhc2ljYXMgbmVjZXNzw6FyaWFzIHF1ZSBlbGUgZGV2ZSBjb250ZXIgZSBwb3JxdWVdKGh0dHBzOi8vd3d3Lm1ha2VhcmVhZG1lLmNvbS8pLiBbQXF1aSB1bSB0ZW1wbGF0ZSBxdWUgcG9kZSBzZXIgYWRhcHRhZG8gcGFyYSBvcyBzZXVzIHByb3DDs3NpdG9zXShodHRwczovL2dpdGh1Yi5jb20vamVobmEvcmVhZG1lLWJlc3QtcHJhY3RpY2VzL2Jsb2IvbWFzdGVyL1JFQURNRS1kZWZhdWx0Lm1kKS4gW0FxdWkgYWxndW1hcyBkaWNhcyBpbnRlcmVzc2FudGVzIGVtIHBvcnR1Z3XDqnNdKGh0dHBzOi8vYmxvZy5yb2NrZXRzZWF0LmNvbS5ici9jb21vLWZhemVyLXVtLWJvbS1yZWFkbWUvKS4KCsOJIGltcG9ydGFudGUgc2FiZXIgcXVlIHZvY8OqIG7Do28gaXLDoSBlbmNvbnRyYXIgYSByZXNwb3N0YSBmaW5hbCBwYXJhIG8gUkVBRE1FIHBlcmZlaXRvLiBPcyBkZXRhbGhlcyBkZSBjYWRhIFJFQURNRSB2w6NvIHZhcmlhciBkZXBlbmRlbmRvIGRvIHByb2pldG8gcXVlIGVzdMOhIGRlc2Vudm9sdmVuZG8gZSBhIGZvcm1hIGNvbW8gZWxlIGRldmUgc2VyIGFwcmVzZW50YWRvIGFvIHVzdcOhcmlvLiBQb3IgZXhlbXBsbywgc2UgbyBwcm9qZXRvIHNlIHRyYXRhIGRlIHVtIHJlcG9zaXTDs3JpbyBkZSBhcnF1aXZvcyBlIHNjcmlwdHMgZGUgdW0gbWFudXNjcml0bywgZSBuw6NvIGRlIHVtIFJFQURNRSBkZSB1bSBwcm9qZXRvIGRlIHNvZnR3YXJlLCBuw6NvIHByZWNpc2EgaGF2ZXIgYWxndW5zIGNhbXBvcyBkZSBleHBsaWNhw6fDo28sIHRhaXMgY29tbyBleGVtcGxvIGRlIHVzbyBvdSBhbnRpZ2FzIHZlcnPDtWVzIGRlIGxhbsOnYW1lbnRvLiBBcXVpIGNvbG9jbyB1bSBbKmNoZWNrbGlzdCogYWRhcHRhZG9dKGh0dHBzOi8vZ2l0aHViLmNvbS9oYWNrZXJncnJsL2FydC1vZi1yZWFkbWUvZWRpdC9tYXN0ZXIvUkVBRE1FLXB0LUJSLm1kKSBkZSBpdGVucyBxdWUganVsZ28gZXNzZW5jaWFpcyBwYXJhIHVtIFJFQURNRSBpbmZvcm1hdGl2by4gUGVuc2Ugbm8gc2V1IHRyYWJhbGhvLCBhZGljaW9uZSBvdSBlZGl0ZSBlc3NlIGNoZWNrbGlzdCBkZSBhY29yZG8gY29tIHNldXMgcHJvcMOzc2l0b3MuCgpNaW5oYSBwcm9wb3N0YSBkZSBjaGVja2xpc3Q6CgotIFsgXSBVbWEgbGluaGEgZXhwbGljYW5kbyBvIHByb3DDs3NpdG8gZG8gcmVwb3NpdMOzcmlvIAotIFsgXSBBdXRvcmVzIGRvIHJlcG9zaXTDs3JpbwotIFsgXSBMaWdhw6fDtWVzIGUgY29udGV4dHVhbGl6YcOnw7VlcyBuZWNlc3PDoXJpYXMgKHBvciBleGVtcGxvLCBzZSBvIHJlcG9zaXTDs3JpbyBlc3TDoSBsaW5rYWRvIGEgdW0gYXJ0aWdvKQotIFsgXSBiYWRnZXMgKG9wY2lvbmFsKQotIFsgXSBJbnN0cnXDp8O1ZXMgZGUgaW5zdGFsYcOnw6NvIChvdSBkb3dubG9hZCBzZSBmb3IgdW0gcmVwbykKLSBbIF0gRXhlbXBsbyBkZSB1dGlsaXphw6fDo28gY2xhcm8gZSAqZXhlY3V0w6F2ZWwqIChzZSBlc3RpdmVybW9zIGZhbGFuZG8gZGUgdW1hIGJhc2UgZGUgZGFkb3Mgb3UgcGFjb3RlKQotIFsgXSBFc3RydXR1cmEgZGUgcGFzdGFzIGUgc2NyaXB0cyAobyBxdWUgY2FkYSBwYXN0YSBjb250w6ltLCBvIHF1ZSBjYWRhIHNjcmlwdCBmYXopCi0gWyBdIFN0YXR1cyBkbyBwcm9qZXRvIChmaW5hbGl6YWRvL2VtIGFuZGFtZW50bykKLSBbIF0gRW0gY2FzbyBkZSBwcm9ibGVtYSBjb20gYWxnbyBubyByZXBvc2l0w7NyaW8sIGNvbW8gcmVwb3J0YXIKLSBbIF0gTGljZW7Dp2EKCiMgRmVycmFtZW50YXMgcGFyYSBvcmdhbml6YcOnw6NvIGRvIGRpcmV0w7NyaW8gbG9jYWwKClNvbWUgdG9vbHMgY2FuIGhlbHAgeW91IHRvIGdldCBhbiBhdXRvbWF0ZWQgc2NhZmZvbGQgZGlyZWN0b3J5IGZvciB5b3VyIHByb2plY3QsIGZvciBleGFtcGxlLCBzZWUgdGhpcyBvbmUgYnkgW0NhcmwgQm9ldHRpZ2VyXShodHRwczovL2dpdGh1Yi5jb20vY2JvZXR0aWcvdGVtcGxhdGUpLCBhbmQgdGhpcyBieSBbRnJhbmNpc2NvIFJvZHJpZ3Vlei1TYW5jaGV6XShodHRwczovL2dpdGh1Yi5jb20vUGFraWxsby90ZW1wbGF0ZSkuIEluIGVzc2VuY2UsIHlvdSB3aWxsIG5vdGljZSB0aGF0IHRoZSBzdHJ1Y3R1cmUgb2YgdGhlc2UgZGlyZWN0b3JpZXMgcmVzZW1ibGVzIHRoZSBzdHJ1Y3R1cmUgb2YgYW4gUiBwYWNrYWdlLgoKIyMgQ29uY2VpdG8gZGUgY2FtaW5ob3MgYWJzb2x1dG9zIGUgcmVsYXRpdm9zCgojIyBIZXJlCgpPIG1lbGhvciBwYWNvdGUgcGFyYSBvcmdhbml6YXIgY2FtaW5ob3MsIG8gaGVyZSEKCiMjIFJTdHVkaW8KCgojIE1ldGFkYWRvcwoKT3MgbWV0YWRhZG9zIGNvbnNpc3RlbSBlbSBleHBsaWNhw6fDtWVzIHNvYnJlIGEgZXN0cnV0dXJhIGRlIGRhZG9zLiBQb3IgZXhlbXBsbywgbyBzaWduaWZpY2FkbyBkb3MgY8OzZGlnb3Mgb3UgYWJyZXZpYcOnw7VlcyBwcmVzZW50ZXMgZW0gdW1hIGRhdGEgdGFiZWxhLCBkbyBxdWUgc2UgdHJhdGEgYSBpbmZvcm1hw6fDo28gcHJlc2VudGUgbmFzIGxpbmhhcyBlIG5hcyBjb2x1bmFzLCBvIHF1ZSB1bWEgZGFkYSBmdW7Dp8OjbyBmYXouIFJlcG9ydGFyIHByZWNpc2FtZW50ZSBvIHF1ZSBjYWRhIGFycXVpdm8gY29udMOpbSDDqSBkZSBleHRyZW1hIGltcG9ydMOibmNpYSBwYXJhIGdhcmFudGlyIGNvbSBxdWUgb3V0cmFzIHBlc3NvYXMsIG91IG1lc21vIG8gdm9jw6ogZG8gZnV0dXJvIHNhaWJhIG8gcXVlIGZvaS9lc3TDoSBzZW5kbyBmZWl0byBubyBwcm9qZXRvIGNpZW50w61maWNvLgoKCiMgVXNhbmRvIG8gcGFjb3RlIEVNTCAtIEVjb2xvZ2ljYWwgTWV0YWRhdGEgTGFuZ3VhZ2UKCgojIyBEZXNjcmV2ZW5kbyBvcyBkYWRvcyAtIFBhbG1lciBQZW5ndWlucwoKCgojIFJlZmVyw6puY2lhcyBpbXBvcnRhbnRlcwoKW0RvdWdsYXMgTWNEb25hbGQgd2Vic2l0ZV0oaHR0cHM6Ly93d3cuZG91Z2FuZGRhdGEuY29tLzIwMjIvMDcvb24tbmFtaW5nLXRoaW5ncy8pCgpbSmVubnkgQnJ5YW4gYXMgYWx3YXlzXShodHRwOi8vd3d3Mi5zdGF0LmR1a2UuZWR1L35yY3M0Ni9sZWN0dXJlc18yMDE1LzAxLW1hcmtkb3duLWdpdC9zbGlkZXMvbmFtaW5nLXNsaWRlcy9uYW1pbmctc2xpZGVzLnBkZikKCltIYWRsZXkgV2lja2hhbSBvZiBjb3Vyc2VdKGh0dHA6Ly9hZHYtci5oYWQuY28ubnovU3R5bGUuaHRtbCkKCgoKCiMgT25kZSBxdWVyZW1vcyBjaGVnYXIgZSBvbmRlIGVzdGFtb3MgYWdvcmE/CgpgYGB7ciBnZW5lcmFsLCBlY2hvPUZBTFNFLCBldmFsPVRSVUV9CmtuaXRyOjppbmNsdWRlX2dyYXBoaWNzKGhlcmU6OmhlcmUoImZpZ3MiLCAibG9jYWwtcmVtb3RlLWdlbmVyYWwucG5nIikpCgpgYGAKCgoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiT3JnYW5pemFuZG8gbyBzZXUgdHJhYmFsaG8gbG9jYWxtZW50ZSIKYXV0aG9yOiAiR2FicmllbCBOYWthbXVyYSIKZGF0ZTogImByIFN5cy5EYXRlKClgIgpvdXRwdXQ6IGh0bWxfZG9jdW1lbnQKLS0tCgpgYGB7ciBzZXR1cCwgaW5jbHVkZT1GQUxTRX0Ka25pdHI6Om9wdHNfY2h1bmskc2V0KGVjaG8gPSBUUlVFKQpgYGAKCiMgT3JnYW5pemHDp8OjbyAtIHF1ZXN0w6NvIGRlIGVzdGlsbz8KCiJFdSBtZSBhY2hvIG5hIG1pbmhhIGJhZ3Vuw6dhIiwgcXVlbSBqw6Egb3V2aXUgZXNzYSBmcmFzZSwgb3UgasOhIHByb251bmNpb3U/IFByb3ZhdmVsbWVudGUgdG9kb3MgbsOzcy4gTWFzIG8gY29uY2VpdG8gZGUgKipvcmdhbml6YcOnw6NvKiogc2VyaWEgbWVzbW8gdW1hIHF1ZXN0w6NvIHBlc3NvYWw/IFBvZGVtb3MgZGlzY3V0aXIgaXNzbyBkdXJhbnRlIGhvcmFzIGEgZmlvIHNlIGVzdGl2ZXJtb3MgZmFsYW5kbyBkbyBzZXUgcXVhcnRvLCBkYSBzdWEgZXN0YW50ZSBvdSBkbyBzZXUgZ3VhcmRhLXJvdXBhLCBtYXMgcXVhbmRvIGZhbGFtb3MgZGUgY2nDqm5jaWEsIG91IHNlamEsIHVtYSBhdGl2aWRhZGUgY29sZXRpdmEsIG9yZ2FuaXphw6fDo28gKipuw6NvKiogw6kgdW1hIHF1ZXN0w6NvIHBlc3NvYWwsIGp1c3RhbWVudGUgcG9yIHNlciBjb2xldGl2YS4gU2VtcHJlIHRyYWJhbGhhbW9zIGVtIGNvbmp1bnRvLCBlIGlzc28gcG9kZSBzZXIgY29tIHVtIGdydXBvIGNvbXBvc3RvIHBvciBtdWl0YXMgcGVzc29hcyBxdWUgdHJhYmFsaGFtIGVtIHVtIGRldGVybWluYWRvIHByb2pldG8sIG91IHBvZGUgc2VyIGNvbnNpZ28gbWVzbW8sIG8gc2V1IGV1IGRvIGZ1dHVyby4gRGVzdGEgbWFuZWlyYSwgw6kgbmVjZXNzw6FyaW8gcXVlIHR1ZG8gcXVlIGZvaSB1dGlsaXphZG8gcGFyYSBvIGRlc2Vudm9sdmltZW50byBkbyBzZXUgcHJvamV0byBjaWVudMOtZmljbyBzZWphIGRlIGbDoWNpbCBjb21wcmVlbnPDo28gcGFyYSBzZXVzIGNvbGFib3JhZG9yZXMgb3UgcGFyYSBvIHNldSAiZXUiIGRvIGZ1dHVyby4gCgojIyBVbSBlc3F1ZW1hIGdlcmFsIChtYXMgbsOjbyBhYnNvbHV0bykgcGFyYSBvcmdhbml6YcOnw6NvIGRvIGRpcmV0w7NyaW8gbG9jYWwKCk5lc3NhIHNlw6fDo28gaXJlaSBtb3N0cmFyIHVtYSBwcm9wb3N0YSBkZSBlc3F1ZW1hIGdlcmFsIHBhcmEgb3JnYW5pemHDp8OjbyBkZSBkaXJldMOzcmlvcy4gRXNzYSBlc3RydXR1cmEgw6kgYmFzZWFkYSBuZXN0YSBwcm9wb3N0YSBkbyBbR3VzdGF2byBQYXRlcm5vXShodHRwczovL2RvY3MuZ29vZ2xlLmNvbS9wcmVzZW50YXRpb24vZC8xUHg5TnBhX0FOcW1tZmpDWG85QS1lQm1XemdVbW1rQ0tkN2ZCSXFfZ0c2ay9lZGl0I3NsaWRlPWlkLmc2MmZjNmJmNzJmXzBfMTk2KS4KCkRpZ28gcXVlIG7Do28gw6kgYWJzb2x1dG8gcG9pcyBtb2RpZmljYcOnw7VlcyBuZXNzZSBlc3F1ZW1hIHBvZGVtIHNlciBmZWl0YSBwYXJhIGFqdXN0YXIgYW8gY29uanVudG8gZGUgZGFkb3MgZGUgY2FkYSBwZXNzb2EuIEEgRWNvbG9naWEgw6kgdW0gY2FtcG8gbXVpdG8gYW1wbG8gZGUgcGVzcXVpc2EsIGUgbmVtIHRvZG9zIG9zIGRhZG9zIHNlIGFqdXN0YXLDo28gcGVyZmVpdGFtZW50ZSBhIGVzdGEgcHJvcG9zdGEuIE8gbWFpcyBpbXBvcnRhbnRlIGRlIHR1ZG8gw6kgcXVlIG9zIGRhZG9zIGVzdGVqYW0gb3JnYW5pemFkb3MgZGUgdW1hIG1hbmVpcmEgKippbnR1aXRpdmEqKiBlICoqY29uc2lzdGVudGUqKiBubyBkaXJldMOzcmlvLCBjb21vIG8gbmEgZmlndXJhIHNlZ3VpbnRlLgoKYGBge3IgZWNobz1GQUxTRSxldmFsPVRSVUUsZmlnLmNhcD0gIlVtIGRpcmV0w7NyaW8gbWluaW1hbWVudGUgb3JnYW5pemFkbyJ9CmtuaXRyOjppbmNsdWRlX2dyYXBoaWNzKCJmaWdzL2RpcmVjdG9yeV9vcmcuanBnIikKYGBgCgpNYXMsIHF1YWwgYSBsw7NnaWNhIHBvciB0csOhcyBkYSBvcmdhbml6YcOnw6NvIGRlc3NlIGRpcmV0w7NyaW8/IFNlZ3VpbW9zIGEgcHJvcG9zdGEgcHJlc2VudGUgbmEgZmlndXJhIHNlZ3VpbnRlIFsob3JpZ2luYWwgcG9kZSBzZXIgdmlzdG8gYXF1aSldKGh0dHBzOi8vZG9jcy5nb29nbGUuY29tL3ByZXNlbnRhdGlvbi9kLzFQeDlOcGFfQU5xbW1makNYbzlBLWVCbVd6Z1VtbWtDS2Q3ZkJJcV9nRzZrL2VkaXQjc2xpZGU9aWQuZzYyZmM2YmY3MmZfMF83KS4gCgpOZXN0YSBwcm9wb3N0YSBvcyBhcnF1aXZvcyBkZW50cm8gZGUgdW0gcHJvamV0byBzw6NvIG9yZ2FuaXphZG9zIGVtIDQgcGFzdGFzIHF1ZSBjb250ZW1wbGFtIHF1YXNlIHRvZG9zIG9zIGRvY3VtZW50b3MgcXVlIGdlcmFtb3Mgb3UgcXVlIHByZWNpc2Ftb3MgcXVhbmRvIGVzdGFtb3MgZGVzZW52b2x2ZW5kbyB1bSBwcm9qZXRvIGNpZW50w61maWNvLgoKYGBge3IgZWNobz1GQUxTRSxldmFsPVRSVUUsZmlnLmNhcD0iVW0gbW9kZWxvIGdlcmFsIGRlIG9yZ2FuaXphw6fDo28gZG8gZGlyZXTDs3JpbyBsb2NhbCJ9CmtuaXRyOjppbmNsdWRlX2dyYXBoaWNzKCJmaWdzL3RlbXBsYXRlX2dlbmVyYWwuanBnIikKYGBgCgoKIyBOb21lYW5kbyBhcnF1aXZvcwoKQSBnb29kIHJ1bGUgaXM6IAoKKipIdW1hbiArIE1hY2hpbmUgcmVkYWJsZSoqCgpFeGFtcGxlOgoKYGBge3IgZWNobz1GQUxTRSxldmFsPUZBTFNFfQprbml0cjo6aW5jbHVkZV9ncmFwaGljcyhoZXJlOjpoZXJlKCJmaWd1cmVzIiwgIm5hbWluZy1maWxlcy1kYXRhLnBuZyIpKQpgYGAKCiMgTm9tZWFuZG8gc2NyaXB0cwoKUGVyc29uYWxseSwgSSB1c2UgdGhlIGZvbGxvd2luZyBydWxlCgoqKm51bWJlcl91cHBlci1jYXNlLWxldHRlcl9XaGF0LXRoZS1zY3JpcHQtZG9lcy5SKioKCi0gbnVtYmVyOiB1c2VkIHRvIGluZGljYXRlIHRoZSBzZXF1ZW5jZSB0byBydW4gdGhlIHNjcmlwdHMKCi0gdXBlciBjYXNlIGxldHRlcjogd2hhdCB0aGUgc2NyaXB0IGRvZXMgKHByb2NjZXNzLCBjbGVhbiwgYW5hbHlzaXMsIGZ1bmN0aW9uKQoKLSBXaGF0IHRoZSBzY3JpcHQgZG9lczogYSBicmllZiBkZXNjcmlwdGlvbiBvZiB3aGF0IHRoZSBzY3JpcHQgZG9lcwoKIyBPIFJFQURNRQoKTyBSRUFETUUgw6kgdW1hIGRhcyBwYXJ0ZXMgbWFpcyBpbXBvcnRhbnRlcyBkbyBzZXUgZGlyZXTDs3JpbywgZWxlIMOpIGVzY3JpdG8gZW0gY2FpeGEgYWx0YSBqdXN0YW1lbnRlIHBhcmEgcXVlIGEgcGVzc29hIHF1ZSBlc3RlamEgYWNlc3NzYW5kbyBvIHNldSBkaXJldMOzcmlvIG91w6dhIGEgc3VhIHZveiBncml0YW5kbyAqKk1lIGxlaWEgcG9yIGZhdm9yISEqKi4KCk5lc3RlIGFycXVpdm8gZGUgdGV4dG8gdm9jw6ogaXLDoSBlbmNvbnRyYXIgYXMgcHJpbmNpcGFpcyBpbnN0cnXDp8O1ZXMgc29icmUgYSBlc3RydXR1cmEgZG8gZGlyZXTDs3JpbywgaW5jbHVpbmRvIG9zIG5vbWVzIGRhcyBwZXNzb2FzIHF1ZSBtb250YXJhbSBvIGRpcmV0w7NyaW8sIGFsw6ltIGRlIGluc3RydcOnw7VlcyBiw6FzaWNhcyBzb2JyZSBvIHF1ZSBjb250w6ltIGVtIGNhZGEgcGFzdGEuIFtBcXVpIHZvY8OqIHBvZGUgZW5jb250cmFyIHVtIGV4ZW1wbG8gZGUgUkVBRE1FIGNvbnRlbmRvIGFzIGluZm9ybWHDp8O1ZXMgYsOhc2ljYXMgbmVjZXNzw6FyaWFzIHF1ZSBlbGUgZGV2ZSBjb250ZXIgZSBwb3JxdWVdKGh0dHBzOi8vd3d3Lm1ha2VhcmVhZG1lLmNvbS8pLiBbQXF1aSB1bSB0ZW1wbGF0ZSBxdWUgcG9kZSBzZXIgYWRhcHRhZG8gcGFyYSBvcyBzZXVzIHByb3DDs3NpdG9zXShodHRwczovL2dpdGh1Yi5jb20vamVobmEvcmVhZG1lLWJlc3QtcHJhY3RpY2VzL2Jsb2IvbWFzdGVyL1JFQURNRS1kZWZhdWx0Lm1kKS4gW0FxdWkgYWxndW1hcyBkaWNhcyBpbnRlcmVzc2FudGVzIGVtIHBvcnR1Z3XDqnNdKGh0dHBzOi8vYmxvZy5yb2NrZXRzZWF0LmNvbS5ici9jb21vLWZhemVyLXVtLWJvbS1yZWFkbWUvKS4KCsOJIGltcG9ydGFudGUgc2FiZXIgcXVlIHZvY8OqIG7Do28gaXLDoSBlbmNvbnRyYXIgYSByZXNwb3N0YSBmaW5hbCBwYXJhIG8gUkVBRE1FIHBlcmZlaXRvLiBPcyBkZXRhbGhlcyBkZSBjYWRhIFJFQURNRSB2w6NvIHZhcmlhciBkZXBlbmRlbmRvIGRvIHByb2pldG8gcXVlIGVzdMOhIGRlc2Vudm9sdmVuZG8gZSBhIGZvcm1hIGNvbW8gZWxlIGRldmUgc2VyIGFwcmVzZW50YWRvIGFvIHVzdcOhcmlvLiBQb3IgZXhlbXBsbywgc2UgbyBwcm9qZXRvIHNlIHRyYXRhIGRlIHVtIHJlcG9zaXTDs3JpbyBkZSBhcnF1aXZvcyBlIHNjcmlwdHMgZGUgdW0gbWFudXNjcml0bywgZSBuw6NvIGRlIHVtIFJFQURNRSBkZSB1bSBwcm9qZXRvIGRlIHNvZnR3YXJlLCBuw6NvIHByZWNpc2EgaGF2ZXIgYWxndW5zIGNhbXBvcyBkZSBleHBsaWNhw6fDo28sIHRhaXMgY29tbyBleGVtcGxvIGRlIHVzbyBvdSBhbnRpZ2FzIHZlcnPDtWVzIGRlIGxhbsOnYW1lbnRvLiBBcXVpIGNvbG9jbyB1bSBbKmNoZWNrbGlzdCogYWRhcHRhZG9dKGh0dHBzOi8vZ2l0aHViLmNvbS9oYWNrZXJncnJsL2FydC1vZi1yZWFkbWUvZWRpdC9tYXN0ZXIvUkVBRE1FLXB0LUJSLm1kKSBkZSBpdGVucyBxdWUganVsZ28gZXNzZW5jaWFpcyBwYXJhIHVtIFJFQURNRSBpbmZvcm1hdGl2by4gUGVuc2Ugbm8gc2V1IHRyYWJhbGhvLCBhZGljaW9uZSBvdSBlZGl0ZSBlc3NlIGNoZWNrbGlzdCBkZSBhY29yZG8gY29tIHNldXMgcHJvcMOzc2l0b3MuCgpNaW5oYSBwcm9wb3N0YSBkZSBjaGVja2xpc3Q6CgotIFsgXSBVbWEgbGluaGEgZXhwbGljYW5kbyBvIHByb3DDs3NpdG8gZG8gcmVwb3NpdMOzcmlvIAotIFsgXSBBdXRvcmVzIGRvIHJlcG9zaXTDs3JpbwotIFsgXSBMaWdhw6fDtWVzIGUgY29udGV4dHVhbGl6YcOnw7VlcyBuZWNlc3PDoXJpYXMgKHBvciBleGVtcGxvLCBzZSBvIHJlcG9zaXTDs3JpbyBlc3TDoSBsaW5rYWRvIGEgdW0gYXJ0aWdvKQotIFsgXSBiYWRnZXMgKG9wY2lvbmFsKQotIFsgXSBJbnN0cnXDp8O1ZXMgZGUgaW5zdGFsYcOnw6NvIChvdSBkb3dubG9hZCBzZSBmb3IgdW0gcmVwbykKLSBbIF0gRXhlbXBsbyBkZSB1dGlsaXphw6fDo28gY2xhcm8gZSAqZXhlY3V0w6F2ZWwqIChzZSBlc3RpdmVybW9zIGZhbGFuZG8gZGUgdW1hIGJhc2UgZGUgZGFkb3Mgb3UgcGFjb3RlKQotIFsgXSBFc3RydXR1cmEgZGUgcGFzdGFzIGUgc2NyaXB0cyAobyBxdWUgY2FkYSBwYXN0YSBjb250w6ltLCBvIHF1ZSBjYWRhIHNjcmlwdCBmYXopCi0gWyBdIFN0YXR1cyBkbyBwcm9qZXRvIChmaW5hbGl6YWRvL2VtIGFuZGFtZW50bykKLSBbIF0gRW0gY2FzbyBkZSBwcm9ibGVtYSBjb20gYWxnbyBubyByZXBvc2l0w7NyaW8sIGNvbW8gcmVwb3J0YXIKLSBbIF0gTGljZW7Dp2EKCiMgRmVycmFtZW50YXMgcGFyYSBvcmdhbml6YcOnw6NvIGRvIGRpcmV0w7NyaW8gbG9jYWwKClNvbWUgdG9vbHMgY2FuIGhlbHAgeW91IHRvIGdldCBhbiBhdXRvbWF0ZWQgc2NhZmZvbGQgZGlyZWN0b3J5IGZvciB5b3VyIHByb2plY3QsIGZvciBleGFtcGxlLCBzZWUgdGhpcyBvbmUgYnkgW0NhcmwgQm9ldHRpZ2VyXShodHRwczovL2dpdGh1Yi5jb20vY2JvZXR0aWcvdGVtcGxhdGUpLCBhbmQgdGhpcyBieSBbRnJhbmNpc2NvIFJvZHJpZ3Vlei1TYW5jaGV6XShodHRwczovL2dpdGh1Yi5jb20vUGFraWxsby90ZW1wbGF0ZSkuIEluIGVzc2VuY2UsIHlvdSB3aWxsIG5vdGljZSB0aGF0IHRoZSBzdHJ1Y3R1cmUgb2YgdGhlc2UgZGlyZWN0b3JpZXMgcmVzZW1ibGVzIHRoZSBzdHJ1Y3R1cmUgb2YgYW4gUiBwYWNrYWdlLgoKIyMgQ29uY2VpdG8gZGUgY2FtaW5ob3MgYWJzb2x1dG9zIGUgcmVsYXRpdm9zCgojIyBIZXJlCgpPIG1lbGhvciBwYWNvdGUgcGFyYSBvcmdhbml6YXIgY2FtaW5ob3MsIG8gaGVyZSEKCiMjIFJTdHVkaW8KCgoKYGBge3IgY2hpbGQ9Im1ldGFkYXRhX0VNTC5SbWQiLGV2YWw9VFJVRX0KYGBgCg==</div>
 
 
 </div>

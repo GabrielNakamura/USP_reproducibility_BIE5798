@@ -90,35 +90,6 @@ O melhor pacote para organizar caminhos, o here!
 ## RStudio
 
 
-# Metadados
 
-Os metadados consistem em explicações sobre a estrutura de dados. Por exemplo, o significado dos códigos ou abreviações presentes em uma data tabela, do que se trata a informação presente nas linhas e nas colunas, o que uma dada função faz. Reportar precisamente o que cada arquivo contém é de extrema importância para garantir com que outras pessoas, ou mesmo o você do futuro saiba o que foi/está sendo feito no projeto científico.
-
-
-# Usando o pacote EML - Ecological Metadata Language
-
-
-## Descrevendo os dados - Palmer Penguins
-
-
-
-# Referências importantes
-
-[Douglas McDonald website](https://www.douganddata.com/2022/07/on-naming-things/)
-
-[Jenny Bryan as always](http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf)
-
-[Hadley Wickham of course](http://adv-r.had.co.nz/Style.html)
-
-
-
-
-# Onde queremos chegar e onde estamos agora?
-
-```{r general, echo=FALSE, eval=TRUE}
-knitr::include_graphics(here::here("figs", "local-remote-general.png"))
-
+```{r child="metadata_EML.Rmd",eval=TRUE}
 ```
-
-
-
