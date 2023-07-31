@@ -5,6 +5,10 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
+```{r klippy, echo=FALSE, include=TRUE}
+klippy::klippy()
+```
+
 # Metadados
 
 Os metadados consistem em explicações sobre a estrutura de dados. Por exemplo, o significado dos códigos ou abreviações presentes em uma data tabela, do que se trata a informação presente nas linhas e nas colunas, o que uma dada função faz. Reportar precisamente o que cada arquivo contém é de extrema importância para garantir com que outras pessoas, ou mesmo o você do futuro saiba o que foi/está sendo feito no projeto científico.
@@ -263,8 +267,7 @@ see: http://www.lternet.edu/data/netpolicy.html."
 
 ### Criando o arquivo XML
 
-
-juntando tudo
+Agora que todas as informações foram criadas (atributos, dados físicos do arquivo, coverage, dados de contato), precisamos juntar todas elas em uma única lista.
 
 ```{r echo=TRUE,eval=FALSE}
 dataset <- list(
@@ -281,7 +284,7 @@ dataset <- list(
                dataTable = dataTable)
 ```
 
-Criando as informações do eml. Importante criar um uuid para o arquivo, como demosntrado a seguir. Para mais informações sobre o que é um uuid ver [esta explicação na Wikipedia](https://en.wikipedia.org/wiki/Universally_unique_identifier)
+Antes de criar o arquivo XML é importante criar um uuid para o arquivo, que nada mais é que um identificador que qualquer um pode criar, como demonstrado a seguir. Para mais informações sobre o que é um uuid ver [esta explicação no Wikipedia](https://en.wikipedia.org/wiki/Universally_unique_identifier)
 
 ```{r echo=TRUE,eval=FALSE}
 eml <- list(
@@ -290,8 +293,7 @@ eml <- list(
            dataset = dataset)
 ```
 
-
-Finalmente criando o arquivo eml e validando 
+Finalmente criando o arquivo XML e validando.
 
 ```{r echo=TRUE,eval=FALSE}
 write_eml(eml, here::here("data", "eml_tutorialHF205.xml"))
