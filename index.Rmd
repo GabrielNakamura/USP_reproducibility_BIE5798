@@ -63,17 +63,10 @@ Aqui algumas informações sobre os materiais utilizados durante esta aula, os p
 
 ## Dados
 
-Com o intuito de manter o foco na compreensão dos conceitos e processos que serão ensinados, preferimos utilizar um material único compartilhado com toda turma. Para tanto vamos utilizar um conjunto de dados chamado **Palmer Penguins**, e em apenas algumas situações utilizaremos um outro conjunto de dados para demonstrar a funcionalidade de outras ferramentas (targets e docker).
+Com o intuito de manter o foco na compreensão dos conceitos e processos que serão ensinados, preferimos utilizar um material único compartilhado com toda turma. Para tanto vamos utilizar conjuntos de dados disponíveis em outros tutoriais como o [Living Norway Project](https://livingnorway.github.io/LivingNorwayR/articles/LNWorkshopExample_TOV-E.html), os dados do pacote [EML](https://github.com/ropensci/EML/tree/master/inst/examples) e um conjunto de dados chamado **Palmer Penguins**. Todos os dados já estão presentes no repositório deste curso, portanto, tudo que você deve fazer é o download deste repositório para o seu computador.
 
-O Palmer Penguins é um conjunto de dados com informações sobre três espécies de pinguins (ilustrados na imagem abaixo). Estes dados foram elaborados com o intuito de ensinar visualização e exploração de dados e funciona como uma alternativa a famosa base de dados `iris`.
 
-```{r echo=FALSE,eval=TRUE}
-knitr::include_graphics("figs/lter_penguins.png")
-```
-
-Ao invés de utilizar diretamente o pacote `palmerpenguins`, pedimos que façam o download de uma tabela de dados extraída do pacote. Optamos por essa opção pois possibilita explorar algumas funcionalidades dentro do contexto de controle de versão e reprodutibilidade. 
-
-Para fazer o download da tabela é só clicar aqui
+Para fazer o download deste repositório é só clicar neste botão
 
 ```{r echo=FALSE,eval=TRUE}
 library(downloadthis)
