@@ -604,6 +604,7 @@ class="section level2">
 </div>
 <div id="rstudio" class="section level2">
 <h2>RStudio</h2>
+<!-- aqui a seção de metadata usando o EML -->
 <script>
   addClassKlippyTo("pre.r, pre.markdown");
   addKlippy('left', 'top', 'auto', '1', 'Copy code', 'Copied!');
@@ -917,11 +918,184 @@ explicação no Wikipedia</a></p>
 <p>Finalmente criando o arquivo XML e validando.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">write_eml</span>(eml, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;eml_tutorialHF205.xml&quot;</span>))</span>
 <span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="fu">eml_validate</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;eml_tutorialHF205.xml&quot;</span>))</span></code></pre></div>
+<!-- aqui a seção de metadata para dados de biodiversidade usando DwCore -->
+<script>
+  addClassKlippyTo("pre.r, pre.markdown");
+  addKlippy('left', 'top', 'auto', '1', 'Copy code', 'Copied!');
+</script>
 </div>
+</div>
+</div>
+<div id="metadados-para-dados-de-biodiversidade" class="section level1">
+<h1>Metadados para dados de biodiversidade</h1>
+<p>Se você ainda não passou pela seção de metadados usando o pacote EML,
+volte um pouco, por favor. Lá apresento uma introdução geral sobre
+metadados em XML e como montá-los usando o pacote EML no R. Aqui
+abordarei especificamente como montar arquivos com metadados para dados
+de biodiversidade (ocorrência, lista de espécies, pontos etc).</p>
+<div id="leituras-sugeridas-1" class="section level2">
+<h2>Leituras sugeridas</h2>
+<p>Esta seção é baseada no documento produzido pelo <a
+href="https://livingnorway.github.io/LivingNorwayR/articles/LNWorkshopExample_TOV-E.html">Living
+Norway Project</a>, que também oferece uma introdução muito interessante
+sobre Darwin Core e metadados para biodiversidade.</p>
+</div>
+<div id="exemplos-de-metadados-de-biodiversidade"
+class="section level2">
+<h2>Exemplos de metadados de biodiversidade</h2>
+<p>O melhor exemplo de esturutura digital que utiliza metadados de
+biodiversidade construídos desta maneira que mostrarei é o <a
+href="https://www.gbif.org/">GBIF</a>.</p>
+</div>
+</div>
+<div id="metadados-na-prática---utilizando-o-pacote-livingnorwayr"
+class="section level1">
+<h1>Metadados na prática - utilizando o pacote
+<code>{LivingNorwayR}</code></h1>
+<p>Primeiro vamos instalar o pacote</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;https://github.com/LivingNorway/LivingNorwayR&quot;</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="fu">library</span>(LivingNorwayR)</span></code></pre></div>
+<p>Aqui os dados que serão utilizados no exemplo. Estes são os mesmos
+dados utilizados no tuturial do Living Norway R. Para mais detalhes
+visite a <a
+href="https://livingnorway.github.io/LivingNorwayR/articles/LNWorkshopExample_TOV-E.html">página
+deles</a>.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>datasetURL <span class="ot">&lt;-</span> <span class="st">&quot;https://ipt.nina.no/archive.do?r=tove_birdsampling&quot;</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>localDataLoc <span class="ot">&lt;-</span> <span class="fu">file.path</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>), <span class="st">&quot;TOVEData.zip&quot;</span>) </span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="fu">download.file</span>(datasetURL, localDataLoc, <span class="at">mode =</span> <span class="st">&quot;wb&quot;</span>) <span class="co"># o arquivo foi para a pasta escolhida</span></span></code></pre></div>
+<a href="https://github.com/GabrielNakamura/USP_reproducibility_BIE5791">
+<button class="btn btn-danger"><i class="fa fa-save"></i> Download csv</button>
+</a>
+<p>Vamos utilizar um conjunto de dados que fizemos o download para criar
+nosso arquivo Darwin Core.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>TOVEArchive <span class="ot">&lt;-</span> <span class="fu">initializeDwCArchive</span>(localDataLoc, <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+<p>Obtendo o conjunto de dados central e exportar como um data frame</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># obtendo o dado</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>TOVEEventTable <span class="ot">&lt;-</span> TOVEArchive<span class="sc">$</span><span class="fu">getCoreTable</span>()</span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="fu">class</span>(TOVEEventTable)</span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="co"># Exportando como um dataframe</span></span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a>TOVEEventTableDF <span class="ot">&lt;-</span> TOVEEventTable<span class="sc">$</span><span class="fu">exportAsDataFrame</span>()</span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="co"># Lets look at the top few rows of the data frame extracted from the core data table</span></span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="fu">head</span>(TOVEEventTableDF)</span></code></pre></div>
+<p>Obtendo os arquivos extendidos</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co"># 1. Obtendo as tabelas de extensão</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>TOVEOccTable <span class="ot">&lt;-</span> TOVEArchive<span class="sc">$</span><span class="fu">getExtensionTables</span>(<span class="dv">1</span>)[[<span class="dv">1</span>]]</span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="co"># 2. Retrieve the extension table by using its name</span></span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a>TOVEOccTable <span class="ot">&lt;-</span> TOVEArchive<span class="sc">$</span><span class="fu">getExtensionTables</span>(<span class="st">&quot;occurrence&quot;</span>)[[<span class="dv">1</span>]]</span>
+<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a><span class="co"># The getExtensionTables functions returns a list of the data tables that are requested.  Therefore to extract just the first element of this list we need</span></span>
+<span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a><span class="co"># to use the extra &#39;[[1]]&#39; list extraction notation.</span></span>
+<span id="cb19-7"><a href="#cb19-7" tabindex="-1"></a><span class="co"># TOVEOccTable is an object of type GBIFOccurrence which is dervied from DwCGeneric</span></span>
+<span id="cb19-8"><a href="#cb19-8" tabindex="-1"></a><span class="fu">class</span>(TOVEOccTable)</span></code></pre></div>
+<p>Exportando o arquivo extendido, que nesse caso corresponde a
+ocorrências</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="co"># Exportando para um data frame</span></span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>TOVEOccTableDF <span class="ot">&lt;-</span> TOVEOccTable<span class="sc">$</span><span class="fu">exportAsDataFrame</span>()</span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a><span class="co"># Dê uma olhada..</span></span>
+<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a><span class="fu">head</span>(TOVEOccTableDF)</span></code></pre></div>
+<div id="construindo-um-xml-baseado-em-darwin-core"
+class="section level2">
+<h2>Construindo um XML baseado em Darwin Core</h2>
+<div id="construindo-o-metadado-para-a-tabela-de-eventos-core"
+class="section level3">
+<h3>Construindo o metadado para a tabela de eventos
+<strong>core</strong></h3>
+<p>Primeiro precisamos definir o que será a tabela <strong>core</strong>
+e o que serão as suas <strong>extensões</strong>, que por sua vez podem
+ser mapeadas a partir de atributos comuns presentes em ambas as tabelas
+(neste caso o ID).</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="co"># 1. Inicializando automaticamente - só funciona caso os nomes já estejam de acordo com o Darwin Core</span></span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a>newTOVEEventTable <span class="ot">&lt;-</span> <span class="fu">initializeGBIFEvent</span>(TOVEEventTableDF, <span class="st">&quot;id&quot;</span>, <span class="at">nameAutoMap =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a><span class="co"># 2. Iniciando manualmente - podemos usar o nome dos atributos que correspondem a cada categoria do Darwin Core. </span></span>
+<span id="cb21-5"><a href="#cb21-5" tabindex="-1"></a>    <span class="co"># podemos usar o nome ou o número da coluna</span></span>
+<span id="cb21-6"><a href="#cb21-6" tabindex="-1"></a>newTOVEEventTable <span class="ot">&lt;-</span> <span class="fu">initializeGBIFEvent</span>(TOVEEventTableDF, <span class="st">&quot;id&quot;</span>,</span>
+<span id="cb21-7"><a href="#cb21-7" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;type&quot;</span>,</span>
+<span id="cb21-8"><a href="#cb21-8" tabindex="-1"></a>  <span class="at">modified =</span> <span class="st">&quot;modified&quot;</span>,</span>
+<span id="cb21-9"><a href="#cb21-9" tabindex="-1"></a>  <span class="at">datasetName =</span> <span class="st">&quot;datasetName&quot;</span>,</span>
+<span id="cb21-10"><a href="#cb21-10" tabindex="-1"></a>  <span class="at">ownerInstitutionCode =</span> <span class="st">&quot;ownerInstitutionCode&quot;</span>,</span>
+<span id="cb21-11"><a href="#cb21-11" tabindex="-1"></a>  <span class="at">informationWithheld =</span> <span class="st">&quot;informationWithheld&quot;</span>,</span>
+<span id="cb21-12"><a href="#cb21-12" tabindex="-1"></a>  <span class="at">dataGeneralizations =</span> <span class="st">&quot;dataGeneralizations&quot;</span>,</span>
+<span id="cb21-13"><a href="#cb21-13" tabindex="-1"></a>  <span class="at">eventID =</span> <span class="st">&quot;eventID&quot;</span>,</span>
+<span id="cb21-14"><a href="#cb21-14" tabindex="-1"></a>  <span class="at">samplingProtocol =</span> <span class="st">&quot;samplingProtocol&quot;</span>,</span>
+<span id="cb21-15"><a href="#cb21-15" tabindex="-1"></a>  <span class="at">sampleSizeValue =</span> <span class="st">&quot;sampleSizeValue&quot;</span>,</span>
+<span id="cb21-16"><a href="#cb21-16" tabindex="-1"></a>  <span class="at">sampleSizeUnit =</span> <span class="st">&quot;sampleSizeUnit&quot;</span>,</span>
+<span id="cb21-17"><a href="#cb21-17" tabindex="-1"></a>  <span class="at">samplingEffort =</span> <span class="st">&quot;samplingEffort&quot;</span>,</span>
+<span id="cb21-18"><a href="#cb21-18" tabindex="-1"></a>  <span class="at">eventDate =</span> <span class="st">&quot;eventDate&quot;</span>,</span>
+<span id="cb21-19"><a href="#cb21-19" tabindex="-1"></a>  <span class="at">eventTime =</span> <span class="st">&quot;eventTime&quot;</span>,</span>
+<span id="cb21-20"><a href="#cb21-20" tabindex="-1"></a>  <span class="at">year =</span> <span class="st">&quot;year&quot;</span>,</span>
+<span id="cb21-21"><a href="#cb21-21" tabindex="-1"></a>  <span class="at">month =</span> <span class="st">&quot;month&quot;</span>,</span>
+<span id="cb21-22"><a href="#cb21-22" tabindex="-1"></a>  <span class="at">day =</span> <span class="st">&quot;day&quot;</span>,</span>
+<span id="cb21-23"><a href="#cb21-23" tabindex="-1"></a>  <span class="at">locationID =</span> <span class="st">&quot;locationID&quot;</span>,</span>
+<span id="cb21-24"><a href="#cb21-24" tabindex="-1"></a>  <span class="at">country =</span> <span class="st">&quot;country&quot;</span>,</span>
+<span id="cb21-25"><a href="#cb21-25" tabindex="-1"></a>  <span class="at">countryCode =</span> <span class="st">&quot;countryCode&quot;</span>,</span>
+<span id="cb21-26"><a href="#cb21-26" tabindex="-1"></a>  <span class="at">stateProvince =</span> <span class="st">&quot;stateProvince&quot;</span>,</span>
+<span id="cb21-27"><a href="#cb21-27" tabindex="-1"></a>  <span class="at">municipality =</span> <span class="st">&quot;municipality&quot;</span>,</span>
+<span id="cb21-28"><a href="#cb21-28" tabindex="-1"></a>  <span class="at">locality =</span> <span class="st">&quot;locality&quot;</span>,</span>
+<span id="cb21-29"><a href="#cb21-29" tabindex="-1"></a>  <span class="at">minimumElevationInMeters =</span> <span class="st">&quot;minimumElevationInMeters&quot;</span>,</span>
+<span id="cb21-30"><a href="#cb21-30" tabindex="-1"></a>  <span class="at">maximumElevationInMeters =</span> <span class="st">&quot;maximumElevationInMeters&quot;</span>,</span>
+<span id="cb21-31"><a href="#cb21-31" tabindex="-1"></a>  <span class="at">decimalLatitude =</span> <span class="st">&quot;decimalLatitude&quot;</span>,</span>
+<span id="cb21-32"><a href="#cb21-32" tabindex="-1"></a>  <span class="at">decimalLongitude =</span> <span class="st">&quot;decimalLongitude&quot;</span>,</span>
+<span id="cb21-33"><a href="#cb21-33" tabindex="-1"></a>  <span class="at">geodeticDatum =</span> <span class="st">&quot;geodeticDatum&quot;</span>,</span>
+<span id="cb21-34"><a href="#cb21-34" tabindex="-1"></a>  <span class="at">coordinateUncertaintyInMeters =</span> <span class="st">&quot;coordinateUncertaintyInMeters&quot;</span>)</span>
+<span id="cb21-35"><a href="#cb21-35" tabindex="-1"></a></span>
+<span id="cb21-36"><a href="#cb21-36" tabindex="-1"></a><span class="co"># Podemos checar se o mapeamento dos termos se deu corretamente</span></span>
+<span id="cb21-37"><a href="#cb21-37" tabindex="-1"></a>newTOVEEventTable<span class="sc">$</span><span class="fu">getTermMapping</span>()</span></code></pre></div>
+</div>
+<div id="construindo-os-metadados-para-as-extensões-da-tabela-core"
+class="section level3">
+<h3>Construindo os metadados para as extensões da tabela core</h3>
+<p>Neste caso a tabela a extensão que temos da tabela chave é a tabela
+de ocorrência de espécies. Vamos mapear ela da mesma forma que fizemos
+para a tabela core</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="co"># Função para inicialização da tabela</span></span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>newTOVEOccTable <span class="ot">&lt;-</span> <span class="fu">initializeGBIFOccurrence</span>(TOVEOccTableDF, <span class="st">&quot;id&quot;</span>, <span class="at">nameAutoMap =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a><span class="co"># Checando quais eventos foram mapeados na tabela, o que aparece com NA não foi mapeado, ou porque não existe ou porque tem o nome incorreto</span></span>
+<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a>newTOVEOccTable<span class="sc">$</span><span class="fu">getTermMapping</span>()</span></code></pre></div>
+</div>
+<div id="construindo-o-eml" class="section level3">
+<h3>Construindo o EML</h3>
+<p>O último elemento que precisamos para construir nossos metadados para
+os arquivos de biodiversidade que estamos utilizando é o arquivo EML,
+que vocês já conhecem. O EML pode ser criado de várias formas. Vimos
+anteriormente como criar um EML usando o pacote <code>{EML}</code>. O
+pacote <code>{LivingNorwayR}</code> oferece uma maneira simples de criar
+um arquivo XML usando um arquivo <code>.Rmd</code>, ou seja, usando o
+Rmarkdown. Vamos entender os detalhes de um arquivo do tipo Rmd mais
+adiante, por hora precisamos apenas saber que ele é um arquivo que
+permite mesclar textos e códigos, além de possibilitar criar tags para
+seções (Como os títulos num documento Word). Essas tags são utilizadas
+pelas funções do LivingNorwayR para criar o arquivo XML. Vale notar que
+isso é mais limitante que criar um XML usando o EML, mas para questões
+didáticas vamos usar um arquivo .Rmd pronto.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="co"># Apenas fazendo o download</span></span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="fu">download.file</span>(<span class="st">&quot;https://raw.githubusercontent.com/LivingNorway/LivingNorwayR/master/vignettes/LNWorkshopExample_TOV-E_Metadata.rmd&quot;</span>,</span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a>  <span class="fu">file.path</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;TOVEData&quot;</span>), <span class="st">&quot;LNWorkshopExample_Metadata.rmd&quot;</span>))</span>
+<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" tabindex="-1"></a>createdTOVEMetadata <span class="ot">&lt;-</span> <span class="fu">initializeDwCMetadata</span>(<span class="at">fileLocation =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;TOVEData&quot;</span>, <span class="st">&quot;LNWorkshopExample_Metadata.rmd&quot;</span>), <span class="at">fileType =</span> <span class="st">&quot;rmarkdown&quot;</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" tabindex="-1"></a><span class="co"># Exportando o EML</span></span>
+<span id="cb23-8"><a href="#cb23-8" tabindex="-1"></a>createdTOVEMetadata<span class="sc">$</span><span class="fu">exportToEML</span>(<span class="fu">file.path</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;TOVEData&quot;</span>), <span class="st">&quot;newMetadata.xml&quot;</span>))</span></code></pre></div>
+</div>
+</div>
+<div id="juntando-todos-os-arquivos" class="section level2">
+<h2>Juntando todos os arquivos</h2>
+<p>Agora temos os arquivos necessários para juntar em um único arquivo
+zipado que pode ser guardado localmente ou submetido em alguma
+plataforma de dados, por exemplo, GBIF, como ilustrado abaixo</p>
+<p><img src="figs/gibif-upload-zip.png" width="1275" /></p>
+<p>Para juntar todos os arquivos criados precisamos usar a seguinte
+função</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="co"># criando um único arquivo com todos os objetos criados anteriormente</span></span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>newTOVEArchive <span class="ot">&lt;-</span> <span class="fu">initializeDwCArchive</span>(newTOVEEventTable, <span class="fu">list</span>(newTOVEOccTable), newTOVEMetadata)</span></code></pre></div>
+<p>Para salvar o objeto .zip, que agora é nosso Darwin Core Archive,
+podemos fazer o seguinte</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>newTOVEArchive<span class="sc">$</span><span class="fu">exportAsDwCArchive</span>(<span class="fu">file.path</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;TOVEData&quot;</span>), <span class="st">&quot;newDwCArchive.zip&quot;</span>))</span></code></pre></div>
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiT3JnYW5pemFuZG8gbyBzZXUgdHJhYmFsaG8gbG9jYWxtZW50ZSIKYXV0aG9yOiAiR2FicmllbCBOYWthbXVyYSIKZGF0ZTogImByIFN5cy5EYXRlKClgIgpvdXRwdXQ6IGh0bWxfZG9jdW1lbnQKLS0tCgpgYGB7ciBzZXR1cCwgaW5jbHVkZT1GQUxTRX0Ka25pdHI6Om9wdHNfY2h1bmskc2V0KGVjaG8gPSBUUlVFKQpgYGAKCiMgT3JnYW5pemHDp8OjbyAtIHF1ZXN0w6NvIGRlIGVzdGlsbz8KCiJFdSBtZSBhY2hvIG5hIG1pbmhhIGJhZ3Vuw6dhIiwgcXVlbSBqw6Egb3V2aXUgZXNzYSBmcmFzZSwgb3UgasOhIHByb251bmNpb3U/IFByb3ZhdmVsbWVudGUgdG9kb3MgbsOzcy4gTWFzIG8gY29uY2VpdG8gZGUgKipvcmdhbml6YcOnw6NvKiogc2VyaWEgbWVzbW8gdW1hIHF1ZXN0w6NvIHBlc3NvYWw/IFBvZGVtb3MgZGlzY3V0aXIgaXNzbyBkdXJhbnRlIGhvcmFzIGEgZmlvIHNlIGVzdGl2ZXJtb3MgZmFsYW5kbyBkbyBzZXUgcXVhcnRvLCBkYSBzdWEgZXN0YW50ZSBvdSBkbyBzZXUgZ3VhcmRhLXJvdXBhLCBtYXMgcXVhbmRvIGZhbGFtb3MgZGUgY2nDqm5jaWEsIG91IHNlamEsIHVtYSBhdGl2aWRhZGUgY29sZXRpdmEsIG9yZ2FuaXphw6fDo28gKipuw6NvKiogw6kgdW1hIHF1ZXN0w6NvIHBlc3NvYWwsIGp1c3RhbWVudGUgcG9yIHNlciBjb2xldGl2YS4gU2VtcHJlIHRyYWJhbGhhbW9zIGVtIGNvbmp1bnRvLCBlIGlzc28gcG9kZSBzZXIgY29tIHVtIGdydXBvIGNvbXBvc3RvIHBvciBtdWl0YXMgcGVzc29hcyBxdWUgdHJhYmFsaGFtIGVtIHVtIGRldGVybWluYWRvIHByb2pldG8sIG91IHBvZGUgc2VyIGNvbnNpZ28gbWVzbW8sIG8gc2V1IGV1IGRvIGZ1dHVyby4gRGVzdGEgbWFuZWlyYSwgw6kgbmVjZXNzw6FyaW8gcXVlIHR1ZG8gcXVlIGZvaSB1dGlsaXphZG8gcGFyYSBvIGRlc2Vudm9sdmltZW50byBkbyBzZXUgcHJvamV0byBjaWVudMOtZmljbyBzZWphIGRlIGbDoWNpbCBjb21wcmVlbnPDo28gcGFyYSBzZXVzIGNvbGFib3JhZG9yZXMgb3UgcGFyYSBvIHNldSAiZXUiIGRvIGZ1dHVyby4gCgojIyBVbSBlc3F1ZW1hIGdlcmFsIChtYXMgbsOjbyBhYnNvbHV0bykgcGFyYSBvcmdhbml6YcOnw6NvIGRvIGRpcmV0w7NyaW8gbG9jYWwKCk5lc3NhIHNlw6fDo28gaXJlaSBtb3N0cmFyIHVtYSBwcm9wb3N0YSBkZSBlc3F1ZW1hIGdlcmFsIHBhcmEgb3JnYW5pemHDp8OjbyBkZSBkaXJldMOzcmlvcy4gRXNzYSBlc3RydXR1cmEgw6kgYmFzZWFkYSBuZXN0YSBwcm9wb3N0YSBkbyBbR3VzdGF2byBQYXRlcm5vXShodHRwczovL2RvY3MuZ29vZ2xlLmNvbS9wcmVzZW50YXRpb24vZC8xUHg5TnBhX0FOcW1tZmpDWG85QS1lQm1XemdVbW1rQ0tkN2ZCSXFfZ0c2ay9lZGl0I3NsaWRlPWlkLmc2MmZjNmJmNzJmXzBfMTk2KS4KCkRpZ28gcXVlIG7Do28gw6kgYWJzb2x1dG8gcG9pcyBtb2RpZmljYcOnw7VlcyBuZXNzZSBlc3F1ZW1hIHBvZGVtIHNlciBmZWl0YSBwYXJhIGFqdXN0YXIgYW8gY29uanVudG8gZGUgZGFkb3MgZGUgY2FkYSBwZXNzb2EuIEEgRWNvbG9naWEgw6kgdW0gY2FtcG8gbXVpdG8gYW1wbG8gZGUgcGVzcXVpc2EsIGUgbmVtIHRvZG9zIG9zIGRhZG9zIHNlIGFqdXN0YXLDo28gcGVyZmVpdGFtZW50ZSBhIGVzdGEgcHJvcG9zdGEuIE8gbWFpcyBpbXBvcnRhbnRlIGRlIHR1ZG8gw6kgcXVlIG9zIGRhZG9zIGVzdGVqYW0gb3JnYW5pemFkb3MgZGUgdW1hIG1hbmVpcmEgKippbnR1aXRpdmEqKiBlICoqY29uc2lzdGVudGUqKiBubyBkaXJldMOzcmlvLCBjb21vIG8gbmEgZmlndXJhIHNlZ3VpbnRlLgoKYGBge3IgZWNobz1GQUxTRSxldmFsPVRSVUUsZmlnLmNhcD0gIlVtIGRpcmV0w7NyaW8gbWluaW1hbWVudGUgb3JnYW5pemFkbyJ9CmtuaXRyOjppbmNsdWRlX2dyYXBoaWNzKCJmaWdzL2RpcmVjdG9yeV9vcmcuanBnIikKYGBgCgpNYXMsIHF1YWwgYSBsw7NnaWNhIHBvciB0csOhcyBkYSBvcmdhbml6YcOnw6NvIGRlc3NlIGRpcmV0w7NyaW8/IFNlZ3VpbW9zIGEgcHJvcG9zdGEgcHJlc2VudGUgbmEgZmlndXJhIHNlZ3VpbnRlIFsob3JpZ2luYWwgcG9kZSBzZXIgdmlzdG8gYXF1aSldKGh0dHBzOi8vZG9jcy5nb29nbGUuY29tL3ByZXNlbnRhdGlvbi9kLzFQeDlOcGFfQU5xbW1makNYbzlBLWVCbVd6Z1VtbWtDS2Q3ZkJJcV9nRzZrL2VkaXQjc2xpZGU9aWQuZzYyZmM2YmY3MmZfMF83KS4gCgpOZXN0YSBwcm9wb3N0YSBvcyBhcnF1aXZvcyBkZW50cm8gZGUgdW0gcHJvamV0byBzw6NvIG9yZ2FuaXphZG9zIGVtIDQgcGFzdGFzIHF1ZSBjb250ZW1wbGFtIHF1YXNlIHRvZG9zIG9zIGRvY3VtZW50b3MgcXVlIGdlcmFtb3Mgb3UgcXVlIHByZWNpc2Ftb3MgcXVhbmRvIGVzdGFtb3MgZGVzZW52b2x2ZW5kbyB1bSBwcm9qZXRvIGNpZW50w61maWNvLgoKYGBge3IgZWNobz1GQUxTRSxldmFsPVRSVUUsZmlnLmNhcD0iVW0gbW9kZWxvIGdlcmFsIGRlIG9yZ2FuaXphw6fDo28gZG8gZGlyZXTDs3JpbyBsb2NhbCJ9CmtuaXRyOjppbmNsdWRlX2dyYXBoaWNzKCJmaWdzL3RlbXBsYXRlX2dlbmVyYWwuanBnIikKYGBgCgoKIyBOb21lYW5kbyBhcnF1aXZvcwoKQSBnb29kIHJ1bGUgaXM6IAoKKipIdW1hbiArIE1hY2hpbmUgcmVkYWJsZSoqCgpFeGFtcGxlOgoKYGBge3IgZWNobz1GQUxTRSxldmFsPUZBTFNFfQprbml0cjo6aW5jbHVkZV9ncmFwaGljcyhoZXJlOjpoZXJlKCJmaWd1cmVzIiwgIm5hbWluZy1maWxlcy1kYXRhLnBuZyIpKQpgYGAKCiMgTm9tZWFuZG8gc2NyaXB0cwoKUGVyc29uYWxseSwgSSB1c2UgdGhlIGZvbGxvd2luZyBydWxlCgoqKm51bWJlcl91cHBlci1jYXNlLWxldHRlcl9XaGF0LXRoZS1zY3JpcHQtZG9lcy5SKioKCi0gbnVtYmVyOiB1c2VkIHRvIGluZGljYXRlIHRoZSBzZXF1ZW5jZSB0byBydW4gdGhlIHNjcmlwdHMKCi0gdXBlciBjYXNlIGxldHRlcjogd2hhdCB0aGUgc2NyaXB0IGRvZXMgKHByb2NjZXNzLCBjbGVhbiwgYW5hbHlzaXMsIGZ1bmN0aW9uKQoKLSBXaGF0IHRoZSBzY3JpcHQgZG9lczogYSBicmllZiBkZXNjcmlwdGlvbiBvZiB3aGF0IHRoZSBzY3JpcHQgZG9lcwoKIyBPIFJFQURNRQoKTyBSRUFETUUgw6kgdW1hIGRhcyBwYXJ0ZXMgbWFpcyBpbXBvcnRhbnRlcyBkbyBzZXUgZGlyZXTDs3JpbywgZWxlIMOpIGVzY3JpdG8gZW0gY2FpeGEgYWx0YSBqdXN0YW1lbnRlIHBhcmEgcXVlIGEgcGVzc29hIHF1ZSBlc3RlamEgYWNlc3NzYW5kbyBvIHNldSBkaXJldMOzcmlvIG91w6dhIGEgc3VhIHZveiBncml0YW5kbyAqKk1lIGxlaWEgcG9yIGZhdm9yISEqKi4KCk5lc3RlIGFycXVpdm8gZGUgdGV4dG8gdm9jw6ogaXLDoSBlbmNvbnRyYXIgYXMgcHJpbmNpcGFpcyBpbnN0cnXDp8O1ZXMgc29icmUgYSBlc3RydXR1cmEgZG8gZGlyZXTDs3JpbywgaW5jbHVpbmRvIG9zIG5vbWVzIGRhcyBwZXNzb2FzIHF1ZSBtb250YXJhbSBvIGRpcmV0w7NyaW8sIGFsw6ltIGRlIGluc3RydcOnw7VlcyBiw6FzaWNhcyBzb2JyZSBvIHF1ZSBjb250w6ltIGVtIGNhZGEgcGFzdGEuIFtBcXVpIHZvY8OqIHBvZGUgZW5jb250cmFyIHVtIGV4ZW1wbG8gZGUgUkVBRE1FIGNvbnRlbmRvIGFzIGluZm9ybWHDp8O1ZXMgYsOhc2ljYXMgbmVjZXNzw6FyaWFzIHF1ZSBlbGUgZGV2ZSBjb250ZXIgZSBwb3JxdWVdKGh0dHBzOi8vd3d3Lm1ha2VhcmVhZG1lLmNvbS8pLiBbQXF1aSB1bSB0ZW1wbGF0ZSBxdWUgcG9kZSBzZXIgYWRhcHRhZG8gcGFyYSBvcyBzZXVzIHByb3DDs3NpdG9zXShodHRwczovL2dpdGh1Yi5jb20vamVobmEvcmVhZG1lLWJlc3QtcHJhY3RpY2VzL2Jsb2IvbWFzdGVyL1JFQURNRS1kZWZhdWx0Lm1kKS4gW0FxdWkgYWxndW1hcyBkaWNhcyBpbnRlcmVzc2FudGVzIGVtIHBvcnR1Z3XDqnNdKGh0dHBzOi8vYmxvZy5yb2NrZXRzZWF0LmNvbS5ici9jb21vLWZhemVyLXVtLWJvbS1yZWFkbWUvKS4KCsOJIGltcG9ydGFudGUgc2FiZXIgcXVlIHZvY8OqIG7Do28gaXLDoSBlbmNvbnRyYXIgYSByZXNwb3N0YSBmaW5hbCBwYXJhIG8gUkVBRE1FIHBlcmZlaXRvLiBPcyBkZXRhbGhlcyBkZSBjYWRhIFJFQURNRSB2w6NvIHZhcmlhciBkZXBlbmRlbmRvIGRvIHByb2pldG8gcXVlIGVzdMOhIGRlc2Vudm9sdmVuZG8gZSBhIGZvcm1hIGNvbW8gZWxlIGRldmUgc2VyIGFwcmVzZW50YWRvIGFvIHVzdcOhcmlvLiBQb3IgZXhlbXBsbywgc2UgbyBwcm9qZXRvIHNlIHRyYXRhIGRlIHVtIHJlcG9zaXTDs3JpbyBkZSBhcnF1aXZvcyBlIHNjcmlwdHMgZGUgdW0gbWFudXNjcml0bywgZSBuw6NvIGRlIHVtIFJFQURNRSBkZSB1bSBwcm9qZXRvIGRlIHNvZnR3YXJlLCBuw6NvIHByZWNpc2EgaGF2ZXIgYWxndW5zIGNhbXBvcyBkZSBleHBsaWNhw6fDo28sIHRhaXMgY29tbyBleGVtcGxvIGRlIHVzbyBvdSBhbnRpZ2FzIHZlcnPDtWVzIGRlIGxhbsOnYW1lbnRvLiBBcXVpIGNvbG9jbyB1bSBbKmNoZWNrbGlzdCogYWRhcHRhZG9dKGh0dHBzOi8vZ2l0aHViLmNvbS9oYWNrZXJncnJsL2FydC1vZi1yZWFkbWUvZWRpdC9tYXN0ZXIvUkVBRE1FLXB0LUJSLm1kKSBkZSBpdGVucyBxdWUganVsZ28gZXNzZW5jaWFpcyBwYXJhIHVtIFJFQURNRSBpbmZvcm1hdGl2by4gUGVuc2Ugbm8gc2V1IHRyYWJhbGhvLCBhZGljaW9uZSBvdSBlZGl0ZSBlc3NlIGNoZWNrbGlzdCBkZSBhY29yZG8gY29tIHNldXMgcHJvcMOzc2l0b3MuCgpNaW5oYSBwcm9wb3N0YSBkZSBjaGVja2xpc3Q6CgotIFsgXSBVbWEgbGluaGEgZXhwbGljYW5kbyBvIHByb3DDs3NpdG8gZG8gcmVwb3NpdMOzcmlvIAotIFsgXSBBdXRvcmVzIGRvIHJlcG9zaXTDs3JpbwotIFsgXSBMaWdhw6fDtWVzIGUgY29udGV4dHVhbGl6YcOnw7VlcyBuZWNlc3PDoXJpYXMgKHBvciBleGVtcGxvLCBzZSBvIHJlcG9zaXTDs3JpbyBlc3TDoSBsaW5rYWRvIGEgdW0gYXJ0aWdvKQotIFsgXSBiYWRnZXMgKG9wY2lvbmFsKQotIFsgXSBJbnN0cnXDp8O1ZXMgZGUgaW5zdGFsYcOnw6NvIChvdSBkb3dubG9hZCBzZSBmb3IgdW0gcmVwbykKLSBbIF0gRXhlbXBsbyBkZSB1dGlsaXphw6fDo28gY2xhcm8gZSAqZXhlY3V0w6F2ZWwqIChzZSBlc3RpdmVybW9zIGZhbGFuZG8gZGUgdW1hIGJhc2UgZGUgZGFkb3Mgb3UgcGFjb3RlKQotIFsgXSBFc3RydXR1cmEgZGUgcGFzdGFzIGUgc2NyaXB0cyAobyBxdWUgY2FkYSBwYXN0YSBjb250w6ltLCBvIHF1ZSBjYWRhIHNjcmlwdCBmYXopCi0gWyBdIFN0YXR1cyBkbyBwcm9qZXRvIChmaW5hbGl6YWRvL2VtIGFuZGFtZW50bykKLSBbIF0gRW0gY2FzbyBkZSBwcm9ibGVtYSBjb20gYWxnbyBubyByZXBvc2l0w7NyaW8sIGNvbW8gcmVwb3J0YXIKLSBbIF0gTGljZW7Dp2EKCiMgRmVycmFtZW50YXMgcGFyYSBvcmdhbml6YcOnw6NvIGRvIGRpcmV0w7NyaW8gbG9jYWwKClNvbWUgdG9vbHMgY2FuIGhlbHAgeW91IHRvIGdldCBhbiBhdXRvbWF0ZWQgc2NhZmZvbGQgZGlyZWN0b3J5IGZvciB5b3VyIHByb2plY3QsIGZvciBleGFtcGxlLCBzZWUgdGhpcyBvbmUgYnkgW0NhcmwgQm9ldHRpZ2VyXShodHRwczovL2dpdGh1Yi5jb20vY2JvZXR0aWcvdGVtcGxhdGUpLCBhbmQgdGhpcyBieSBbRnJhbmNpc2NvIFJvZHJpZ3Vlei1TYW5jaGV6XShodHRwczovL2dpdGh1Yi5jb20vUGFraWxsby90ZW1wbGF0ZSkuIEluIGVzc2VuY2UsIHlvdSB3aWxsIG5vdGljZSB0aGF0IHRoZSBzdHJ1Y3R1cmUgb2YgdGhlc2UgZGlyZWN0b3JpZXMgcmVzZW1ibGVzIHRoZSBzdHJ1Y3R1cmUgb2YgYW4gUiBwYWNrYWdlLgoKIyMgQ29uY2VpdG8gZGUgY2FtaW5ob3MgYWJzb2x1dG9zIGUgcmVsYXRpdm9zCgojIyBIZXJlCgpPIG1lbGhvciBwYWNvdGUgcGFyYSBvcmdhbml6YXIgY2FtaW5ob3MsIG8gaGVyZSEKCiMjIFJTdHVkaW8KCgoKYGBge3IgY2hpbGQ9Im1ldGFkYXRhX0VNTC5SbWQiLGV2YWw9VFJVRX0KYGBgCg==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiT3JnYW5pemFuZG8gbyBzZXUgdHJhYmFsaG8gbG9jYWxtZW50ZSIKYXV0aG9yOiAiR2FicmllbCBOYWthbXVyYSIKZGF0ZTogImByIFN5cy5EYXRlKClgIgpvdXRwdXQ6IGh0bWxfZG9jdW1lbnQKLS0tCgpgYGB7ciBzZXR1cCwgaW5jbHVkZT1GQUxTRX0Ka25pdHI6Om9wdHNfY2h1bmskc2V0KGVjaG8gPSBUUlVFKQpgYGAKCiMgT3JnYW5pemHDp8OjbyAtIHF1ZXN0w6NvIGRlIGVzdGlsbz8KCiJFdSBtZSBhY2hvIG5hIG1pbmhhIGJhZ3Vuw6dhIiwgcXVlbSBqw6Egb3V2aXUgZXNzYSBmcmFzZSwgb3UgasOhIHByb251bmNpb3U/IFByb3ZhdmVsbWVudGUgdG9kb3MgbsOzcy4gTWFzIG8gY29uY2VpdG8gZGUgKipvcmdhbml6YcOnw6NvKiogc2VyaWEgbWVzbW8gdW1hIHF1ZXN0w6NvIHBlc3NvYWw/IFBvZGVtb3MgZGlzY3V0aXIgaXNzbyBkdXJhbnRlIGhvcmFzIGEgZmlvIHNlIGVzdGl2ZXJtb3MgZmFsYW5kbyBkbyBzZXUgcXVhcnRvLCBkYSBzdWEgZXN0YW50ZSBvdSBkbyBzZXUgZ3VhcmRhLXJvdXBhLCBtYXMgcXVhbmRvIGZhbGFtb3MgZGUgY2nDqm5jaWEsIG91IHNlamEsIHVtYSBhdGl2aWRhZGUgY29sZXRpdmEsIG9yZ2FuaXphw6fDo28gKipuw6NvKiogw6kgdW1hIHF1ZXN0w6NvIHBlc3NvYWwsIGp1c3RhbWVudGUgcG9yIHNlciBjb2xldGl2YS4gU2VtcHJlIHRyYWJhbGhhbW9zIGVtIGNvbmp1bnRvLCBlIGlzc28gcG9kZSBzZXIgY29tIHVtIGdydXBvIGNvbXBvc3RvIHBvciBtdWl0YXMgcGVzc29hcyBxdWUgdHJhYmFsaGFtIGVtIHVtIGRldGVybWluYWRvIHByb2pldG8sIG91IHBvZGUgc2VyIGNvbnNpZ28gbWVzbW8sIG8gc2V1IGV1IGRvIGZ1dHVyby4gRGVzdGEgbWFuZWlyYSwgw6kgbmVjZXNzw6FyaW8gcXVlIHR1ZG8gcXVlIGZvaSB1dGlsaXphZG8gcGFyYSBvIGRlc2Vudm9sdmltZW50byBkbyBzZXUgcHJvamV0byBjaWVudMOtZmljbyBzZWphIGRlIGbDoWNpbCBjb21wcmVlbnPDo28gcGFyYSBzZXVzIGNvbGFib3JhZG9yZXMgb3UgcGFyYSBvIHNldSAiZXUiIGRvIGZ1dHVyby4gCgojIyBVbSBlc3F1ZW1hIGdlcmFsIChtYXMgbsOjbyBhYnNvbHV0bykgcGFyYSBvcmdhbml6YcOnw6NvIGRvIGRpcmV0w7NyaW8gbG9jYWwKCk5lc3NhIHNlw6fDo28gaXJlaSBtb3N0cmFyIHVtYSBwcm9wb3N0YSBkZSBlc3F1ZW1hIGdlcmFsIHBhcmEgb3JnYW5pemHDp8OjbyBkZSBkaXJldMOzcmlvcy4gRXNzYSBlc3RydXR1cmEgw6kgYmFzZWFkYSBuZXN0YSBwcm9wb3N0YSBkbyBbR3VzdGF2byBQYXRlcm5vXShodHRwczovL2RvY3MuZ29vZ2xlLmNvbS9wcmVzZW50YXRpb24vZC8xUHg5TnBhX0FOcW1tZmpDWG85QS1lQm1XemdVbW1rQ0tkN2ZCSXFfZ0c2ay9lZGl0I3NsaWRlPWlkLmc2MmZjNmJmNzJmXzBfMTk2KS4KCkRpZ28gcXVlIG7Do28gw6kgYWJzb2x1dG8gcG9pcyBtb2RpZmljYcOnw7VlcyBuZXNzZSBlc3F1ZW1hIHBvZGVtIHNlciBmZWl0YSBwYXJhIGFqdXN0YXIgYW8gY29uanVudG8gZGUgZGFkb3MgZGUgY2FkYSBwZXNzb2EuIEEgRWNvbG9naWEgw6kgdW0gY2FtcG8gbXVpdG8gYW1wbG8gZGUgcGVzcXVpc2EsIGUgbmVtIHRvZG9zIG9zIGRhZG9zIHNlIGFqdXN0YXLDo28gcGVyZmVpdGFtZW50ZSBhIGVzdGEgcHJvcG9zdGEuIE8gbWFpcyBpbXBvcnRhbnRlIGRlIHR1ZG8gw6kgcXVlIG9zIGRhZG9zIGVzdGVqYW0gb3JnYW5pemFkb3MgZGUgdW1hIG1hbmVpcmEgKippbnR1aXRpdmEqKiBlICoqY29uc2lzdGVudGUqKiBubyBkaXJldMOzcmlvLCBjb21vIG8gbmEgZmlndXJhIHNlZ3VpbnRlLgoKYGBge3IgZWNobz1GQUxTRSxldmFsPVRSVUUsZmlnLmNhcD0gIlVtIGRpcmV0w7NyaW8gbWluaW1hbWVudGUgb3JnYW5pemFkbyJ9CmtuaXRyOjppbmNsdWRlX2dyYXBoaWNzKCJmaWdzL2RpcmVjdG9yeV9vcmcuanBnIikKYGBgCgpNYXMsIHF1YWwgYSBsw7NnaWNhIHBvciB0csOhcyBkYSBvcmdhbml6YcOnw6NvIGRlc3NlIGRpcmV0w7NyaW8/IFNlZ3VpbW9zIGEgcHJvcG9zdGEgcHJlc2VudGUgbmEgZmlndXJhIHNlZ3VpbnRlIFsob3JpZ2luYWwgcG9kZSBzZXIgdmlzdG8gYXF1aSldKGh0dHBzOi8vZG9jcy5nb29nbGUuY29tL3ByZXNlbnRhdGlvbi9kLzFQeDlOcGFfQU5xbW1makNYbzlBLWVCbVd6Z1VtbWtDS2Q3ZkJJcV9nRzZrL2VkaXQjc2xpZGU9aWQuZzYyZmM2YmY3MmZfMF83KS4gCgpOZXN0YSBwcm9wb3N0YSBvcyBhcnF1aXZvcyBkZW50cm8gZGUgdW0gcHJvamV0byBzw6NvIG9yZ2FuaXphZG9zIGVtIDQgcGFzdGFzIHF1ZSBjb250ZW1wbGFtIHF1YXNlIHRvZG9zIG9zIGRvY3VtZW50b3MgcXVlIGdlcmFtb3Mgb3UgcXVlIHByZWNpc2Ftb3MgcXVhbmRvIGVzdGFtb3MgZGVzZW52b2x2ZW5kbyB1bSBwcm9qZXRvIGNpZW50w61maWNvLgoKYGBge3IgZWNobz1GQUxTRSxldmFsPVRSVUUsZmlnLmNhcD0iVW0gbW9kZWxvIGdlcmFsIGRlIG9yZ2FuaXphw6fDo28gZG8gZGlyZXTDs3JpbyBsb2NhbCJ9CmtuaXRyOjppbmNsdWRlX2dyYXBoaWNzKCJmaWdzL3RlbXBsYXRlX2dlbmVyYWwuanBnIikKYGBgCgoKIyBOb21lYW5kbyBhcnF1aXZvcwoKQSBnb29kIHJ1bGUgaXM6IAoKKipIdW1hbiArIE1hY2hpbmUgcmVkYWJsZSoqCgpFeGFtcGxlOgoKYGBge3IgZWNobz1GQUxTRSxldmFsPUZBTFNFfQprbml0cjo6aW5jbHVkZV9ncmFwaGljcyhoZXJlOjpoZXJlKCJmaWd1cmVzIiwgIm5hbWluZy1maWxlcy1kYXRhLnBuZyIpKQpgYGAKCiMgTm9tZWFuZG8gc2NyaXB0cwoKUGVyc29uYWxseSwgSSB1c2UgdGhlIGZvbGxvd2luZyBydWxlCgoqKm51bWJlcl91cHBlci1jYXNlLWxldHRlcl9XaGF0LXRoZS1zY3JpcHQtZG9lcy5SKioKCi0gbnVtYmVyOiB1c2VkIHRvIGluZGljYXRlIHRoZSBzZXF1ZW5jZSB0byBydW4gdGhlIHNjcmlwdHMKCi0gdXBlciBjYXNlIGxldHRlcjogd2hhdCB0aGUgc2NyaXB0IGRvZXMgKHByb2NjZXNzLCBjbGVhbiwgYW5hbHlzaXMsIGZ1bmN0aW9uKQoKLSBXaGF0IHRoZSBzY3JpcHQgZG9lczogYSBicmllZiBkZXNjcmlwdGlvbiBvZiB3aGF0IHRoZSBzY3JpcHQgZG9lcwoKIyBPIFJFQURNRQoKTyBSRUFETUUgw6kgdW1hIGRhcyBwYXJ0ZXMgbWFpcyBpbXBvcnRhbnRlcyBkbyBzZXUgZGlyZXTDs3JpbywgZWxlIMOpIGVzY3JpdG8gZW0gY2FpeGEgYWx0YSBqdXN0YW1lbnRlIHBhcmEgcXVlIGEgcGVzc29hIHF1ZSBlc3RlamEgYWNlc3NzYW5kbyBvIHNldSBkaXJldMOzcmlvIG91w6dhIGEgc3VhIHZveiBncml0YW5kbyAqKk1lIGxlaWEgcG9yIGZhdm9yISEqKi4KCk5lc3RlIGFycXVpdm8gZGUgdGV4dG8gdm9jw6ogaXLDoSBlbmNvbnRyYXIgYXMgcHJpbmNpcGFpcyBpbnN0cnXDp8O1ZXMgc29icmUgYSBlc3RydXR1cmEgZG8gZGlyZXTDs3JpbywgaW5jbHVpbmRvIG9zIG5vbWVzIGRhcyBwZXNzb2FzIHF1ZSBtb250YXJhbSBvIGRpcmV0w7NyaW8sIGFsw6ltIGRlIGluc3RydcOnw7VlcyBiw6FzaWNhcyBzb2JyZSBvIHF1ZSBjb250w6ltIGVtIGNhZGEgcGFzdGEuIFtBcXVpIHZvY8OqIHBvZGUgZW5jb250cmFyIHVtIGV4ZW1wbG8gZGUgUkVBRE1FIGNvbnRlbmRvIGFzIGluZm9ybWHDp8O1ZXMgYsOhc2ljYXMgbmVjZXNzw6FyaWFzIHF1ZSBlbGUgZGV2ZSBjb250ZXIgZSBwb3JxdWVdKGh0dHBzOi8vd3d3Lm1ha2VhcmVhZG1lLmNvbS8pLiBbQXF1aSB1bSB0ZW1wbGF0ZSBxdWUgcG9kZSBzZXIgYWRhcHRhZG8gcGFyYSBvcyBzZXVzIHByb3DDs3NpdG9zXShodHRwczovL2dpdGh1Yi5jb20vamVobmEvcmVhZG1lLWJlc3QtcHJhY3RpY2VzL2Jsb2IvbWFzdGVyL1JFQURNRS1kZWZhdWx0Lm1kKS4gW0FxdWkgYWxndW1hcyBkaWNhcyBpbnRlcmVzc2FudGVzIGVtIHBvcnR1Z3XDqnNdKGh0dHBzOi8vYmxvZy5yb2NrZXRzZWF0LmNvbS5ici9jb21vLWZhemVyLXVtLWJvbS1yZWFkbWUvKS4KCsOJIGltcG9ydGFudGUgc2FiZXIgcXVlIHZvY8OqIG7Do28gaXLDoSBlbmNvbnRyYXIgYSByZXNwb3N0YSBmaW5hbCBwYXJhIG8gUkVBRE1FIHBlcmZlaXRvLiBPcyBkZXRhbGhlcyBkZSBjYWRhIFJFQURNRSB2w6NvIHZhcmlhciBkZXBlbmRlbmRvIGRvIHByb2pldG8gcXVlIGVzdMOhIGRlc2Vudm9sdmVuZG8gZSBhIGZvcm1hIGNvbW8gZWxlIGRldmUgc2VyIGFwcmVzZW50YWRvIGFvIHVzdcOhcmlvLiBQb3IgZXhlbXBsbywgc2UgbyBwcm9qZXRvIHNlIHRyYXRhIGRlIHVtIHJlcG9zaXTDs3JpbyBkZSBhcnF1aXZvcyBlIHNjcmlwdHMgZGUgdW0gbWFudXNjcml0bywgZSBuw6NvIGRlIHVtIFJFQURNRSBkZSB1bSBwcm9qZXRvIGRlIHNvZnR3YXJlLCBuw6NvIHByZWNpc2EgaGF2ZXIgYWxndW5zIGNhbXBvcyBkZSBleHBsaWNhw6fDo28sIHRhaXMgY29tbyBleGVtcGxvIGRlIHVzbyBvdSBhbnRpZ2FzIHZlcnPDtWVzIGRlIGxhbsOnYW1lbnRvLiBBcXVpIGNvbG9jbyB1bSBbKmNoZWNrbGlzdCogYWRhcHRhZG9dKGh0dHBzOi8vZ2l0aHViLmNvbS9oYWNrZXJncnJsL2FydC1vZi1yZWFkbWUvZWRpdC9tYXN0ZXIvUkVBRE1FLXB0LUJSLm1kKSBkZSBpdGVucyBxdWUganVsZ28gZXNzZW5jaWFpcyBwYXJhIHVtIFJFQURNRSBpbmZvcm1hdGl2by4gUGVuc2Ugbm8gc2V1IHRyYWJhbGhvLCBhZGljaW9uZSBvdSBlZGl0ZSBlc3NlIGNoZWNrbGlzdCBkZSBhY29yZG8gY29tIHNldXMgcHJvcMOzc2l0b3MuCgpNaW5oYSBwcm9wb3N0YSBkZSBjaGVja2xpc3Q6CgotIFsgXSBVbWEgbGluaGEgZXhwbGljYW5kbyBvIHByb3DDs3NpdG8gZG8gcmVwb3NpdMOzcmlvIAotIFsgXSBBdXRvcmVzIGRvIHJlcG9zaXTDs3JpbwotIFsgXSBMaWdhw6fDtWVzIGUgY29udGV4dHVhbGl6YcOnw7VlcyBuZWNlc3PDoXJpYXMgKHBvciBleGVtcGxvLCBzZSBvIHJlcG9zaXTDs3JpbyBlc3TDoSBsaW5rYWRvIGEgdW0gYXJ0aWdvKQotIFsgXSBiYWRnZXMgKG9wY2lvbmFsKQotIFsgXSBJbnN0cnXDp8O1ZXMgZGUgaW5zdGFsYcOnw6NvIChvdSBkb3dubG9hZCBzZSBmb3IgdW0gcmVwbykKLSBbIF0gRXhlbXBsbyBkZSB1dGlsaXphw6fDo28gY2xhcm8gZSAqZXhlY3V0w6F2ZWwqIChzZSBlc3RpdmVybW9zIGZhbGFuZG8gZGUgdW1hIGJhc2UgZGUgZGFkb3Mgb3UgcGFjb3RlKQotIFsgXSBFc3RydXR1cmEgZGUgcGFzdGFzIGUgc2NyaXB0cyAobyBxdWUgY2FkYSBwYXN0YSBjb250w6ltLCBvIHF1ZSBjYWRhIHNjcmlwdCBmYXopCi0gWyBdIFN0YXR1cyBkbyBwcm9qZXRvIChmaW5hbGl6YWRvL2VtIGFuZGFtZW50bykKLSBbIF0gRW0gY2FzbyBkZSBwcm9ibGVtYSBjb20gYWxnbyBubyByZXBvc2l0w7NyaW8sIGNvbW8gcmVwb3J0YXIKLSBbIF0gTGljZW7Dp2EKCiMgRmVycmFtZW50YXMgcGFyYSBvcmdhbml6YcOnw6NvIGRvIGRpcmV0w7NyaW8gbG9jYWwKClNvbWUgdG9vbHMgY2FuIGhlbHAgeW91IHRvIGdldCBhbiBhdXRvbWF0ZWQgc2NhZmZvbGQgZGlyZWN0b3J5IGZvciB5b3VyIHByb2plY3QsIGZvciBleGFtcGxlLCBzZWUgdGhpcyBvbmUgYnkgW0NhcmwgQm9ldHRpZ2VyXShodHRwczovL2dpdGh1Yi5jb20vY2JvZXR0aWcvdGVtcGxhdGUpLCBhbmQgdGhpcyBieSBbRnJhbmNpc2NvIFJvZHJpZ3Vlei1TYW5jaGV6XShodHRwczovL2dpdGh1Yi5jb20vUGFraWxsby90ZW1wbGF0ZSkuIEluIGVzc2VuY2UsIHlvdSB3aWxsIG5vdGljZSB0aGF0IHRoZSBzdHJ1Y3R1cmUgb2YgdGhlc2UgZGlyZWN0b3JpZXMgcmVzZW1ibGVzIHRoZSBzdHJ1Y3R1cmUgb2YgYW4gUiBwYWNrYWdlLgoKIyMgQ29uY2VpdG8gZGUgY2FtaW5ob3MgYWJzb2x1dG9zIGUgcmVsYXRpdm9zCgojIyBIZXJlCgpPIG1lbGhvciBwYWNvdGUgcGFyYSBvcmdhbml6YXIgY2FtaW5ob3MsIG8gaGVyZSEKCiMjIFJTdHVkaW8KCjwhLS0gYXF1aSBhIHNlw6fDo28gZGUgbWV0YWRhdGEgdXNhbmRvIG8gRU1MIC0tPgoKYGBge3IgY2hpbGQ9Im1ldGFkYXRhX0VNTC5SbWQiLGV2YWw9VFJVRX0KYGBgCgo8IS0tIGFxdWkgYSBzZcOnw6NvIGRlIG1ldGFkYXRhIHBhcmEgZGFkb3MgZGUgYmlvZGl2ZXJzaWRhZGUgdXNhbmRvIER3Q29yZSAtLT4KCmBgYHtyIGNoaWxkPSJEYXJ3aW4tY29yZS1MTlAuUm1kIixldmFsPVRSVUV9CmBgYAo=</div>
 
 
 </div>

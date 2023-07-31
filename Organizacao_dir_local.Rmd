@@ -89,7 +89,12 @@ O melhor pacote para organizar caminhos, o here!
 
 ## RStudio
 
-
+<!-- aqui a seção de metadata usando o EML -->
 
 ```{r child="metadata_EML.Rmd",eval=TRUE}
+```
+
+<!-- aqui a seção de metadata para dados de biodiversidade usando DwCore -->
+
+```{r child="Darwin-core-LNP.Rmd",eval=TRUE}
 ```
