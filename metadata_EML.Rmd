@@ -26,7 +26,7 @@ Para uma itrodução mais completa sobre os metadados sugiro [este](https://sbcl
 Para um exemplo simples de como um metadado se parece veja [aqui](https://github.com/ropensci/EML/blob/master/inst/examples/example-eml-2.1.1.xml). Para um exemplo mais completo sugiro [este arquivo](https://github.com/ropensci/EML/blob/master/inst/examples/hf205.xml).
 Esta [introdução](https://www.neonscience.org/resources/learning-hub/tutorials/dc-metadata-importance-eml-r) trazida pelo NEON (National Ecological Observatory) é muito interessante para compreender de maneira geral a importância de metadados para síntese e como eles podem ser obtidos facilmente com auxílio do pacote EML. O [DataOne](https://www.dataone.org/) é uma plataforma de dados que também se utiliza dos arquivos XML para reportar as características gerais dos dados.
 
-# Metadados na prática - utilizando o pacote EML
+# Metadados na prática - utilizando o pacote `{EML}`
 
 Nesta seção iremos utilizar o conjunto de dados do artigo "Organic-matter loading determines regime shifts and alternative states in an aquatic ecosystem". Optamos por usar este dado pois ele já apresenta um arquivo de metadados associado, assim podemos reconstruí-lo e verificar como fica. Além disso ele é o mesmo dado utilizado no tutorial original do pacote EML, sendo conveniente para fins didáticos. Ao final vamos praticar com um outro conjunto de dados.
 

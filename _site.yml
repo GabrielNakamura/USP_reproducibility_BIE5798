@@ -12,9 +12,9 @@ navbar:
   left:
     - text: "Início"
       href: index.html
-    - text: "Dia 1"
+    - text: "Diretório local e metadados"
       href: Organizacao_dir_local.html
-    - text: "Dia 2"
+    - text: "Versionamento"
       href: basics_git.html
     - text: "Dia 3"
       href: Creating_repo.html

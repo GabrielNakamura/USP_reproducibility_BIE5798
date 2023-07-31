@@ -428,10 +428,10 @@ div.tocify {
   <a href="index.html">Início</a>
 </li>
 <li>
-  <a href="Organizacao_dir_local.html">Dia 1</a>
+  <a href="Organizacao_dir_local.html">Diretório local e metadados</a>
 </li>
 <li>
-  <a href="basics_git.html">Dia 2</a>
+  <a href="basics_git.html">Versionamento</a>
 </li>
 <li>
   <a href="Creating_repo.html">Dia 3</a>
@@ -668,7 +668,7 @@ características gerais dos dados.</p>
 </div>
 <div id="metadados-na-prática---utilizando-o-pacote-eml"
 class="section level1">
-<h1>Metadados na prática - utilizando o pacote EML</h1>
+<h1>Metadados na prática - utilizando o pacote <code>{EML}</code></h1>
 <p>Nesta seção iremos utilizar o conjunto de dados do artigo
 “Organic-matter loading determines regime shifts and alternative states
 in an aquatic ecosystem”. Optamos por usar este dado pois ele já
@@ -952,6 +952,8 @@ href="https://www.gbif.org/">GBIF</a>.</p>
 class="section level1">
 <h1>Metadados na prática - utilizando o pacote
 <code>{LivingNorwayR}</code></h1>
+<div id="instalação-e-dados" class="section level2">
+<h2>Instalação e dados</h2>
 <p>Primeiro vamos instalar o pacote</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;https://github.com/LivingNorway/LivingNorwayR&quot;</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="fu">library</span>(LivingNorwayR)</span></code></pre></div>
@@ -960,42 +962,22 @@ dados utilizados no tuturial do Living Norway R. Para mais detalhes
 visite a <a
 href="https://livingnorway.github.io/LivingNorwayR/articles/LNWorkshopExample_TOV-E.html">página
 deles</a>.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>datasetURL <span class="ot">&lt;-</span> <span class="st">&quot;https://ipt.nina.no/archive.do?r=tove_birdsampling&quot;</span></span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>localDataLoc <span class="ot">&lt;-</span> <span class="fu">file.path</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>), <span class="st">&quot;TOVEData.zip&quot;</span>) </span>
-<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="fu">download.file</span>(datasetURL, localDataLoc, <span class="at">mode =</span> <span class="st">&quot;wb&quot;</span>) <span class="co"># o arquivo foi para a pasta escolhida</span></span></code></pre></div>
-<a href="https://github.com/GabrielNakamura/USP_reproducibility_BIE5791">
-<button class="btn btn-danger"><i class="fa fa-save"></i> Download csv</button>
-</a>
-<p>Vamos utilizar um conjunto de dados que fizemos o download para criar
-nosso arquivo Darwin Core.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>TOVEArchive <span class="ot">&lt;-</span> <span class="fu">initializeDwCArchive</span>(localDataLoc, <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
-<p>Obtendo o conjunto de dados central e exportar como um data frame</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># obtendo o dado</span></span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>TOVEEventTable <span class="ot">&lt;-</span> TOVEArchive<span class="sc">$</span><span class="fu">getCoreTable</span>()</span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="fu">class</span>(TOVEEventTable)</span>
-<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a></span>
-<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="co"># Exportando como um dataframe</span></span>
-<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a>TOVEEventTableDF <span class="ot">&lt;-</span> TOVEEventTable<span class="sc">$</span><span class="fu">exportAsDataFrame</span>()</span>
-<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="co"># Lets look at the top few rows of the data frame extracted from the core data table</span></span>
-<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="fu">head</span>(TOVEEventTableDF)</span></code></pre></div>
-<p>Obtendo os arquivos extendidos</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co"># 1. Obtendo as tabelas de extensão</span></span>
-<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>TOVEOccTable <span class="ot">&lt;-</span> TOVEArchive<span class="sc">$</span><span class="fu">getExtensionTables</span>(<span class="dv">1</span>)[[<span class="dv">1</span>]]</span>
-<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="co"># 2. Retrieve the extension table by using its name</span></span>
-<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a>TOVEOccTable <span class="ot">&lt;-</span> TOVEArchive<span class="sc">$</span><span class="fu">getExtensionTables</span>(<span class="st">&quot;occurrence&quot;</span>)[[<span class="dv">1</span>]]</span>
-<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a><span class="co"># The getExtensionTables functions returns a list of the data tables that are requested.  Therefore to extract just the first element of this list we need</span></span>
-<span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a><span class="co"># to use the extra &#39;[[1]]&#39; list extraction notation.</span></span>
-<span id="cb19-7"><a href="#cb19-7" tabindex="-1"></a><span class="co"># TOVEOccTable is an object of type GBIFOccurrence which is dervied from DwCGeneric</span></span>
-<span id="cb19-8"><a href="#cb19-8" tabindex="-1"></a><span class="fu">class</span>(TOVEOccTable)</span></code></pre></div>
-<p>Exportando o arquivo extendido, que nesse caso corresponde a
-ocorrências</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="co"># Exportando para um data frame</span></span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>TOVEOccTableDF <span class="ot">&lt;-</span> TOVEOccTable<span class="sc">$</span><span class="fu">exportAsDataFrame</span>()</span>
-<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a><span class="co"># Dê uma olhada..</span></span>
-<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a><span class="fu">head</span>(TOVEOccTableDF)</span></code></pre></div>
+<p>Vamos utilizar um conjunto de dados que fizemos o download e está
+dentro da nossa pasta do curso para criar nosso arquivo Darwin Core.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># Lendo o arquivo core</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>TOVEEventTableDF <span class="ot">&lt;-</span> <span class="fu">read.table</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;TOVEData&quot;</span>, <span class="st">&quot;event.txt&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="fu">head</span>(TOVEEventTableDF)</span></code></pre></div>
+<p>Obtendo os arquivos extendidos, neste caso o arquivo de ocorrência de
+espécies. Podemos ver que se trata de um simples data frame onde os
+nomes das colunas seguem os códigos do Darwin Core</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>TOVEOccTable <span class="ot">&lt;-</span> <span class="fu">read.table</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;TOVEData&quot;</span>, <span class="st">&quot;occurrence.txt&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="fu">head</span>(TOVEEventTableDF)</span></code></pre></div>
+</div>
 <div id="construindo-um-xml-baseado-em-darwin-core"
 class="section level2">
 <h2>Construindo um XML baseado em Darwin Core</h2>
+<p>Agora que temos nossos dados podemos construir um arquivo do tipo
+Darwin Core</p>
 <div id="construindo-o-metadado-para-a-tabela-de-eventos-core"
 class="section level3">
 <h3>Construindo o metadado para a tabela de eventos
@@ -1004,43 +986,43 @@ class="section level3">
 e o que serão as suas <strong>extensões</strong>, que por sua vez podem
 ser mapeadas a partir de atributos comuns presentes em ambas as tabelas
 (neste caso o ID).</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="co"># 1. Inicializando automaticamente - só funciona caso os nomes já estejam de acordo com o Darwin Core</span></span>
-<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a>newTOVEEventTable <span class="ot">&lt;-</span> <span class="fu">initializeGBIFEvent</span>(TOVEEventTableDF, <span class="st">&quot;id&quot;</span>, <span class="at">nameAutoMap =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a></span>
-<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a><span class="co"># 2. Iniciando manualmente - podemos usar o nome dos atributos que correspondem a cada categoria do Darwin Core. </span></span>
-<span id="cb21-5"><a href="#cb21-5" tabindex="-1"></a>    <span class="co"># podemos usar o nome ou o número da coluna</span></span>
-<span id="cb21-6"><a href="#cb21-6" tabindex="-1"></a>newTOVEEventTable <span class="ot">&lt;-</span> <span class="fu">initializeGBIFEvent</span>(TOVEEventTableDF, <span class="st">&quot;id&quot;</span>,</span>
-<span id="cb21-7"><a href="#cb21-7" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;type&quot;</span>,</span>
-<span id="cb21-8"><a href="#cb21-8" tabindex="-1"></a>  <span class="at">modified =</span> <span class="st">&quot;modified&quot;</span>,</span>
-<span id="cb21-9"><a href="#cb21-9" tabindex="-1"></a>  <span class="at">datasetName =</span> <span class="st">&quot;datasetName&quot;</span>,</span>
-<span id="cb21-10"><a href="#cb21-10" tabindex="-1"></a>  <span class="at">ownerInstitutionCode =</span> <span class="st">&quot;ownerInstitutionCode&quot;</span>,</span>
-<span id="cb21-11"><a href="#cb21-11" tabindex="-1"></a>  <span class="at">informationWithheld =</span> <span class="st">&quot;informationWithheld&quot;</span>,</span>
-<span id="cb21-12"><a href="#cb21-12" tabindex="-1"></a>  <span class="at">dataGeneralizations =</span> <span class="st">&quot;dataGeneralizations&quot;</span>,</span>
-<span id="cb21-13"><a href="#cb21-13" tabindex="-1"></a>  <span class="at">eventID =</span> <span class="st">&quot;eventID&quot;</span>,</span>
-<span id="cb21-14"><a href="#cb21-14" tabindex="-1"></a>  <span class="at">samplingProtocol =</span> <span class="st">&quot;samplingProtocol&quot;</span>,</span>
-<span id="cb21-15"><a href="#cb21-15" tabindex="-1"></a>  <span class="at">sampleSizeValue =</span> <span class="st">&quot;sampleSizeValue&quot;</span>,</span>
-<span id="cb21-16"><a href="#cb21-16" tabindex="-1"></a>  <span class="at">sampleSizeUnit =</span> <span class="st">&quot;sampleSizeUnit&quot;</span>,</span>
-<span id="cb21-17"><a href="#cb21-17" tabindex="-1"></a>  <span class="at">samplingEffort =</span> <span class="st">&quot;samplingEffort&quot;</span>,</span>
-<span id="cb21-18"><a href="#cb21-18" tabindex="-1"></a>  <span class="at">eventDate =</span> <span class="st">&quot;eventDate&quot;</span>,</span>
-<span id="cb21-19"><a href="#cb21-19" tabindex="-1"></a>  <span class="at">eventTime =</span> <span class="st">&quot;eventTime&quot;</span>,</span>
-<span id="cb21-20"><a href="#cb21-20" tabindex="-1"></a>  <span class="at">year =</span> <span class="st">&quot;year&quot;</span>,</span>
-<span id="cb21-21"><a href="#cb21-21" tabindex="-1"></a>  <span class="at">month =</span> <span class="st">&quot;month&quot;</span>,</span>
-<span id="cb21-22"><a href="#cb21-22" tabindex="-1"></a>  <span class="at">day =</span> <span class="st">&quot;day&quot;</span>,</span>
-<span id="cb21-23"><a href="#cb21-23" tabindex="-1"></a>  <span class="at">locationID =</span> <span class="st">&quot;locationID&quot;</span>,</span>
-<span id="cb21-24"><a href="#cb21-24" tabindex="-1"></a>  <span class="at">country =</span> <span class="st">&quot;country&quot;</span>,</span>
-<span id="cb21-25"><a href="#cb21-25" tabindex="-1"></a>  <span class="at">countryCode =</span> <span class="st">&quot;countryCode&quot;</span>,</span>
-<span id="cb21-26"><a href="#cb21-26" tabindex="-1"></a>  <span class="at">stateProvince =</span> <span class="st">&quot;stateProvince&quot;</span>,</span>
-<span id="cb21-27"><a href="#cb21-27" tabindex="-1"></a>  <span class="at">municipality =</span> <span class="st">&quot;municipality&quot;</span>,</span>
-<span id="cb21-28"><a href="#cb21-28" tabindex="-1"></a>  <span class="at">locality =</span> <span class="st">&quot;locality&quot;</span>,</span>
-<span id="cb21-29"><a href="#cb21-29" tabindex="-1"></a>  <span class="at">minimumElevationInMeters =</span> <span class="st">&quot;minimumElevationInMeters&quot;</span>,</span>
-<span id="cb21-30"><a href="#cb21-30" tabindex="-1"></a>  <span class="at">maximumElevationInMeters =</span> <span class="st">&quot;maximumElevationInMeters&quot;</span>,</span>
-<span id="cb21-31"><a href="#cb21-31" tabindex="-1"></a>  <span class="at">decimalLatitude =</span> <span class="st">&quot;decimalLatitude&quot;</span>,</span>
-<span id="cb21-32"><a href="#cb21-32" tabindex="-1"></a>  <span class="at">decimalLongitude =</span> <span class="st">&quot;decimalLongitude&quot;</span>,</span>
-<span id="cb21-33"><a href="#cb21-33" tabindex="-1"></a>  <span class="at">geodeticDatum =</span> <span class="st">&quot;geodeticDatum&quot;</span>,</span>
-<span id="cb21-34"><a href="#cb21-34" tabindex="-1"></a>  <span class="at">coordinateUncertaintyInMeters =</span> <span class="st">&quot;coordinateUncertaintyInMeters&quot;</span>)</span>
-<span id="cb21-35"><a href="#cb21-35" tabindex="-1"></a></span>
-<span id="cb21-36"><a href="#cb21-36" tabindex="-1"></a><span class="co"># Podemos checar se o mapeamento dos termos se deu corretamente</span></span>
-<span id="cb21-37"><a href="#cb21-37" tabindex="-1"></a>newTOVEEventTable<span class="sc">$</span><span class="fu">getTermMapping</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># 1. Inicializando automaticamente - só funciona caso os nomes já estejam de acordo com o Darwin Core</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>newTOVEEventTable <span class="ot">&lt;-</span> <span class="fu">initializeGBIFEvent</span>(TOVEEventTableDF, <span class="st">&quot;id&quot;</span>, <span class="at">nameAutoMap =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="co"># 2. Iniciando manualmente - podemos usar o nome dos atributos que correspondem a cada categoria do Darwin Core. </span></span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a>    <span class="co"># podemos usar o nome ou o número da coluna</span></span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a>newTOVEEventTable <span class="ot">&lt;-</span> <span class="fu">initializeGBIFEvent</span>(TOVEEventTableDF, <span class="st">&quot;id&quot;</span>,</span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;type&quot;</span>,</span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a>  <span class="at">modified =</span> <span class="st">&quot;modified&quot;</span>,</span>
+<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a>  <span class="at">datasetName =</span> <span class="st">&quot;datasetName&quot;</span>,</span>
+<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a>  <span class="at">ownerInstitutionCode =</span> <span class="st">&quot;ownerInstitutionCode&quot;</span>,</span>
+<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a>  <span class="at">informationWithheld =</span> <span class="st">&quot;informationWithheld&quot;</span>,</span>
+<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a>  <span class="at">dataGeneralizations =</span> <span class="st">&quot;dataGeneralizations&quot;</span>,</span>
+<span id="cb18-13"><a href="#cb18-13" tabindex="-1"></a>  <span class="at">eventID =</span> <span class="st">&quot;eventID&quot;</span>,</span>
+<span id="cb18-14"><a href="#cb18-14" tabindex="-1"></a>  <span class="at">samplingProtocol =</span> <span class="st">&quot;samplingProtocol&quot;</span>,</span>
+<span id="cb18-15"><a href="#cb18-15" tabindex="-1"></a>  <span class="at">sampleSizeValue =</span> <span class="st">&quot;sampleSizeValue&quot;</span>,</span>
+<span id="cb18-16"><a href="#cb18-16" tabindex="-1"></a>  <span class="at">sampleSizeUnit =</span> <span class="st">&quot;sampleSizeUnit&quot;</span>,</span>
+<span id="cb18-17"><a href="#cb18-17" tabindex="-1"></a>  <span class="at">samplingEffort =</span> <span class="st">&quot;samplingEffort&quot;</span>,</span>
+<span id="cb18-18"><a href="#cb18-18" tabindex="-1"></a>  <span class="at">eventDate =</span> <span class="st">&quot;eventDate&quot;</span>,</span>
+<span id="cb18-19"><a href="#cb18-19" tabindex="-1"></a>  <span class="at">eventTime =</span> <span class="st">&quot;eventTime&quot;</span>,</span>
+<span id="cb18-20"><a href="#cb18-20" tabindex="-1"></a>  <span class="at">year =</span> <span class="st">&quot;year&quot;</span>,</span>
+<span id="cb18-21"><a href="#cb18-21" tabindex="-1"></a>  <span class="at">month =</span> <span class="st">&quot;month&quot;</span>,</span>
+<span id="cb18-22"><a href="#cb18-22" tabindex="-1"></a>  <span class="at">day =</span> <span class="st">&quot;day&quot;</span>,</span>
+<span id="cb18-23"><a href="#cb18-23" tabindex="-1"></a>  <span class="at">locationID =</span> <span class="st">&quot;locationID&quot;</span>,</span>
+<span id="cb18-24"><a href="#cb18-24" tabindex="-1"></a>  <span class="at">country =</span> <span class="st">&quot;country&quot;</span>,</span>
+<span id="cb18-25"><a href="#cb18-25" tabindex="-1"></a>  <span class="at">countryCode =</span> <span class="st">&quot;countryCode&quot;</span>,</span>
+<span id="cb18-26"><a href="#cb18-26" tabindex="-1"></a>  <span class="at">stateProvince =</span> <span class="st">&quot;stateProvince&quot;</span>,</span>
+<span id="cb18-27"><a href="#cb18-27" tabindex="-1"></a>  <span class="at">municipality =</span> <span class="st">&quot;municipality&quot;</span>,</span>
+<span id="cb18-28"><a href="#cb18-28" tabindex="-1"></a>  <span class="at">locality =</span> <span class="st">&quot;locality&quot;</span>,</span>
+<span id="cb18-29"><a href="#cb18-29" tabindex="-1"></a>  <span class="at">minimumElevationInMeters =</span> <span class="st">&quot;minimumElevationInMeters&quot;</span>,</span>
+<span id="cb18-30"><a href="#cb18-30" tabindex="-1"></a>  <span class="at">maximumElevationInMeters =</span> <span class="st">&quot;maximumElevationInMeters&quot;</span>,</span>
+<span id="cb18-31"><a href="#cb18-31" tabindex="-1"></a>  <span class="at">decimalLatitude =</span> <span class="st">&quot;decimalLatitude&quot;</span>,</span>
+<span id="cb18-32"><a href="#cb18-32" tabindex="-1"></a>  <span class="at">decimalLongitude =</span> <span class="st">&quot;decimalLongitude&quot;</span>,</span>
+<span id="cb18-33"><a href="#cb18-33" tabindex="-1"></a>  <span class="at">geodeticDatum =</span> <span class="st">&quot;geodeticDatum&quot;</span>,</span>
+<span id="cb18-34"><a href="#cb18-34" tabindex="-1"></a>  <span class="at">coordinateUncertaintyInMeters =</span> <span class="st">&quot;coordinateUncertaintyInMeters&quot;</span>)</span>
+<span id="cb18-35"><a href="#cb18-35" tabindex="-1"></a></span>
+<span id="cb18-36"><a href="#cb18-36" tabindex="-1"></a><span class="co"># Podemos checar se o mapeamento dos termos se deu corretamente</span></span>
+<span id="cb18-37"><a href="#cb18-37" tabindex="-1"></a>newTOVEEventTable<span class="sc">$</span><span class="fu">getTermMapping</span>()</span></code></pre></div>
 </div>
 <div id="construindo-os-metadados-para-as-extensões-da-tabela-core"
 class="section level3">
@@ -1048,11 +1030,11 @@ class="section level3">
 <p>Neste caso a tabela a extensão que temos da tabela chave é a tabela
 de ocorrência de espécies. Vamos mapear ela da mesma forma que fizemos
 para a tabela core</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="co"># Função para inicialização da tabela</span></span>
-<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>newTOVEOccTable <span class="ot">&lt;-</span> <span class="fu">initializeGBIFOccurrence</span>(TOVEOccTableDF, <span class="st">&quot;id&quot;</span>, <span class="at">nameAutoMap =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a></span>
-<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a><span class="co"># Checando quais eventos foram mapeados na tabela, o que aparece com NA não foi mapeado, ou porque não existe ou porque tem o nome incorreto</span></span>
-<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a>newTOVEOccTable<span class="sc">$</span><span class="fu">getTermMapping</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co"># Função para inicialização da tabela</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>newTOVEOccTable <span class="ot">&lt;-</span> <span class="fu">initializeGBIFOccurrence</span>(TOVEOccTableDF, <span class="st">&quot;id&quot;</span>, <span class="at">nameAutoMap =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a><span class="co"># Checando quais eventos foram mapeados na tabela, o que aparece com NA não foi mapeado, ou porque não existe ou porque tem o nome incorreto</span></span>
+<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a>newTOVEOccTable<span class="sc">$</span><span class="fu">getTermMapping</span>()</span></code></pre></div>
 </div>
 <div id="construindo-o-eml" class="section level3">
 <h3>Construindo o EML</h3>
@@ -1068,15 +1050,17 @@ permite mesclar textos e códigos, além de possibilitar criar tags para
 seções (Como os títulos num documento Word). Essas tags são utilizadas
 pelas funções do LivingNorwayR para criar o arquivo XML. Vale notar que
 isso é mais limitante que criar um XML usando o EML, mas para questões
-didáticas vamos usar um arquivo .Rmd pronto.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="co"># Apenas fazendo o download</span></span>
-<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="fu">download.file</span>(<span class="st">&quot;https://raw.githubusercontent.com/LivingNorway/LivingNorwayR/master/vignettes/LNWorkshopExample_TOV-E_Metadata.rmd&quot;</span>,</span>
-<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a>  <span class="fu">file.path</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;TOVEData&quot;</span>), <span class="st">&quot;LNWorkshopExample_Metadata.rmd&quot;</span>))</span>
-<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a></span>
-<span id="cb23-5"><a href="#cb23-5" tabindex="-1"></a>createdTOVEMetadata <span class="ot">&lt;-</span> <span class="fu">initializeDwCMetadata</span>(<span class="at">fileLocation =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;TOVEData&quot;</span>, <span class="st">&quot;LNWorkshopExample_Metadata.rmd&quot;</span>), <span class="at">fileType =</span> <span class="st">&quot;rmarkdown&quot;</span>)</span>
-<span id="cb23-6"><a href="#cb23-6" tabindex="-1"></a></span>
-<span id="cb23-7"><a href="#cb23-7" tabindex="-1"></a><span class="co"># Exportando o EML</span></span>
-<span id="cb23-8"><a href="#cb23-8" tabindex="-1"></a>createdTOVEMetadata<span class="sc">$</span><span class="fu">exportToEML</span>(<span class="fu">file.path</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;TOVEData&quot;</span>), <span class="st">&quot;newMetadata.xml&quot;</span>))</span></code></pre></div>
+didáticas vamos usar um arquivo .Rmd pronto, que está na pasta de dados
+deste diretório.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>createdTOVEMetadata <span class="ot">&lt;-</span> <span class="fu">initializeDwCMetadata</span>(<span class="at">fileLocation =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;TOVEData&quot;</span>, <span class="st">&quot;LNWorkshopExample_Metadata.rmd&quot;</span>), <span class="at">fileType =</span> <span class="st">&quot;rmarkdown&quot;</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a><span class="co"># Exportando o EML</span></span>
+<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a>createdTOVEMetadata<span class="sc">$</span><span class="fu">exportToEML</span>(<span class="fu">file.path</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;TOVEData&quot;</span>), <span class="st">&quot;newMetadata.xml&quot;</span>))</span></code></pre></div>
+<p>Este novo metadado precisa ser lido para o R e assim podemos juntá-lo
+com os outros arquivos</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>newTOVEMetadata <span class="ot">&lt;-</span> <span class="fu">initializeDwCMetadata</span>(<span class="fu">file.path</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;TOVEData&quot;</span>), <span class="st">&quot;newMetadata.xml&quot;</span>),</span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a>  <span class="at">fileType =</span> <span class="st">&quot;eml&quot;</span> <span class="co"># This line is not required if the file has the &quot;.xml&quot; file extension</span></span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 </div>
 <div id="juntando-todos-os-arquivos" class="section level2">
@@ -1087,11 +1071,35 @@ plataforma de dados, por exemplo, GBIF, como ilustrado abaixo</p>
 <p><img src="figs/gibif-upload-zip.png" width="1275" /></p>
 <p>Para juntar todos os arquivos criados precisamos usar a seguinte
 função</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="co"># criando um único arquivo com todos os objetos criados anteriormente</span></span>
-<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>newTOVEArchive <span class="ot">&lt;-</span> <span class="fu">initializeDwCArchive</span>(newTOVEEventTable, <span class="fu">list</span>(newTOVEOccTable), newTOVEMetadata)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="co"># criando um único arquivo com todos os objetos criados anteriormente</span></span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>newTOVEArchive <span class="ot">&lt;-</span> <span class="fu">initializeDwCArchive</span>(newTOVEEventTable, <span class="fu">list</span>(newTOVEOccTable), newTOVEMetadata)</span></code></pre></div>
 <p>Para salvar o objeto .zip, que agora é nosso Darwin Core Archive,
 podemos fazer o seguinte</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>newTOVEArchive<span class="sc">$</span><span class="fu">exportAsDwCArchive</span>(<span class="fu">file.path</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;TOVEData&quot;</span>), <span class="st">&quot;newDwCArchive.zip&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>newTOVEArchive<span class="sc">$</span><span class="fu">exportAsDwCArchive</span>(<span class="fu">file.path</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;NEWTOVEData&quot;</span>), <span class="st">&quot;newDwCArchive.zip&quot;</span>))</span></code></pre></div>
+</div>
+<div id="explorando-o-darwin-core-archive" class="section level2">
+<h2>Explorando o Darwin Core Archive</h2>
+<p>Uma vez criado o arquivo no formato Darwin Core Archive podemos fazer
+o caminho inverso e obter as tabelas a partir do arquivo que
+criamos.</p>
+<p>Para tanto podemos usar as funções do pacote LivingNorwayR para ler o
+arquivo zip e extrair as tabelas, incluindo os metadados.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>localDataLoc2 <span class="ot">&lt;-</span> <span class="fu">file.path</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;NEWTOVEData&quot;</span>), <span class="st">&quot;newDwCArchive.zip&quot;</span>) </span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>NEWTOVEArchive <span class="ot">&lt;-</span> <span class="fu">initializeDwCArchive</span>(localDataLoc2, <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+<p>Podemos agora explorar os dados dentro do arquivo Darwin Core criado
+nos passos anteriores. Ou seja, podemos retomar os dados e importar para
+dentro do R para fazer, por exemplo, novas análises</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="co"># obtendo o dado</span></span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a>NEWTOVEEventTable <span class="ot">&lt;-</span> NEWTOVEArchive<span class="sc">$</span><span class="fu">getCoreTable</span>()</span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a><span class="fu">class</span>(NEWTOVEEventTable)</span>
+<span id="cb25-4"><a href="#cb25-4" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" tabindex="-1"></a><span class="co"># Podemos exportar como um dataframe</span></span>
+<span id="cb25-6"><a href="#cb25-6" tabindex="-1"></a>NEWTOVEEventTableDF <span class="ot">&lt;-</span> NEWTOVEEventTable<span class="sc">$</span><span class="fu">exportAsDataFrame</span>()</span>
+<span id="cb25-7"><a href="#cb25-7" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" tabindex="-1"></a><span class="co"># obtendo dados da tabela extendida</span></span>
+<span id="cb25-9"><a href="#cb25-9" tabindex="-1"></a>NEWTOVEEventTableDF <span class="ot">&lt;-</span> NEWTOVEEventTable<span class="sc">$</span><span class="fu">exportAsDataFrame</span>()</span>
+<span id="cb25-10"><a href="#cb25-10" tabindex="-1"></a><span class="co"># exportando como dataframe</span></span>
+<span id="cb25-11"><a href="#cb25-11" tabindex="-1"></a><span class="fu">head</span>(NEWTOVEEventTableDF)</span></code></pre></div>
 </div>
 </div>
 

@@ -23,6 +23,8 @@ O melhor exemplo de esturutura digital que utiliza metadados de biodiversidade c
 
 # Metadados na prática - utilizando o pacote `{LivingNorwayR}`
 
+## Instalação e dados
+
 Primeiro vamos instalar o pacote
 
 ```{r echo=TRUE,eval=FALSE}
@@ -33,68 +35,31 @@ library(LivingNorwayR)
 Aqui os dados que serão utilizados no exemplo. Estes são os mesmos dados utilizados no tuturial do Living Norway R. Para mais detalhes visite a [página deles](https://livingnorway.github.io/LivingNorwayR/articles/LNWorkshopExample_TOV-E.html).
 
 
-```{r echo=TRUE,eval=FALSE}
+```{r echo=FALSE,eval=FALSE}
 datasetURL <- "https://ipt.nina.no/archive.do?r=tove_birdsampling"
 localDataLoc <- file.path(here::here("data"), "TOVEData.zip") 
 download.file(datasetURL, localDataLoc, mode = "wb") # o arquivo foi para a pasta escolhida
 ```
 
-
-```{r echo=FALSE,eval=TRUE}
-library(downloadthis)
-download_link(
-  link = "https://github.com/GabrielNakamura/USP_reproducibility_BIE5791",
-  button_label = "Download csv",
-  button_type = "danger",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
-
-Vamos utilizar um conjunto de dados que fizemos o download para criar nosso arquivo Darwin Core.
+Vamos utilizar um conjunto de dados que fizemos o download e está dentro da nossa pasta do curso para criar nosso arquivo Darwin Core.
 
 ```{r echo=TRUE,eval=FALSE}
-TOVEArchive <- initializeDwCArchive(localDataLoc, "UTF-8")
-```
-Obtendo o conjunto de dados central e exportar como um data frame
-
-```{r echo=TRUE,eval=FALSE}
-# obtendo o dado
-TOVEEventTable <- TOVEArchive$getCoreTable()
-class(TOVEEventTable)
-
-# Exportando como um dataframe
-TOVEEventTableDF <- TOVEEventTable$exportAsDataFrame()
-# Lets look at the top few rows of the data frame extracted from the core data table
+# Lendo o arquivo core
+TOVEEventTableDF <- read.table(here::here("data", "TOVEData", "event.txt"), sep = "\t", header = TRUE)
 head(TOVEEventTableDF)
 ```
 
-Obtendo os arquivos extendidos
+Obtendo os arquivos extendidos, neste caso o arquivo de ocorrência de espécies. Podemos ver que se trata de um simples data frame onde os nomes das colunas seguem os códigos do Darwin Core 
 
 ```{r echo=TRUE,eval=FALSE}
-
-# 1. Obtendo as tabelas de extensão
-TOVEOccTable <- TOVEArchive$getExtensionTables(1)[[1]]
-# 2. Retrieve the extension table by using its name
-TOVEOccTable <- TOVEArchive$getExtensionTables("occurrence")[[1]]
-# The getExtensionTables functions returns a list of the data tables that are requested.  Therefore to extract just the first element of this list we need
-# to use the extra '[[1]]' list extraction notation.
-# TOVEOccTable is an object of type GBIFOccurrence which is dervied from DwCGeneric
-class(TOVEOccTable)
-```
-
-Exportando o arquivo extendido, que nesse caso corresponde a ocorrências
-
-```{r echo=TRUE,eval=FALSE}
-# Exportando para um data frame
-TOVEOccTableDF <- TOVEOccTable$exportAsDataFrame()
-# Dê uma olhada..
-head(TOVEOccTableDF)
+TOVEOccTable <- read.table(here::here("data", "TOVEData", "occurrence.txt"), sep = "\t", header = TRUE)
+head(TOVEEventTableDF)
 ```
 
 
 ## Construindo um XML baseado em Darwin Core
+
+Agora que temos nossos dados podemos construir um arquivo do tipo Darwin Core
 
 ### Construindo o metadado para a tabela de eventos **core**
 
@@ -155,18 +120,24 @@ newTOVEOccTable$getTermMapping()
 
 ### Construindo o EML
 
-O último elemento que precisamos para construir nossos metadados para os arquivos de biodiversidade que estamos utilizando é o arquivo EML, que vocês já conhecem. O EML pode ser criado de várias formas. Vimos anteriormente como criar um EML usando o pacote `{EML}`. O pacote `{LivingNorwayR}` oferece uma maneira simples de criar um arquivo XML usando um arquivo `.Rmd`, ou seja, usando o Rmarkdown. Vamos entender os detalhes de um arquivo do tipo Rmd mais adiante, por hora precisamos apenas saber que ele é um arquivo que permite mesclar textos e códigos, além de possibilitar criar tags para seções (Como os títulos num documento Word). Essas tags são utilizadas pelas funções do LivingNorwayR para criar o arquivo XML. Vale notar que isso é mais limitante que criar um XML usando o EML, mas para questões didáticas vamos usar um arquivo .Rmd pronto.
+O último elemento que precisamos para construir nossos metadados para os arquivos de biodiversidade que estamos utilizando é o arquivo EML, que vocês já conhecem. O EML pode ser criado de várias formas. Vimos anteriormente como criar um EML usando o pacote `{EML}`. O pacote `{LivingNorwayR}` oferece uma maneira simples de criar um arquivo XML usando um arquivo `.Rmd`, ou seja, usando o Rmarkdown. Vamos entender os detalhes de um arquivo do tipo Rmd mais adiante, por hora precisamos apenas saber que ele é um arquivo que permite mesclar textos e códigos, além de possibilitar criar tags para seções (Como os títulos num documento Word). Essas tags são utilizadas pelas funções do LivingNorwayR para criar o arquivo XML. Vale notar que isso é mais limitante que criar um XML usando o EML, mas para questões didáticas vamos usar um arquivo .Rmd pronto, que está na pasta de dados deste diretório.
 
 ```{r echo=TRUE,eval=FALSE}
-# Apenas fazendo o download
-download.file("https://raw.githubusercontent.com/LivingNorway/LivingNorwayR/master/vignettes/LNWorkshopExample_TOV-E_Metadata.rmd",
-  file.path(here::here("data", "TOVEData"), "LNWorkshopExample_Metadata.rmd"))
 
 createdTOVEMetadata <- initializeDwCMetadata(fileLocation = here::here("data", "TOVEData", "LNWorkshopExample_Metadata.rmd"), fileType = "rmarkdown")
 
 # Exportando o EML
 createdTOVEMetadata$exportToEML(file.path(here::here("data", "TOVEData"), "newMetadata.xml"))
 ```
+
+Este novo metadado precisa ser lido para o R e assim podemos juntá-lo com os outros arquivos
+
+```{r echo=TRUE,eval=FALSE}
+newTOVEMetadata <- initializeDwCMetadata(file.path(here::here("data", "TOVEData"), "newMetadata.xml"),
+  fileType = "eml" # This line is not required if the file has the ".xml" file extension
+)
+```
+
 
 ## Juntando todos os arquivos
 
@@ -186,7 +157,36 @@ newTOVEArchive <- initializeDwCArchive(newTOVEEventTable, list(newTOVEOccTable),
 Para salvar o objeto .zip, que agora é nosso Darwin Core Archive, podemos fazer o seguinte
 
 ```{r echo=TRUE,eval=FALSE}
-newTOVEArchive$exportAsDwCArchive(file.path(here::here("data", "TOVEData"), "newDwCArchive.zip"))
+newTOVEArchive$exportAsDwCArchive(file.path(here::here("data", "NEWTOVEData"), "newDwCArchive.zip"))
+```
+
+
+## Explorando o Darwin Core Archive
+
+Uma vez criado o arquivo no formato Darwin Core Archive podemos fazer o caminho inverso e obter as tabelas a partir do arquivo que criamos.
+
+Para tanto podemos usar as funções do pacote LivingNorwayR para ler o arquivo zip e extrair as tabelas, incluindo os metadados.
+
+```{r echo=TRUE,eval=FALSE}
+localDataLoc2 <- file.path(here::here("data", "NEWTOVEData"), "newDwCArchive.zip") 
+NEWTOVEArchive <- initializeDwCArchive(localDataLoc2, "UTF-8")
+```
+
+Podemos agora explorar os dados dentro do arquivo Darwin Core criado nos passos anteriores. Ou seja, podemos retomar os dados e importar para dentro do R para fazer, por exemplo, novas análises
+
+```{r echo=TRUE,eval=FALSE}
+# obtendo o dado
+NEWTOVEEventTable <- NEWTOVEArchive$getCoreTable()
+class(NEWTOVEEventTable)
+
+# Podemos exportar como um dataframe
+NEWTOVEEventTableDF <- NEWTOVEEventTable$exportAsDataFrame()
+
+# obtendo dados da tabela extendida
+NEWTOVEEventTableDF <- NEWTOVEEventTable$exportAsDataFrame()
+# exportando como dataframe
+head(NEWTOVEEventTableDF)
+
 ```
 
 
