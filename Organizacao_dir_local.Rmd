@@ -98,3 +98,18 @@ O melhor pacote para organizar caminhos, o here!
 
 ```{r child="Darwin-core-LNP.Rmd",eval=TRUE}
 ```
+
+
+# Atividade
+
+Para fixar os conceitos apresentados sobre metadados, vamos treinar um pouco mais utilizando um outro conjunto de dados. 
+
+Produza um arquivo `.xml` utilizando os dados `iris` do pacote `{ggplot}`. Algumas informações nós não temos, por exemplo, a cobertura de coleta, ano de coleta etc. Mas para fins de prática vamos inventar essas informações no momento de fazer o metadado.
+
+Para acessar os dados:
+
+```{r echo=TRUE,eval=FALSE}
+library(ggplot2)
+data("iris")
+```
+
