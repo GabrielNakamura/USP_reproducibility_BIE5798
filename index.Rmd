@@ -1,14 +1,14 @@
 ---
-title: "Boas Práticas e Ferramentas da Ciência Aberta na Ecologia - BIE5798-1"
+title: "Boas Práticas e Ferramentas da Ciência Aberta na Ecologia - BIE5798"
 ---
 
 # Apresentação
 
 Olá!
 
-Obrigado pelo interesse em participar da disciplina "Boas Práticas e Ferramentas da Ciência Aberta na Ecologia - BIE5798-1", que será ministrada entre os dias 07 e 11 de Agosto na USP, São Paulo. Nesta disciplina serão abordados conceitos teóricos e ferramentas práticas para desenvolver pesquisas que vão ao encontro dos princípios de ciência aberta. 
+Obrigado pelo interesse em participar da disciplina "Boas Práticas e Ferramentas da Ciência Aberta na Ecologia - BIE5798", que será ministrada entre os dias **07 e 11 de Agosto de 2023** no Departamento de Ecologia, IB-USP, São Paulo. Nesta disciplina serão abordados conceitos teóricos, tendências e ferramentas práticas para desenvolver pesquisas que vão ao encontro dos princípios e movimento da ciência aberta. 
 
-Este sítio servirá como um guia para nossas aulas. Nele vocês encontrarão os materiais necessários ([dados](https://github.com/GabrielNakamura/USP_reproducibility_BIE5791)) bem como os scripts que utilizaremos durante as aulas para as atividades práticas. Ah! O site continuará funcionando após o término da disciplina, portanto, sempre que tiver alguma dúvida é só voltar aqui e revisitar o que vimos nas aulas.
+Este sítio servirá como um guia para nossas aulas. Nele vocês encontrarão os materiais necessários ([dados](https://github.com/GabrielNakamura/USP_reproducibility_BIE5798)) bem como os scripts que utilizaremos durante as aulas para as atividades práticas. Ah! O site continuará funcionando após o término da disciplina, portanto, sempre que tiver alguma dúvida é só voltar aqui e revisitar o que vimos nas aulas.
 
 # Ministrantes
 
@@ -17,7 +17,13 @@ O curso será ministrado por Melina Leite e Gabriel Nakamura.
 
 ## Melina
 
-[Melina](https://melinaleite.weebly.com/) é ecóloga e cientista de dados no departamento de Ecologia da USP. [Melina pode ficar a vontade para preencher aqui sua bio]
+```{r echo=FALSE,eval=TRUE,out.width="20%"}
+knitr::include_graphics("figs/melina-foto.png")
+```
+
+Sou ecóloga e cientista de dados no departamento de Ecologia da USP. Tenho graduação em biologia (UFRJ), mestrado (UFRJ) e doutorado em Ecologia (USP). Acumulei também um MBA em Gestão Ambiental (Poli-USP) e MBA em Ciência de Dados (ESALQ-USP). Ao longo dos anos trabalhei em diferentes áreas da ecologia e biologia da conservação como ecologia da paisagem, de eomunidades, de populações e ecologia aplicada. Tenho bastante interesse na aplicação métodos estatísticos para descobertas ecológicas (modelos mistos são meu xodó). Adoro escalada, trilhas e esportes de aventura no geral! Ah, e sou uma entusiasta do movimento da **Ciência Aberta**!! 
+
+Para me achar e saber mais sobre mim, veja meu [site](https://melinaleite.weebly.com/).
 
 
 ## Gabriel
@@ -26,40 +32,51 @@ O curso será ministrado por Melina Leite e Gabriel Nakamura.
 knitr::include_graphics("figs/gabriel-avatar.jpg")
 ```
 
-Gabriel é formado em licenciatura em Ciências Biológicas (apesar da dúvida entre Ciências Sociais e História), fez algumas andanças de difícil reprodutibilidade para obter o mestrado (Ecologia e Conservação UFMS) e doutorado (Ecologia UFRGS). Após um tempo fora (posdoc Texas A&M University), a saudade do pequi e da guariroba do cerrado falaram mais alto e atualmente trabalha na Universidade Federal de Goiás como posdoc do INCT-EECBio. Atualmente vem desenvolvendo  métodos e ferramentas estatísticas em ecologia de comunidades, macroecologia e macroevolução. Tem interesse também em entender os viéses da dinâmica de produção científica. [Aqui](http://lattes.cnpq.br/2456515948049565) um pouquinho mais do que vem desenvolvendo.
+Gabriel é formado em licenciatura em Ciências Biológicas (apesar da dúvida entre Ciências Sociais e História), fez algumas andanças de difícil reprodutibilidade para obter o mestrado (Ecologia e Conservação UFMS) e doutorado (Ecologia UFRGS). Após um tempo fora (posdoc Texas A&M University), a saudade do pequi e da guariroba do cerrado falaram mais alto e atualmente trabalha na Universidade Federal de Goiás como posdoc do INCT-EECBio. Atualmente vem desenvolvendo  métodos e ferramentas estatísticas em ecologia de comunidades, macroecologia e macroevolução. Tem interesse também em entender os viéses da dinâmica de produção científica. [Aqui](http://lattes.cnpq.br/2456515948049565) um pouquinho mais do que venho desenvolvendo.
 
 
 # Cronograma das aulas
 
-Abaixo está um cronograma que iremos seguir. Algumas coisas podem mudar (mais ou menos tempo gasto) dependendo do andamento das atividades práticas.
+Abaixo está o cronograma das aulas que iremos seguir. Algumas coisas podem mudar (mais ou menos tempo gasto) dependendo do andamento das atividades práticas.
 
-```{r eval=TRUE, echo=FALSE}
+```{r, eval=T, echo=FALSE}
 crono <- suppressWarnings(read.csv("cronograma.csv", header = T, sep = ","))  
-rownames(crono) <- c("Manhã", "Tarde")
-colnames(crono) <- paste(seq(7:11), ("Ago"), sep = " ")
-crono[1, 1] <- c("Apresentação da disciplina")
-crono[2, 1] <- c("Dados/Metadados/Plano de Gestão FAPESP")
-crono[1, 2] <- c("Organização local- scripts, pastas etc")
+rownames(crono) <- c("Manhã \n 9-12h", "Tarde \n 14-17h")
+colnames(crono) <- paste(7:11, ("Ago"), sep = " ")
+crono[1, 1] <- c("Ciência Aberta + Apresentação da disciplina. ")
+crono[2, 1] <- c("Dados abertos: plano de gestão, organização, metadados, publicação")
+crono[1, 2] <- c("Organização local de projetos: pastas, scripts limpos, etc")
 crono[2, 2] <- c("Controle de versão")
 crono[1, 3] <- c("Git, Github, integração")
-crono[2, 3] <- c("Git, Github, integração - Prática")
-crono[2, 3] <- c("Prática em controle de versão/Ações básicas")
-crono[1, 4] <- c("Prática em controle de versão/Forks, commits, pull requests")
-crono[2, 4] <- c("Prática em controle de versão/Forks, commits, pull requests/Pacotes")
-crono[1, 4] <- c("Literate programming/Rmarkdown/Integração contínua")
+#crono[2, 3] <- c("Git, Github, integração - Prática") #foi sobrescrito pela debaixo
+crono[2, 3] <- c("Prática em controle de versão/ Ações básicas")
+#crono[1, 4] <- c("Prática em controle de versão/ Forks, commits, pull requests")
+#crono[2, 4] <- c("Prática em controle de versão/ Forks, commits, pull requests/ Pacotes")
+crono[1, 4] <- c("Literate programming/ Rmarkdown/ Integração contínua")
 crono[2, 4] <- c("Dockers e Target")
-crono[1, 5] <- c("Open Access/Preprints/DOI/Armazenamento permanente")
-crono[2, 5] <- c("Finalização/Feedbacks")
+crono[1, 5] <- c("Publicação em acesso aberto: Preprints, tipos de acesso aberto")
+crono[2, 5] <- c("Finalização e Feedbacks")
 
-
-
-DT::datatable(crono, editable = "cell")
-
+#DT::datatable(crono, editable = "cell")
 ```
+
+```{r, eval=T, echo=FALSE}
+crono |>
+  htmlTable::addHtmlTableStyle(col.columns = rep(c("#E6E6F0","none"), 3)) |>
+  htmlTable::htmlTable()
+```
+
+
+**OBS 1**: O início das aulas matinais será aberto para dúvidas e discussões em grupo sobre assuntos de dias anteriores. 
+**OBS 2**: O fim das aulas vespertinas (16-17h) também serão livres para discussões e dúvidas de projetos individuais.
 
 # Preparação pré-aula e materiais para práticas
 
 Aqui algumas informações sobre os materiais utilizados durante esta aula, os pacotes estatísticos necessários para realizar as atividades práticas e algumas coisas importantes para fazer antes do primeiro dia de aula.
+
+## Programas/platarformas utilizadas:
+
+Você precisará ter instaldo previamente a última versão do [R](https://cran.r-project.org/) e [Rstudio Desktop](https://posit.co/downloads/), e também deverá ter uma conta no [GitHub](https://github.com/pricing). Todas as ferramentas são gratuitas ou têm versão gratuita. Traga seu computador para as aulas **TODOS OS DIAS**! 
 
 ## Dados
 
