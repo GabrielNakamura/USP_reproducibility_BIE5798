@@ -301,6 +301,25 @@ eml_validate(here::here("data", "eml_tutorialHF205.xml"))
 ```
 
 
+<!-- aqui a seção de metadata para dados de biodiversidade usando DwCore -->
+
+```{r child="Darwin-core-LNP.Rmd",eval=TRUE}
+```
+
+
+# Atividade
+
+Para fixar os conceitos apresentados sobre metadados, vamos treinar um pouco mais utilizando um outro conjunto de dados. 
+
+Produza um arquivo `.xml` utilizando os dados `iris` do pacote `{ggplot}`. Algumas informações nós não temos, por exemplo, a cobertura de coleta, ano de coleta etc. Mas para fins de prática vamos inventar essas informações no momento de fazer o metadado.
+
+Para acessar os dados:
+
+```{r echo=TRUE,eval=FALSE}
+library(ggplot2)
+data("iris")
+```
+
 
 
 

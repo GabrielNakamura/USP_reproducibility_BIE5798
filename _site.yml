@@ -16,11 +16,13 @@ navbar:
       href: intro_ciencia_aberta.html
     - text: "Dados abertos"
       href: dados_abertos.html
-    - text: "Diretório local e metadados"
+    - text: "Metadados"
+      href: metadata_EML.html
+    - text: "Organização local"
       href: Organizacao_dir_local.html
     - text: "Versionamento"
       href: basics_git.html
-    - text: "Dia 3"
+    - text: "Programação letrada com Rmarkdown"
       href: Creating_repo.html
     - text: "Dia 4"
       href: colabs_git.html

@@ -203,27 +203,3 @@ data_penguins <- read.csv(here("data", "data-pengins.csv"))
 
 Note que ao invés de usarmos o caminho, usamos dentro da função `here` o nome das pastas que levam até o arquivo que desejamos abrir, bem como o nome deste arquivo. Garanto que agora isso irá funcionar com todos
 
-<!-- aqui a seção de metadata usando o EML -->
-
-```{r child="metadata_EML.Rmd",eval=TRUE}
-```
-
-<!-- aqui a seção de metadata para dados de biodiversidade usando DwCore -->
-
-```{r child="Darwin-core-LNP.Rmd",eval=TRUE}
-```
-
-
-# Atividade
-
-Para fixar os conceitos apresentados sobre metadados, vamos treinar um pouco mais utilizando um outro conjunto de dados. 
-
-Produza um arquivo `.xml` utilizando os dados `iris` do pacote `{ggplot}`. Algumas informações nós não temos, por exemplo, a cobertura de coleta, ano de coleta etc. Mas para fins de prática vamos inventar essas informações no momento de fazer o metadado.
-
-Para acessar os dados:
-
-```{r echo=TRUE,eval=FALSE}
-library(ggplot2)
-data("iris")
-```
-
