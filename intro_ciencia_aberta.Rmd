@@ -1,5 +1,8 @@
 ---
 title: "O que é Ciência Aberta?"
+author: "Melina Leite"
+date: "`r Sys.Date()`"
+output: html_document
 ---
 
 
