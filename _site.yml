@@ -12,6 +12,10 @@ navbar:
   left:
     - text: "Início"
       href: index.html
+    - text: "O que é ciência aberta?"
+      href: intro_ciencia_aberta.html
+    - text: "Dados abertos"
+      href: dados_abertos.html
     - text: "Diretório local e metadados"
       href: Organizacao_dir_local.html
     - text: "Versionamento"

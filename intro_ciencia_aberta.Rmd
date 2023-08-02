@@ -1,0 +1,19 @@
+---
+title: "O que é Ciência Aberta?"
+---
+
+
+Nesta primeira aula, navegaremos pelas fascinantes paisagens da ciência aberta, avaliando sua origem, histórico e múltiplos significados. 
+
+A **ciência aberta** é um movimento dentro da ciência que busca a abertura do processo de conhecimento científico, de forma que as atividades científicas, e não só o resultado final, sejam praticadas de forma transparente, colaborativa, e que seus resultados sejam confiáveis e re-utilizáveis, tanto para outros cientistas quanto para a sociedade em geral. A grosso modo, podemos dizer a ciência aberta é formada por várias iniciativas, independentes ou não, de reestruturação da forma de fazer ciência, e portanto, recebe influência de diferentes agentes como os próprios cientistas, as agências de fomento/financiadores, governos, e cidadãos.
+
+<!--Vamos discutir primeiro o que não é ciência aberta - má conduta, fraudes, plágio, pesquisa irreprodutível, erros não corrigidos - e a importância da integridade e boas práticas científicas. 
+
+Vamos refletir um pouco em como a "má ciência" pode estar sendo selecionada no ambiente acadêmico (Smaldino & McElreath 2016) devido a incentivos institucionais destorcidos voltados para quantidade - "publish A LOT or perish", o prestígio manipulado por revistas e as métricas de qualidade/quantidade usadas para avaliação de revistas, pesquisadores e instituições.
+
+Veremos brevemente sobre a crise da reprodutibilidade na Ecologia - que será abordado mais a fundo em outras aulas, e iniciativas nacionais para estudar e promover a reprodutibilidade não só computacional, mas também experimental.
+-->
+
+
+# Leituras recomendadas
+
