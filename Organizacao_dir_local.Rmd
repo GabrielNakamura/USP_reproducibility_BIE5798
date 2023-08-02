@@ -11,9 +11,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Organização - questão de estilo?
 
-"Eu me acho na minha bagunça", quem já ouviu essa frase, ou já pronunciou? Provavelmente todos nós. Mas o conceito de **organização** seria mesmo uma questão pessoal? Podemos discutir isso durante horas a fio se estivermos falando do seu quarto, da sua estante ou do seu guarda-roupa, mas quando falamos de ciência, ou seja, uma atividade coletiva, organização **não** é uma questão pessoal, justamente por ser coletiva. Sempre trabalhamos em conjunto, e isso pode ser com um grupo composto por muitas pessoas que trabalham em um determinado projeto, ou pode ser consigo mesmo, o seu eu do futuro. Desta maneira, é necessário que tudo que foi utilizado para o desenvolvimento do seu projeto científico seja de fácil compreensão para seus colaboradores ou para o seu "eu" do futuro. 
+"Eu me acho na minha bagunça", quem já ouviu essa frase, ou já pronunciou? Provavelmente todos nós. Mas o conceito de **organização** seria mesmo uma questão pessoal? Podemos discutir isso durante horas a fio se estivermos falando do seu quarto, da sua estante ou do seu guarda-roupa, mas quando falamos de ciência, ou seja, uma atividade coletiva, organização **não** é uma questão pessoal, justamente por ser coletiva. Sempre trabalhamos em conjunto, e isso pode ser com um grupo composto por muitas pessoas que trabalham em um determinado projeto, ou pode ser consigo mesmo, o seu eu do futuro. Desta maneira, é necessário que tudo que foi utilizado para o desenvolvimento do seu projeto científico seja de fácil compreensão para seus colaboradores ou para o seu "eu" do futuro.
 
-## Um esquema geral (mas não absoluto) para organização do diretório local
+# Dados necessários para as práticas 
+
+Nesta seção vamos utilizar os dados do pacote `{palmerpenguins}`. Que apesar de estar disponível como pacote, portanto poderia ser lido automáticamente apenas baixando o pacote, vamos importar os dados a partir do nosso computador. Vamos fazer isso pois assim podemos demonstrar boas práticas na leitura de dados, scripts e organização do nosso repositório local de maneira geral. Os dados do pacote já estão no repositório que baixaram. Mais adiante vamos utilizá-lo, mas antes vamos ver esquemas gerais de organização de repositório local
+
+# Um esquema geral (mas não absoluto) para organização do diretório local
 
 Nessa seção irei mostrar uma proposta de esquema geral para organização de diretórios. Essa estrutura é baseada nesta proposta do [Gustavo Paterno](https://docs.google.com/presentation/d/1Px9Npa_ANqmmfjCXo9A-eBmWzgUmmkCKd7fBIq_gG6k/edit#slide=id.g62fc6bf72f_0_196).
 
@@ -32,37 +36,40 @@ knitr::include_graphics("figs/template_general.jpg")
 ```
 
 
-# Nomeando arquivos
+## Nomeando arquivos
 
-A good rule is: 
+Uma boa regra a ser seguida: 
 
 **Human + Machine redable**
 
-Example:
+Exemplo:
 
 ```{r echo=FALSE,eval=FALSE}
-knitr::include_graphics(here::here("figures", "naming-files-data.png"))
+knitr::include_graphics(here::here("figs", "naming-files-data.png"))
 ```
 
-# Nomeando scripts
+## Nomeando scripts
 
-Personally, I use the following rule
+Pessoalmente eu utilizo o seguinte esquema
 
-**number_upper-case-letter_What-the-script-does.R**
+**número_letra-maiúscula_descrição.R**
 
-- number: used to indicate the sequence to run the scripts
+- número: usado para indicar a sequência de execução dos scripts
 
-- uper case letter: what the script does (proccess, clean, analysis, function)
+- letra maiúscula: Código que indica o que o script faz. Uso a seguinte notação
+    + `C` (Clean) leitura e limpeza/processamento de dados
+    + `D` (Do) análises
+    + `S` (Show) gráficos/figuras
 
-- What the script does: a brief description of what the script does
+- descrição: uma breve descrição sobre o que o script faz especificamente (e.g. glm)
 
-# O README
+## O README
 
-O README é uma das partes mais importantes do seu diretório, ele é escrito em caixa alta justamente para que a pessoa que esteja acesssando o seu diretório ouça a sua voz gritando **Me leia por favor!!**.
+O README é uma das partes mais importantes do seu diretório, ele é escrito em caixa alta justamente para que a pessoa que esteja acesssando o seu diretório ouça em voz alta **Me leia por favor!!**.
 
 Neste arquivo de texto você irá encontrar as principais instruções sobre a estrutura do diretório, incluindo os nomes das pessoas que montaram o diretório, além de instruções básicas sobre o que contém em cada pasta. [Aqui você pode encontrar um exemplo de README contendo as informações básicas necessárias que ele deve conter e porque](https://www.makeareadme.com/). [Aqui um template que pode ser adaptado para os seus propósitos](https://github.com/jehna/readme-best-practices/blob/master/README-default.md). [Aqui algumas dicas interessantes em português](https://blog.rocketseat.com.br/como-fazer-um-bom-readme/).
 
-É importante saber que você não irá encontrar a resposta final para o README perfeito. Os detalhes de cada README vão variar dependendo do projeto que está desenvolvendo e a forma como ele deve ser apresentado ao usuário. Por exemplo, se o projeto se trata de um repositório de arquivos e scripts de um manuscrito, e não de um README de um projeto de software, não precisa haver alguns campos de explicação, tais como exemplo de uso ou antigas versões de lançamento. Aqui coloco um [*checklist* adaptado](https://github.com/hackergrrl/art-of-readme/edit/master/README-pt-BR.md) de itens que julgo essenciais para um README informativo. Pense no seu trabalho, adicione ou edite esse checklist de acordo com seus propósitos.
+É importante saber que você não irá encontrar o modelo final para o README perfeito. Os detalhes de cada README vão variar dependendo do projeto que está desenvolvendo e a forma como ele deve ser apresentado ao usuário. Por exemplo, se o projeto se trata de um repositório de arquivos e scripts de um manuscrito, e não de um README de um projeto de software, não precisa haver alguns campos de explicação, tais como exemplo de uso ou antigas versões de lançamento. Aqui coloco um [*checklist* adaptado](https://github.com/hackergrrl/art-of-readme/edit/master/README-pt-BR.md) de itens que julgo essenciais para um README informativo. Pense no seu trabalho, adicione ou edite esse checklist de acordo com seus propósitos.
 
 Minha proposta de checklist:
 
@@ -74,20 +81,92 @@ Minha proposta de checklist:
 - [ ] Exemplo de utilização claro e *executável* (se estivermos falando de uma base de dados ou pacote)
 - [ ] Estrutura de pastas e scripts (o que cada pasta contém, o que cada script faz)
 - [ ] Status do projeto (finalizado/em andamento)
-- [ ] Em caso de problema com algo no repositório, como reportar
+- [ ] Em caso de problema com algo no repositório, como reportar (Usar o GitHub issues é uma boa ideia)
 - [ ] Licença
+
+## Iniciando o README
+
+Duas opções para montar o arquivo README. Primeira, montar você mesmo. O arquivo pode ser montado em um bloco de notas e deve ser nomeado como `README.md`. A extensão `.md` é importante aqui, ela significa que é um arquivo do tipo **Markdown**. Neste momento é importante saber que o arquivo Markdown é apenas uma linguagem de marcação. Vamos abordar em detalhes como elaborar documentos em Markdown, como este que lê neste momento, mais adiante. Por hora é relevante saber que o README deve ser em markdown pois assim o GitHub idenfica corretamente este documento como sendo o arquivo a ser exibido na página inicial do repositório remoto, como ilustrado na figura abaixo.
+
+```{r echo=FALSE,eval=TRUE,fig.cap="Arquivo README correspondente ao repositório deste site"}
+knitr::include_graphics("figs/readme-exemplo.png")
+```
+
+Na realidade, o arquivo fonte tem essa aparência
+
+```{r echo=FALSE,eval=T,fig.cap="Arquivo fonte para o README acima mostrado"}
+knitr::include_graphics("figs/readme-source-ex.png")
+```
+
+Mostro como podemos montar um README [nesta seção](). Por enquanto vamos fazer o mais simples.
+
+1- Abra um editor de texto (recomendo o [Atom](https://github.blog/2022-06-08-sunsetting-atom/), mas o editor nativo do seu computador funciona bem também). 
+
+2- Digite qualquer título na primeira linha que se inicie com `# Meu Título`. 
+
+3- Salve o arquivo com o nome de `README.md` em algum local do seu computador. Por enquanto é isso.
+
 
 # Ferramentas para organização do diretório local
 
-Some tools can help you to get an automated scaffold directory for your project, for example, see this one by [Carl Boettiger](https://github.com/cboettig/template), and this by [Francisco Rodriguez-Sanchez](https://github.com/Pakillo/template). In essence, you will notice that the structure of these directories resembles the structure of an R package.
+## Iniciando um projeto com o RStudio
 
-## Conceito de caminhos absolutos e relativos
+Como vimos na aula [teórica](), o RStudio possibilita enraizar o projeto, desta forma não precisamos utilizar caminhos absolutos, tornando nossa vida mais fácil e o trabalho mais reprodutível para quem tentar utilizar nosso repositório. Portanto, o primeiro passo vai ser iniciar um novo projeto com o RStudio. Para isso faça o seguinte:
+
+1- Abra o RStudio
+
+2- Em `Arquivo`, selecione `Novo Projeto`, como mostrado abaixo
+
+```{r echo=FALSE,eval=TRUE,fig.cap="Iniciando um projeto",out.width="80%"}
+knitr::include_graphics("figs/new-project-fig1.png")
+```
+
+3- Na janela que se abriu selecione `Novo Diretório` para iniciar o projeto em um diretório novo
+
+```{r echo=FALSE,eval=TRUE,fig.cap="Iniciando um projeto em um novo diretório",out.width="80%"}
+knitr::include_graphics("figs/new-project-fig2.png")
+```
+
+4- Escolha o tipo de projeto, neste caso `novo projeto` (se apenas um projeto, ou um pacote ou um aplicativo shiny)
+
+```{r echo=FALSE,eval=TRUE,out.width="80%"}
+knitr::include_graphics("figs/new-project-fig3.png")
+```
+
+5- Por fim escolha o nome para o diretório e onde ele vai estar no seu computador
+
+```{r echo=FALSE,eval=TRUE,out.width="80%"}
+knitr::include_graphics("figs/new-project-fig4.png")
+```
+
+Pronto, uma nova janela do RStudio se abrirá, indicando que seu projeto foi iniciado com sucesso. A partir de agora, para abrir o R e realizar modificações de scripts basta clicar no arquivo  `.RProject` que leva o nome que deu ao diretório. 
+
+## Pacotes para inicialização automática (alternativa)
+
+Alguns pacotes auxiliam montar automaticamente a organização do seu diretório local, por exemplo essa [ferramenta elaborado pelo Carl Boettiger](https://github.com/cboettig/template) e [essa do Francisco Rodriguez-Sanchez](https://github.com/Pakillo/template). 
+
+Vamos explorar um pouco a funcionalidade do pacote `{template}`. Para tanto precisamos primeiro instalar o pacote que está hospedado no GitHub.
+
+```{r echo=T,eval=FALSE}
+# install.packages("remotes")
+remotes::install_github("Pakillo/template")
+```
+
+Em seguida vamos ler o pacote e iniciar um novo projeto
+
+```{r echo=TRUE,eval=FALSE}
+library("template")
+new_project(name = "treegrowth", path = "caminho/para/diretório")
+```
+
+O diretório será iniciado no local indicado pelo argumento `path` na função `new_project`.
+
 
 ## Here
 
 O melhor pacote para organizar caminhos, o here!
 
-## RStudio
+
 
 <!-- aqui a seção de metadata usando o EML -->
 

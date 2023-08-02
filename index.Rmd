@@ -88,8 +88,8 @@ Para fazer o download deste repositório é só clicar neste botão
 ```{r echo=FALSE,eval=TRUE}
 library(downloadthis)
 download_link(
-  link = "https://github.com/fmmattioni/downloadthis/raw/master/inst/example/file_1.pdf",
-  button_label = "Download pdf file",
+  link = "https://github.com/GabrielNakamura/USP_reproducibility_BIE5798/archive/refs/heads/master.zip",
+  button_label = "Download do repositório",
   button_type = "danger",
   has_icon = TRUE,
   icon = "fa fa-save",
