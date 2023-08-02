@@ -164,9 +164,44 @@ O diretório será iniciado no local indicado pelo argumento `path` na função 
 
 ## Here
 
-O melhor pacote para organizar caminhos, o here!
+O `{here}` é o melhor pacote para padronizar caminhos. Sabe aquele erro de leitura dos dados por conta de um `/` ou `\`, ou por ter esquecido ou errado na digitação daquele caminho gigantesco para o arquivo desejado? Com o `{here}` nada disso vai acontecer.
 
+Para demonstrar o uso do pacote here vamos ler os dados `palmer-penguins.txt` para o R. Lembrando, abra o R a partir do .Rproject dentro do diretório que iniciamos nos passos anteriores
 
+```{r echo=TRUE,eval=FALSE}
+# caso não tenha o here instalado ainda
+# install.packages("here")
+
+library(here)
+
+```
+
+Da forma convencional poderíamos ler esse dado da seguinte forma
+
+```{r echo=TRUE,eval=FALSE}
+data_penguins <- read.csv("/Users/gabrielnakamura/OneDrive/Disciplina_Praticas_ferramentas_gestao_dados/USP_reproducibility_BIE5791/data/data-penguins.csv")
+```
+
+Será que você consegue reproduzir essa simples leitura de dados usando o mesmo código acima? Tente..
+
+Após a tentativa fica claro que não é possível realizar essa leitura de dados. Mas vamos lembrar que temos o projeto que enraiza nossa pasta, então podemos apenas usar o seguinte código
+
+```{r echo=TRUE,eval=FALSE}
+data_penguins <- read.csv("data/data-penguins.csv")
+```
+
+Funcionou? Ou apenas para alguns?
+
+Imagino que pode ter funcionado para todos que tem o computador onde a máquina reconhece `/` como separador de caminhos, porém, aqueles que precisa de `\` para informar a separação dos caminhos não deve ter tido sucesso. Como resolvemos isso?
+
+Aí entra o here. Com o pacote here podemos usar simplesmente o seguinte código
+
+```{r echo=TRUE,eval=FALSE}
+library(here)
+data_penguins <- read.csv(here("data", "data-pengins.csv"))
+```
+
+Note que ao invés de usarmos o caminho, usamos dentro da função `here` o nome das pastas que levam até o arquivo que desejamos abrir, bem como o nome deste arquivo. Garanto que agora isso irá funcionar com todos
 
 <!-- aqui a seção de metadata usando o EML -->
 
