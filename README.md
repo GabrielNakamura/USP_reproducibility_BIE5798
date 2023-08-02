@@ -33,7 +33,7 @@ Evolução. Nele trataremos dos seguintes tópicos:
 Este repositório contém o códigos fonte e dados que serão utilizados
 durante o curso. As atividades práticas e exercícios de apoio podem ser
 encontradas neste
-[sítio](https://gabrielnakamura.github.io/USP_reproducibility_BIE5791/)
+[sítio](https://gabrielnakamura.github.io/USP_reproducibility_BIE5798/)
 
 # Responsáveis pela disciplina
 
