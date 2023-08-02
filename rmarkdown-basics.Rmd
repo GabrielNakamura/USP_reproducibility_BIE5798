@@ -1,0 +1,38 @@
+---
+title: "R markdown"
+author: "Gabriel Nakamura"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Programação literada e R markdown
+
+Programação literada é a tradução livre do termo em inglês *literate programming*, que significa criar documentos que são possíveis de serem lidos tanto por humanos quanto por máquinas (computadores). No contexto deste curso, programação literada significa basicamente a possibilidade de misturar em um mesmo documento textos e pedaços de códigos.
+
+Se ainda é muito abstrato este conceito, um exemplo de textos produzidos usando programação literada é... este texto que você lê nesse momento. Ao longo de todo o curso vimos textos misturados com pedaços de código, de modo que a cada vez que precisasse acessar um código e o significado do que ele faz você pode encontrar tudo em um mesmo lugar.
+
+# R markdown 
+
+
+## Produzindo um documento R markdown
+
+### o documento yml
+
+### chuncks de código
+
+A imagem abaixo oferece um bom exemplo do que são **chunks**
+
+```{r echo=FALSE,eval=TRUE,fig.cap="Um exemplo de chunks, mas não como você está pensando",out.width="60%"}
+knitr::include_graphics("figs/chunck-chocolate.jpeg")
+```
+
+Na imagem acima os pedaços de chocolate inseridos no meio da massa de cookie são chamados em inglês de chunks. Da mesma forma, mas menos saborosa (ou tão saboroso quanto, não para o estômago), os códigos embebidos no meio de pedaços de texto são chamados de chunks. 
+
+### Renderizando 
+
+
+

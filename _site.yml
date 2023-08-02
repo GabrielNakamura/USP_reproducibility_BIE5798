@@ -22,12 +22,14 @@ navbar:
       href: Organizacao_dir_local.html
     - text: "Versionamento"
       href: basics_git.html
-    - text: "Programação letrada com Rmarkdown"
-      href: Creating_repo.html
-    - text: "Dia 4"
+    - text: "Programação letrada"
+      menu:
+      - text: "Rmarkdown"
+        href: rmarkdown-basics.html
+      - text: "Sites"
+        href: sites-basics.html
+    - text: "Containers"
       href: colabs_git.html
-    - text: "Dia 5"
-      href: basics_git.html
       
 
      
