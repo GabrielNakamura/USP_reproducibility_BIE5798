@@ -151,7 +151,7 @@ gitcreds::gitcreds_set()
 No console aparecerá a mensagem para digitar o token, copie o token e cole direto no navegador, pressione enter e pronto, seu RStudio está autenticado e agora está devidamente conectado com o repositório remoto. Estamos pronto para o nosso primeiro commit!!!!
 
 
-# Meu primeiro commit: Conectando Git, RStudio e Github pela primeira vez
+# Conectando Git, RStudio e Github pela primeira vez
 
 Antes de começar a utilizar o Git e GitHib via RStudio vamos primeiro dar uma olhadinha no site do GitHub. Abra o GitHub, faça o seu login e vamos dar uma explorada por lá.
 
@@ -173,7 +173,7 @@ Vimos nas aulas teóricas que essas palavrinhas não são nada mais que ações 
 
 Já temos um repositório remoto, agora precisamos que ele exista em nossos computadores para que possamos sincronizar nosso trabalho local e remoto. De maneira geral o que queremos fazer a partir de agora está ilustrado na figura seguinte
 
-```{r echo=FALSE,eval=TRUE}
+```{r echo=FALSE,eval=TRUE,out.width="55%"}
 knitr::include_graphics("figs/version-control-all.png")
 ```
 
@@ -183,7 +183,7 @@ O primeiro passo é realizar uma clonagem!
 
 ## O Clone
 
-```{r echo=FALSE,eval=TRUE,fig.cap="Referência de velho"}
+```{r echo=FALSE,eval=TRUE,fig.cap="Referência de velho",out.width="55%"}
 knitr::include_graphics("figs/o-clone.jpeg")
 ```
 
@@ -232,13 +232,13 @@ knitr::include_graphics("figs/git-inside-folder.png")
 
 Se você consegue ver esta pasta quer dizer que está tudo certo, e o git está observando (**watch** no jargão do versionamento) cada modificação e cada arquivo dentro desta pasta (a menos que você inclua o arquivo no .gitignore, mas isso é assunto para outro momento).
 
-```{r echo=FALSE,eval=TRUE}
+```{r echo=FALSE,eval=TRUE,out.width="55%"}
 knitr::include_graphics("figs/big-brother-watching.png")
 ```
 
 Agora iremos executar funções que, até o fim deste curso, serão quase automáticas no nosso fluxo de trabalho com versionamento.
 
-### Commit
+### Meu primeiro commit
 
 O que é um commit?
 
@@ -253,25 +253,66 @@ Vamos pensar que nosso projeto é uma montanha, e estamos escalando ele. Nosso o
 
 Da mesma forma que na escalada, se utilizarmos clipes muito pertinhos uns dos outros vamos ficar lentos demais, e o progresso até o topo será comprometido, se fizermos muitos commits será difícil voltar em momentos específicos do projeto, visto que terão muitos commits para serem checados. Portanto, a regra é: faça commits com parcimonia, ou seja, nem muitos, nem poucos.
 
-Vamos fazer uma modificação na nossa pasta. Podemos adicionar arquivos, já que ela está vazia. Para tanto vamos usar os arquivos que mencionei [neste link]()
+Vamos fazer uma modificação na nossa pasta. Podemos adicionar arquivos, já que ela está vazia. Para tanto vamos usar os arquivos do pacote de dados palmer penguins que estão nesse repositório. Lembre-se de ler os arquivos utilizando o `{here}` e utilizar o Rproject para abrir o diretório
 
-```{r echo=FALSE, eval=TRUE}
-knitr::include_graphics(here::here("figs", "commit-safe.png"))
+```{r echo=TRUE,eval=FALSE}
+data_penguins <- read.csv(here::here("data", "data-penguins.csv")) 
 ```
+
+**Obs** se quiserem usar seus próprios dados fiquem a vontade, o uso do palmerpenguins é apenas opcional e a título de procedimento didático. 
+
+Caso estejam trabalhando com seus próprios dados, jogue os arquivos para dentro do diretório que clonamos. O próximo passo é fazer nosso primeiro commit.
 
 
 ### Explorando commits
 
+```{r echo=FALSE, eval=TRUE,out.width="70%"}
+knitr::include_graphics(here::here("figs", "commit-safe.png"))
+```
+Existem duas formas de fazer versionamento usando o Git e Github via RStudio. Uma delas é a linha de comando, a outra é via uma interface visual, que nesse caso é o próprio RStudio. Vamos começar fazendo o versionamento via interface visual. A opção para isso é que ninguém se assuste num primeiro momento com a linha de comando, e que isso não seja um impeditivo para utilizar o versionamento no seu fluxo de trabalho. A maioria dos comandos básicos podem ser executados através desta interface gráfica que chamamos de **Git Client**
+
+Repare que seu RStudio agora tem algumas coisas novas. Especificamente, veja que agora ele tem uma aba chamada Git, como ilustrado na figura abaixo
 
 
-```{r echo=FALSE,eval=FALSE}
-knitr::include_graphics(here::here("figures", "commit-model.png"))
+```{r echo=FALSE,eval=TRUE}
+knitr::include_graphics(here::here("figs", "git-tab-rstudio.png"))
 ```
 
+Isso indica que o git está funcionando no seu diretório, e agora podemos fazer o versionamento deste diretório local e sincronizá-lo com o repositório remoto.
 
-```{r echo=FALSE,eval=FALSE}
-knitr::include_graphics(here::here("figures", "history-RStudio.png"))
+Tudo e qualquer coisa que for adicionado ou modificado na sua pasta vai aparecer na janela abaixo da aba git. Como mostrado na figura abaixo
+
+```{r echo=FALSE,eval=TRUE}
+knitr::include_graphics(here::here("figs", "git-tab-rstudio2.png"))
 ```
+
+Como eu mencionei na aula teórica e aqui acima, o commit é como um track changes do word, mas melhor. Precisamos fazer um track change manual, indicando o que foi modificado, isso é o nosso commit. Para realizar um commit via a interface do RStudio você precisa:
+
+1 - Clicar no botão `commit pending changes` (ou em qualquer botão naquela aba), como mostrado abaixo
+
+```{r echo=FALSE,eval=TRUE}
+knitr::include_graphics(here::here("figs", "git-tab-rstudio3.png"))
+```
+
+2 - Isso vai abrir uma nova janela, nela você deve selecionar nos checkbox os arquivos (vamos dar uma olhada nessa janela antes de prosseguir)
+
+```{r echo=FALSE,eval=TRUE}
+knitr::include_graphics(here::here("figs", "git-tab-rstudio4.png"))
+```
+
+3 - Escreva uma mensagem informativa. Como este é o primeiro commit geralmente selecionamos todos os arquivos e escrevemos a mensagem `First commit` para indicar que é o primeiro commit deste repositório
+
+```{r echo=FALSE,eval=TRUE}
+knitr::include_graphics(here::here("figs", "git-tab-rstudio5.png"))
+```
+
+**OBS** A mensagem deve ser realmente informativa, o commit fica armazenado no seu repositório e aparecerá publicamente caso o repositório seja público. 
+
+```{r echo=FALSE,eval=TRUE,out.width="60%"}
+knitr::include_graphics(here::here("figs", "commit-meme.png"))
+```
+
+Pronto, o que fizemos agora foi basicamente colocar nossos arquivos na **stagging area** (marcar as checking box) e prepará-los para a entrega com uma mensagem informativa, o commit. Agora precisamos enviar os arquivos para o repositório remoto (upstream)
 
 ### Meu primeiro push
 
