@@ -316,6 +316,12 @@ Pronto, o que fizemos agora foi basicamente colocar nossos arquivos na **staggin
 
 ### Meu primeiro push
 
+Temos um diretório functionando com o git, ligado ao github, com documentos dentro, mas, até agora ele apenas vive em nossos computadores. Chegou a hora de empurrar estes documentos para o diretório remoto, ou seja, aquele que clonamos lá no início. Para tanto vamos fazer um `push`
+
+O push nada mais é que empurrar os documentos para o repositório do github, chamado as vezes de `origin/master` e outras vezes `origin/main`, mas ambos querem dizer "um repositório remoto o qual o diretório que estou trabalhando está ligado".
+
+Sem mais delongas, para fazer um push precisamos apenas apertar o botão verde como mostrado na figura abaixo
+
 
 # Referências importantes
 
