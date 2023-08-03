@@ -15,10 +15,29 @@ klippy::klippy()
 
 # Apresentação
 
-Nesta seção iremos explorar um pouco mais o poder que os commits nos oferecem, incluindo boas práticas para fazer commits nos nossos arquivos e como "viajar" entre commits passados e presente.
+Nesta seção iremos explorar um pouco mais o poder que os commits nos oferecem, incluindo boas práticas para fazer commits nos nossos arquivos e como "viajar" entre commits passados e presente. Este momento também servirá para ficarmos um pouco mais familiarizados com o uso do git através do terminal. Vamos utilizar o teminal visto que algumas coisas que faremos aqui não podem ser feitas através do RStudio.
 
 Sempre ao fazer commits vale lembrar essas palavras:
 
 ```{r echo=FALSE, eval=TRUE,out.width="70%"}
 knitr::include_graphics(here::here("figs", "commit-safe.png"))
 ```
+
+# Workflow para os commits 
+
+Em primeiro lugar sempre cheque se está tudo certo com seu repositório, se seu trabalho local está sincronizado com seu trabalho remoto. Para tanto pode digitar na linha de comando do terminal
+
+```{r echo=T,eval=FALSE}
+git status
+```
+
+Se sua *working tree* estiver no status *clean*, quer dizer que você está sincronizada com o *origin*
+
+Faça algumas modificações e depois vamos fazer a mesma sequencia de ações que fizemos anteriormente (stage, commit, push), mas agora usando a linha de comando. Para tanto podemos fazer assim
+
+```{r echo=TRUE,eval=FALSE}
+git add .
+git commit -m "uma mensagem informativa"
+git push
+```
+
