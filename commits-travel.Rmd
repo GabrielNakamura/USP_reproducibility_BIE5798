@@ -1,0 +1,24 @@
+---
+title: 'Explorando melhor os commits'
+author: "Gabriel Nakamura"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.align = "center")
+```
+
+```{r klippy, echo=FALSE, include=TRUE}
+klippy::klippy()
+```
+
+# Apresentação
+
+Nesta seção iremos explorar um pouco mais o poder que os commits nos oferecem, incluindo boas práticas para fazer commits nos nossos arquivos e como "viajar" entre commits passados e presente.
+
+Sempre ao fazer commits vale lembrar essas palavras:
+
+```{r echo=FALSE, eval=TRUE,out.width="70%"}
+knitr::include_graphics(here::here("figs", "commit-safe.png"))
+```

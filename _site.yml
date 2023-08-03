@@ -21,7 +21,11 @@ navbar:
     - text: "Organização local"
       href: Organizacao_dir_local.html
     - text: "Versionamento"
-      href: basics_git.html
+      menu:
+      - text: "ABC do versionamento"
+        href: basics_git.html
+      - text: "Viajando no tempo"
+        href: commits-travel.html
     - text: "Programação letrada"
       menu:
       - text: "Rmarkdown"

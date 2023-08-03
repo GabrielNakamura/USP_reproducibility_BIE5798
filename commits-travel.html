@@ -9,11 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Melina Leite" />
+<meta name="author" content="Gabriel Nakamura" />
 
 <meta name="date" content="2023-08-03" />
 
-<title>O que é Ciência Aberta?</title>
+<title>Explorando melhor os commits</title>
 
 <script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -37,6 +37,10 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <script src="site_libs/navigation-1.1/sourceembed.js"></script>
+<script src="site_libs/clipboard-1.7.1/clipboard.min.js"></script>
+<link href="site_libs/primer-tooltips-1.4.0/build.css" rel="stylesheet" />
+<link href="site_libs/klippy-0.0.0.9500/css/klippy.min.css" rel="stylesheet" />
+<script src="site_libs/klippy-0.0.0.9500/js/klippy.min.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -385,37 +389,25 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">O que é Ciência Aberta?</h1>
-<h4 class="author">Melina Leite</h4>
+<h1 class="title toc-ignore">Explorando melhor os commits</h1>
+<h4 class="author">Gabriel Nakamura</h4>
 <h4 class="date">2023-08-03</h4>
 
 </div>
 
 
-<p>Nesta primeira aula, navegaremos pelas fascinantes paisagens da
-ciência aberta, avaliando sua origem, histórico e múltiplos
-significados.</p>
-<p>A <strong>ciência aberta</strong> é um movimento dentro da ciência
-que busca a abertura do processo de conhecimento científico, de forma
-que as atividades científicas, e não só o resultado final, sejam
-praticadas de forma transparente, colaborativa, e que seus resultados
-sejam confiáveis e re-utilizáveis, tanto para outros cientistas quanto
-para a sociedade em geral. A grosso modo, podemos dizer a ciência aberta
-é formada por várias iniciativas, independentes ou não, de
-reestruturação da forma de fazer ciência, e portanto, recebe influência
-de diferentes agentes como os próprios cientistas, as agências de
-fomento/financiadores, governos, e cidadãos.</p>
-<!--Vamos discutir primeiro o que não é ciência aberta - má conduta, fraudes, plágio, pesquisa irreprodutível, erros não corrigidos - e a importância da integridade e boas práticas científicas. 
-
-Vamos refletir um pouco em como a "má ciência" pode estar sendo selecionada no ambiente acadêmico (Smaldino & McElreath 2016) devido a incentivos institucionais destorcidos voltados para quantidade - "publish A LOT or perish", o prestígio manipulado por revistas e as métricas de qualidade/quantidade usadas para avaliação de revistas, pesquisadores e instituições.
-
-Veremos brevemente sobre a crise da reprodutibilidade na Ecologia - que será abordado mais a fundo em outras aulas, e iniciativas nacionais para estudar e promover a reprodutibilidade não só computacional, mas também experimental.
--->
-<div id="leituras-recomendadas" class="section level1">
-<h1>Leituras recomendadas</h1>
+<script>
+  addClassKlippyTo("pre.r, pre.markdown");
+  addKlippy('left', 'top', 'auto', '1', 'Copy code', 'Copied!');
+</script>
+<div id="apresentação" class="section level1">
+<h1>Apresentação</h1>
+<p>Nesta seção iremos explorar um pouco mais o poder que os commits nos
+oferecem, incluindo boas práticas para fazer commits nos nossos arquivos
+e como “viajar” entre commits passados e presente.</p>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiTyBxdWUgw6kgQ2nDqm5jaWEgQWJlcnRhPyIKYXV0aG9yOiAiTWVsaW5hIExlaXRlIgpkYXRlOiAiYHIgU3lzLkRhdGUoKWAiCm91dHB1dDogaHRtbF9kb2N1bWVudAotLS0KCgpOZXN0YSBwcmltZWlyYSBhdWxhLCBuYXZlZ2FyZW1vcyBwZWxhcyBmYXNjaW5hbnRlcyBwYWlzYWdlbnMgZGEgY2nDqm5jaWEgYWJlcnRhLCBhdmFsaWFuZG8gc3VhIG9yaWdlbSwgaGlzdMOzcmljbyBlIG3Dumx0aXBsb3Mgc2lnbmlmaWNhZG9zLiAKCkEgKipjacOqbmNpYSBhYmVydGEqKiDDqSB1bSBtb3ZpbWVudG8gZGVudHJvIGRhIGNpw6puY2lhIHF1ZSBidXNjYSBhIGFiZXJ0dXJhIGRvIHByb2Nlc3NvIGRlIGNvbmhlY2ltZW50byBjaWVudMOtZmljbywgZGUgZm9ybWEgcXVlIGFzIGF0aXZpZGFkZXMgY2llbnTDrWZpY2FzLCBlIG7Do28gc8OzIG8gcmVzdWx0YWRvIGZpbmFsLCBzZWphbSBwcmF0aWNhZGFzIGRlIGZvcm1hIHRyYW5zcGFyZW50ZSwgY29sYWJvcmF0aXZhLCBlIHF1ZSBzZXVzIHJlc3VsdGFkb3Mgc2VqYW0gY29uZmnDoXZlaXMgZSByZS11dGlsaXrDoXZlaXMsIHRhbnRvIHBhcmEgb3V0cm9zIGNpZW50aXN0YXMgcXVhbnRvIHBhcmEgYSBzb2NpZWRhZGUgZW0gZ2VyYWwuIEEgZ3Jvc3NvIG1vZG8sIHBvZGVtb3MgZGl6ZXIgYSBjacOqbmNpYSBhYmVydGEgw6kgZm9ybWFkYSBwb3IgdsOhcmlhcyBpbmljaWF0aXZhcywgaW5kZXBlbmRlbnRlcyBvdSBuw6NvLCBkZSByZWVzdHJ1dHVyYcOnw6NvIGRhIGZvcm1hIGRlIGZhemVyIGNpw6puY2lhLCBlIHBvcnRhbnRvLCByZWNlYmUgaW5mbHXDqm5jaWEgZGUgZGlmZXJlbnRlcyBhZ2VudGVzIGNvbW8gb3MgcHLDs3ByaW9zIGNpZW50aXN0YXMsIGFzIGFnw6puY2lhcyBkZSBmb21lbnRvL2ZpbmFuY2lhZG9yZXMsIGdvdmVybm9zLCBlIGNpZGFkw6Nvcy4KCjwhLS1WYW1vcyBkaXNjdXRpciBwcmltZWlybyBvIHF1ZSBuw6NvIMOpIGNpw6puY2lhIGFiZXJ0YSAtIG3DoSBjb25kdXRhLCBmcmF1ZGVzLCBwbMOhZ2lvLCBwZXNxdWlzYSBpcnJlcHJvZHV0w612ZWwsIGVycm9zIG7Do28gY29ycmlnaWRvcyAtIGUgYSBpbXBvcnTDom5jaWEgZGEgaW50ZWdyaWRhZGUgZSBib2FzIHByw6F0aWNhcyBjaWVudMOtZmljYXMuIAoKVmFtb3MgcmVmbGV0aXIgdW0gcG91Y28gZW0gY29tbyBhICJtw6EgY2nDqm5jaWEiIHBvZGUgZXN0YXIgc2VuZG8gc2VsZWNpb25hZGEgbm8gYW1iaWVudGUgYWNhZMOqbWljbyAoU21hbGRpbm8gJiBNY0VscmVhdGggMjAxNikgZGV2aWRvIGEgaW5jZW50aXZvcyBpbnN0aXR1Y2lvbmFpcyBkZXN0b3JjaWRvcyB2b2x0YWRvcyBwYXJhIHF1YW50aWRhZGUgLSAicHVibGlzaCBBIExPVCBvciBwZXJpc2giLCBvIHByZXN0w61naW8gbWFuaXB1bGFkbyBwb3IgcmV2aXN0YXMgZSBhcyBtw6l0cmljYXMgZGUgcXVhbGlkYWRlL3F1YW50aWRhZGUgdXNhZGFzIHBhcmEgYXZhbGlhw6fDo28gZGUgcmV2aXN0YXMsIHBlc3F1aXNhZG9yZXMgZSBpbnN0aXR1acOnw7Vlcy4KClZlcmVtb3MgYnJldmVtZW50ZSBzb2JyZSBhIGNyaXNlIGRhIHJlcHJvZHV0aWJpbGlkYWRlIG5hIEVjb2xvZ2lhIC0gcXVlIHNlcsOhIGFib3JkYWRvIG1haXMgYSBmdW5kbyBlbSBvdXRyYXMgYXVsYXMsIGUgaW5pY2lhdGl2YXMgbmFjaW9uYWlzIHBhcmEgZXN0dWRhciBlIHByb21vdmVyIGEgcmVwcm9kdXRpYmlsaWRhZGUgbsOjbyBzw7MgY29tcHV0YWNpb25hbCwgbWFzIHRhbWLDqW0gZXhwZXJpbWVudGFsLgotLT4KCgojIExlaXR1cmFzIHJlY29tZW5kYWRhcwoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAnRXhwbG9yYW5kbyBtZWxob3Igb3MgY29tbWl0cycKYXV0aG9yOiAiR2FicmllbCBOYWthbXVyYSIKZGF0ZTogImByIFN5cy5EYXRlKClgIgpvdXRwdXQ6IGh0bWxfZG9jdW1lbnQKLS0tCgpgYGB7ciBzZXR1cCwgaW5jbHVkZT1GQUxTRX0Ka25pdHI6Om9wdHNfY2h1bmskc2V0KGVjaG8gPSBUUlVFLCBmaWcuYWxpZ24gPSAiY2VudGVyIikKYGBgCgpgYGB7ciBrbGlwcHksIGVjaG89RkFMU0UsIGluY2x1ZGU9VFJVRX0Ka2xpcHB5OjprbGlwcHkoKQpgYGAKCiMgQXByZXNlbnRhw6fDo28KCk5lc3RhIHNlw6fDo28gaXJlbW9zIGV4cGxvcmFyIHVtIHBvdWNvIG1haXMgbyBwb2RlciBxdWUgb3MgY29tbWl0cyBub3Mgb2ZlcmVjZW0sIGluY2x1aW5kbyBib2FzIHByw6F0aWNhcyBwYXJhIGZhemVyIGNvbW1pdHMgbm9zIG5vc3NvcyBhcnF1aXZvcyBlIGNvbW8gInZpYWphciIgZW50cmUgY29tbWl0cyBwYXNzYWRvcyBlIHByZXNlbnRlLg==</div>
 
 
 </div>
@@ -453,7 +445,7 @@ $(document).ready(function () {
 <!-- code folding -->
 <script>
 $(document).ready(function () {
-  window.initializeSourceEmbed("intro_ciencia_aberta.Rmd");
+  window.initializeSourceEmbed("commits-travel.Rmd");
 });
 </script>
 
