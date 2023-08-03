@@ -322,13 +322,19 @@ O push nada mais é que empurrar os documentos para o repositório do github, ch
 
 Sem mais delongas, para fazer um push precisamos apenas apertar o botão verde como mostrado na figura abaixo
 
+```{r echo=FALSE,eval=TRUE}
+knitr::include_graphics(here::here("figs", "git-tab-rstudio6.png"))
+```
+
+Duas coisas são importantes notar nesse momento. Primeiro o botão de push, que vai empurrar os arquivos para o repositório remoto (origin). Segundo, a mensagem destacada com a seta. Ela diz que o *branch* está a frente do *origin/master* por um *commit*. Traduzindo, nosso diretório local (branch), está uma versão a frente (pois modificamos coisas aqui) em relação ao nosso repositório remoto (origin/master). Ao empurrar (push) as modificações, essa mensagem desaparecerá, indicando que tanto branch quanto origin estão na mesma linha do tempo!
+
 
 # Referências importantes
 
 [Douglas McDonald website](https://www.douganddata.com/2022/07/on-naming-things/)
 
-[Jenny Bryan as always](http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf)
+[Jenny Bryan](http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf)
 
-[Hadley Wickham of course](http://adv-r.had.co.nz/Style.html)
+[Hadley Wickham](http://adv-r.had.co.nz/Style.html)
 
 
