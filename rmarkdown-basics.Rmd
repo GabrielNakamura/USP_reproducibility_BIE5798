@@ -44,7 +44,7 @@ knitr::include_graphics("figs/rmarkdown-yml.png")
 O yml pode ser simples como o que vimos anteriormente, ou pode ser mais complicado, com mais elementos, tal como o yml que passa as instruções para construir o site deste material
 
 ```{r echo=FALSE,eval=TRUE,out.width="70%"}
-knitr::include_graphics("figs/rmarkdown-yml-morecomplicated.png.png")
+knitr::include_graphics("figs/rmarkdown-yml-morecomplicated.png")
 ```
 
 De maneira geral, o importante é entender que o yml é o elemento que rege a forma que o documento será construído. Para sites (o motivo pelo qual eu mais uso o R markdown), o output no formato `html_document` já é suficiente.
