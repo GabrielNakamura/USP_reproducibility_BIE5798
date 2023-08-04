@@ -92,3 +92,17 @@ git merge nome-do-branch
 ```
 
 Pronto, agora o branch `main` incorporou as modificações do branch `nome-do-branch`
+
+
+# Prática
+
+Como prática sugerimos que os estudantes se juntem em duplas e simulem um trabalho colaborativo. O roteiro seria mais ou menos esse:
+
+1 - Uma pessoa convida um colaborador para o seu repositório no Github. A pessoa convidada deve aceitar o convite. 
+
+2 - O colaborador deve criar um novo branch seguindo uma das formas ilustradas acima (ou outra que ache mais conveniente)
+
+3 - Faça algumas modificações no branch novo criado e faça um pull-request
+
+4 - A pessoa responsável pelo repositório deve revisar o pull-request e incorporar as sugestões no `branch main`
+
