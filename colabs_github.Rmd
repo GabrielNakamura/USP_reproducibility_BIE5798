@@ -106,3 +106,7 @@ Como prática sugerimos que os estudantes se juntem em duplas e simulem um traba
 
 4 - A pessoa responsável pelo repositório deve revisar o pull-request e incorporar as sugestões no `branch main`
 
+
+# References
+
+Happy git with R por Jenny Brian
