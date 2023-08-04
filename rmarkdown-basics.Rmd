@@ -92,4 +92,10 @@ knitr::include_graphics("figs/rmarkdown-knit-button.png")
 
 Ao clicar no botão Knit o RStudio renderizará o documento R Markdown para o formato estipulado no cabeçalho yml. Uma janela irá se abrir com a demonstração do documento renderizado.
 
+Documentos em R markdown auxiliam no processo de tornar a pesquisa mais aberta e reprodutível, pois oferecem a possibilidade de produzir documentos altamente explicativos com textos e códigos, que podem ser utilizados posteriormente como suplemento para artigos ou ainda para comunicar com seus colaboradores durante a elaboração de um estudo. Para finalizar essa seção, um vídeo lembrando a importância da reprodutibilidade em pesquisa.
+
+```{r echo=FALSE,eval=TRUE}
+vembedr::embed_url("https://www.youtube.com/watch?v=7gYIs7uYbMo")
+```
+
 
