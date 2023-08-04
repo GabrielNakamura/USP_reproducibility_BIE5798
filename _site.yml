@@ -26,6 +26,8 @@ navbar:
         href: basics_git.html
       - text: "Viajando no tempo"
         href: commits-travel.html
+      - text: "Trabalho colaborativo"
+        href: colabs_github.html
     - text: "Programação letrada"
       menu:
       - text: "Rmarkdown"
