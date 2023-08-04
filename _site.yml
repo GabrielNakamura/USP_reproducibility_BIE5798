@@ -34,8 +34,13 @@ navbar:
         href: rmarkdown-basics.html
       - text: "Sites"
         href: sites-basics.html
-    - text: "Containers"
-      href: colabs_git.html
+    - text: "Avançado"
+      menu:
+      - text: "Pacote `{renv}`"
+        href: renv-basics.html
+      - text: "Containers"
+        href: rocker-basics.html
+      
       
 
      
