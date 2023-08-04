@@ -15,7 +15,7 @@
 
 <title>Dados abertos</title>
 
-<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.17/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -31,7 +31,7 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
@@ -407,12 +407,135 @@ div.tocify {
 </div>
 
 
-<p>Aula sobre dados e seu papel crucial na pesquisa ecológica.</p>
+<p>Dados são a <strong>base</strong> de quase toda pesquisa ecológica e
+podem ser de natureza, formatos e tamanhos muito diferentes: tabelas,
+questionários, texto, imagem, áudio, entrevista, simulações, etc…</p>
+<p>Dados são <strong>produto da pesquisa</strong>, assim como teses e
+artigos. Portanto, devemos nos orgulhar dos dados que
+produzimos/coletamos/simulamos/organizamos dentro dos nossos projetos de
+pequisa!</p>
+<p>Nessa aula vamos navegar no universo dos dados ecológicos, discutindo
+um pouco sobre:</p>
+<ul>
+<li><p>Porque precisamos de dados abertos, ou minimamente abertos -
+fraudes como fabricação/falsificação de dados</p></li>
+<li><p>Longevidade dos dados - resgate de dados</p></li>
+<li><p>Plano de gestão de dados</p></li>
+<li><p>Boas práticas de organização e gestão de dados tabulares</p></li>
+<li><p>Importância dos metadados</p></li>
+<li><p>Vantagens em deixar dados abertos</p></li>
+<li><p>Barreiras para o compartilhamento de dados</p></li>
+<li><p>Princípios FAIR (Findable, Accessible, Interoperable and
+Reusable)</p></li>
+<li><p>Publicação de dados em repositórios e/ou revistas
+científicas</p></li>
+<li><p>Tipos de repositórios</p></li>
+<li><p>Licenças</p></li>
+<li><p>Ética na publicação de dados</p></li>
+</ul>
 <div id="leituras-recomendadas" class="section level1">
 <h1>Leituras recomendadas</h1>
 </div>
+<div id="algumas-revistas-de-dados" class="section level1">
+<h1>Algumas revistas de dados</h1>
+<p>Listas de revistas de dados (<em>Data journals</em>):</p>
+<ul>
+<li><p><a href="https://zenodo.org/record/7082126"
+class="uri">https://zenodo.org/record/7082126</a></p></li>
+<li><p><a href="https://libguides.wmich.edu/datasci/datajournals"
+class="uri">https://libguides.wmich.edu/datasci/datajournals</a></p></li>
+</ul>
+<p>Algumas revistas que publicam dados ou metadados extendidos de
+pesquisas</p>
+<ul>
+<li><p><a href="https://esapubs.org/archive/">Data Papers</a> nas
+revistas da ESA (Ecological Society of America)</p></li>
+<li><p><a href="https://www.journals.elsevier.com/data-in-brief">Data in
+Brief</a> (da Elsevier): várias disciplinas</p></li>
+</ul>
+<p>15 artigos de dados sobre biodiversidade da Mata Altântica publicados
+na <em>Ecology</em></p>
+<ul>
+<li><a
+href="https://esajournals.onlinelibrary.wiley.com/doi/toc/10.1002/(ISSN)1939-9170.AtlanticPapers">ATLANTIC:
+Data Papers from a biodiversity hotspot</a></li>
+</ul>
+</div>
+<div id="alguns-repositórios-de-dados" class="section level1">
+<h1>Alguns repositórios de dados</h1>
+<p>Listas de vários repositórios de dados:</p>
+<ul>
+<li><p><a href="https://oad.simmons.edu/oadwiki/Data_repositories"
+class="uri">https://oad.simmons.edu/oadwiki/Data_repositories</a></p></li>
+<li><p><a
+href="https://clarivate.com/webofsciencegroup/master-data-repository-list/"
+class="uri">https://clarivate.com/webofsciencegroup/master-data-repository-list/</a></p></li>
+</ul>
+<div id="temáticos" class="section level3">
+<h3>Temáticos</h3>
+<ul>
+<li><p><a href="https://www.gbif.org/">Movebank</a></p></li>
+<li><p><a href="https://www.gbif.org/">GBIF</a></p></li>
+<li><p><a href="https://knb.ecoinformatics.org/">KNB</a> (Knowledge
+Network for Biocomplexity)</p></li>
+<li><p><a href="https://biotime.st-andrews.ac.uk/">bioTIME</a>: global
+database of assemblage time series for quantifying and understanding
+biodiversity change</p></li>
+</ul>
+</div>
+<div id="genéricosgerais" class="section level3">
+<h3>Genéricos/gerais:</h3>
+<ul>
+<li><p><a href="https://figshare.com/">Figshare</a></p></li>
+<li><p><a href="https://zenodo.org/">Zenodo</a></p></li>
+<li><p><a href="https://datadryad.org/stash">Dryad</a></p></li>
+<li><p><a href="https://data.mendeley.com/">Mendeley Data</a></p></li>
+<li><p><a href="https://osf.io/">Open Science Framework</a></p></li>
+<li><p><a href="http://dataverse.org/">Dataverse</a></p></li>
+</ul>
+</div>
+<div id="institucionais" class="section level3">
+<h3>Institucionais</h3>
+<ul>
+<li><a
+href="https://repositorio.uspdigital.usp.br/?codmnu=9980">USP</a></li>
+</ul>
+</div>
+<div id="redes-de-pesquisapesquisadores" class="section level3">
+<h3>Redes de pesquisa/pesquisadores</h3>
+<p>(Alguns exemplos em florestas e ecologia de comunidades)</p>
+<ul>
+<li><p><a href="https://forestgeo.si.edu/">ForestGEO</a>: dados de
+algumas parcelas são abertos (ex: Barro Colorado Island), outros você
+solicita mediante prenchimento de formulário no site, outros diretamente
+com os PI (principal investigators)</p></li>
+<li><p><a
+href="https://sites.google.com/naturalis.nl/amazon-tree-diversity-network/about-us">Amazon
+Tree Diversity Network</a></p></li>
+<li><p><a href="https://forestplots.net/">ForestPlots.Net</a></p></li>
+</ul>
+</div>
+</div>
+<div id="buscadoresagregadores-de-dados" class="section level1">
+<h1>Buscadores/agregadores de dados</h1>
+<ul>
+<li><p><a
+href="https://metabuscador.uspdigital.usp.br/">Metabuscador</a> das
+instituições do estado de São Paulo.</p></li>
+<li><p><a href="https://www.re3data.org/">re3data</a> (Registry of
+Research data Repositories)</p></li>
+<li><p><a
+href="https://www.dataone.org/what-dataone">DataONE</a></p></li>
+<li><p><a href="https://commons.datacite.org/">DataCite</a></p></li>
+<li><p><a href="https://datasetsearch.research.google.com/">Google
+Dataset Search</a></p></li>
+<li><p><a
+href="https://explore.openaire.eu/search/find/research-outcomes?type=%22datasets%22">OpenAIRE
+Explore</a></p></li>
+</ul>
+</div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiRGFkb3MgYWJlcnRvcyIKYXV0aG9yOiAiTWVsaW5hIExlaXRlIgpkYXRlOiAiYHIgU3lzLkRhdGUoKWAiCm91dHB1dDogaHRtbF9kb2N1bWVudAotLS0KCkF1bGEgc29icmUgZGFkb3MgZSBzZXUgcGFwZWwgY3J1Y2lhbCBuYSBwZXNxdWlzYSBlY29sw7NnaWNhLgoKCgojIExlaXR1cmFzIHJlY29tZW5kYWRhcwoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiRGFkb3MgYWJlcnRvcyIKYXV0aG9yOiAiTWVsaW5hIExlaXRlIgpkYXRlOiAiYHIgU3lzLkRhdGUoKWAiCm91dHB1dDogaHRtbF9kb2N1bWVudAotLS0KCkRhZG9zIHPDo28gYSAqKmJhc2UqKiBkZSBxdWFzZSB0b2RhIHBlc3F1aXNhIGVjb2zDs2dpY2EgZSBwb2RlbSBzZXIgZGUgbmF0dXJlemEsIGZvcm1hdG9zIGUgdGFtYW5ob3MgbXVpdG8gZGlmZXJlbnRlczogdGFiZWxhcywgcXVlc3Rpb27DoXJpb3MsIHRleHRvLCBpbWFnZW0sIMOhdWRpbywgZW50cmV2aXN0YSwgc2ltdWxhw6fDtWVzLCBldGMuLi4KCkRhZG9zIHPDo28gKipwcm9kdXRvIGRhIHBlc3F1aXNhKiosIGFzc2ltIGNvbW8gdGVzZXMgZSBhcnRpZ29zLiBQb3J0YW50bywgZGV2ZW1vcyBub3Mgb3JndWxoYXIgZG9zIGRhZG9zIHF1ZSBwcm9kdXppbW9zL2NvbGV0YW1vcy9zaW11bGFtb3Mvb3JnYW5pemFtb3MgZGVudHJvIGRvcyBub3Nzb3MgcHJvamV0b3MgZGUgcGVxdWlzYSEKCk5lc3NhIGF1bGEgdmFtb3MgbmF2ZWdhciBubyB1bml2ZXJzbyBkb3MgZGFkb3MgZWNvbMOzZ2ljb3MsIGRpc2N1dGluZG8gdW0gcG91Y28gc29icmU6CgotICAgUG9ycXVlIHByZWNpc2Ftb3MgZGUgZGFkb3MgYWJlcnRvcywgb3UgbWluaW1hbWVudGUgYWJlcnRvcyAtIGZyYXVkZXMgY29tbyBmYWJyaWNhw6fDo28vZmFsc2lmaWNhw6fDo28gZGUgZGFkb3MKCi0gICBMb25nZXZpZGFkZSBkb3MgZGFkb3MgLSByZXNnYXRlIGRlIGRhZG9zCgotICAgUGxhbm8gZGUgZ2VzdMOjbyBkZSBkYWRvcwoKLSAgIEJvYXMgcHLDoXRpY2FzIGRlIG9yZ2FuaXphw6fDo28gZSBnZXN0w6NvIGRlIGRhZG9zIHRhYnVsYXJlcwoKLSAgIEltcG9ydMOibmNpYSBkb3MgbWV0YWRhZG9zCgotICAgVmFudGFnZW5zIGVtIGRlaXhhciBkYWRvcyBhYmVydG9zCgotICAgQmFycmVpcmFzIHBhcmEgbyBjb21wYXJ0aWxoYW1lbnRvIGRlIGRhZG9zCgotICAgUHJpbmPDrXBpb3MgRkFJUiAoRmluZGFibGUsIEFjY2Vzc2libGUsIEludGVyb3BlcmFibGUgYW5kIFJldXNhYmxlKQoKLSAgIFB1YmxpY2HDp8OjbyBkZSBkYWRvcyBlbSByZXBvc2l0w7NyaW9zIGUvb3UgcmV2aXN0YXMgY2llbnTDrWZpY2FzCgotICAgVGlwb3MgZGUgcmVwb3NpdMOzcmlvcwoKLSAgICBMaWNlbsOnYXMKCi0gICDDiXRpY2EgbmEgcHVibGljYcOnw6NvIGRlIGRhZG9zCgojIExlaXR1cmFzIHJlY29tZW5kYWRhcwoKIyBBbGd1bWFzIHJldmlzdGFzIGRlIGRhZG9zCgpMaXN0YXMgZGUgcmV2aXN0YXMgZGUgZGFkb3MgKCpEYXRhIGpvdXJuYWxzKik6CgotICAgPGh0dHBzOi8vemVub2RvLm9yZy9yZWNvcmQvNzA4MjEyNj4KCi0gICA8aHR0cHM6Ly9saWJndWlkZXMud21pY2guZWR1L2RhdGFzY2kvZGF0YWpvdXJuYWxzPgoKQWxndW1hcyByZXZpc3RhcyBxdWUgcHVibGljYW0gZGFkb3Mgb3UgbWV0YWRhZG9zIGV4dGVuZGlkb3MgZGUgcGVzcXVpc2FzCgotICAgW0RhdGEgUGFwZXJzXShodHRwczovL2VzYXB1YnMub3JnL2FyY2hpdmUvKSBuYXMgcmV2aXN0YXMgZGEgRVNBIChFY29sb2dpY2FsIFNvY2lldHkgb2YgQW1lcmljYSkKCi0gICBbRGF0YSBpbiBCcmllZl0oaHR0cHM6Ly93d3cuam91cm5hbHMuZWxzZXZpZXIuY29tL2RhdGEtaW4tYnJpZWYpIChkYSBFbHNldmllcik6IHbDoXJpYXMgZGlzY2lwbGluYXMKCjE1IGFydGlnb3MgZGUgZGFkb3Mgc29icmUgYmlvZGl2ZXJzaWRhZGUgZGEgTWF0YSBBbHTDom50aWNhIHB1YmxpY2Fkb3MgbmEgKkVjb2xvZ3kqCgotICAgW0FUTEFOVElDOiBEYXRhIFBhcGVycyBmcm9tIGEgYmlvZGl2ZXJzaXR5IGhvdHNwb3RdKGh0dHBzOi8vZXNham91cm5hbHMub25saW5lbGlicmFyeS53aWxleS5jb20vZG9pL3RvYy8xMC4xMDAyLyhJU1NOKTE5MzktOTE3MC5BdGxhbnRpY1BhcGVycykKCiMgQWxndW5zIHJlcG9zaXTDs3Jpb3MgZGUgZGFkb3MKCkxpc3RhcyBkZSB2w6FyaW9zIHJlcG9zaXTDs3Jpb3MgZGUgZGFkb3M6CgotICAgPGh0dHBzOi8vb2FkLnNpbW1vbnMuZWR1L29hZHdpa2kvRGF0YV9yZXBvc2l0b3JpZXM+CgotICAgPGh0dHBzOi8vY2xhcml2YXRlLmNvbS93ZWJvZnNjaWVuY2Vncm91cC9tYXN0ZXItZGF0YS1yZXBvc2l0b3J5LWxpc3QvPgoKIyMjIFRlbcOhdGljb3MKCi0gICBbTW92ZWJhbmtdKGh0dHBzOi8vd3d3LmdiaWYub3JnLykKCi0gICBbR0JJRl0oaHR0cHM6Ly93d3cuZ2JpZi5vcmcvKQoKLSAgIFtLTkJdKGh0dHBzOi8va25iLmVjb2luZm9ybWF0aWNzLm9yZy8pIChLbm93bGVkZ2UgTmV0d29yayBmb3IgQmlvY29tcGxleGl0eSkKCi0gICBbYmlvVElNRV0oaHR0cHM6Ly9iaW90aW1lLnN0LWFuZHJld3MuYWMudWsvKTogZ2xvYmFsIGRhdGFiYXNlIG9mIGFzc2VtYmxhZ2UgdGltZSBzZXJpZXMgZm9yIHF1YW50aWZ5aW5nIGFuZCB1bmRlcnN0YW5kaW5nIGJpb2RpdmVyc2l0eSBjaGFuZ2UKCiMjIyBHZW7DqXJpY29zL2dlcmFpczoKCi0gICBbRmlnc2hhcmVdKGh0dHBzOi8vZmlnc2hhcmUuY29tLykKCi0gICBbWmVub2RvXShodHRwczovL3plbm9kby5vcmcvKQoKLSAgIFtEcnlhZF0oaHR0cHM6Ly9kYXRhZHJ5YWQub3JnL3N0YXNoKQoKLSAgIFtNZW5kZWxleSBEYXRhXShodHRwczovL2RhdGEubWVuZGVsZXkuY29tLykKCi0gICBbT3BlbiBTY2llbmNlIEZyYW1ld29ya10oaHR0cHM6Ly9vc2YuaW8vKQoKLSAgIFtEYXRhdmVyc2VdKGh0dHA6Ly9kYXRhdmVyc2Uub3JnLykKCiMjIyBJbnN0aXR1Y2lvbmFpcwoKLSAgIFtVU1BdKGh0dHBzOi8vcmVwb3NpdG9yaW8udXNwZGlnaXRhbC51c3AuYnIvP2NvZG1udT05OTgwKQoKIyMjIFJlZGVzIGRlIHBlc3F1aXNhL3Blc3F1aXNhZG9yZXMKCihBbGd1bnMgZXhlbXBsb3MgZW0gZmxvcmVzdGFzIGUgZWNvbG9naWEgZGUgY29tdW5pZGFkZXMpCgotICAgW0ZvcmVzdEdFT10oaHR0cHM6Ly9mb3Jlc3RnZW8uc2kuZWR1Lyk6IGRhZG9zIGRlIGFsZ3VtYXMgcGFyY2VsYXMgc8OjbyBhYmVydG9zIChleDogQmFycm8gQ29sb3JhZG8gSXNsYW5kKSwgb3V0cm9zIHZvY8OqIHNvbGljaXRhIG1lZGlhbnRlIHByZW5jaGltZW50byBkZSBmb3JtdWzDoXJpbyBubyBzaXRlLCBvdXRyb3MgZGlyZXRhbWVudGUgY29tIG9zIFBJIChwcmluY2lwYWwgaW52ZXN0aWdhdG9ycykKCi0gICBbQW1hem9uIFRyZWUgRGl2ZXJzaXR5IE5ldHdvcmtdKGh0dHBzOi8vc2l0ZXMuZ29vZ2xlLmNvbS9uYXR1cmFsaXMubmwvYW1hem9uLXRyZWUtZGl2ZXJzaXR5LW5ldHdvcmsvYWJvdXQtdXMpCgotICAgW0ZvcmVzdFBsb3RzLk5ldF0oaHR0cHM6Ly9mb3Jlc3RwbG90cy5uZXQvKQoKIyBCdXNjYWRvcmVzL2FncmVnYWRvcmVzIGRlIGRhZG9zCgotICAgW01ldGFidXNjYWRvcl0oaHR0cHM6Ly9tZXRhYnVzY2Fkb3IudXNwZGlnaXRhbC51c3AuYnIvKSBkYXMgaW5zdGl0dWnDp8O1ZXMgZG8gZXN0YWRvIGRlIFPDo28gUGF1bG8uCgotICAgW3JlM2RhdGFdKGh0dHBzOi8vd3d3LnJlM2RhdGEub3JnLykgKFJlZ2lzdHJ5IG9mIFJlc2VhcmNoIGRhdGEgUmVwb3NpdG9yaWVzKQoKLSAgIFtEYXRhT05FXShodHRwczovL3d3dy5kYXRhb25lLm9yZy93aGF0LWRhdGFvbmUpCgotICAgW0RhdGFDaXRlXShodHRwczovL2NvbW1vbnMuZGF0YWNpdGUub3JnLykKCi0gICBbR29vZ2xlIERhdGFzZXQgU2VhcmNoXShodHRwczovL2RhdGFzZXRzZWFyY2gucmVzZWFyY2guZ29vZ2xlLmNvbS8pCgotICAgW09wZW5BSVJFIEV4cGxvcmVdKGh0dHBzOi8vZXhwbG9yZS5vcGVuYWlyZS5ldS9zZWFyY2gvZmluZC9yZXNlYXJjaC1vdXRjb21lcz90eXBlPSUyMmRhdGFzZXRzJTIyKQo=</div>
 
 
 </div>

@@ -5,9 +5,112 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
-Aula sobre dados e seu papel crucial na pesquisa ecológica.
+Dados são a **base** de quase toda pesquisa ecológica e podem ser de natureza, formatos e tamanhos muito diferentes: tabelas, questionários, texto, imagem, áudio, entrevista, simulações, etc...
 
+Dados são **produto da pesquisa**, assim como teses e artigos. Portanto, devemos nos orgulhar dos dados que produzimos/coletamos/simulamos/organizamos dentro dos nossos projetos de pequisa!
 
+Nessa aula vamos navegar no universo dos dados ecológicos, discutindo um pouco sobre:
+
+-   Porque precisamos de dados abertos, ou minimamente abertos - fraudes como fabricação/falsificação de dados
+
+-   Longevidade dos dados - resgate de dados
+
+-   Plano de gestão de dados
+
+-   Boas práticas de organização e gestão de dados tabulares
+
+-   Importância dos metadados
+
+-   Vantagens em deixar dados abertos
+
+-   Barreiras para o compartilhamento de dados
+
+-   Princípios FAIR (Findable, Accessible, Interoperable and Reusable)
+
+-   Publicação de dados em repositórios e/ou revistas científicas
+
+-   Tipos de repositórios
+
+-   Licenças
+
+-   Ética na publicação de dados
 
 # Leituras recomendadas
 
+# Algumas revistas de dados
+
+Listas de revistas de dados (*Data journals*):
+
+-   <https://zenodo.org/record/7082126>
+
+-   <https://libguides.wmich.edu/datasci/datajournals>
+
+Algumas revistas que publicam dados ou metadados extendidos de pesquisas
+
+-   [Data Papers](https://esapubs.org/archive/) nas revistas da ESA (Ecological Society of America)
+
+-   [Data in Brief](https://www.journals.elsevier.com/data-in-brief) (da Elsevier): várias disciplinas
+
+15 artigos de dados sobre biodiversidade da Mata Altântica publicados na *Ecology*
+
+-   [ATLANTIC: Data Papers from a biodiversity hotspot](https://esajournals.onlinelibrary.wiley.com/doi/toc/10.1002/(ISSN)1939-9170.AtlanticPapers)
+
+# Alguns repositórios de dados
+
+Listas de vários repositórios de dados:
+
+-   <https://oad.simmons.edu/oadwiki/Data_repositories>
+
+-   <https://clarivate.com/webofsciencegroup/master-data-repository-list/>
+
+### Temáticos
+
+-   [Movebank](https://www.gbif.org/)
+
+-   [GBIF](https://www.gbif.org/)
+
+-   [KNB](https://knb.ecoinformatics.org/) (Knowledge Network for Biocomplexity)
+
+-   [bioTIME](https://biotime.st-andrews.ac.uk/): global database of assemblage time series for quantifying and understanding biodiversity change
+
+### Genéricos/gerais:
+
+-   [Figshare](https://figshare.com/)
+
+-   [Zenodo](https://zenodo.org/)
+
+-   [Dryad](https://datadryad.org/stash)
+
+-   [Mendeley Data](https://data.mendeley.com/)
+
+-   [Open Science Framework](https://osf.io/)
+
+-   [Dataverse](http://dataverse.org/)
+
+### Institucionais
+
+-   [USP](https://repositorio.uspdigital.usp.br/?codmnu=9980)
+
+### Redes de pesquisa/pesquisadores
+
+(Alguns exemplos em florestas e ecologia de comunidades)
+
+-   [ForestGEO](https://forestgeo.si.edu/): dados de algumas parcelas são abertos (ex: Barro Colorado Island), outros você solicita mediante prenchimento de formulário no site, outros diretamente com os PI (principal investigators)
+
+-   [Amazon Tree Diversity Network](https://sites.google.com/naturalis.nl/amazon-tree-diversity-network/about-us)
+
+-   [ForestPlots.Net](https://forestplots.net/)
+
+# Buscadores/agregadores de dados
+
+-   [Metabuscador](https://metabuscador.uspdigital.usp.br/) das instituições do estado de São Paulo.
+
+-   [re3data](https://www.re3data.org/) (Registry of Research data Repositories)
+
+-   [DataONE](https://www.dataone.org/what-dataone)
+
+-   [DataCite](https://commons.datacite.org/)
+
+-   [Google Dataset Search](https://datasetsearch.research.google.com/)
+
+-   [OpenAIRE Explore](https://explore.openaire.eu/search/find/research-outcomes?type=%22datasets%22)
