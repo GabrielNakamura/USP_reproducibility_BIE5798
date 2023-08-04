@@ -15,7 +15,7 @@
 
 <title>O que é Ciência Aberta?</title>
 
-<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.17/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -31,7 +31,7 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
@@ -400,25 +400,157 @@ ciência aberta, avaliando sua origem, histórico e múltiplos
 significados.</p>
 <p>A <strong>ciência aberta</strong> é um movimento dentro da ciência
 que busca a abertura do processo de conhecimento científico, de forma
-que as atividades científicas, e não só o resultado final, sejam
+que TODAS as atividades científicas, e não só o resultado final, sejam
 praticadas de forma transparente, colaborativa, e que seus resultados
 sejam confiáveis e re-utilizáveis, tanto para outros cientistas quanto
-para a sociedade em geral. A grosso modo, podemos dizer a ciência aberta
-é formada por várias iniciativas, independentes ou não, de
-reestruturação da forma de fazer ciência, e portanto, recebe influência
-de diferentes agentes como os próprios cientistas, as agências de
-fomento/financiadores, governos, e cidadãos.</p>
-<!--Vamos discutir primeiro o que não é ciência aberta - má conduta, fraudes, plágio, pesquisa irreprodutível, erros não corrigidos - e a importância da integridade e boas práticas científicas. 
-
-Vamos refletir um pouco em como a "má ciência" pode estar sendo selecionada no ambiente acadêmico (Smaldino & McElreath 2016) devido a incentivos institucionais destorcidos voltados para quantidade - "publish A LOT or perish", o prestígio manipulado por revistas e as métricas de qualidade/quantidade usadas para avaliação de revistas, pesquisadores e instituições.
-
-Veremos brevemente sobre a crise da reprodutibilidade na Ecologia - que será abordado mais a fundo em outras aulas, e iniciativas nacionais para estudar e promover a reprodutibilidade não só computacional, mas também experimental.
--->
+para a sociedade em geral.</p>
+<p>A grosso modo, podemos dizer a ciência aberta é um grande
+guarda-chuva formado por várias iniciativas de reestruturação da forma
+de fazer ciência, e portanto, recebe influência de diferentes agentes
+como os próprios cientistas, as agências de fomento/financiadores,
+governos, e cidadãos.</p>
+<p>Nesta aula, vamos discutir primeiro o que <strong>não é ciência
+aberta</strong> - má conduta, fraudes, plágio, pesquisa irreprodutível,
+erros não corrigidos - e a importância da <strong>integridade e boas
+práticas científicas.</strong></p>
+<p>Vamos refletir um pouco em como a <strong>má ciência</strong> pode
+estar sendo selecionada no ambiente acadêmico (Smaldino &amp; McElreath
+2016, Ioannidis 2012) devido a incentivos institucionais destorcidos
+voltados para quantidade - “publish-A-LOT-or-perish”, o prestígio
+manipulado por revistas e as métricas de qualidade/quantidade usadas
+para avaliação de revistas, pesquisadores e instituições.</p>
+<p>Discutiremos as principais <strong>dimensões da ciência
+aberta</strong>, taxonomias e esquemas que nos ajudem a entender um
+pouco melhor de quais elementos é feito o movimento da ciência
+aberta.</p>
+<p>Abordaremos algumas <strong>políticas de ciência aberta</strong>,
+focada em iniciativas nacionais e a reflexão sobre os vários discursos
+de ciência aberta dentro destas políticas nacionais, internacionais e
+supra-nacionais.</p>
+<div id="razões-para-a-ciência-aberta" class="section level1">
+<h1>Razões para a Ciência Aberta</h1>
+<p>Abaixo, 10 razões para praticarmos e nos importamos com uma ciência
+mais aberta (retirado do <a
+href="https://campusvirtual.fiocruz.br/portal/node/38010">curso da
+FioCruz sobre ciência aberta</a>, recomendo fazer!):</p>
+<ol style="list-style-type: decimal">
+<li><p>Preserva, valoriza e partilha a produção científica.</p></li>
+<li><p>Promove o Acesso Aberto aos dados e publicações
+científicas.</p></li>
+<li><p>Protege e valoriza a propriedade intelectual.</p></li>
+<li><p>Promove a eficiência do processo científico.</p></li>
+<li><p>Aumenta a visibilidade e reconhecimento dos investigadores e das
+instituições.</p></li>
+<li><p>Amplifica o impacto da investigação, estimula a criatividade e a
+inovação.</p></li>
+<li><p>Promove a responsabilidade social científica e a apropriação
+social do conhecimento.</p></li>
+<li><p>Promove a transparência e o conhecimento do processo
+científico.</p></li>
+<li><p>Envolve a sociedade no processo de (co)criação e fruição do
+conhecimento.</p></li>
+<li><p>Democratiza o acesso ao conhecimento científico e potencia o
+desenvolvimento.</p></li>
+</ol>
+</div>
 <div id="leituras-recomendadas" class="section level1">
 <h1>Leituras recomendadas</h1>
+<ol style="list-style-type: decimal">
+<li><p>Albornoz D, Huang M, Martin I, Mateus M, Touré A, Chan L (2018)
+Framing Power: Tracing Key Discourses in Open Science Policies.
+ELectronic PUBlishing. <a
+href="https://doi.org/10.4000/proceedings.elpub.2018.23"
+class="uri">https://doi.org/10.4000/proceedings.elpub.2018.23</a></p></li>
+<li><p>Bezjak S, Clyburne-Sherin A, Conzett P, et al (2018) Open Science
+Training Handbook. <a href="https://doi.org/10.5281/zenodo.1212496"
+class="uri">https://doi.org/10.5281/zenodo.1212496</a></p></li>
+<li><p>Brainard J (2023) <a
+href="https://www.science.org/content/article/fake-scientific-papers-are-alarmingly-common">Fake
+scientific papers are alarmingly common</a> Science</p></li>
+<li><p>Brainard J, You J (2018) <a
+href="https://www.science.org/content/article/what-massive-database-retracted-papers-reveals-about-science-publishing-s-death-penalty">What
+a massive database of retracted papers reveals about science
+publishing’s ‘death penalty’</a> Science</p></li>
+<li><p>Costa MPD, Leite FCL (2019) Panorama preliminar do
+desenvolvimento da ciência aberta. <a
+href="https://doi.org/10.26512/9788564593787"
+class="uri">https://doi.org/10.26512/9788564593787</a></p></li>
+<li><p>FAPESP (2014) <a href="https://fapesp.br/boaspraticas/">Código de
+Boas Práticas Científicas</a></p></li>
+<li><p>Ioannidis JPA (2012) Why Science Is Not Necessarily
+Self-Correcting. Perspectives on Psychological Science 7:645–654 <a
+href="https://doi.org/10.1177/1745691612464056"
+class="uri">https://doi.org/10.1177/1745691612464056</a></p></li>
+<li><p>Powers SM, Hampton SE (2019) Open science, reproducibility, and
+transparency in ecology. Ecological Applications 29:e01822. <a
+href="https://doi.org/10.1002/eap.1822"
+class="uri">https://doi.org/10.1002/eap.1822</a></p></li>
+<li><p>Santos-D’amorim K, Correia AEGC, Miranda MKF de O, Santa-Cruz P
+(2021) Reasons and implications of retracted articles in Brazil.
+Transinformação 33:e210001. <a
+href="https://doi.org/10.1590/2318-0889202133e210001"
+class="uri">https://doi.org/10.1590/2318-0889202133e210001</a></p></li>
+<li><p>Smaldino PE, McElreath R (2016) The natural selection of bad
+science. Royal Society Open Science 3:160384. <a
+href="https://doi.org/10.1098/rsos.160384"
+class="uri">https://doi.org/10.1098/rsos.160384</a></p></li>
+<li><p>UNESCO (2021) Recomendação da UNESCO sobre Ciência Aberta. <a
+href="https://doi.org/10.54677/XFFX3334"
+class="uri">https://doi.org/10.54677/XFFX3334</a></p></li>
+<li><p>USP (2023) <a
+href="https://prp.usp.br/wp-content/uploads/sites/649/2016/05/PRP_Guia-de-Boas-Pr%C3%A1ticas-Cientificas_2019_2-1.pdf">Guia
+de Boas Práticas Científicas</a>.</p></li>
+<li><p><a
+href="https://cienciaaberta.usp.br/declaracao-usp-de-apoio-a-ciencia-aberta/">Declaração
+USP de Apoio à Ciência Aberta</a> – Ciência Aberta USP.</p></li>
+<li><p>Inovação e governo aberto na ciência - Monitoramento e Execução.
+In: Controladoria-Geral da União. <a
+href="https://www.gov.br/cgu/pt-br/governo-aberto/a-ogp/planos-de-acao/4o-plano-de-acao-brasileiro/compromisso-3-docs/inovacao-e-governo-aberto-na-ciencia-monitoramento-e-execucao."
+class="uri">https://www.gov.br/cgu/pt-br/governo-aberto/a-ogp/planos-de-acao/4o-plano-de-acao-brasileiro/compromisso-3-docs/inovacao-e-governo-aberto-na-ciencia-monitoramento-e-execucao.</a>
+Accessed 4 Aug 2023</p></li>
+<li><p>Open Government Declaration. In: Open Government Partnership. <a
+href="https://www.opengovpartnership.org/process/joining-ogp/open-government-declaration/.">https://www.opengovpartnership.org/process/joining-ogp/open-government-declaration/</a></p></li>
+<li><p>Transparência em Ciência: novos mecanismos de avaliação para o
+avanço da Ciência Aberta - Monitoramento e Execução. In:
+Controladoria-Geral da União. <a
+href="https://www.gov.br/cgu/pt-br/governo-aberto/a-ogp/planos-de-acao/5o-plano-de-acao-brasileiro/compromisso-8-transparencia-em-ciencia-novos-mecanismos-de-avaliacao-para-o-avanco-da-ciencia-aberta/meio-ambiente-e-floresta-monitoramento-e-execucao."
+class="uri">https://www.gov.br/cgu/pt-br/governo-aberto/a-ogp/planos-de-acao/5o-plano-de-acao-brasileiro/compromisso-8-transparencia-em-ciencia-novos-mecanismos-de-avaliacao-para-o-avanco-da-ciencia-aberta/meio-ambiente-e-floresta-monitoramento-e-execucao.</a></p>
+<h1 id="sites-de-interesse">Sites de interesse</h1></li>
+<li><p>Society for Open, Reliable and Transparent Ecology and
+Evolutionary Biology. In: SORTEE. <a href="https://www.sortee.org/."
+class="uri">https://www.sortee.org/.</a></p></li>
+<li><p>Iniciativa Brasileira de Reprodutibilidade. <a
+href="https://www.reprodutibilidade.bio.br."
+class="uri">https://www.reprodutibilidade.bio.br.</a></p></li>
+<li><p>Research Data Alliance | RDA. <a
+href="https://www.rd-alliance.org/about-rda."
+class="uri">https://www.rd-alliance.org/about-rda.</a></p></li>
+<li><p>AIMOS. <a href="https://aimos.community."
+class="uri">https://aimos.community.</a></p></li>
+<li><p>OpenAIRE. <a href="https://www.openaire.eu/."
+class="uri">https://www.openaire.eu/.</a></p></li>
+<li><p>Center for Open Science. <a href="https://www.cos.io."
+class="uri">https://www.cos.io.</a></p></li>
+<li><p>LA Referencia. <a
+href="https://www.lareferencia.info/en/.">https://www.lareferencia.info/en/</a></p></li>
+<li><p>Novo curso da Fiocruz trata da gestão e compartilhamento de dados
+abertos de pesquisa. In: Portal de Periódicos - Fiocruz. <a
+href="https://periodicos.fiocruz.br/node/1063.">https://periodicos.fiocruz.br/node/1063</a></p></li>
+<li><p>O que é Ciência Aberta? - 1º Oferta. In: Campus Virtual Fiocruz.
+<a
+href="https://campusvirtual.fiocruz.br/portal/?q=node/38010.">https://campusvirtual.fiocruz.br/portal/?q=node/38010</a></p></li>
+<li><p>Open Science @ FAPESP. <a
+href="https://fapesp.br/openscience/.">https://fapesp.br/openscience/</a></p></li>
+<li><p>Rede Brasileira De Reprodutibilidade. <a
+href="https://www.reprodutibilidade.org.">https://www.reprodutibilidade.org</a></p></li>
+<li><p>ReproducibiliTea. <a
+href="https://reproducibilitea.org/.">https://reproducibilitea.org/</a></p></li>
+<li><p>SciELO - Brazil. <a
+href="https://www.scielo.br/.">https://www.scielo.br/</a></p></li>
+</ol>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiTyBxdWUgw6kgQ2nDqm5jaWEgQWJlcnRhPyIKYXV0aG9yOiAiTWVsaW5hIExlaXRlIgpkYXRlOiAiYHIgU3lzLkRhdGUoKWAiCm91dHB1dDogaHRtbF9kb2N1bWVudAotLS0KCgpOZXN0YSBwcmltZWlyYSBhdWxhLCBuYXZlZ2FyZW1vcyBwZWxhcyBmYXNjaW5hbnRlcyBwYWlzYWdlbnMgZGEgY2nDqm5jaWEgYWJlcnRhLCBhdmFsaWFuZG8gc3VhIG9yaWdlbSwgaGlzdMOzcmljbyBlIG3Dumx0aXBsb3Mgc2lnbmlmaWNhZG9zLiAKCkEgKipjacOqbmNpYSBhYmVydGEqKiDDqSB1bSBtb3ZpbWVudG8gZGVudHJvIGRhIGNpw6puY2lhIHF1ZSBidXNjYSBhIGFiZXJ0dXJhIGRvIHByb2Nlc3NvIGRlIGNvbmhlY2ltZW50byBjaWVudMOtZmljbywgZGUgZm9ybWEgcXVlIGFzIGF0aXZpZGFkZXMgY2llbnTDrWZpY2FzLCBlIG7Do28gc8OzIG8gcmVzdWx0YWRvIGZpbmFsLCBzZWphbSBwcmF0aWNhZGFzIGRlIGZvcm1hIHRyYW5zcGFyZW50ZSwgY29sYWJvcmF0aXZhLCBlIHF1ZSBzZXVzIHJlc3VsdGFkb3Mgc2VqYW0gY29uZmnDoXZlaXMgZSByZS11dGlsaXrDoXZlaXMsIHRhbnRvIHBhcmEgb3V0cm9zIGNpZW50aXN0YXMgcXVhbnRvIHBhcmEgYSBzb2NpZWRhZGUgZW0gZ2VyYWwuIEEgZ3Jvc3NvIG1vZG8sIHBvZGVtb3MgZGl6ZXIgYSBjacOqbmNpYSBhYmVydGEgw6kgZm9ybWFkYSBwb3IgdsOhcmlhcyBpbmljaWF0aXZhcywgaW5kZXBlbmRlbnRlcyBvdSBuw6NvLCBkZSByZWVzdHJ1dHVyYcOnw6NvIGRhIGZvcm1hIGRlIGZhemVyIGNpw6puY2lhLCBlIHBvcnRhbnRvLCByZWNlYmUgaW5mbHXDqm5jaWEgZGUgZGlmZXJlbnRlcyBhZ2VudGVzIGNvbW8gb3MgcHLDs3ByaW9zIGNpZW50aXN0YXMsIGFzIGFnw6puY2lhcyBkZSBmb21lbnRvL2ZpbmFuY2lhZG9yZXMsIGdvdmVybm9zLCBlIGNpZGFkw6Nvcy4KCjwhLS1WYW1vcyBkaXNjdXRpciBwcmltZWlybyBvIHF1ZSBuw6NvIMOpIGNpw6puY2lhIGFiZXJ0YSAtIG3DoSBjb25kdXRhLCBmcmF1ZGVzLCBwbMOhZ2lvLCBwZXNxdWlzYSBpcnJlcHJvZHV0w612ZWwsIGVycm9zIG7Do28gY29ycmlnaWRvcyAtIGUgYSBpbXBvcnTDom5jaWEgZGEgaW50ZWdyaWRhZGUgZSBib2FzIHByw6F0aWNhcyBjaWVudMOtZmljYXMuIAoKVmFtb3MgcmVmbGV0aXIgdW0gcG91Y28gZW0gY29tbyBhICJtw6EgY2nDqm5jaWEiIHBvZGUgZXN0YXIgc2VuZG8gc2VsZWNpb25hZGEgbm8gYW1iaWVudGUgYWNhZMOqbWljbyAoU21hbGRpbm8gJiBNY0VscmVhdGggMjAxNikgZGV2aWRvIGEgaW5jZW50aXZvcyBpbnN0aXR1Y2lvbmFpcyBkZXN0b3JjaWRvcyB2b2x0YWRvcyBwYXJhIHF1YW50aWRhZGUgLSAicHVibGlzaCBBIExPVCBvciBwZXJpc2giLCBvIHByZXN0w61naW8gbWFuaXB1bGFkbyBwb3IgcmV2aXN0YXMgZSBhcyBtw6l0cmljYXMgZGUgcXVhbGlkYWRlL3F1YW50aWRhZGUgdXNhZGFzIHBhcmEgYXZhbGlhw6fDo28gZGUgcmV2aXN0YXMsIHBlc3F1aXNhZG9yZXMgZSBpbnN0aXR1acOnw7Vlcy4KClZlcmVtb3MgYnJldmVtZW50ZSBzb2JyZSBhIGNyaXNlIGRhIHJlcHJvZHV0aWJpbGlkYWRlIG5hIEVjb2xvZ2lhIC0gcXVlIHNlcsOhIGFib3JkYWRvIG1haXMgYSBmdW5kbyBlbSBvdXRyYXMgYXVsYXMsIGUgaW5pY2lhdGl2YXMgbmFjaW9uYWlzIHBhcmEgZXN0dWRhciBlIHByb21vdmVyIGEgcmVwcm9kdXRpYmlsaWRhZGUgbsOjbyBzw7MgY29tcHV0YWNpb25hbCwgbWFzIHRhbWLDqW0gZXhwZXJpbWVudGFsLgotLT4KCgojIExlaXR1cmFzIHJlY29tZW5kYWRhcwoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiTyBxdWUgw6kgQ2nDqm5jaWEgQWJlcnRhPyIKYXV0aG9yOiAiTWVsaW5hIExlaXRlIgpkYXRlOiAiYHIgU3lzLkRhdGUoKWAiCm91dHB1dDogaHRtbF9kb2N1bWVudAotLS0KCk5lc3RhIHByaW1laXJhIGF1bGEsIG5hdmVnYXJlbW9zIHBlbGFzIGZhc2NpbmFudGVzIHBhaXNhZ2VucyBkYSBjacOqbmNpYSBhYmVydGEsIGF2YWxpYW5kbyBzdWEgb3JpZ2VtLCBoaXN0w7NyaWNvIGUgbcO6bHRpcGxvcyBzaWduaWZpY2Fkb3MuCgpBICoqY2nDqm5jaWEgYWJlcnRhKiogw6kgdW0gbW92aW1lbnRvIGRlbnRybyBkYSBjacOqbmNpYSBxdWUgYnVzY2EgYSBhYmVydHVyYSBkbyBwcm9jZXNzbyBkZSBjb25oZWNpbWVudG8gY2llbnTDrWZpY28sIGRlIGZvcm1hIHF1ZSBUT0RBUyBhcyBhdGl2aWRhZGVzIGNpZW50w61maWNhcywgZSBuw6NvIHPDsyBvIHJlc3VsdGFkbyBmaW5hbCwgc2VqYW0gcHJhdGljYWRhcyBkZSBmb3JtYSB0cmFuc3BhcmVudGUsIGNvbGFib3JhdGl2YSwgZSBxdWUgc2V1cyByZXN1bHRhZG9zIHNlamFtIGNvbmZpw6F2ZWlzIGUgcmUtdXRpbGl6w6F2ZWlzLCB0YW50byBwYXJhIG91dHJvcyBjaWVudGlzdGFzIHF1YW50byBwYXJhIGEgc29jaWVkYWRlIGVtIGdlcmFsLgoKQSBncm9zc28gbW9kbywgcG9kZW1vcyBkaXplciBhIGNpw6puY2lhIGFiZXJ0YSDDqSB1bSBncmFuZGUgZ3VhcmRhLWNodXZhIGZvcm1hZG8gcG9yIHbDoXJpYXMgaW5pY2lhdGl2YXMgZGUgcmVlc3RydXR1cmHDp8OjbyBkYSBmb3JtYSBkZSBmYXplciBjacOqbmNpYSwgZSBwb3J0YW50bywgcmVjZWJlIGluZmx1w6puY2lhIGRlIGRpZmVyZW50ZXMgYWdlbnRlcyBjb21vIG9zIHByw7NwcmlvcyBjaWVudGlzdGFzLCBhcyBhZ8OqbmNpYXMgZGUgZm9tZW50by9maW5hbmNpYWRvcmVzLCBnb3Zlcm5vcywgZSBjaWRhZMOjb3MuCgpOZXN0YSBhdWxhLCB2YW1vcyBkaXNjdXRpciBwcmltZWlybyBvIHF1ZSAqKm7Do28gw6kgY2nDqm5jaWEgYWJlcnRhKiogLSBtw6EgY29uZHV0YSwgZnJhdWRlcywgcGzDoWdpbywgcGVzcXVpc2EgaXJyZXByb2R1dMOtdmVsLCBlcnJvcyBuw6NvIGNvcnJpZ2lkb3MgLSBlIGEgaW1wb3J0w6JuY2lhIGRhICoqaW50ZWdyaWRhZGUgZSBib2FzIHByw6F0aWNhcyBjaWVudMOtZmljYXMuKioKClZhbW9zIHJlZmxldGlyIHVtIHBvdWNvIGVtIGNvbW8gYSAqKm3DoSBjacOqbmNpYSoqIHBvZGUgZXN0YXIgc2VuZG8gc2VsZWNpb25hZGEgbm8gYW1iaWVudGUgYWNhZMOqbWljbyAoU21hbGRpbm8gJiBNY0VscmVhdGggMjAxNiwgSW9hbm5pZGlzIDIwMTIpIGRldmlkbyBhIGluY2VudGl2b3MgaW5zdGl0dWNpb25haXMgZGVzdG9yY2lkb3Mgdm9sdGFkb3MgcGFyYSBxdWFudGlkYWRlIC0gInB1Ymxpc2gtQS1MT1Qtb3ItcGVyaXNoIiwgbyBwcmVzdMOtZ2lvIG1hbmlwdWxhZG8gcG9yIHJldmlzdGFzIGUgYXMgbcOpdHJpY2FzIGRlIHF1YWxpZGFkZS9xdWFudGlkYWRlIHVzYWRhcyBwYXJhIGF2YWxpYcOnw6NvIGRlIHJldmlzdGFzLCBwZXNxdWlzYWRvcmVzIGUgaW5zdGl0dWnDp8O1ZXMuCgpEaXNjdXRpcmVtb3MgYXMgcHJpbmNpcGFpcyAqKmRpbWVuc8O1ZXMgZGEgY2nDqm5jaWEgYWJlcnRhKiosIHRheG9ub21pYXMgZSBlc3F1ZW1hcyBxdWUgbm9zIGFqdWRlbSBhIGVudGVuZGVyIHVtIHBvdWNvIG1lbGhvciBkZSBxdWFpcyBlbGVtZW50b3Mgw6kgZmVpdG8gbyBtb3ZpbWVudG8gZGEgY2nDqm5jaWEgYWJlcnRhLgoKQWJvcmRhcmVtb3MgYWxndW1hcyAqKnBvbMOtdGljYXMgZGUgY2nDqm5jaWEgYWJlcnRhKiosIGZvY2FkYSBlbSBpbmljaWF0aXZhcyBuYWNpb25haXMgZSBhIHJlZmxleMOjbyBzb2JyZSBvcyB2w6FyaW9zIGRpc2N1cnNvcyBkZSBjacOqbmNpYSBhYmVydGEgZGVudHJvIGRlc3RhcyBwb2zDrXRpY2FzIG5hY2lvbmFpcywgaW50ZXJuYWNpb25haXMgZSBzdXByYS1uYWNpb25haXMuCgojIFJhesO1ZXMgcGFyYSBhIENpw6puY2lhIEFiZXJ0YQoKQWJhaXhvLCAxMCByYXrDtWVzIHBhcmEgcHJhdGljYXJtb3MgZSBub3MgaW1wb3J0YW1vcyBjb20gdW1hIGNpw6puY2lhIG1haXMgYWJlcnRhIChyZXRpcmFkbyBkbyBbY3Vyc28gZGEgRmlvQ3J1eiBzb2JyZSBjacOqbmNpYSBhYmVydGFdKGh0dHBzOi8vY2FtcHVzdmlydHVhbC5maW9jcnV6LmJyL3BvcnRhbC9ub2RlLzM4MDEwKSwgcmVjb21lbmRvIGZhemVyISk6CgoxLiAgUHJlc2VydmEsIHZhbG9yaXphIGUgcGFydGlsaGEgYSBwcm9kdcOnw6NvIGNpZW50w61maWNhLgoKMi4gIFByb21vdmUgbyBBY2Vzc28gQWJlcnRvIGFvcyBkYWRvcyBlIHB1YmxpY2HDp8O1ZXMgY2llbnTDrWZpY2FzLgoKMy4gIFByb3RlZ2UgZSB2YWxvcml6YSBhIHByb3ByaWVkYWRlIGludGVsZWN0dWFsLgoKNC4gIFByb21vdmUgYSBlZmljacOqbmNpYSBkbyBwcm9jZXNzbyBjaWVudMOtZmljby4KCjUuICBBdW1lbnRhIGEgdmlzaWJpbGlkYWRlIGUgcmVjb25oZWNpbWVudG8gZG9zIGludmVzdGlnYWRvcmVzIGUgZGFzIGluc3RpdHVpw6fDtWVzLgoKNi4gIEFtcGxpZmljYSBvIGltcGFjdG8gZGEgaW52ZXN0aWdhw6fDo28sIGVzdGltdWxhIGEgY3JpYXRpdmlkYWRlIGUgYSBpbm92YcOnw6NvLgoKNy4gIFByb21vdmUgYSByZXNwb25zYWJpbGlkYWRlIHNvY2lhbCBjaWVudMOtZmljYSBlIGEgYXByb3ByaWHDp8OjbyBzb2NpYWwgZG8gY29uaGVjaW1lbnRvLgoKOC4gIFByb21vdmUgYSB0cmFuc3BhcsOqbmNpYSBlIG8gY29uaGVjaW1lbnRvIGRvIHByb2Nlc3NvIGNpZW50w61maWNvLgoKOS4gIEVudm9sdmUgYSBzb2NpZWRhZGUgbm8gcHJvY2Vzc28gZGUgKGNvKWNyaWHDp8OjbyBlIGZydWnDp8OjbyBkbyBjb25oZWNpbWVudG8uCgoxMC4gRGVtb2NyYXRpemEgbyBhY2Vzc28gYW8gY29uaGVjaW1lbnRvIGNpZW50w61maWNvIGUgcG90ZW5jaWEgbyBkZXNlbnZvbHZpbWVudG8uCgojIExlaXR1cmFzIHJlY29tZW5kYWRhcwoKMS4gIEFsYm9ybm96IEQsIEh1YW5nIE0sIE1hcnRpbiBJLCBNYXRldXMgTSwgVG91csOpIEEsIENoYW4gTCAoMjAxOCkgRnJhbWluZyBQb3dlcjogVHJhY2luZyBLZXkgRGlzY291cnNlcyBpbiBPcGVuIFNjaWVuY2UgUG9saWNpZXMuIEVMZWN0cm9uaWMgUFVCbGlzaGluZy4gPGh0dHBzOi8vZG9pLm9yZy8xMC40MDAwL3Byb2NlZWRpbmdzLmVscHViLjIwMTguMjM+CgoyLiAgQmV6amFrIFMsIENseWJ1cm5lLVNoZXJpbiBBLCBDb256ZXR0IFAsIGV0IGFsICgyMDE4KSBPcGVuIFNjaWVuY2UgVHJhaW5pbmcgSGFuZGJvb2suIDxodHRwczovL2RvaS5vcmcvMTAuNTI4MS96ZW5vZG8uMTIxMjQ5Nj4KCjMuICBCcmFpbmFyZCBKICgyMDIzKSBbRmFrZSBzY2llbnRpZmljIHBhcGVycyBhcmUgYWxhcm1pbmdseSBjb21tb25dKGh0dHBzOi8vd3d3LnNjaWVuY2Uub3JnL2NvbnRlbnQvYXJ0aWNsZS9mYWtlLXNjaWVudGlmaWMtcGFwZXJzLWFyZS1hbGFybWluZ2x5LWNvbW1vbikgU2NpZW5jZQoKNC4gIEJyYWluYXJkIEosIFlvdSBKICgyMDE4KSBbV2hhdCBhIG1hc3NpdmUgZGF0YWJhc2Ugb2YgcmV0cmFjdGVkIHBhcGVycyByZXZlYWxzIGFib3V0IHNjaWVuY2UgcHVibGlzaGluZydzICdkZWF0aCBwZW5hbHR5J10oaHR0cHM6Ly93d3cuc2NpZW5jZS5vcmcvY29udGVudC9hcnRpY2xlL3doYXQtbWFzc2l2ZS1kYXRhYmFzZS1yZXRyYWN0ZWQtcGFwZXJzLXJldmVhbHMtYWJvdXQtc2NpZW5jZS1wdWJsaXNoaW5nLXMtZGVhdGgtcGVuYWx0eSkgU2NpZW5jZQoKNS4gIENvc3RhIE1QRCwgTGVpdGUgRkNMICgyMDE5KSBQYW5vcmFtYSBwcmVsaW1pbmFyIGRvIGRlc2Vudm9sdmltZW50byBkYSBjacOqbmNpYSBhYmVydGEuIDxodHRwczovL2RvaS5vcmcvMTAuMjY1MTIvOTc4ODU2NDU5Mzc4Nz4KCjYuICBGQVBFU1AgKDIwMTQpIFtDw7NkaWdvIGRlIEJvYXMgUHLDoXRpY2FzIENpZW50w61maWNhc10oaHR0cHM6Ly9mYXBlc3AuYnIvYm9hc3ByYXRpY2FzLykKCjcuICBJb2FubmlkaXMgSlBBICgyMDEyKSBXaHkgU2NpZW5jZSBJcyBOb3QgTmVjZXNzYXJpbHkgU2VsZi1Db3JyZWN0aW5nLiBQZXJzcGVjdGl2ZXMgb24gUHN5Y2hvbG9naWNhbCBTY2llbmNlIDc6NjQ1LS02NTQgPGh0dHBzOi8vZG9pLm9yZy8xMC4xMTc3LzE3NDU2OTE2MTI0NjQwNTY+Cgo4LiAgUG93ZXJzIFNNLCBIYW1wdG9uIFNFICgyMDE5KSBPcGVuIHNjaWVuY2UsIHJlcHJvZHVjaWJpbGl0eSwgYW5kIHRyYW5zcGFyZW5jeSBpbiBlY29sb2d5LiBFY29sb2dpY2FsIEFwcGxpY2F0aW9ucyAyOTplMDE4MjIuIDxodHRwczovL2RvaS5vcmcvMTAuMTAwMi9lYXAuMTgyMj4KCjkuICAgU2FudG9zLUQnYW1vcmltIEssIENvcnJlaWEgQUVHQywgTWlyYW5kYSBNS0YgZGUgTywgU2FudGEtQ3J1eiBQICgyMDIxKSBSZWFzb25zIGFuZCBpbXBsaWNhdGlvbnMgb2YgcmV0cmFjdGVkIGFydGljbGVzIGluIEJyYXppbC4gVHJhbnNpbmZvcm1hw6fDo28gMzM6ZTIxMDAwMS4gPGh0dHBzOi8vZG9pLm9yZy8xMC4xNTkwLzIzMTgtMDg4OTIwMjEzM2UyMTAwMDE+CgoxMC4gU21hbGRpbm8gUEUsIE1jRWxyZWF0aCBSICgyMDE2KSBUaGUgbmF0dXJhbCBzZWxlY3Rpb24gb2YgYmFkIHNjaWVuY2UuIFJveWFsIFNvY2lldHkgT3BlbiBTY2llbmNlIDM6MTYwMzg0LiA8aHR0cHM6Ly9kb2kub3JnLzEwLjEwOTgvcnNvcy4xNjAzODQ+CgoxMS4gVU5FU0NPICgyMDIxKSBSZWNvbWVuZGHDp8OjbyBkYSBVTkVTQ08gc29icmUgQ2nDqm5jaWEgQWJlcnRhLiA8aHR0cHM6Ly9kb2kub3JnLzEwLjU0Njc3L1hGRlgzMzM0PgoKMTIuIFVTUCAoMjAyMykgW0d1aWEgZGUgQm9hcyBQcsOhdGljYXMgQ2llbnTDrWZpY2FzXShodHRwczovL3BycC51c3AuYnIvd3AtY29udGVudC91cGxvYWRzL3NpdGVzLzY0OS8yMDE2LzA1L1BSUF9HdWlhLWRlLUJvYXMtUHIlQzMlQTF0aWNhcy1DaWVudGlmaWNhc18yMDE5XzItMS5wZGYpLgoKMTMuICBbRGVjbGFyYcOnw6NvIFVTUCBkZSBBcG9pbyDDoCBDacOqbmNpYSBBYmVydGFdKGh0dHBzOi8vY2llbmNpYWFiZXJ0YS51c3AuYnIvZGVjbGFyYWNhby11c3AtZGUtYXBvaW8tYS1jaWVuY2lhLWFiZXJ0YS8pIC0tIENpw6puY2lhIEFiZXJ0YSBVU1AuCgoxNC4gSW5vdmHDp8OjbyBlIGdvdmVybm8gYWJlcnRvIG5hIGNpw6puY2lhIC0gTW9uaXRvcmFtZW50byBlIEV4ZWN1w6fDo28uIEluOiBDb250cm9sYWRvcmlhLUdlcmFsIGRhIFVuacOjby4gPGh0dHBzOi8vd3d3Lmdvdi5ici9jZ3UvcHQtYnIvZ292ZXJuby1hYmVydG8vYS1vZ3AvcGxhbm9zLWRlLWFjYW8vNG8tcGxhbm8tZGUtYWNhby1icmFzaWxlaXJvL2NvbXByb21pc3NvLTMtZG9jcy9pbm92YWNhby1lLWdvdmVybm8tYWJlcnRvLW5hLWNpZW5jaWEtbW9uaXRvcmFtZW50by1lLWV4ZWN1Y2FvLj4gQWNjZXNzZWQgNCBBdWcgMjAyMwoKMTUuIE9wZW4gR292ZXJubWVudCBEZWNsYXJhdGlvbi4gSW46IE9wZW4gR292ZXJubWVudCBQYXJ0bmVyc2hpcC4gW2h0dHBzOi8vd3d3Lm9wZW5nb3ZwYXJ0bmVyc2hpcC5vcmcvcHJvY2Vzcy9qb2luaW5nLW9ncC9vcGVuLWdvdmVybm1lbnQtZGVjbGFyYXRpb24vXShodHRwczovL3d3dy5vcGVuZ292cGFydG5lcnNoaXAub3JnL3Byb2Nlc3Mvam9pbmluZy1vZ3Avb3Blbi1nb3Zlcm5tZW50LWRlY2xhcmF0aW9uLy4pCgoxNi4gVHJhbnNwYXLDqm5jaWEgZW0gQ2nDqm5jaWE6IG5vdm9zIG1lY2FuaXNtb3MgZGUgYXZhbGlhw6fDo28gcGFyYSBvIGF2YW7Dp28gZGEgQ2nDqm5jaWEgQWJlcnRhIC0gTW9uaXRvcmFtZW50byBlIEV4ZWN1w6fDo28uIEluOiBDb250cm9sYWRvcmlhLUdlcmFsIGRhIFVuacOjby4gPGh0dHBzOi8vd3d3Lmdvdi5ici9jZ3UvcHQtYnIvZ292ZXJuby1hYmVydG8vYS1vZ3AvcGxhbm9zLWRlLWFjYW8vNW8tcGxhbm8tZGUtYWNhby1icmFzaWxlaXJvL2NvbXByb21pc3NvLTgtdHJhbnNwYXJlbmNpYS1lbS1jaWVuY2lhLW5vdm9zLW1lY2FuaXNtb3MtZGUtYXZhbGlhY2FvLXBhcmEtby1hdmFuY28tZGEtY2llbmNpYS1hYmVydGEvbWVpby1hbWJpZW50ZS1lLWZsb3Jlc3RhLW1vbml0b3JhbWVudG8tZS1leGVjdWNhby4+CgogICAgIyBTaXRlcyBkZSBpbnRlcmVzc2UKCjE3LiBTb2NpZXR5IGZvciBPcGVuLCBSZWxpYWJsZSBhbmQgVHJhbnNwYXJlbnQgRWNvbG9neSBhbmQgRXZvbHV0aW9uYXJ5IEJpb2xvZ3kuIEluOiBTT1JURUUuIDxodHRwczovL3d3dy5zb3J0ZWUub3JnLy4+CgoxOC4gSW5pY2lhdGl2YSBCcmFzaWxlaXJhIGRlIFJlcHJvZHV0aWJpbGlkYWRlLiA8aHR0cHM6Ly93d3cucmVwcm9kdXRpYmlsaWRhZGUuYmlvLmJyLj4KCjE5LiBSZXNlYXJjaCBEYXRhIEFsbGlhbmNlIFx8IFJEQS4gPGh0dHBzOi8vd3d3LnJkLWFsbGlhbmNlLm9yZy9hYm91dC1yZGEuPgoKMjAuIEFJTU9TLiA8aHR0cHM6Ly9haW1vcy5jb21tdW5pdHkuPgoKMjEuIE9wZW5BSVJFLiA8aHR0cHM6Ly93d3cub3BlbmFpcmUuZXUvLj4KCjIyLiBDZW50ZXIgZm9yIE9wZW4gU2NpZW5jZS4gPGh0dHBzOi8vd3d3LmNvcy5pby4+CgoyMy4gIExBIFJlZmVyZW5jaWEuIFtodHRwczovL3d3dy5sYXJlZmVyZW5jaWEuaW5mby9lbi9dKGh0dHBzOi8vd3d3LmxhcmVmZXJlbmNpYS5pbmZvL2VuLy4pCgoyNC4gIE5vdm8gY3Vyc28gZGEgRmlvY3J1eiB0cmF0YSBkYSBnZXN0w6NvIGUgY29tcGFydGlsaGFtZW50byBkZSBkYWRvcyBhYmVydG9zIGRlIHBlc3F1aXNhLiBJbjogUG9ydGFsIGRlIFBlcmnDs2RpY29zIC0gRmlvY3J1ei4gW2h0dHBzOi8vcGVyaW9kaWNvcy5maW9jcnV6LmJyL25vZGUvMTA2M10oaHR0cHM6Ly9wZXJpb2RpY29zLmZpb2NydXouYnIvbm9kZS8xMDYzLikKCjI1LiBPIHF1ZSDDqSBDacOqbmNpYSBBYmVydGE/IC0gMcK6IE9mZXJ0YS4gSW46IENhbXB1cyBWaXJ0dWFsIEZpb2NydXouIFtodHRwczovL2NhbXB1c3ZpcnR1YWwuZmlvY3J1ei5ici9wb3J0YWwvP3E9bm9kZS8zODAxMF0oaHR0cHM6Ly9jYW1wdXN2aXJ0dWFsLmZpb2NydXouYnIvcG9ydGFsLz9xPW5vZGUvMzgwMTAuKQoKMjYuIE9wZW4gU2NpZW5jZSBcQCBGQVBFU1AuIFtodHRwczovL2ZhcGVzcC5ici9vcGVuc2NpZW5jZS9dKGh0dHBzOi8vZmFwZXNwLmJyL29wZW5zY2llbmNlLy4pCgoyNy4gUmVkZSBCcmFzaWxlaXJhIERlIFJlcHJvZHV0aWJpbGlkYWRlLiBbaHR0cHM6Ly93d3cucmVwcm9kdXRpYmlsaWRhZGUub3JnXShodHRwczovL3d3dy5yZXByb2R1dGliaWxpZGFkZS5vcmcuKQoKMjguICBSZXByb2R1Y2liaWxpVGVhLiBbaHR0cHM6Ly9yZXByb2R1Y2liaWxpdGVhLm9yZy9dKGh0dHBzOi8vcmVwcm9kdWNpYmlsaXRlYS5vcmcvLikKCjI5LiBTY2lFTE8gLSBCcmF6aWwuIFtodHRwczovL3d3dy5zY2llbG8uYnIvXShodHRwczovL3d3dy5zY2llbG8uYnIvLikK</div>
 
 
 </div>
