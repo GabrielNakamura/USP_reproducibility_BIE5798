@@ -28,21 +28,10 @@ Esta [introdução](https://www.neonscience.org/resources/learning-hub/tutorials
 
 # Metadados na prática - utilizando o pacote `{EML}`
 
-Nesta seção iremos utilizar o conjunto de dados do artigo "Organic-matter loading determines regime shifts and alternative states in an aquatic ecosystem". Optamos por usar este dado pois ele já apresenta um arquivo de metadados associado, assim podemos reconstruí-lo e verificar como fica. Além disso ele é o mesmo dado utilizado no tutorial original do pacote EML, sendo conveniente para fins didáticos. Ao final vamos praticar com um outro conjunto de dados.
+Nesta seção iremos utilizar o conjunto de dados do artigo ["Organic-matter loading determines regime shifts and alternative states in an aquatic ecosystem"](https://www.pnas.org/doi/10.1073/pnas.1221037110). Optamos por usar este dado pois ele já apresenta um arquivo de metadados associado, assim podemos reconstruí-lo e verificar como fica. Além disso ele é o mesmo dado utilizado no tutorial original do pacote EML, sendo conveniente para fins didáticos. Ao final vamos praticar com um outro conjunto de dados. Lembrando que se você baixou o repositório do material desta disciplina, você conseguirá ler os dados sem problemas.
 
-Para fazer o download dos dados clique no botão abaixo:
 
-```{r echo=FALSE,eval=TRUE}
-library(downloadthis)
-download_link(
-  link = "https://github.com/GabrielNakamura/USP_reproducibility_BIE5791",
-  button_label = "Download csv",
-  button_type = "danger",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
+## Instalação
 
 Para instalar o pacote EML faça o seguinte:
 
