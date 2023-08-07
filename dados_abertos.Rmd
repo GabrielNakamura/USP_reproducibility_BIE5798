@@ -35,8 +35,6 @@ Nessa aula vamos navegar no universo dos dados ecológicos, discutindo um pouco 
 
 -   Ética na publicação de dados
 
-# Leituras recomendadas
-
 # Algumas revistas de dados
 
 Listas de revistas de dados (*Data journals*):
@@ -51,7 +49,9 @@ Algumas revistas que publicam dados ou metadados extendidos de pesquisas
 
 -   [Data in Brief](https://www.journals.elsevier.com/data-in-brief) (da Elsevier): várias disciplinas
 
-15 artigos de dados sobre biodiversidade da Mata Altântica publicados na *Ecology*
+-   [Scientific Data](https://www.nature.com/sdata/) (da Springer Nature): várias disciplinas
+
+Exemplo de *data papers* em ecologia: 15 artigos de dados sobre biodiversidade da Mata Altântica publicados na *Ecology:*
 
 -   [ATLANTIC: Data Papers from a biodiversity hotspot](https://esajournals.onlinelibrary.wiley.com/doi/toc/10.1002/(ISSN)1939-9170.AtlanticPapers)
 
@@ -65,13 +65,15 @@ Listas de vários repositórios de dados:
 
 ### Temáticos
 
--   [Movebank](https://www.gbif.org/)
+-   [Movebank](https://www.gbif.org/): dados de movimento animal
 
 -   [GBIF](https://www.gbif.org/)
 
 -   [KNB](https://knb.ecoinformatics.org/) (Knowledge Network for Biocomplexity)
 
 -   [bioTIME](https://biotime.st-andrews.ac.uk/): global database of assemblage time series for quantifying and understanding biodiversity change
+
+-   [Environmental Data Initiative](+(https://edirepository.org/)
 
 ### Genéricos/gerais:
 
@@ -87,13 +89,15 @@ Listas de vários repositórios de dados:
 
 -   [Dataverse](http://dataverse.org/)
 
+-   [Eudat](https://eudat.eu/)
+
 ### Institucionais
 
 -   [USP](https://repositorio.uspdigital.usp.br/?codmnu=9980)
 
 ### Redes de pesquisa/pesquisadores
 
-(Alguns exemplos em florestas e ecologia de comunidades)
+Alguns exemplos em ecologia de florestas quem mantém estrutura de dados compartilhados entre membros da rede (e externos mediante certas condições).
 
 -   [ForestGEO](https://forestgeo.si.edu/): dados de algumas parcelas são abertos (ex: Barro Colorado Island), outros você solicita mediante prenchimento de formulário no site, outros diretamente com os PI (principal investigators)
 
@@ -114,3 +118,5 @@ Listas de vários repositórios de dados:
 -   [Google Dataset Search](https://datasetsearch.research.google.com/)
 
 -   [OpenAIRE Explore](https://explore.openaire.eu/search/find/research-outcomes?type=%22datasets%22)
+
+# Leituras recomendadas
