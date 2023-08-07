@@ -878,7 +878,7 @@ dentro da nossa pasta do curso para criar nosso arquivo Darwin Core.</p>
 espécies. Podemos ver que se trata de um simples data frame onde os
 nomes das colunas seguem os códigos do Darwin Core</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>TOVEOccTable <span class="ot">&lt;-</span> <span class="fu">read.table</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;TOVEData&quot;</span>, <span class="st">&quot;occurrence.txt&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="fu">head</span>(TOVEEventTableDF)</span></code></pre></div>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="fu">head</span>(TOVEOccTable)</span></code></pre></div>
 </div>
 <div id="construindo-um-xml-baseado-em-darwin-core"
 class="section level2">
@@ -938,7 +938,7 @@ class="section level3">
 de ocorrência de espécies. Vamos mapear ela da mesma forma que fizemos
 para a tabela core</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co"># Função para inicialização da tabela</span></span>
-<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>newTOVEOccTable <span class="ot">&lt;-</span> <span class="fu">initializeGBIFOccurrence</span>(TOVEOccTableDF, <span class="st">&quot;id&quot;</span>, <span class="at">nameAutoMap =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>newTOVEOccTable <span class="ot">&lt;-</span> <span class="fu">initializeGBIFOccurrence</span>(TOVEOccTable, <span class="st">&quot;id&quot;</span>, <span class="at">nameAutoMap =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a></span>
 <span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a><span class="co"># Checando quais eventos foram mapeados na tabela, o que aparece com NA não foi mapeado, ou porque não existe ou porque tem o nome incorreto</span></span>
 <span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a>newTOVEOccTable<span class="sc">$</span><span class="fu">getTermMapping</span>()</span></code></pre></div>

@@ -53,7 +53,7 @@ Obtendo os arquivos extendidos, neste caso o arquivo de ocorrência de espécies
 
 ```{r echo=TRUE,eval=FALSE}
 TOVEOccTable <- read.table(here::here("data", "TOVEData", "occurrence.txt"), sep = "\t", header = TRUE)
-head(TOVEEventTableDF)
+head(TOVEOccTable)
 ```
 
 
@@ -112,7 +112,7 @@ Neste caso a tabela a extensão que temos da tabela chave é a tabela de ocorrê
 
 ```{r echo=TRUE,eval=FALSE}
 # Função para inicialização da tabela
-newTOVEOccTable <- initializeGBIFOccurrence(TOVEOccTableDF, "id", nameAutoMap = TRUE)
+newTOVEOccTable <- initializeGBIFOccurrence(TOVEOccTable, "id", nameAutoMap = TRUE)
 
 # Checando quais eventos foram mapeados na tabela, o que aparece com NA não foi mapeado, ou porque não existe ou porque tem o nome incorreto
 newTOVEOccTable$getTermMapping()
