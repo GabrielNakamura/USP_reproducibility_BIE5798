@@ -61,7 +61,7 @@ Abaixo, 10 razões para praticarmos e nos importamos com uma ciência mais abert
 
 8.  Powers SM, Hampton SE (2019) Open science, reproducibility, and transparency in ecology. Ecological Applications 29:e01822. <https://doi.org/10.1002/eap.1822>
 
-9.   Santos-D'amorim K, Correia AEGC, Miranda MKF de O, Santa-Cruz P (2021) Reasons and implications of retracted articles in Brazil. Transinformação 33:e210001. <https://doi.org/10.1590/2318-0889202133e210001>
+9.  Santos-D'amorim K, Correia AEGC, Miranda MKF de O, Santa-Cruz P (2021) Reasons and implications of retracted articles in Brazil. Transinformação 33:e210001. <https://doi.org/10.1590/2318-0889202133e210001>
 
 10. Smaldino PE, McElreath R (2016) The natural selection of bad science. Royal Society Open Science 3:160384. <https://doi.org/10.1098/rsos.160384>
 
@@ -69,7 +69,7 @@ Abaixo, 10 razões para praticarmos e nos importamos com uma ciência mais abert
 
 12. USP (2023) [Guia de Boas Práticas Científicas](https://prp.usp.br/wp-content/uploads/sites/649/2016/05/PRP_Guia-de-Boas-Pr%C3%A1ticas-Cientificas_2019_2-1.pdf).
 
-13.  [Declaração USP de Apoio à Ciência Aberta](https://cienciaaberta.usp.br/declaracao-usp-de-apoio-a-ciencia-aberta/) -- Ciência Aberta USP.
+13. [Declaração USP de Apoio à Ciência Aberta](https://cienciaaberta.usp.br/declaracao-usp-de-apoio-a-ciencia-aberta/) -- Ciência Aberta USP.
 
 14. Inovação e governo aberto na ciência - Monitoramento e Execução. In: Controladoria-Geral da União. <https://www.gov.br/cgu/pt-br/governo-aberto/a-ogp/planos-de-acao/4o-plano-de-acao-brasileiro/compromisso-3-docs/inovacao-e-governo-aberto-na-ciencia-monitoramento-e-execucao.> Accessed 4 Aug 2023
 
@@ -91,9 +91,9 @@ Abaixo, 10 razões para praticarmos e nos importamos com uma ciência mais abert
 
 22. Center for Open Science. <https://www.cos.io.>
 
-23.  LA Referencia. [https://www.lareferencia.info/en/](https://www.lareferencia.info/en/.)
+23. LA Referencia. [https://www.lareferencia.info/en/](https://www.lareferencia.info/en/.)
 
-24.  Novo curso da Fiocruz trata da gestão e compartilhamento de dados abertos de pesquisa. In: Portal de Periódicos - Fiocruz. [https://periodicos.fiocruz.br/node/1063](https://periodicos.fiocruz.br/node/1063.)
+24. Novo curso da Fiocruz trata da gestão e compartilhamento de dados abertos de pesquisa. In: Portal de Periódicos - Fiocruz. [https://periodicos.fiocruz.br/node/1063](https://periodicos.fiocruz.br/node/1063.)
 
 25. O que é Ciência Aberta? - 1º Oferta. In: Campus Virtual Fiocruz. [https://campusvirtual.fiocruz.br/portal/?q=node/38010](https://campusvirtual.fiocruz.br/portal/?q=node/38010.)
 
@@ -101,6 +101,6 @@ Abaixo, 10 razões para praticarmos e nos importamos com uma ciência mais abert
 
 27. Rede Brasileira De Reprodutibilidade. [https://www.reprodutibilidade.org](https://www.reprodutibilidade.org.)
 
-28.  ReproducibiliTea. [https://reproducibilitea.org/](https://reproducibilitea.org/.)
+28. ReproducibiliTea. [https://reproducibilitea.org/](https://reproducibilitea.org/.)
 
 29. SciELO - Brazil. [https://www.scielo.br/](https://www.scielo.br/.)
