@@ -107,6 +107,6 @@ Como prática sugerimos que os estudantes se juntem em duplas e simulem um traba
 4 - A pessoa responsável pelo repositório deve revisar o pull-request e incorporar as sugestões no `branch main`
 
 
-# References
+# Referências
 
-Happy git with R por Jenny Brian
+Como sempre, o livro da Jenny Brian - Happy Git and GitHub for the UseR
