@@ -19,10 +19,6 @@ Se ainda é muito abstrato este conceito, um exemplo de textos produzidos usando
 
 R markdown é, nas palavras dos próprios criadores, um conjunto de ferramentas que possibilita produzir documentos que seguem as bases do literate programming. O R markdown pode ser utilizado tanto para a simples produção de documentos onde incluímos códigos no meio para nossa própria conveniência, como para produzir documentos em outros formatos (html, docx, latex etc) para estender a comunicação dos achados científicos (ou produzir um blog).
 
-```{r echo=FALSE, eval=TRUE}
-knitr::include_graphics(here::here("figs", "colab-branch.png"))
-```
-
 Portanto, podemos dizer, de maneira geral, que o R markdown possibilita a produção de documentos em linguagens que nós nem sabemos escrever (e.g. não sei escrever em html, consigo produzir sites a partir de Rmarkdow). Para quem gosta do famoso Guia do Mochileiro das Galáxias, o R markdown (juntamente com os pacotes `knitr`, `pandoc`) funciona como o peixe Babel, mesmo que você não fale uma dada língua, o peixe faz o trabalho de tradução para você. A vantagem é que com o R markdown não há nenhuma necessidade de colocar nada desagradável na orelha :)
 
 ```{r echo=FALSE,eval=TRUE,fig.cap="R markdown é como um peixe Babel, ele faz você falar uma linguagem mesmo não sabendo"}
