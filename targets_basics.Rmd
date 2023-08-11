@@ -140,3 +140,9 @@ Uma das maiores potencialidades do targets é identificar de maneira eficiente p
 knitr::include_graphics("figs/target_mudanca.png")
 ```
 
+A identificação do local exato de mudança do workflow é possível graças ao target, evitando que tenhamos que rodar todo o workflow do início ao fim, prática que é chamada de [loop Sisypheano](https://www.worldhistory.org/sisyphus/)
+
+```{r echo=FALSE,eval=TRUE}
+knitr::include_graphics("figs/Sisyphus.jpeg")
+```
+
