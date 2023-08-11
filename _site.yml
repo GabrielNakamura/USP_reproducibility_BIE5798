@@ -46,6 +46,8 @@ navbar:
         href: renv-basics.html
       - text: "Containers"
         href: rocker-basics.html
+      - text: "Pipelines com Targets"
+        href: targets_basics.html
       
       
 

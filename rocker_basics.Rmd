@@ -24,3 +24,7 @@ Os containers são ambientes fechados que contém todas as informações necess�
 # Como gerar containers usando o R
 
 Para utilizarmos containers usando o R a melhor ferramenta disponível é o pacote [Rocker](https://ropensci.org/blog/2014/10/23/introducing-rocker/). O Rocker se utiliza de um outro aplicativo chamado Docker, que por sua vez é responsável por formar os containers.
+
+Os containers são **imagens**, na linguagem da computação, que armazenam toda informação necessária para reproduzir as análises.
+
+[Neste site você pode encontrar um tutorial para Rocker](https://ropensci.org/blog/2014/10/23/introducing-rocker/)
