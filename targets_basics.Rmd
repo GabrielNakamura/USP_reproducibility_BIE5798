@@ -132,4 +132,11 @@ Podemos também acessar o output do workflow
 knitr::include_graphics("figs/target_viz_2.png")
 ```
 
+### Identificando mudanças no workflow
+
+Uma das maiores potencialidades do targets é identificar de maneira eficiente partes do workflow que precisam ser rodadas novamente após realizarmos mudanças na nossa pipeline. Por exemplo, vamos supor que modificamos apenas um parâmetro que afeta a estética do plot final dos resultados do modelo. Não necessitamos rodar tudo de novo, apenas a figura resultante do modelo. O targets identifica onde esta modificação foi feita e aponta a parte do workflow que precisa ser rodado novamente. Podemos identificar isso através da função `tar_viznetwork()` que vai gerar a seguinte figura (dado a situação descrita acima)
+
+```{r echo=FALSE,eval=TRUE}
+knitr::include_graphics("figs/target_mudanca.png")
+```
 
