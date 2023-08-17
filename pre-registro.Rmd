@@ -1,0 +1,24 @@
+---
+title: "Pré-registro de orojetos científicos"
+author: "Melina Leite"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+
+O pré-registro de projetos científicos é uma prática relativamente comum nas ciências biomédicas e em estudos de meta-análise. 
+Consiste no registro prévio do projeto de pesquisa, com as perguntas, hipóteses e métodos detalhados, de forma a evitar práticas questionáveis de pesquisa (_Questionable Research Practices_).
+
+O pré-registro tem sido bastante debatido e pode se tornar uma tendência forte na ecologia.
+
+# Leituras recomendadas
+
+AJE. (2022). Pre-registration vs. Registered Reports: What’s the difference? | AJE. https://www.aje.com/arc/pre-registration-vs-registered-reports/
+
+Center for Open Science. (2023). Registered Reports. https://www.cos.io/initiatives/registered-reports
+
+Fraser, H., Parker, T., Nakagawa, S., Barnett, A., & Fidler, F. (2018). Questionable research practices in ecology and evolution. 16.
+
+O’Boyle, E. H., Banks, G. C., & Gonzalez-Mulé, E. (2017). The Chrysalis Effect: How Ugly Initial Results Metamorphosize Into Beautiful Articles. Journal of Management, 43(2), 376–399. https://doi.org/10.1177/0149206314527133
+
+O’Dea, R. E., Parker, T. H., Chee, Y. E., Culina, A., Drobniak, S. M., Duncan, D. H., Fidler, F., Gould, E., Ihle, M., Kelly, C. D., Lagisz, M., Roche, D. G., Sánchez-Tójar, A., Wilkinson, D. P., Wintle, B. C., & Nakagawa, S. (2021). Towards open, reliable, and transparent ecology and evolutionary biology. BMC Biology, 19(1), 68. https://doi.org/10.1186/s12915-021-01006-3
