@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Melina Leite" />
+
+<meta name="date" content="2023-08-17" />
+
+<title>O que é Ciência Aberta?</title>
+
+<script src="site_libs/header-attrs-2.17/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="site_libs/navigation-1.1/sourceembed.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+
+<style type="text/css">
+#rmd-source-code {
+  display: none;
+}
+</style>
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Boas Práticas e Ferramentas da Ciência Aberta na Ecologia - BIE5798</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Início</a>
+</li>
+<li>
+  <a href="intro_ciencia_aberta.html">O que é ciência aberta?</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Dados abertos
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="dados_abertos.html">O que são dados abertos?</a>
+    </li>
+    <li>
+      <a href="metadata_EML.html">Metadados</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="Organizacao_dir_local.html">Organização local</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Versionamento
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="basics_git.html">ABC do versionamento</a>
+    </li>
+    <li>
+      <a href="commits-travel.html">Viajando no tempo</a>
+    </li>
+    <li>
+      <a href="colabs_github.html">Trabalho colaborativo</a>
+    </li>
+    <li>
+      <a href="gitgnore.html">Ignorando arquivos</a>
+    </li>
+    <li>
+      <a href="conflitos.html">Resolvendo conflitos</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Programação letrada
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="rmarkdown-basics.html">Rmarkdown</a>
+    </li>
+    <li>
+      <a href="sites-basics.html">Sites</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Avançado
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="rocker-basics.html">Containers</a>
+    </li>
+    <li>
+      <a href="targets_basics.html">Pipelines com Targets</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Acesso aberto
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="publicacoes.html">Publicações</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Outras tendências
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="pre-registro.html">Pré-registro</a>
+    </li>
+    <li>
+      <a href="revisao-codigo.html">Revisão de código</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-download-source" href="#">Download Rmd</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">O que é Ciência Aberta?</h1>
+<h4 class="author">Melina Leite</h4>
+<h4 class="date">2023-08-17</h4>
+
+</div>
+
+
+<p>Abaixo listamos referências e material utilizado na aula para
+discussão sobre:</p>
+<ul>
+<li><p>História das publicações científicas</p></li>
+<li><p>Tipos de acesso aberto à publicações: ouro (golden open access),
+verde (green open access), diamante (diamond open access</p></li>
+<li><p>Políticas de acesso aberto</p></li>
+<li><p>Papel dos Preprints</p></li>
+<li><p>Processo de revisão por pares</p></li>
+</ul>
+<div id="publicações-em-acesso-aberto" class="section level1">
+<h1>Publicações em acesso aberto</h1>
+<p>Bezjak, S., Clyburne-Sherin, A., Conzett, P., Fernandes, P., Görögh,
+E., Helbig, K., Kramer, B., Labastida, I., Niemeyer, K., Psomopoulos,
+F., Ross-Hellauer, T., Schneider, R., Tennant, J., Verbakel, E.,
+Brinken, H., &amp; Heller, L. (2018). Open Science Training Handbook
+(1.0). Zenodo. <a href="https://doi.org/10.5281/zenodo.1212496"
+class="uri">https://doi.org/10.5281/zenodo.1212496</a></p>
+<p>Brembs, B., Huneman, P., Schönbrodt, F., Nilsonne, G., Susi, T.,
+Siems, R., Perakakis, P., Trachana, V., Ma, L., &amp;
+Rodriguez-Cuadrado, S. (2023). Replacing academic journals. <a
+href="https://doi.org/10.5281/zenodo.7643806"
+class="uri">https://doi.org/10.5281/zenodo.7643806</a></p>
+<p>Bruno de Pierro. (2019). Comunicação científica sem barreiras.
+Pesquisa FAPESP, 276. <a
+href="https://revistapesquisa.fapesp.br/comunicacao-cientifica-sem-barreiras/"
+class="uri">https://revistapesquisa.fapesp.br/comunicacao-cientifica-sem-barreiras/</a></p>
+<p>Buranyi, S. (2017, June 27). Is the staggeringly profitable business
+of scientific publishing bad for science? The Guardian. <a
+href="https://www.theguardian.com/science/2017/jun/27/profitable-business-scientific-publishing-bad-for-science"
+class="uri">https://www.theguardian.com/science/2017/jun/27/profitable-business-scientific-publishing-bad-for-science</a></p>
+<p>DAFNEE, a Database of Academia Friendly jourNals in Ecology and
+Evolution. (n.d.). Retrieved May 8, 2023, from <a
+href="https://dafnee.isem-evolution.fr/"
+class="uri">https://dafnee.isem-evolution.fr/</a></p>
+<p>Else, H. (2018). How Unpaywall is transforming open science. Nature,
+560(7718), 290–291. <a href="https://doi.org/10.1038/d41586-018-05968-3"
+class="uri">https://doi.org/10.1038/d41586-018-05968-3</a></p>
+<p>Kowaltowski, A. J., Arruda, J. R. F., Nussenzveig, P., &amp; Silber,
+A. (2023, March 9). Article Processing Charges are a Heavy Burden for
+Middle-Income Countries. The Scholarly Kitchen. <a
+href="https://scholarlykitchen.sspnet.org/2023/03/09/guest-post-article-processing-charges-are-a-heavy-burden-for-middle-income-countries/"
+class="uri">https://scholarlykitchen.sspnet.org/2023/03/09/guest-post-article-processing-charges-are-a-heavy-burden-for-middle-income-countries/</a></p>
+<p>Kowaltowski, A., Naslavsky, M., &amp; Zatz, M. (2022). Open access:
+Brazilian scientists denied waivers and discounts. Nature, 603(7903),
+793–793. <a href="https://doi.org/10.1038/d41586-022-00864-3"
+class="uri">https://doi.org/10.1038/d41586-022-00864-3</a></p>
+<p>Kwon, D. (2022). Open-access publishing fees deter researchers in the
+global south. Nature. <a
+href="https://doi.org/10.1038/d41586-022-00342-w"
+class="uri">https://doi.org/10.1038/d41586-022-00342-w</a></p>
+<p>Pereira, C. C., Fernandes, G. F., &amp; Siqueira, W. K. (2023, August
+3). Cuidado com a malandragem acadêmica! Sobrevivendo na Ciência. <a
+href="https://marcoarmello.wordpress.com/2023/08/03/pereira2023/"
+class="uri">https://marcoarmello.wordpress.com/2023/08/03/pereira2023/</a></p>
+<p>Pereira, et al. (2023). Beware of scientific scams! Hints to avoid
+predatory publishing in biological journals. Neotropical Biology and
+Conservation, 18(2), Article 2. <a
+href="https://doi.org/10.3897/neotropical.18.e108887"
+class="uri">https://doi.org/10.3897/neotropical.18.e108887</a></p>
+<p>Piwowar, H., Priem, J., Larivière, V., Alperin, J. P., Matthias, L.,
+Norlander, B., Farley, A., West, J., &amp; Haustein, S. (2018). The
+state of OA: A large-scale analysis of the prevalence and impact of Open
+Access articles. PeerJ, 6, e4375. <a
+href="https://doi.org/10.7717/peerj.4375"
+class="uri">https://doi.org/10.7717/peerj.4375</a></p>
+<p>Racimo, F., Galtier, N., De Herde, V., Aubert Bonn, N., Phillips, B.,
+Guillemaud, T., &amp; Bourget, D. (2022). Ethical Publishing: How Do We
+Get There? Philosophy, Theory, and Practice in Biology, 14. <a
+href="https://doi.org/10.3998/ptpbio.3363"
+class="uri">https://doi.org/10.3998/ptpbio.3363</a></p>
+<p>Tennant, J. P., Waldner, F., Jacques, D. C., Masuzzo, P., Collister,
+L. B., &amp; Hartgerink, C. H. J. (2016). The academic, economic and
+societal impacts of Open Access: An evidence-based review. In F1000
+Research. <a href="https://doi.org/10.12688/f1000research.8460.3"
+class="uri">https://doi.org/10.12688/f1000research.8460.3</a></p>
+<p>Tollefson, J., &amp; Van Noorden, R. (2022). US government reveals
+big changes to open-access policy. Nature, 609(7926), 234–235. <a
+href="https://doi.org/10.1038/d41586-022-02351-1"
+class="uri">https://doi.org/10.1038/d41586-022-02351-1</a></p>
+<p>Williams et al. (2023). Shifts to open access with high article
+processing charges hinder research equity and careers. Journal of
+Biogeography, n/a(n/a). <a href="https://doi.org/10.1111/jbi.14697"
+class="uri">https://doi.org/10.1111/jbi.14697</a></p>
+<div id="vídeos" class="section level2">
+<h2>Vídeos</h2>
+<p>Cruz, C. H. de B. (2019). FAPESP: política de acesso aberto à ciência
+em SP. <a href="https://iptv.usp.br/portal/video.action?idItem=40510"
+class="uri">https://iptv.usp.br/portal/video.action?idItem=40510</a></p>
+<p>Dr. Glaucomflecken (2022a, January 21). Academic Journals Doing
+Crime. <a href="https://www.youtube.com/watch?v=8F9gzQz1Pms"
+class="uri">https://www.youtube.com/watch?v=8F9gzQz1Pms</a></p>
+<p>Dr. Glaucomflecken (2022b, February 16). Academic Publishing. <a
+href="https://www.youtube.com/watch?v=ukAkG6c_N4M"
+class="uri">https://www.youtube.com/watch?v=ukAkG6c_N4M</a></p>
+<p>Dr. Glaucomflecken (2022c, March 10). Nature Needs a Reviewer. <a
+href="https://www.youtube.com/watch?v=lt_b4VKBDhI"
+class="uri">https://www.youtube.com/watch?v=lt_b4VKBDhI</a></p>
+<p>Dr. Glaucomflecken (2023, May 14). Editors Quit Academic Publishing
+Company. <a href="https://www.youtube.com/watch?v=hoUGiS1LeKU"
+class="uri">https://www.youtube.com/watch?v=hoUGiS1LeKU</a></p>
+<p>Racimo, F. (2023, March 22). PCI Webinar serie - Fernando Racimo -
+Ethical publishing: How do we get there? - March 2023. <a
+href="https://www.youtube.com/watch?v=TzLgGSNq0Wk"
+class="uri">https://www.youtube.com/watch?v=TzLgGSNq0Wk</a></p>
+<p>SHB Online (2017, October 5). What is Open Access? <a
+href="https://www.youtube.com/watch?v=gzRgknylTEM"
+class="uri">https://www.youtube.com/watch?v=gzRgknylTEM</a> Simard,
+M.-A., Ghiasi, G., Mongeon, P., &amp; Larivière, V. (2022). National
+differences in dissemination and use of open access literature. PLOS
+ONE, 17(8), e0272730. <a
+href="https://doi.org/10.1371/journal.pone.0272730"
+class="uri">https://doi.org/10.1371/journal.pone.0272730</a></p>
+</div>
+</div>
+<div id="preprint" class="section level1">
+<h1>Preprint</h1>
+<p>Brock, J. (2020). 10 tips for submitting a successful preprint. <a
+href="https://www.natureindex.com/news-blog/tips-how-to-most-successful-preprint-research-science-submission-study"
+class="uri">https://www.natureindex.com/news-blog/tips-how-to-most-successful-preprint-research-science-submission-study</a></p>
+<p>Carneiro et al. (2020). Comparing quality of reporting between
+preprints and peer-reviewed articles in the biomedical literature.
+Research Integrity and Peer Review, 5(1), 16. <a
+href="https://doi.org/10.1186/s41073-020-00101-3"
+class="uri">https://doi.org/10.1186/s41073-020-00101-3</a></p>
+<p>Hettne, K., Aardening, R., Gorp, D. van, Hukkelhoven, C., Loorbach,
+N., Sondervan, J., &amp; Wesenbeeck, A. van. (2021). A Practical Guide
+to Preprints: Accelerating Scholarly Communication. <a
+href="https://doi.org/10.5281/zenodo.5600535"
+class="uri">https://doi.org/10.5281/zenodo.5600535</a></p>
+<p>Sever, R. (2023). Preprint review should form part of PhD programmes
+and postdoc training. Nature, 613(7944), 415–415. <a
+href="https://doi.org/10.1038/d41586-023-00085-2"
+class="uri">https://doi.org/10.1038/d41586-023-00085-2</a></p>
+<p>Wolf, J. F., MacKay, L., Haworth, S. E., Cossette, M.-L., Dedato, M.
+N., Young, K. B., Elliott, C. I., &amp; Oomen, R. A. (2021). Preprinting
+is positively associated with early career researcher status in ecology
+and evolution. Ecology and Evolution, 11(20), 13624–13632. <a
+href="https://doi.org/10.1002/ece3.8106"
+class="uri">https://doi.org/10.1002/ece3.8106</a></p>
+<p>Wolf, J., MacKay, L., Haworth, S., Cossette, M.-L., Dedato, M.,
+Young, K., Elliott, C., &amp; Oomen, R. (2021). The early bird uses
+bioRxiv: The impact of career stage on the usage of preprints in ecology
+and evolution <a href="#preprint">Preprint</a>. Preprints. <a
+href="https://doi.org/10.22541/au.161818075.53734576/v1"
+class="uri">https://doi.org/10.22541/au.161818075.53734576/v1</a></p>
+</div>
+<div id="revisão-por-pares" class="section level1">
+<h1>Revisão por pares</h1>
+<p>Aczel, B., Szaszi, B., &amp; Holcombe, A. O. (2021). A billion-dollar
+donation: Estimating the cost of researchers’ time spent on peer review.
+Research Integrity and Peer Review, 6(1), 14. <a
+href="https://doi.org/10.1186/s41073-021-00118-2"
+class="uri">https://doi.org/10.1186/s41073-021-00118-2</a></p>
+<p>Amaral, O. (2023, May 2). A roupa invisível da revisão por pares. <a
+href="https://www.youtube.com/watch?v=waJBLfb0oB8"
+class="uri">https://www.youtube.com/watch?v=waJBLfb0oB8</a></p>
+<p>Mastroianni, A. (2022, December 13). The rise and fall of peer review
+[Substack newsletter]. Experimental History. <a
+href="https://experimentalhistory.substack.com/p/the-rise-and-fall-of-peer-review"
+class="uri">https://experimentalhistory.substack.com/p/the-rise-and-fall-of-peer-review</a></p>
+<p>Schroter, S., Black, N., Evans, S., Godlee, F., Osorio, L., &amp;
+Smith, R. (2008). What errors do peer reviewers detect, and does
+training improve their ability to detect them? Journal of the Royal
+Society of Medicine, 101(10), 507–514. <a
+href="https://doi.org/10.1258/jrsm.2008.080062"
+class="uri">https://doi.org/10.1258/jrsm.2008.080062</a></p>
+</div>
+
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiTyBxdWUgw6kgQ2nDqm5jaWEgQWJlcnRhPyIKYXV0aG9yOiAiTWVsaW5hIExlaXRlIgpkYXRlOiAiYHIgU3lzLkRhdGUoKWAiCm91dHB1dDogaHRtbF9kb2N1bWVudAplZGl0b3Jfb3B0aW9uczogCiAgbWFya2Rvd246IAogICAgd3JhcDogODAKLS0tCgpBYmFpeG8gbGlzdGFtb3MgcmVmZXLDqm5jaWFzIGUgbWF0ZXJpYWwgdXRpbGl6YWRvIG5hIGF1bGEgcGFyYSBkaXNjdXNzw6NvIHNvYnJlOgoKLSAgIEhpc3TDs3JpYSBkYXMgcHVibGljYcOnw7VlcyBjaWVudMOtZmljYXMKCi0gICBUaXBvcyBkZSBhY2Vzc28gYWJlcnRvIMOgIHB1YmxpY2HDp8O1ZXM6IG91cm8gKGdvbGRlbiBvcGVuIGFjY2VzcyksIHZlcmRlCiAgICAoZ3JlZW4gb3BlbiBhY2Nlc3MpLCBkaWFtYW50ZSAoZGlhbW9uZCBvcGVuIGFjY2VzcwoKLSAgIFBvbMOtdGljYXMgZGUgYWNlc3NvIGFiZXJ0bwoKLSAgIFBhcGVsIGRvcyBQcmVwcmludHMKCi0gICAgUHJvY2Vzc28gZGUgcmV2aXPDo28gcG9yIHBhcmVzCgojIFB1YmxpY2HDp8O1ZXMgZW0gYWNlc3NvIGFiZXJ0bwoKQmV6amFrLCBTLiwgQ2x5YnVybmUtU2hlcmluLCBBLiwgQ29uemV0dCwgUC4sIEZlcm5hbmRlcywgUC4sIEfDtnLDtmdoLCBFLiwgSGVsYmlnLApLLiwgS3JhbWVyLCBCLiwgTGFiYXN0aWRhLCBJLiwgTmllbWV5ZXIsIEsuLCBQc29tb3BvdWxvcywgRi4sIFJvc3MtSGVsbGF1ZXIsIFQuLApTY2huZWlkZXIsIFIuLCBUZW5uYW50LCBKLiwgVmVyYmFrZWwsIEUuLCBCcmlua2VuLCBILiwgJiBIZWxsZXIsIEwuICgyMDE4KS4gT3BlbgpTY2llbmNlIFRyYWluaW5nIEhhbmRib29rICgxLjApLiBaZW5vZG8uCjxodHRwczovL2RvaS5vcmcvMTAuNTI4MS96ZW5vZG8uMTIxMjQ5Nj4KCkJyZW1icywgQi4sIEh1bmVtYW4sIFAuLCBTY2jDtm5icm9kdCwgRi4sIE5pbHNvbm5lLCBHLiwgU3VzaSwgVC4sIFNpZW1zLCBSLiwKUGVyYWtha2lzLCBQLiwgVHJhY2hhbmEsIFYuLCBNYSwgTC4sICYgUm9kcmlndWV6LUN1YWRyYWRvLCBTLiAoMjAyMykuIFJlcGxhY2luZwphY2FkZW1pYyBqb3VybmFscy4gPGh0dHBzOi8vZG9pLm9yZy8xMC41MjgxL3plbm9kby43NjQzODA2PgoKQnJ1bm8gZGUgUGllcnJvLiAoMjAxOSkuIENvbXVuaWNhw6fDo28gY2llbnTDrWZpY2Egc2VtIGJhcnJlaXJhcy4gUGVzcXVpc2EgRkFQRVNQLAoyNzYuIDxodHRwczovL3JldmlzdGFwZXNxdWlzYS5mYXBlc3AuYnIvY29tdW5pY2FjYW8tY2llbnRpZmljYS1zZW0tYmFycmVpcmFzLz4KCkJ1cmFueWksIFMuICgyMDE3LCBKdW5lIDI3KS4gSXMgdGhlIHN0YWdnZXJpbmdseSBwcm9maXRhYmxlIGJ1c2luZXNzIG9mCnNjaWVudGlmaWMgcHVibGlzaGluZyBiYWQgZm9yIHNjaWVuY2U/IFRoZSBHdWFyZGlhbi4KPGh0dHBzOi8vd3d3LnRoZWd1YXJkaWFuLmNvbS9zY2llbmNlLzIwMTcvanVuLzI3L3Byb2ZpdGFibGUtYnVzaW5lc3Mtc2NpZW50aWZpYy1wdWJsaXNoaW5nLWJhZC1mb3Itc2NpZW5jZT4KCkRBRk5FRSwgYSBEYXRhYmFzZSBvZiBBY2FkZW1pYSBGcmllbmRseSBqb3VyTmFscyBpbiBFY29sb2d5IGFuZCBFdm9sdXRpb24uCihuLmQuKS4gUmV0cmlldmVkIE1heSA4LCAyMDIzLCBmcm9tIDxodHRwczovL2RhZm5lZS5pc2VtLWV2b2x1dGlvbi5mci8+CgpFbHNlLCBILiAoMjAxOCkuIEhvdyBVbnBheXdhbGwgaXMgdHJhbnNmb3JtaW5nIG9wZW4gc2NpZW5jZS4gTmF0dXJlLCA1NjAoNzcxOCksCjI5MC0tMjkxLiA8aHR0cHM6Ly9kb2kub3JnLzEwLjEwMzgvZDQxNTg2LTAxOC0wNTk2OC0zPgoKS293YWx0b3dza2ksIEEuIEouLCBBcnJ1ZGEsIEouIFIuIEYuLCBOdXNzZW56dmVpZywgUC4sICYgU2lsYmVyLCBBLiAoMjAyMywgTWFyY2gKOSkuIEFydGljbGUgUHJvY2Vzc2luZyBDaGFyZ2VzIGFyZSBhIEhlYXZ5IEJ1cmRlbiBmb3IgTWlkZGxlLUluY29tZSBDb3VudHJpZXMuClRoZSBTY2hvbGFybHkgS2l0Y2hlbi4KPGh0dHBzOi8vc2Nob2xhcmx5a2l0Y2hlbi5zc3BuZXQub3JnLzIwMjMvMDMvMDkvZ3Vlc3QtcG9zdC1hcnRpY2xlLXByb2Nlc3NpbmctY2hhcmdlcy1hcmUtYS1oZWF2eS1idXJkZW4tZm9yLW1pZGRsZS1pbmNvbWUtY291bnRyaWVzLz4KCktvd2FsdG93c2tpLCBBLiwgTmFzbGF2c2t5LCBNLiwgJiBaYXR6LCBNLiAoMjAyMikuIE9wZW4gYWNjZXNzOiBCcmF6aWxpYW4Kc2NpZW50aXN0cyBkZW5pZWQgd2FpdmVycyBhbmQgZGlzY291bnRzLiBOYXR1cmUsIDYwMyg3OTAzKSwgNzkzLS03OTMuCjxodHRwczovL2RvaS5vcmcvMTAuMTAzOC9kNDE1ODYtMDIyLTAwODY0LTM+CgpLd29uLCBELiAoMjAyMikuIE9wZW4tYWNjZXNzIHB1Ymxpc2hpbmcgZmVlcyBkZXRlciByZXNlYXJjaGVycyBpbiB0aGUgZ2xvYmFsCnNvdXRoLiBOYXR1cmUuIDxodHRwczovL2RvaS5vcmcvMTAuMTAzOC9kNDE1ODYtMDIyLTAwMzQyLXc+CgpQZXJlaXJhLCBDLiBDLiwgRmVybmFuZGVzLCBHLiBGLiwgJiBTaXF1ZWlyYSwgVy4gSy4gKDIwMjMsIEF1Z3VzdCAzKS4gQ3VpZGFkbwpjb20gYSBtYWxhbmRyYWdlbSBhY2Fkw6ptaWNhISBTb2JyZXZpdmVuZG8gbmEgQ2nDqm5jaWEuCjxodHRwczovL21hcmNvYXJtZWxsby53b3JkcHJlc3MuY29tLzIwMjMvMDgvMDMvcGVyZWlyYTIwMjMvPgoKUGVyZWlyYSwgZXQgYWwuICgyMDIzKS4gQmV3YXJlIG9mIHNjaWVudGlmaWMgc2NhbXMhIEhpbnRzIHRvIGF2b2lkIHByZWRhdG9yeQpwdWJsaXNoaW5nIGluIGJpb2xvZ2ljYWwgam91cm5hbHMuIE5lb3Ryb3BpY2FsIEJpb2xvZ3kgYW5kIENvbnNlcnZhdGlvbiwgMTgoMiksCkFydGljbGUgMi4gPGh0dHBzOi8vZG9pLm9yZy8xMC4zODk3L25lb3Ryb3BpY2FsLjE4LmUxMDg4ODc+CgpQaXdvd2FyLCBILiwgUHJpZW0sIEouLCBMYXJpdmnDqHJlLCBWLiwgQWxwZXJpbiwgSi4gUC4sIE1hdHRoaWFzLCBMLiwgTm9ybGFuZGVyLApCLiwgRmFybGV5LCBBLiwgV2VzdCwgSi4sICYgSGF1c3RlaW4sIFMuICgyMDE4KS4gVGhlIHN0YXRlIG9mIE9BOiBBIGxhcmdlLXNjYWxlCmFuYWx5c2lzIG9mIHRoZSBwcmV2YWxlbmNlIGFuZCBpbXBhY3Qgb2YgT3BlbiBBY2Nlc3MgYXJ0aWNsZXMuIFBlZXJKLCA2LCBlNDM3NS4KPGh0dHBzOi8vZG9pLm9yZy8xMC43NzE3L3BlZXJqLjQzNzU+CgpSYWNpbW8sIEYuLCBHYWx0aWVyLCBOLiwgRGUgSGVyZGUsIFYuLCBBdWJlcnQgQm9ubiwgTi4sIFBoaWxsaXBzLCBCLiwKR3VpbGxlbWF1ZCwgVC4sICYgQm91cmdldCwgRC4gKDIwMjIpLiBFdGhpY2FsIFB1Ymxpc2hpbmc6IEhvdyBEbyBXZSBHZXQgVGhlcmU/ClBoaWxvc29waHksIFRoZW9yeSwgYW5kIFByYWN0aWNlIGluIEJpb2xvZ3ksIDE0Lgo8aHR0cHM6Ly9kb2kub3JnLzEwLjM5OTgvcHRwYmlvLjMzNjM+CgpUZW5uYW50LCBKLiBQLiwgV2FsZG5lciwgRi4sIEphY3F1ZXMsIEQuIEMuLCBNYXN1enpvLCBQLiwgQ29sbGlzdGVyLCBMLiBCLiwgJgpIYXJ0Z2VyaW5rLCBDLiBILiBKLiAoMjAxNikuIFRoZSBhY2FkZW1pYywgZWNvbm9taWMgYW5kIHNvY2lldGFsIGltcGFjdHMgb2YgT3BlbgpBY2Nlc3M6IEFuIGV2aWRlbmNlLWJhc2VkIHJldmlldy4gSW4gRjEwMDAgUmVzZWFyY2guCjxodHRwczovL2RvaS5vcmcvMTAuMTI2ODgvZjEwMDByZXNlYXJjaC44NDYwLjM+CgpUb2xsZWZzb24sIEouLCAmIFZhbiBOb29yZGVuLCBSLiAoMjAyMikuIFVTIGdvdmVybm1lbnQgcmV2ZWFscyBiaWcgY2hhbmdlcyB0bwpvcGVuLWFjY2VzcyBwb2xpY3kuIE5hdHVyZSwgNjA5KDc5MjYpLCAyMzQtLTIzNS4KPGh0dHBzOi8vZG9pLm9yZy8xMC4xMDM4L2Q0MTU4Ni0wMjItMDIzNTEtMT4KCldpbGxpYW1zIGV0IGFsLiAoMjAyMykuIFNoaWZ0cyB0byBvcGVuIGFjY2VzcyB3aXRoIGhpZ2ggYXJ0aWNsZSBwcm9jZXNzaW5nCmNoYXJnZXMgaGluZGVyIHJlc2VhcmNoIGVxdWl0eSBhbmQgY2FyZWVycy4gSm91cm5hbCBvZiBCaW9nZW9ncmFwaHksIG4vYShuL2EpLgo8aHR0cHM6Ly9kb2kub3JnLzEwLjExMTEvamJpLjE0Njk3PgoKIyMgVsOtZGVvcwoKQ3J1eiwgQy4gSC4gZGUgQi4gKDIwMTkpLiBGQVBFU1A6IHBvbMOtdGljYSBkZSBhY2Vzc28gYWJlcnRvIMOgIGNpw6puY2lhIGVtIFNQLgo8aHR0cHM6Ly9pcHR2LnVzcC5ici9wb3J0YWwvdmlkZW8uYWN0aW9uP2lkSXRlbT00MDUxMD4KCkRyLiBHbGF1Y29tZmxlY2tlbiAoMjAyMmEsIEphbnVhcnkgMjEpLiBBY2FkZW1pYyBKb3VybmFscyBEb2luZyBDcmltZS4KPGh0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9OEY5Z3pRejFQbXM+CgpEci4gR2xhdWNvbWZsZWNrZW4gKDIwMjJiLCBGZWJydWFyeSAxNikuIEFjYWRlbWljIFB1Ymxpc2hpbmcuCjxodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PXVrQWtHNmNfTjRNPgoKRHIuIEdsYXVjb21mbGVja2VuICgyMDIyYywgTWFyY2ggMTApLiBOYXR1cmUgTmVlZHMgYSBSZXZpZXdlci4KPGh0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9bHRfYjRWS0JEaEk+CgpEci4gR2xhdWNvbWZsZWNrZW4gKDIwMjMsIE1heSAxNCkuIEVkaXRvcnMgUXVpdCBBY2FkZW1pYyBQdWJsaXNoaW5nIENvbXBhbnkuCjxodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PWhvVUdpUzFMZUtVPgoKUmFjaW1vLCBGLiAoMjAyMywgTWFyY2ggMjIpLiBQQ0kgV2ViaW5hciBzZXJpZSAtIEZlcm5hbmRvIFJhY2ltbyAtIEV0aGljYWwKcHVibGlzaGluZzogSG93IGRvIHdlIGdldCB0aGVyZT8gLSBNYXJjaCAyMDIzLgo8aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1UekxnR1NOcTBXaz4KClNIQiBPbmxpbmUgKDIwMTcsIE9jdG9iZXIgNSkuIFdoYXQgaXMgT3BlbiBBY2Nlc3M/CjxodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PWd6UmdrbnlsVEVNPiBTaW1hcmQsIE0uLUEuLCBHaGlhc2ksIEcuLApNb25nZW9uLCBQLiwgJiBMYXJpdmnDqHJlLCBWLiAoMjAyMikuIE5hdGlvbmFsIGRpZmZlcmVuY2VzIGluIGRpc3NlbWluYXRpb24gYW5kCnVzZSBvZiBvcGVuIGFjY2VzcyBsaXRlcmF0dXJlLiBQTE9TIE9ORSwgMTcoOCksIGUwMjcyNzMwLgo8aHR0cHM6Ly9kb2kub3JnLzEwLjEzNzEvam91cm5hbC5wb25lLjAyNzI3MzA+CgojIFByZXByaW50CgpCcm9jaywgSi4gKDIwMjApLiAxMCB0aXBzIGZvciBzdWJtaXR0aW5nIGEgc3VjY2Vzc2Z1bCBwcmVwcmludC4KPGh0dHBzOi8vd3d3Lm5hdHVyZWluZGV4LmNvbS9uZXdzLWJsb2cvdGlwcy1ob3ctdG8tbW9zdC1zdWNjZXNzZnVsLXByZXByaW50LXJlc2VhcmNoLXNjaWVuY2Utc3VibWlzc2lvbi1zdHVkeT4KCkNhcm5laXJvIGV0IGFsLiAoMjAyMCkuIENvbXBhcmluZyBxdWFsaXR5IG9mIHJlcG9ydGluZyBiZXR3ZWVuIHByZXByaW50cyBhbmQKcGVlci1yZXZpZXdlZCBhcnRpY2xlcyBpbiB0aGUgYmlvbWVkaWNhbCBsaXRlcmF0dXJlLiBSZXNlYXJjaCBJbnRlZ3JpdHkgYW5kIFBlZXIKUmV2aWV3LCA1KDEpLCAxNi4gPGh0dHBzOi8vZG9pLm9yZy8xMC4xMTg2L3M0MTA3My0wMjAtMDAxMDEtMz4KCkhldHRuZSwgSy4sIEFhcmRlbmluZywgUi4sIEdvcnAsIEQuIHZhbiwgSHVra2VsaG92ZW4sIEMuLCBMb29yYmFjaCwgTi4sClNvbmRlcnZhbiwgSi4sICYgV2VzZW5iZWVjaywgQS4gdmFuLiAoMjAyMSkuIEEgUHJhY3RpY2FsIEd1aWRlIHRvIFByZXByaW50czoKQWNjZWxlcmF0aW5nIFNjaG9sYXJseSBDb21tdW5pY2F0aW9uLiA8aHR0cHM6Ly9kb2kub3JnLzEwLjUyODEvemVub2RvLjU2MDA1MzU+CgpTZXZlciwgUi4gKDIwMjMpLiBQcmVwcmludCByZXZpZXcgc2hvdWxkIGZvcm0gcGFydCBvZiBQaEQgcHJvZ3JhbW1lcyBhbmQgcG9zdGRvYwp0cmFpbmluZy4gTmF0dXJlLCA2MTMoNzk0NCksIDQxNS0tNDE1Lgo8aHR0cHM6Ly9kb2kub3JnLzEwLjEwMzgvZDQxNTg2LTAyMy0wMDA4NS0yPgoKV29sZiwgSi4gRi4sIE1hY0theSwgTC4sIEhhd29ydGgsIFMuIEUuLCBDb3NzZXR0ZSwgTS4tTC4sIERlZGF0bywgTS4gTi4sIFlvdW5nLApLLiBCLiwgRWxsaW90dCwgQy4gSS4sICYgT29tZW4sIFIuIEEuICgyMDIxKS4gUHJlcHJpbnRpbmcgaXMgcG9zaXRpdmVseQphc3NvY2lhdGVkIHdpdGggZWFybHkgY2FyZWVyIHJlc2VhcmNoZXIgc3RhdHVzIGluIGVjb2xvZ3kgYW5kIGV2b2x1dGlvbi4gRWNvbG9neQphbmQgRXZvbHV0aW9uLCAxMSgyMCksIDEzNjI0LS0xMzYzMi4gPGh0dHBzOi8vZG9pLm9yZy8xMC4xMDAyL2VjZTMuODEwNj4KCldvbGYsIEouLCBNYWNLYXksIEwuLCBIYXdvcnRoLCBTLiwgQ29zc2V0dGUsIE0uLUwuLCBEZWRhdG8sIE0uLCBZb3VuZywgSy4sCkVsbGlvdHQsIEMuLCAmIE9vbWVuLCBSLiAoMjAyMSkuIFRoZSBlYXJseSBiaXJkIHVzZXMgYmlvUnhpdjogVGhlIGltcGFjdCBvZgpjYXJlZXIgc3RhZ2Ugb24gdGhlIHVzYWdlIG9mIHByZXByaW50cyBpbiBlY29sb2d5IGFuZCBldm9sdXRpb24gW1ByZXByaW50XS4KUHJlcHJpbnRzLiA8aHR0cHM6Ly9kb2kub3JnLzEwLjIyNTQxL2F1LjE2MTgxODA3NS41MzczNDU3Ni92MT4KCiMgUmV2aXPDo28gcG9yIHBhcmVzCgpBY3plbCwgQi4sIFN6YXN6aSwgQi4sICYgSG9sY29tYmUsIEEuIE8uICgyMDIxKS4gQSBiaWxsaW9uLWRvbGxhciBkb25hdGlvbjoKRXN0aW1hdGluZyB0aGUgY29zdCBvZiByZXNlYXJjaGVycycgdGltZSBzcGVudCBvbiBwZWVyIHJldmlldy4gUmVzZWFyY2gKSW50ZWdyaXR5IGFuZCBQZWVyIFJldmlldywgNigxKSwgMTQuCjxodHRwczovL2RvaS5vcmcvMTAuMTE4Ni9zNDEwNzMtMDIxLTAwMTE4LTI+CgpBbWFyYWwsIE8uICgyMDIzLCBNYXkgMikuIEEgcm91cGEgaW52aXPDrXZlbCBkYSByZXZpc8OjbyBwb3IgcGFyZXMuCjxodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PXdhSkJMZmIwb0I4PgoKTWFzdHJvaWFubmksIEEuICgyMDIyLCBEZWNlbWJlciAxMykuIFRoZSByaXNlIGFuZCBmYWxsIG9mIHBlZXIgcmV2aWV3IFtTdWJzdGFjawpuZXdzbGV0dGVyXS4gRXhwZXJpbWVudGFsIEhpc3RvcnkuCjxodHRwczovL2V4cGVyaW1lbnRhbGhpc3Rvcnkuc3Vic3RhY2suY29tL3AvdGhlLXJpc2UtYW5kLWZhbGwtb2YtcGVlci1yZXZpZXc+CgpTY2hyb3RlciwgUy4sIEJsYWNrLCBOLiwgRXZhbnMsIFMuLCBHb2RsZWUsIEYuLCBPc29yaW8sIEwuLCAmIFNtaXRoLCBSLiAoMjAwOCkuCldoYXQgZXJyb3JzIGRvIHBlZXIgcmV2aWV3ZXJzIGRldGVjdCwgYW5kIGRvZXMgdHJhaW5pbmcgaW1wcm92ZSB0aGVpciBhYmlsaXR5IHRvCmRldGVjdCB0aGVtPyBKb3VybmFsIG9mIHRoZSBSb3lhbCBTb2NpZXR5IG9mIE1lZGljaW5lLCAxMDEoMTApLCA1MDctLTUxNC4KPGh0dHBzOi8vZG9pLm9yZy8xMC4xMjU4L2pyc20uMjAwOC4wODAwNjI+Cg==</div>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeSourceEmbed("publicacoes.Rmd");
+});
+</script>
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

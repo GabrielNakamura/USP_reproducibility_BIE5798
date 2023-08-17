@@ -1,0 +1,160 @@
+---
+title: "Acesso aberto às publicações científicas"
+author: "Melina Leite"
+date: "`r Sys.Date()`"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: 80
+---
+
+Abaixo listamos referências e material utilizado na aula para discussão sobre:
+
+-   História das publicações científicas
+
+-   Tipos de acesso aberto à publicações: ouro (golden open access), verde
+    (green open access), diamante (diamond open access
+
+-   Políticas de acesso aberto
+
+-   Papel dos Preprints
+
+-   Processo de revisão por pares
+
+# Publicações em acesso aberto
+
+Bezjak et al. (2018). Open Science Training Handbook (1.0). Zenodo.
+<https://doi.org/10.5281/zenodo.1212496>
+
+Brembs, B., Huneman, P., Schönbrodt, F., Nilsonne, G., Susi, T., Siems, R.,
+Perakakis, P., Trachana, V., Ma, L., & Rodriguez-Cuadrado, S. (2023). Replacing
+academic journals. <https://doi.org/10.5281/zenodo.7643806>
+
+Bruno de Pierro. (2019). Comunicação científica sem barreiras. Pesquisa FAPESP,
+276. <https://revistapesquisa.fapesp.br/comunicacao-cientifica-sem-barreiras/>
+
+Buranyi, S. (2017, June 27). Is the staggeringly profitable business of
+scientific publishing bad for science? The Guardian.
+<https://www.theguardian.com/science/2017/jun/27/profitable-business-scientific-publishing-bad-for-science>
+
+DAFNEE, a Database of Academia Friendly jourNals in Ecology and Evolution.
+(n.d.). Retrieved May 8, 2023, from <https://dafnee.isem-evolution.fr/>
+
+Else, H. (2018). How Unpaywall is transforming open science. Nature, 560(7718),
+290--291. <https://doi.org/10.1038/d41586-018-05968-3>
+
+Kowaltowski, A. J., Arruda, J. R. F., Nussenzveig, P., & Silber, A. (2023, March
+9). Article Processing Charges are a Heavy Burden for Middle-Income Countries.
+The Scholarly Kitchen.
+<https://scholarlykitchen.sspnet.org/2023/03/09/guest-post-article-processing-charges-are-a-heavy-burden-for-middle-income-countries/>
+
+Kowaltowski, A., Naslavsky, M., & Zatz, M. (2022). Open access: Brazilian
+scientists denied waivers and discounts. Nature, 603(7903), 793--793.
+<https://doi.org/10.1038/d41586-022-00864-3>
+
+Kwon, D. (2022). Open-access publishing fees deter researchers in the global
+south. Nature. <https://doi.org/10.1038/d41586-022-00342-w>
+
+Pereira, C. C., Fernandes, G. F., & Siqueira, W. K. (2023, August 3). Cuidado
+com a malandragem acadêmica! Sobrevivendo na Ciência.
+<https://marcoarmello.wordpress.com/2023/08/03/pereira2023/>
+
+Pereira, et al. (2023). Beware of scientific scams! Hints to avoid predatory
+publishing in biological journals. Neotropical Biology and Conservation, 18(2),
+Article 2. <https://doi.org/10.3897/neotropical.18.e108887>
+
+Piwowar, H., Priem, J., Larivière, V., Alperin, J. P., Matthias, L., Norlander,
+B., Farley, A., West, J., & Haustein, S. (2018). The state of OA: A large-scale
+analysis of the prevalence and impact of Open Access articles. PeerJ, 6, e4375.
+<https://doi.org/10.7717/peerj.4375>
+
+Racimo, F., Galtier, N., De Herde, V., Aubert Bonn, N., Phillips, B.,
+Guillemaud, T., & Bourget, D. (2022). Ethical Publishing: How Do We Get There?
+Philosophy, Theory, and Practice in Biology, 14.
+<https://doi.org/10.3998/ptpbio.3363>
+
+Tennant, J. P., Waldner, F., Jacques, D. C., Masuzzo, P., Collister, L. B., &
+Hartgerink, C. H. J. (2016). The academic, economic and societal impacts of Open
+Access: An evidence-based review. In F1000 Research.
+<https://doi.org/10.12688/f1000research.8460.3>
+
+Tollefson, J., & Van Noorden, R. (2022). US government reveals big changes to
+open-access policy. Nature, 609(7926), 234--235.
+<https://doi.org/10.1038/d41586-022-02351-1>
+
+Williams et al. (2023). Shifts to open access with high article processing
+charges hinder research equity and careers. Journal of Biogeography, n/a(n/a).
+<https://doi.org/10.1111/jbi.14697>
+
+## Vídeos
+
+Cruz, C. H. de B. (2019). FAPESP: política de acesso aberto à ciência em SP.
+<https://iptv.usp.br/portal/video.action?idItem=40510>
+
+Dr. Glaucomflecken (2022a, January 21). Academic Journals Doing Crime.
+<https://www.youtube.com/watch?v=8F9gzQz1Pms>
+
+Dr. Glaucomflecken (2022b, February 16). Academic Publishing.
+<https://www.youtube.com/watch?v=ukAkG6c_N4M>
+
+Dr. Glaucomflecken (2022c, March 10). Nature Needs a Reviewer.
+<https://www.youtube.com/watch?v=lt_b4VKBDhI>
+
+Dr. Glaucomflecken (2023, May 14). Editors Quit Academic Publishing Company.
+<https://www.youtube.com/watch?v=hoUGiS1LeKU>
+
+Racimo, F. (2023, March 22). PCI Webinar serie - Fernando Racimo - Ethical
+publishing: How do we get there? - March 2023.
+<https://www.youtube.com/watch?v=TzLgGSNq0Wk>
+
+SHB Online (2017, October 5). What is Open Access?
+<https://www.youtube.com/watch?v=gzRgknylTEM> Simard, M.-A., Ghiasi, G.,
+Mongeon, P., & Larivière, V. (2022). National differences in dissemination and
+use of open access literature. PLOS ONE, 17(8), e0272730.
+<https://doi.org/10.1371/journal.pone.0272730>
+
+# Preprint
+
+Brock, J. (2020). 10 tips for submitting a successful preprint.
+<https://www.natureindex.com/news-blog/tips-how-to-most-successful-preprint-research-science-submission-study>
+
+Carneiro et al. (2020). Comparing quality of reporting between preprints and
+peer-reviewed articles in the biomedical literature. Research Integrity and Peer
+Review, 5(1), 16. <https://doi.org/10.1186/s41073-020-00101-3>
+
+Hettne, K., Aardening, R., Gorp, D. van, Hukkelhoven, C., Loorbach, N.,
+Sondervan, J., & Wesenbeeck, A. van. (2021). A Practical Guide to Preprints:
+Accelerating Scholarly Communication. <https://doi.org/10.5281/zenodo.5600535>
+
+Sever, R. (2023). Preprint review should form part of PhD programmes and postdoc
+training. Nature, 613(7944), 415--415.
+<https://doi.org/10.1038/d41586-023-00085-2>
+
+Wolf, J. F., MacKay, L., Haworth, S. E., Cossette, M.-L., Dedato, M. N., Young,
+K. B., Elliott, C. I., & Oomen, R. A. (2021). Preprinting is positively
+associated with early career researcher status in ecology and evolution. Ecology
+and Evolution, 11(20), 13624--13632. <https://doi.org/10.1002/ece3.8106>
+
+Wolf, J., MacKay, L., Haworth, S., Cossette, M.-L., Dedato, M., Young, K.,
+Elliott, C., & Oomen, R. (2021). The early bird uses bioRxiv: The impact of
+career stage on the usage of preprints in ecology and evolution [Preprint].
+Preprints. <https://doi.org/10.22541/au.161818075.53734576/v1>
+
+# Revisão por pares
+
+Aczel, B., Szaszi, B., & Holcombe, A. O. (2021). A billion-dollar donation:
+Estimating the cost of researchers' time spent on peer review. Research
+Integrity and Peer Review, 6(1), 14.
+<https://doi.org/10.1186/s41073-021-00118-2>
+
+Amaral, O. (2023, May 2). A roupa invisível da revisão por pares.
+<https://www.youtube.com/watch?v=waJBLfb0oB8>
+
+Mastroianni, A. (2022, December 13). The rise and fall of peer review [Substack
+newsletter]. Experimental History.
+<https://experimentalhistory.substack.com/p/the-rise-and-fall-of-peer-review>
+
+Schroter, S., Black, N., Evans, S., Godlee, F., Osorio, L., & Smith, R. (2008).
+What errors do peer reviewers detect, and does training improve their ability to
+detect them? Journal of the Royal Society of Medicine, 101(10), 507--514.
+<https://doi.org/10.1258/jrsm.2008.080062>
