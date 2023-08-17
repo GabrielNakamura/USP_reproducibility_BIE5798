@@ -49,8 +49,7 @@ navbar:
       - text: "Pipelines com Targets"
         href: targets_basics.html
     - text: "Acesso aberto"
-      - text: "Publicações"
-        href: publicacoes.html
+      href: publicacoes.html
     - text: "Outras tendências"
       menu:
       - text: "Pré-registro"
