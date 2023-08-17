@@ -77,7 +77,7 @@ Listas de vários repositórios de dados:
 
 -   [bioTIME](https://biotime.st-andrews.ac.uk/): global database of assemblage time series for quantifying and understanding biodiversity change
 
--   [Environmental Data Initiative](+(https://edirepository.org/)
+-   [Environmental Data Initiative](+(<https://edirepository.org/>)
 
 ### Genéricos/gerais:
 
@@ -183,10 +183,10 @@ Alguns exemplos em ecologia de florestas quem mantém estrutura de dados compart
 
 -   Jones MB, Schildhauer MP, Reichman OJ, Bowers S (2006) The New Bioinformatics: Integrating Ecological Data from the Gene to the Biosphere. Annu Rev Ecol Evol Syst 37:519--544. <https://doi.org/10.1146/annurev.ecolsys.37.091305.110031>
 
--    Jones M, O'Brien M, Mecum B, Boettiger C, Schildhauer M, Maier M, Whiteaker T, Earl S, Chong S (2019) Ecological Metadata Language version 2.2.0. <https://doi.org/10.5063/f11834t2>
+-   Jones M, O'Brien M, Mecum B, Boettiger C, Schildhauer M, Maier M, Whiteaker T, Earl S, Chong S (2019) Ecological Metadata Language version 2.2.0. <https://doi.org/10.5063/f11834t2>
 
--    Lortie CJ, Vargas Poulsen C, Brun J, Kui L (2022) Tabular strategies for metadata in ecology, evolution, and the environmental sciences. Ecology and Evolution 12:e9245. <https://doi.org/10.1002/ece3.9245>
+-   Lortie CJ, Vargas Poulsen C, Brun J, Kui L (2022) Tabular strategies for metadata in ecology, evolution, and the environmental sciences. Ecology and Evolution 12:e9245. <https://doi.org/10.1002/ece3.9245>
 
--   Video YouTube sobre conversão metadados em tabela [Excel para EML]( https://www.youtube.com/watch?v=rn8Uee49LsM) (Kui Li)
+-   Video YouTube sobre conversão metadados em tabela [Excel para EML](https://www.youtube.com/watch?v=rn8Uee49LsM) (Kui Li)
 
 -   Smith C (2022) EMLassemblyline: A tool kit for building EML metadata workflows. <https://ediorg.github.io/EMLassemblyline/index.html>
