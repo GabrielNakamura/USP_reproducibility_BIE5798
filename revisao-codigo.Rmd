@@ -1,0 +1,17 @@
+---
+title: "Revisão de código por pares"
+author: "Melina Leite"
+date: "2023-08-17"
+output: html_document
+---
+
+
+Como os códigos de análises em ecologia se tornaram também um produto do projeto de pesquisa, boas práticas também devem levar em conta a revisão não só da publicação científica, mas também do código de análises. 
+
+Nesta aula discutimos as formas de revisão de código, suas vantagens e também formas de incentivar e fomentar esta prática dentro dos grupos de pesquisa.
+
+Dois artigos bem recentes serviram de base para as discussões:
+
+Culina, A., Berg, I. van den, Evans, S., & Sánchez-Tójar, A. (2020). Low availability of code in ecology: A call for urgent action. PLOS Biology, 18(7), e3000763. https://doi.org/10.1371/journal.pbio.3000763
+
+Ivimey-Cook, E. R., Pick, J. L., Bairos-Novak, K., Culina, A., Gould, E., Grainger, M., Marshall, B., Moreau, D., Paquet, M., Royauté, R., Sanchez-Tojar, A., Silva, I., & Windecker, S. (2023). Implementing Code Review in the Scientific Workflow: Insights from Ecology and Evolutionary Biology. EcoEvoRxiv. https://ecoevorxiv.org/repository/view/5393/

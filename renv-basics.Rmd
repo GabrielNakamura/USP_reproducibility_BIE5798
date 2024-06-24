@@ -1,10 +1,11 @@
 ---
-title: "Manejando versões de pacotes"
-author: "Gabriel Nakamura"
+title: "Ambiente reprodutível com 'Renv'"
+author: "Melina Leite"
 date: "`r Sys.Date()`"
 output: html_document
 ---
 
+<<<<<<< HEAD
 # Compatibilidade com pacotes
 
 Até agora aprendemos como reduzir os erros comuns de reprodutibilidade computacional associados a arquivos presentes no nosso diretório. Porém, na maioria dos projetos não utilizamos apenas arquivos que estão presentes no diretório local ou remoto, por exemplo, os pacotes!
@@ -54,3 +55,18 @@ Tente as duas formas de ler pacotes apresentadas nesta seção, veja o que mudou
 # Leituras adicionais
 
 Para mais informações sobre o pacote {`renv`} veja este [material](https://reproducibility.rocks/materials/day3/01-renv/). Para mais informações sobre o {`groundhog`} veja o [blog](https://datacolada.org/95#footnote_2_5852) escrito por um dos desenvolvedores do pacote. A propósito, o blog [Data Colada](https://datacolada.org/) é uma fonte sensacional de ideias e discussões sobre ciência, reprodutibilidade e tudo o mais.
+=======
+O pacote `Renv` é um pacote para criar ambientes reprodutíveis em seus projetos de análise no R. A ideia do `Renv` é criar uma biblioteca para salvar os pacotes e as versões usadas no seu seu workflow de trabalho, de forma que quando você ou alguém baixa seu repositório inteiro, a biblioteca vem junto com todos os pacotes. Assim, cada projeto terá sua própria biblioteca!!!
+
+Geralmente a biliboteca do R (um diretório contendo os pacotes instalados com `install.packages()`), é única e guardada em alguma pasta no seu computador.
+
+Para saber onde está sua biblioteca, dê o comando:
+
+```{r, eval=F}
+.libPaths()
+```
+
+Ao iniciar o `Renv` no repositório do seu projeto, você verá a adição de uma pasta `renv/library` onde serão guardados os pacotes usados.
+
+[![Esquema de funcionamento do Renv retirado da vinheta do pacote.](figs/renv_scheme.png)](https://rstudio.github.io/renv/articles/renv.html)
+>>>>>>> cfc4d76845645fc5600ddd55e379443abfb929ce

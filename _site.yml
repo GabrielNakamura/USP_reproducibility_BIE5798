@@ -8,7 +8,7 @@ output:
     code_download: true
 output_dir: "."
 navbar:
-  title: "Boas Práticas e Ferramentas da Ciência Aberta na Ecologia - BIE5798-1"
+  title: "Boas Práticas e Ferramentas da Ciência Aberta na Ecologia - BIE5798"
   left:
     - text: "Início"
       href: index.html
@@ -44,13 +44,25 @@ navbar:
         href: sites-basics.html
     - text: "Avançado"
       menu:
+<<<<<<< HEAD
       - text: "Manejando versões de pacotes"
         href: renv-basics.html
+=======
+#      - text: "Pacote `{renv}`"
+#        href: renv-basics.html
+>>>>>>> cfc4d76845645fc5600ddd55e379443abfb929ce
       - text: "Containers"
         href: rocker-basics.html
       - text: "Pipelines com Targets"
         href: targets_basics.html
-      
+    - text: "Acesso aberto"
+      href: publicacoes.html
+    - text: "Outras tendências"
+      menu:
+      - text: "Pré-registro"
+        href: pre-registro.html 
+      - text: "Revisão de código"
+        href: revisao-codigo.html 
       
 
      
