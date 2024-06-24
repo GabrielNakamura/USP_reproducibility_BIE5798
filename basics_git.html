@@ -11,11 +11,11 @@
 
 <meta name="author" content="Gabriel Nakamura" />
 
-<meta name="date" content="2023-08-11" />
+<meta name="date" content="2024-06-24" />
 
 <title>Controle de versão</title>
 
-<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -64,7 +64,7 @@
 </style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -470,6 +470,9 @@ div.tocify {
     <li>
       <a href="conflitos.html">Resolvendo conflitos</a>
     </li>
+    <li>
+      <a href="releasing.html">Release</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -495,7 +498,7 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="renv-basics.html">Pacote `{renv}`</a>
+      <a href="renv-basics.html">Manejando versões de pacotes</a>
     </li>
     <li>
       <a href="rocker-basics.html">Containers</a>
@@ -526,7 +529,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Controle de versão</h1>
 <h4 class="author">Gabriel Nakamura</h4>
-<h4 class="date">2023-08-11</h4>
+<h4 class="date">2024-06-24</h4>
 
 </div>
 
@@ -693,7 +696,7 @@ digite:</p>
 suas informações. “SeuNomeDeUsuario” é o nome que você cadastrou no
 GitHub</p>
 <div class="figure" style="text-align: center">
-<img src="figs/NomeUsuario.png" alt="Nome do usuário destacado em vermelho" width="1262" />
+<img src="figs/NomeUsuario.png" alt="Nome do usuário destacado em vermelho"  />
 <p class="caption">
 Nome do usuário destacado em vermelho
 </p>
@@ -736,7 +739,7 @@ R:</p>
 <p>Isso abrirá uma guia no seu navegador para que você gere um token,
 tal como mostrado na imagem abaixo</p>
 <div class="figure" style="text-align: center">
-<img src="figs/PAT-creation.png" alt="Exemplo da página do GitHub para gerar um token" width="1209" />
+<img src="figs/PAT-creation.png" alt="Exemplo da página do GitHub para gerar um token"  />
 <p class="caption">
 Exemplo da página do GitHub para gerar um token
 </p>
@@ -773,7 +776,7 @@ isso:</p>
 <p>Crie um novo repositório clicando no botão destacado na figura
 abaixo</p>
 <div class="figure" style="text-align: center">
-<img src="figs/Create-Reppo.png" alt="Criando um novo repositório a partir do GitHub" width="1260" />
+<img src="figs/Create-Reppo.png" alt="Criando um novo repositório a partir do GitHub"  />
 <p class="caption">
 Criando um novo repositório a partir do GitHub
 </p>
@@ -812,14 +815,14 @@ máquina. A partir desse momento esses repositórios estarão conectados
 até que o Git os separe.</p>
 <p>Para clonar vá até o repositório remoto de interesse, e copie a chave
 https, como mostrado na figura a seguir:</p>
-<p><img src="figs/github-copy-https.png" width="1264" style="display: block; margin: auto;" /></p>
+<p><img src="figs/github-copy-https.png" style="display: block; margin: auto;" /></p>
 <p>Clique no botão de cópia e vamos para o RStudio. No RStudio vá em
 <code>File</code> e depois <code>New Project</code>. A partir daí siga
 as imagens abaixo:</p>
 <div id="copiando-a-chave-https-no-github" class="section level3">
 <h3>1. Copiando a chave https no GitHub</h3>
 <div class="figure" style="text-align: center">
-<img src="figs/github-copy-https.png" alt="Copiando chave https" width="1264" />
+<img src="figs/github-copy-https.png" alt="Copiando chave https"  />
 <p class="caption">
 Copiando chave https
 </p>
@@ -828,7 +831,7 @@ Copiando chave https
 <div id="criando-um-novo-projeto-localmente" class="section level3">
 <h3>2. Criando um novo <strong>projeto</strong> localmente</h3>
 <div class="figure" style="text-align: center">
-<img src="figs/github-versioncontrol-option.png" alt="Abrindo um novo projeto" width="1142" />
+<img src="figs/github-versioncontrol-option.png" alt="Abrindo um novo projeto"  />
 <p class="caption">
 Abrindo um novo projeto
 </p>
@@ -838,7 +841,7 @@ Abrindo um novo projeto
 class="section level3">
 <h3>3. Colando a chave para ligar o repositório remoto com o local</h3>
 <div class="figure" style="text-align: center">
-<img src="figs/github-paste-https.png" alt="Colando a chave https" width="1146" />
+<img src="figs/github-paste-https.png" alt="Colando a chave https"  />
 <p class="caption">
 Colando a chave https
 </p>
@@ -863,7 +866,7 @@ pasta está sendo observado a partir de agora pelo git. Para
 certirficar-se disso, habilite a visualização de arquivos ocultos no seu
 computador, você vai notar que na raiz desta pasta clonada existe uma
 pasta <code>.git</code>, como na figura a seguir</p>
-<p><img src="figs/git-inside-folder.png" width="204" style="display: block; margin: auto;" /></p>
+<p><img src="figs/git-inside-folder.png" style="display: block; margin: auto;" /></p>
 <p>Se você consegue ver esta pasta quer dizer que está tudo certo, e o
 git está observando (<strong>watch</strong> no jargão do versionamento)
 cada modificação e cada arquivo dentro desta pasta (a menos que você
@@ -923,30 +926,30 @@ interface gráfica que chamamos de <strong>Git Client</strong></p>
 <p>Repare que seu RStudio agora tem algumas coisas novas.
 Especificamente, veja que agora ele tem uma aba chamada Git, como
 ilustrado na figura abaixo</p>
-<p><img src="figs/git-tab-rstudio.png" width="1225" style="display: block; margin: auto;" /></p>
+<p><img src="figs/git-tab-rstudio.png" style="display: block; margin: auto;" /></p>
 <p>Isso indica que o git está funcionando no seu diretório, e agora
 podemos fazer o versionamento deste diretório local e sincronizá-lo com
 o repositório remoto.</p>
 <p>Tudo e qualquer coisa que for adicionado ou modificado na sua pasta
 vai aparecer na janela abaixo da aba git. Como mostrado na figura
 abaixo</p>
-<p><img src="figs/git-tab-rstudio2.png" width="1225" style="display: block; margin: auto;" /></p>
+<p><img src="figs/git-tab-rstudio2.png" style="display: block; margin: auto;" /></p>
 <p>Como eu mencionei na aula teórica e aqui acima, o commit é como um
 track changes do word, mas melhor. Precisamos fazer um track change
 manual, indicando o que foi modificado, isso é o nosso commit. Para
 realizar um commit via a interface do RStudio você precisa:</p>
 <p>1 - Clicar no botão <code>commit pending changes</code> (ou em
 qualquer botão naquela aba), como mostrado abaixo</p>
-<p><img src="figs/git-tab-rstudio3.png" width="1219" style="display: block; margin: auto;" /></p>
+<p><img src="figs/git-tab-rstudio3.png" style="display: block; margin: auto;" /></p>
 <p>2 - Isso vai abrir uma nova janela, nela você deve selecionar nos
 checkbox os arquivos (vamos dar uma olhada nessa janela antes de
 prosseguir)</p>
-<p><img src="figs/git-tab-rstudio4.png" width="1003" style="display: block; margin: auto;" /></p>
+<p><img src="figs/git-tab-rstudio4.png" style="display: block; margin: auto;" /></p>
 <p>3 - Escreva uma mensagem informativa. Como este é o primeiro commit
 geralmente selecionamos todos os arquivos e escrevemos a mensagem
 <code>First commit</code> para indicar que é o primeiro commit deste
 repositório</p>
-<p><img src="figs/git-tab-rstudio5.png" width="994" style="display: block; margin: auto;" /></p>
+<p><img src="figs/git-tab-rstudio5.png" style="display: block; margin: auto;" /></p>
 <p><strong>OBS</strong> A mensagem deve ser realmente informativa, o
 commit fica armazenado no seu repositório e aparecerá publicamente caso
 o repositório seja público.</p>
@@ -969,7 +972,7 @@ github, chamado as vezes de <code>origin/master</code> e outras vezes
 o qual o diretório que estou trabalhando está ligado”.</p>
 <p>Sem mais delongas, para fazer um push precisamos apenas apertar o
 botão verde como mostrado na figura abaixo</p>
-<p><img src="figs/git-tab-rstudio6.png" width="997" style="display: block; margin: auto;" /></p>
+<p><img src="figs/git-tab-rstudio6.png" style="display: block; margin: auto;" /></p>
 <p>Duas coisas são importantes notar nesse momento. Primeiro o botão de
 push, que vai empurrar os arquivos para o repositório remoto (origin).
 Segundo, a mensagem destacada com a seta. Ela diz que o <em>branch</em>

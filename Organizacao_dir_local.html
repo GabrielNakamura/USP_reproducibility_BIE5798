@@ -11,11 +11,11 @@
 
 <meta name="author" content="Gabriel Nakamura" />
 
-<meta name="date" content="2023-08-11" />
+<meta name="date" content="2024-06-24" />
 
 <title>Organizando o seu trabalho localmente</title>
 
-<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -59,7 +59,7 @@
 </style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -465,6 +465,9 @@ div.tocify {
     <li>
       <a href="conflitos.html">Resolvendo conflitos</a>
     </li>
+    <li>
+      <a href="releasing.html">Release</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -490,7 +493,7 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="renv-basics.html">Pacote `{renv}`</a>
+      <a href="renv-basics.html">Manejando versões de pacotes</a>
     </li>
     <li>
       <a href="rocker-basics.html">Containers</a>
@@ -521,7 +524,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Organizando o seu trabalho localmente</h1>
 <h4 class="author">Gabriel Nakamura</h4>
-<h4 class="date">2023-08-11</h4>
+<h4 class="date">2024-06-24</h4>
 
 </div>
 
@@ -640,24 +643,26 @@ Pense no seu trabalho, adicione ou edite esse checklist de acordo com
 seus propósitos.</p>
 <p>Minha proposta de checklist:</p>
 <ul class="task-list">
-<li><input type="checkbox" />Uma linha explicando o propósito do
-repositório</li>
-<li><input type="checkbox" />Autores do repositório</li>
-<li><input type="checkbox" />Ligações e contextualizações necessárias
-(por exemplo, se o repositório está linkado a um artigo)</li>
-<li><input type="checkbox" />badges (opcional)</li>
-<li><input type="checkbox" />Instruções de instalação (ou download se
-for um repo)</li>
-<li><input type="checkbox" />Exemplo de utilização claro e
+<li><label><input type="checkbox" />Uma linha explicando o propósito do
+repositório</label></li>
+<li><label><input type="checkbox" />Autores do repositório</label></li>
+<li><label><input type="checkbox" />Ligações e contextualizações
+necessárias (por exemplo, se o repositório está linkado a um
+artigo)</label></li>
+<li><label><input type="checkbox" />badges (opcional)</label></li>
+<li><label><input type="checkbox" />Instruções de instalação (ou
+download se for um repo)</label></li>
+<li><label><input type="checkbox" />Exemplo de utilização claro e
 <em>executável</em> (se estivermos falando de uma base de dados ou
-pacote)</li>
-<li><input type="checkbox" />Estrutura de pastas e scripts (o que cada
-pasta contém, o que cada script faz)</li>
-<li><input type="checkbox" />Status do projeto (finalizado/em
-andamento)</li>
-<li><input type="checkbox" />Em caso de problema com algo no
-repositório, como reportar (Usar o GitHub issues é uma boa ideia)</li>
-<li><input type="checkbox" />Licença</li>
+pacote)</label></li>
+<li><label><input type="checkbox" />Estrutura de pastas e scripts (o que
+cada pasta contém, o que cada script faz)</label></li>
+<li><label><input type="checkbox" />Status do projeto (finalizado/em
+andamento)</label></li>
+<li><label><input type="checkbox" />Em caso de problema com algo no
+repositório, como reportar (Usar o GitHub issues é uma boa
+ideia)</label></li>
+<li><label><input type="checkbox" />Licença</label></li>
 </ul>
 </div>
 <div id="iniciando-o-readme" class="section level2">
@@ -673,18 +678,17 @@ momento, mais adiante. Por hora é relevante saber que o README deve ser
 em markdown pois assim o GitHub idenfica corretamente este documento
 como sendo o arquivo a ser exibido na página inicial do repositório
 remoto, como ilustrado na figura abaixo.</p>
-<div class="figure">
-<img src="figs/readme-exemplo.png" alt="Arquivo README correspondente ao repositório deste site" width="850" />
-<p class="caption">
-Arquivo README correspondente ao repositório deste site
-</p>
+<div class="float">
+<img src="figs/readme-exemplo.png"
+alt="Arquivo README correspondente ao repositório deste site" />
+<div class="figcaption">Arquivo README correspondente ao repositório
+deste site</div>
 </div>
 <p>Na realidade, o arquivo fonte tem essa aparência</p>
-<div class="figure">
-<img src="figs/readme-source-ex.png" alt="Arquivo fonte para o README acima mostrado" width="1029" />
-<p class="caption">
-Arquivo fonte para o README acima mostrado
-</p>
+<div class="float">
+<img src="figs/readme-source-ex.png"
+alt="Arquivo fonte para o README acima mostrado" />
+<div class="figcaption">Arquivo fonte para o README acima mostrado</div>
 </div>
 <p>Mostro como podemos montar um README <a href="">nesta seção</a>. Por
 enquanto vamos fazer o mais simples.</p>

@@ -34,6 +34,8 @@ navbar:
         href: gitgnore.html
       - text: "Resolvendo conflitos"
         href: conflitos.html
+      - text: "Release"
+        href: releasing.html
     - text: "Programação letrada"
       menu:
       - text: "Rmarkdown"
@@ -42,7 +44,7 @@ navbar:
         href: sites-basics.html
     - text: "Avançado"
       menu:
-      - text: "Pacote `{renv}`"
+      - text: "Manejando versões de pacotes"
         href: renv-basics.html
       - text: "Containers"
         href: rocker-basics.html

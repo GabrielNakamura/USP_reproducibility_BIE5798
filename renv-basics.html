@@ -13,7 +13,7 @@
 
 <meta name="date" content="2024-06-24" />
 
-<title>R markdown</title>
+<title>Manejando versões de pacotes</title>
 
 <script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -522,105 +522,109 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">R markdown</h1>
+<h1 class="title toc-ignore">Manejando versões de pacotes</h1>
 <h4 class="author">Gabriel Nakamura</h4>
 <h4 class="date">2024-06-24</h4>
 
 </div>
 
 
-<div id="apresentação" class="section level1">
-<h1>Apresentação</h1>
-<p>Na seção anterior aprendemos a montar um documento em R markdown.
-Mais importante, aprendemos a utilizar o R markdown para escrever em
-linguagens que não dominamos bem, por exemplo, html! Porém, um documento
-html por si só não é de muita utilidade. Abra um documento em html num
-editor de texto e veja como ele se parece.</p>
-<p><img src="figs/html-doc.png" /><!-- --></p>
-<p>Para dar sentido ao nosso html precisamos gerar um site, ou incluir
-ele em um site já existente. Aprenderemos a fazer isso nas próximas
-seções</p>
-<div id="deploy---um-lugar-para-o-seu-html" class="section level2">
-<h2>Deploy - um lugar para o seu html</h2>
-<p>Existem diferentes formas de fazer um deploy no seu documento, ou
-documentos, em html. Aqui vamos aprender a mais simples de todas. Se
-quiser mergulhar mais fundo nesse tema recomendo olhar alguns sites e
-materiais que ensinam como elaborar sites mais “rebuscados”.</p>
-<ul>
-<li><p>Para pacotes estatísticos eu recomendo o pacote <a
-href="https://pkgdown.r-lib.org/"><code>{pkgdown}</code> do Hadley
-Wickham</a></p></li>
-<li><p>Para sites em formato blog eu recomento o tema <a
-href="https://hugo-apero-docs.netlify.app/"><code>Hugo-Apéro</code></a></p></li>
-<li><p>Para sites acadêmicos eu recomendo o tema <a
-href="https://themes.gohugo.io/themes/starter-hugo-academic/">Hugo-academic</a></p></li>
-</ul>
+<div id="compatibilidade-com-pacotes" class="section level1">
+<h1>Compatibilidade com pacotes</h1>
+<p>Até agora aprendemos como reduzir os erros comuns de
+reprodutibilidade computacional associados a arquivos presentes no nosso
+diretório. Porém, na maioria dos projetos não utilizamos apenas arquivos
+que estão presentes no diretório local ou remoto, por exemplo, os
+pacotes!</p>
+<p>Os pacotes são disponibilizados abertamente e o que fazemos é baixar
+uma versão deste pacote em nosso computador. Porém, pacotes nem sempre
+(ou a maioria das vezes), ficam da maneira como os baixamos. Pacotes são
+editados por seus proponentes, função internas são corrigidas, algumas
+são excluídas, outras adicionadas e algumas vezes até mesmo o nome da
+função é modificado. Mas como conseguimos garantir que nosso código seja
+reprodutível, quando ele depende de uma outra pessoa atualizando funções
+e dependências nos nossos scripts? Uma das soluções é o pacote
+{<code>renv</code>}</p>
 </div>
-<div id="produzindo-um-site" class="section level2">
-<h2>Produzindo um site</h2>
-<p>A forma mais simples de todas para elaboração de um site é a partir
-de um fork de algum repositório no GitHub que hospede um site que te
-agrade. Por exemplo, digamos que você gostou deste humilde site que
-hospeda o material desse curso. Para fazer um site seu você pode:</p>
-<p>1 - Vá até o repositório deste site no GitHub</p>
-<p>2 - Forke esse site para ele aparecer no seu GitHub</p>
-<p>3 - Substitua os documentos do site original com o conteúdo que
-deseja hospedar em seu site</p>
-<p>Você pode fazer isso com qualquer site, basta saber quais documentos
-deve substituir pelos seus. Basicamente, no formato deste site, você
-deve apenas substituir os arquivos .Rmd por arquivos que você gerou.
-Além disso você precisa editar o arquivo <code>_site.yml</code>, que
-informa o layout do site.</p>
-<div id="github-pages" class="section level3">
-<h3>Github pages</h3>
-<p>A forma mais fácil de hospedar seu site é utilizando o github pages.
-Uma ferramenta do próprio GitHub usada para gerar o site que tem seu
-código fonte hospedado em um repositório do GitHub. Para tanto, basta
-ativar o GitHub pages no repositório que você deseja que seja seu
-site</p>
-<p>1 - Ativando o github pages</p>
-<p><img src="figs/github-pages1.png" /><!-- --></p>
-<p>Em <code>Settings</code> no repositório que deseja construir um site,
-irá achar a aba <code>Pages</code>, como demostrado na figura acima.</p>
-<p>2 - Em seguida clique na aba pages e ative um repositório para
-indicar ao github pages aonde ele deve buscar os arquivos para construir
-o site. Como mostrado na figura abaixo, neste exemplo usaremos o branch
-<code>master</code> (talvez ele seja <code>main</code> no seu
-GitHub)</p>
-<p><img src="figs/github-pages2.png" /><!-- --></p>
-<p>3 - Após selecionar o branch clique em <code>Save</code> e espere um
-pouco. Logo o GitHub vai aparecer uma mensagem dizendo o domínio do seu
-site, como mostrado abaixo</p>
-<p><img src="figs/github-pages3.png" /><!-- --></p>
-<p>Seu site agora tem um domínio. Mas ainda é necessário alguns detalhes
-para que ele seja funcional. Se você usou a estratégia de forkar o
-repositório, como mostrado na seção acima, tudo que precisa fazer é
-ativar o github pages no repositório forkado. Caso começou um
-repositório do zero, e está adicionando documentos a ele, você
-precisará</p>
-<p>4 - Adicionar um arquivo chamado <code>index.Rmd</code> que será a
-sua página inicial</p>
-<p>5 - Adicionar um arquivo chamado <code>_site.yml</code> que indicará
-como o seu site será construído (Dê uma olhada no yml deste repositório
-para ter uma ideia de como estruturar o site)</p>
-<p>6 - Adicionar os documentos <code>.Rmd</code> na
-<strong>raiz</strong> do seu diretório, sendo que todos devem ter o
-<code>output</code> no formato <code>html_document</code>. Se os
-documentos estiverem em outra subpasta o site não vai funcionar</p>
-<p>7 - Penúltimo passo é renderizar os documentos no repositório
-utilizando a função do pacote <code>{rmarkdown}</code> chamada
-<code>render_site</code> da seguinte maneira:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render_site</span>()</span></code></pre></div>
-<p>8 - Último passo é dar um <code>commit</code> e um <code>push</code>.
-Graças a um sistema chamado <em>Continuous Integration</em> do GitHub
-Actions, o site será montado assim que o GitHub identificar um novo
-push!</p>
-<p>Pronto, agora você tem um site funcional</p>
+<div id="garantindo-a-reprodutibilidade-das-funções-renv"
+class="section level1">
+<h1>Garantindo a reprodutibilidade das funções: {<code>renv</code>}</h1>
+<p>A grande sacada do {<code>renv</code>} para garantir a
+reprodutibilidade das funções dos pacotes utilizados é que ele instala
+estas dependências numa pasta específica do projeto que contém tais
+dependência. Desta forma, ao utilizar um projeto de outra pessoa, ou o
+seu próprio projeto no futuro, você irá utilizar as mesmas versões dos
+pacotes.</p>
+<div id="renv-na-prática" class="section level2">
+<h2>{<code>renv</code>} na prática</h2>
+<p>Quatro funções são essenciais para utilizar o pacote
+{<code>renv</code>}. Lembre-se <strong>sempre faça isso dentro de um
+projeto</strong></p>
+<ol style="list-style-type: decimal">
+<li><p><code>renv::init()</code> primeira ação a ser realizada para
+iniciar o uso do pacote no seu projeto.</p></li>
+<li><p><code>renv::status()</code> confere o status das dependências
+contidas no seu projeto</p></li>
+<li><p><code>renv::snapshot()</code> utilize essa função toda vez que
+instalar um pacote novo, isso garantirá que a versão deste pacote estará
+registrada nos arquivos especiais criados pelo
+{<code>renv</code>}</p></li>
+<li><p><code>renv::restore()</code> esta função é utilizada quando você
+quiser reproduzir algum projeto. Por exemplo, ao baixar um projeto do
+GitHub abra a imagem do Rproject e utilize a função
+<code>restore()</code> isso irá desencadear a instalação das versões dos
+pacotes utilizadas no projeto em seu computador, garantindo assim a
+reprodutibilidade</p></li>
+</ol>
 </div>
 </div>
+<div id="garantindo-a-reprodutibilidade-das-funções-groundhog"
+class="section level1">
+<h1>Garantindo a reprodutibilidade das funções:
+{<code>groundhog</code>}</h1>
+<p>Outra opção é o ótimo pacote {<code>groundhog</code>}, que exerce
+funções similares ao <code>renv</code> mas, tecnicamente, de maneiras
+distintas. O objetivo final é o mesmo, aumentar a chance de
+reprodutibilidade de códigos em R ao resolver a compatibilidade de
+versões de pacotes estatísticos utilizados nestes scripts.</p>
+<p>A grande diferença entre o pacote {<code>renv</code>} e o
+{<code>groundhog</code>} é o fato de que o segundo funciona isoladamente
+em scripts, enquanto o primeir, necessariamente, faz uso dos projetos no
+R.</p>
+<div id="groundhog-na-prática" class="section level2">
+<h2>{<code>groundhog</code>} na prática</h2>
+<p>Para utilizar o {<code>groundhog</code>} devemos chamar as
+dependências (pacotes) utilizando uma função do groundhog da seguinte
+maneira</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(groundhog)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>groundhog.day<span class="ot">=</span><span class="st">&quot;2020-11-01&quot;</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>pkgs<span class="ot">=</span><span class="fu">c</span>(<span class="st">&#39;pwr&#39;</span>,<span class="st">&#39;metafor&#39;</span>,<span class="st">&#39;data.tables&#39;</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="fu">groundhog.library</span>(pkgs, groundhog.day)</span></code></pre></div>
+<p>Ou seja, utilizamos dois argumentos na função
+<code>groundhog.library</code> um indicando os pacotes que devem ser
+carregados e um segundo, aí a grande diferença do groundhog, indicando
+uma data de uso do pacote. Esta data funcionará para baixar a versão do
+pacote mais recente tendo como referência a data indicada.</p>
+</div>
+</div>
+<div id="exercício" class="section level1">
+<h1>Exercício</h1>
+<p>Tente as duas formas de ler pacotes apresentadas nesta seção, veja o
+que mudou (ou não) no seu diretório.</p>
+</div>
+<div id="leituras-adicionais" class="section level1">
+<h1>Leituras adicionais</h1>
+<p>Para mais informações sobre o pacote {<code>renv</code>} veja este <a
+href="https://reproducibility.rocks/materials/day3/01-renv/">material</a>.
+Para mais informações sobre o {<code>groundhog</code>} veja o <a
+href="https://datacolada.org/95#footnote_2_5852">blog</a> escrito por um
+dos desenvolvedores do pacote. A propósito, o blog <a
+href="https://datacolada.org/">Data Colada</a> é uma fonte sensacional
+de ideias e discussões sobre ciência, reprodutibilidade e tudo o
+mais.</p>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBtYXJrZG93biIKYXV0aG9yOiAiR2FicmllbCBOYWthbXVyYSIKZGF0ZTogImByIFN5cy5EYXRlKClgIgpvdXRwdXQ6IGh0bWxfZG9jdW1lbnQKLS0tCgpgYGB7ciBzZXR1cCwgaW5jbHVkZT1GQUxTRX0Ka25pdHI6Om9wdHNfY2h1bmskc2V0KGVjaG8gPSBUUlVFKQpgYGAKCiMgQXByZXNlbnRhw6fDo28KCk5hIHNlw6fDo28gYW50ZXJpb3IgYXByZW5kZW1vcyBhIG1vbnRhciB1bSBkb2N1bWVudG8gZW0gUiBtYXJrZG93bi4gTWFpcyBpbXBvcnRhbnRlLCBhcHJlbmRlbW9zIGEgdXRpbGl6YXIgbyBSIG1hcmtkb3duIHBhcmEgZXNjcmV2ZXIgZW0gbGluZ3VhZ2VucyBxdWUgbsOjbyBkb21pbmFtb3MgYmVtLCBwb3IgZXhlbXBsbywgaHRtbCEgUG9yw6ltLCB1bSBkb2N1bWVudG8gaHRtbCBwb3Igc2kgc8OzIG7Do28gw6kgZGUgbXVpdGEgdXRpbGlkYWRlLiBBYnJhIHVtIGRvY3VtZW50byBlbSBodG1sIG51bSBlZGl0b3IgZGUgdGV4dG8gZSB2ZWphIGNvbW8gZWxlIHNlIHBhcmVjZS4KCmBgYHtyIGVjaG89RkFMU0UsZXZhbD1UUlVFfQprbml0cjo6aW5jbHVkZV9ncmFwaGljcygiZmlncy9odG1sLWRvYy5wbmciKQpgYGAKClBhcmEgZGFyIHNlbnRpZG8gYW8gbm9zc28gaHRtbCBwcmVjaXNhbW9zIGdlcmFyIHVtIHNpdGUsIG91IGluY2x1aXIgZWxlIGVtIHVtIHNpdGUgasOhIGV4aXN0ZW50ZS4gQXByZW5kZXJlbW9zIGEgZmF6ZXIgaXNzbyBuYXMgcHLDs3hpbWFzIHNlw6fDtWVzCgojIyBEZXBsb3kgLSB1bSBsdWdhciBwYXJhIG8gc2V1IGh0bWwKCkV4aXN0ZW0gZGlmZXJlbnRlcyBmb3JtYXMgZGUgZmF6ZXIgdW0gZGVwbG95IG5vIHNldSBkb2N1bWVudG8sIG91IGRvY3VtZW50b3MsIGVtIGh0bWwuIEFxdWkgdmFtb3MgYXByZW5kZXIgYSBtYWlzIHNpbXBsZXMgZGUgdG9kYXMuIFNlIHF1aXNlciBtZXJndWxoYXIgbWFpcyBmdW5kbyBuZXNzZSB0ZW1hIHJlY29tZW5kbyBvbGhhciBhbGd1bnMgc2l0ZXMgZSBtYXRlcmlhaXMgcXVlIGVuc2luYW0gY29tbyBlbGFib3JhciBzaXRlcyBtYWlzICJyZWJ1c2NhZG9zIi4gCgotIFBhcmEgcGFjb3RlcyBlc3RhdMOtc3RpY29zIGV1IHJlY29tZW5kbyBvIHBhY290ZSBbYHtwa2dkb3dufWAgZG8gSGFkbGV5IFdpY2toYW1dKGh0dHBzOi8vcGtnZG93bi5yLWxpYi5vcmcvKQoKLSBQYXJhIHNpdGVzIGVtIGZvcm1hdG8gYmxvZyBldSByZWNvbWVudG8gbyB0ZW1hIFtgSHVnby1BcMOpcm9gXShodHRwczovL2h1Z28tYXBlcm8tZG9jcy5uZXRsaWZ5LmFwcC8pCgotIFBhcmEgc2l0ZXMgYWNhZMOqbWljb3MgZXUgcmVjb21lbmRvIG8gdGVtYSBbSHVnby1hY2FkZW1pY10oaHR0cHM6Ly90aGVtZXMuZ29odWdvLmlvL3RoZW1lcy9zdGFydGVyLWh1Z28tYWNhZGVtaWMvKQoKIyMgUHJvZHV6aW5kbyB1bSBzaXRlCgpBIGZvcm1hIG1haXMgc2ltcGxlcyBkZSB0b2RhcyBwYXJhIGVsYWJvcmHDp8OjbyBkZSB1bSBzaXRlIMOpIGEgcGFydGlyIGRlIHVtIGZvcmsgZGUgYWxndW0gcmVwb3NpdMOzcmlvIG5vIEdpdEh1YiBxdWUgaG9zcGVkZSB1bSBzaXRlIHF1ZSB0ZSBhZ3JhZGUuIFBvciBleGVtcGxvLCBkaWdhbW9zIHF1ZSB2b2PDqiBnb3N0b3UgZGVzdGUgaHVtaWxkZSBzaXRlIHF1ZSBob3NwZWRhIG8gbWF0ZXJpYWwgZGVzc2UgY3Vyc28uIFBhcmEgZmF6ZXIgdW0gc2l0ZSBzZXUgdm9jw6ogcG9kZToKCjEgLSBWw6EgYXTDqSBvIHJlcG9zaXTDs3JpbyBkZXN0ZSBzaXRlIG5vIEdpdEh1YgoKMiAtIEZvcmtlIGVzc2Ugc2l0ZSBwYXJhIGVsZSBhcGFyZWNlciBubyBzZXUgR2l0SHViCgozIC0gU3Vic3RpdHVhIG9zIGRvY3VtZW50b3MgZG8gc2l0ZSBvcmlnaW5hbCBjb20gbyBjb250ZcO6ZG8gcXVlIGRlc2VqYSBob3NwZWRhciBlbSBzZXUgc2l0ZQoKVm9jw6ogcG9kZSBmYXplciBpc3NvIGNvbSBxdWFscXVlciBzaXRlLCBiYXN0YSBzYWJlciBxdWFpcyBkb2N1bWVudG9zIGRldmUgc3Vic3RpdHVpciBwZWxvcyBzZXVzLiBCYXNpY2FtZW50ZSwgbm8gZm9ybWF0byBkZXN0ZSBzaXRlLCB2b2PDqiBkZXZlIGFwZW5hcyBzdWJzdGl0dWlyIG9zIGFycXVpdm9zIC5SbWQgcG9yIGFycXVpdm9zIHF1ZSB2b2PDqiBnZXJvdS4gQWzDqW0gZGlzc28gdm9jw6ogcHJlY2lzYSBlZGl0YXIgbyBhcnF1aXZvIGBfc2l0ZS55bWxgLCBxdWUgaW5mb3JtYSBvIGxheW91dCBkbyBzaXRlLgoKIyMjIEdpdGh1YiBwYWdlcwoKQSBmb3JtYSBtYWlzIGbDoWNpbCBkZSBob3NwZWRhciBzZXUgc2l0ZSDDqSB1dGlsaXphbmRvIG8gZ2l0aHViIHBhZ2VzLiBVbWEgZmVycmFtZW50YSBkbyBwcsOzcHJpbyBHaXRIdWIgdXNhZGEgcGFyYSBnZXJhciBvIHNpdGUgcXVlIHRlbSBzZXUgY8OzZGlnbyBmb250ZSBob3NwZWRhZG8gZW0gdW0gcmVwb3NpdMOzcmlvIGRvIEdpdEh1Yi4gUGFyYSB0YW50bywgYmFzdGEgYXRpdmFyIG8gR2l0SHViIHBhZ2VzIG5vIHJlcG9zaXTDs3JpbyBxdWUgdm9jw6ogZGVzZWphIHF1ZSBzZWphIHNldSBzaXRlCgoxIC0gQXRpdmFuZG8gbyBnaXRodWIgcGFnZXMKCmBgYHtyIGVjaG89RkFMU0UsZXZhbD1UUlVFfQprbml0cjo6aW5jbHVkZV9ncmFwaGljcygiZmlncy9naXRodWItcGFnZXMxLnBuZyIpCmBgYAoKRW0gYFNldHRpbmdzYCBubyByZXBvc2l0w7NyaW8gcXVlIGRlc2VqYSBjb25zdHJ1aXIgdW0gc2l0ZSwgaXLDoSBhY2hhciBhIGFiYSBgUGFnZXNgLCBjb21vIGRlbW9zdHJhZG8gbmEgZmlndXJhIGFjaW1hLgoKMiAtIEVtIHNlZ3VpZGEgY2xpcXVlIG5hIGFiYSBwYWdlcyBlIGF0aXZlIHVtIHJlcG9zaXTDs3JpbyBwYXJhIGluZGljYXIgYW8gZ2l0aHViIHBhZ2VzIGFvbmRlIGVsZSBkZXZlIGJ1c2NhciBvcyBhcnF1aXZvcyBwYXJhIGNvbnN0cnVpciBvIHNpdGUuIENvbW8gbW9zdHJhZG8gbmEgZmlndXJhIGFiYWl4bywgbmVzdGUgZXhlbXBsbyB1c2FyZW1vcyBvIGJyYW5jaCBgbWFzdGVyYCAodGFsdmV6IGVsZSBzZWphIGBtYWluYCBubyBzZXUgR2l0SHViKQoKYGBge3IgZWNobz1GQUxTRSxldmFsPVRSVUV9CmtuaXRyOjppbmNsdWRlX2dyYXBoaWNzKCJmaWdzL2dpdGh1Yi1wYWdlczIucG5nIikKYGBgCgozIC0gQXDDs3Mgc2VsZWNpb25hciBvIGJyYW5jaCBjbGlxdWUgZW0gYFNhdmVgIGUgZXNwZXJlIHVtIHBvdWNvLiBMb2dvIG8gR2l0SHViIHZhaSBhcGFyZWNlciB1bWEgbWVuc2FnZW0gZGl6ZW5kbyBvIGRvbcOtbmlvIGRvIHNldSBzaXRlLCBjb21vIG1vc3RyYWRvIGFiYWl4bwoKYGBge3IgZWNobz1GQUxTRSxldmFsPVRSVUV9CmtuaXRyOjppbmNsdWRlX2dyYXBoaWNzKCJmaWdzL2dpdGh1Yi1wYWdlczMucG5nIikKYGBgCgpTZXUgc2l0ZSBhZ29yYSB0ZW0gdW0gZG9tw61uaW8uIE1hcyBhaW5kYSDDqSBuZWNlc3PDoXJpbyBhbGd1bnMgZGV0YWxoZXMgcGFyYSBxdWUgZWxlIHNlamEgZnVuY2lvbmFsLiBTZSB2b2PDqiB1c291IGEgZXN0cmF0w6lnaWEgZGUgZm9ya2FyIG8gcmVwb3NpdMOzcmlvLCBjb21vIG1vc3RyYWRvIG5hIHNlw6fDo28gYWNpbWEsIHR1ZG8gcXVlIHByZWNpc2EgZmF6ZXIgw6kgYXRpdmFyIG8gZ2l0aHViIHBhZ2VzIG5vIHJlcG9zaXTDs3JpbyBmb3JrYWRvLiBDYXNvIGNvbWXDp291IHVtIHJlcG9zaXTDs3JpbyBkbyB6ZXJvLCBlIGVzdMOhIGFkaWNpb25hbmRvIGRvY3VtZW50b3MgYSBlbGUsIHZvY8OqIHByZWNpc2Fyw6EKCjQgLSBBZGljaW9uYXIgdW0gYXJxdWl2byBjaGFtYWRvIGBpbmRleC5SbWRgIHF1ZSBzZXLDoSBhIHN1YSBww6FnaW5hIGluaWNpYWwKCjUgLSBBZGljaW9uYXIgdW0gYXJxdWl2byBjaGFtYWRvIGBfc2l0ZS55bWxgIHF1ZSBpbmRpY2Fyw6EgY29tbyBvIHNldSBzaXRlIHNlcsOhIGNvbnN0cnXDrWRvIChEw6ogdW1hIG9saGFkYSBubyB5bWwgZGVzdGUgcmVwb3NpdMOzcmlvIHBhcmEgdGVyIHVtYSBpZGVpYSBkZSBjb21vIGVzdHJ1dHVyYXIgbyBzaXRlKQoKNiAtIEFkaWNpb25hciBvcyBkb2N1bWVudG9zIGAuUm1kYCBuYSAqKnJhaXoqKiBkbyBzZXUgZGlyZXTDs3Jpbywgc2VuZG8gcXVlIHRvZG9zIGRldmVtIHRlciBvIGBvdXRwdXRgIG5vIGZvcm1hdG8gYGh0bWxfZG9jdW1lbnRgLiBTZSBvcyBkb2N1bWVudG9zIGVzdGl2ZXJlbSBlbSBvdXRyYSBzdWJwYXN0YSBvIHNpdGUgbsOjbyB2YWkgZnVuY2lvbmFyCgo3IC0gUGVuw7psdGltbyBwYXNzbyDDqSByZW5kZXJpemFyIG9zIGRvY3VtZW50b3Mgbm8gcmVwb3NpdMOzcmlvIHV0aWxpemFuZG8gYSBmdW7Dp8OjbyBkbyBwYWNvdGUgYHtybWFya2Rvd259YCBjaGFtYWRhIGByZW5kZXJfc2l0ZWAgZGEgc2VndWludGUgbWFuZWlyYToKCmBgYHtyIGVjaG89VFJVRSxldmFsPUZBTFNFfQpybWFya2Rvd246OnJlbmRlcl9zaXRlKCkKYGBgCgo4IC0gw5psdGltbyBwYXNzbyDDqSBkYXIgdW0gYGNvbW1pdGAgZSB1bSBgcHVzaGAuIEdyYcOnYXMgYSB1bSBzaXN0ZW1hIGNoYW1hZG8gKkNvbnRpbnVvdXMgSW50ZWdyYXRpb24qIGRvIEdpdEh1YiBBY3Rpb25zLCBvIHNpdGUgc2Vyw6EgbW9udGFkbyBhc3NpbSBxdWUgbyBHaXRIdWIgaWRlbnRpZmljYXIgdW0gbm92byBwdXNoIQoKUHJvbnRvLCBhZ29yYSB2b2PDqiB0ZW0gdW0gc2l0ZSBmdW5jaW9uYWw=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiTWFuZWphbmRvIHZlcnPDtWVzIGRlIHBhY290ZXMiCmF1dGhvcjogIkdhYnJpZWwgTmFrYW11cmEiCmRhdGU6ICJgciBTeXMuRGF0ZSgpYCIKb3V0cHV0OiBodG1sX2RvY3VtZW50Ci0tLQoKIyBDb21wYXRpYmlsaWRhZGUgY29tIHBhY290ZXMKCkF0w6kgYWdvcmEgYXByZW5kZW1vcyBjb21vIHJlZHV6aXIgb3MgZXJyb3MgY29tdW5zIGRlIHJlcHJvZHV0aWJpbGlkYWRlIGNvbXB1dGFjaW9uYWwgYXNzb2NpYWRvcyBhIGFycXVpdm9zIHByZXNlbnRlcyBubyBub3NzbyBkaXJldMOzcmlvLiBQb3LDqW0sIG5hIG1haW9yaWEgZG9zIHByb2pldG9zIG7Do28gdXRpbGl6YW1vcyBhcGVuYXMgYXJxdWl2b3MgcXVlIGVzdMOjbyBwcmVzZW50ZXMgbm8gZGlyZXTDs3JpbyBsb2NhbCBvdSByZW1vdG8sIHBvciBleGVtcGxvLCBvcyBwYWNvdGVzIQoKT3MgcGFjb3RlcyBzw6NvIGRpc3BvbmliaWxpemFkb3MgYWJlcnRhbWVudGUgZSBvIHF1ZSBmYXplbW9zIMOpIGJhaXhhciB1bWEgdmVyc8OjbyBkZXN0ZSBwYWNvdGUgZW0gbm9zc28gY29tcHV0YWRvci4gUG9yw6ltLCBwYWNvdGVzIG5lbSBzZW1wcmUgKG91IGEgbWFpb3JpYSBkYXMgdmV6ZXMpLCBmaWNhbSBkYSBtYW5laXJhIGNvbW8gb3MgYmFpeGFtb3MuIFBhY290ZXMgc8OjbyBlZGl0YWRvcyBwb3Igc2V1cyBwcm9wb25lbnRlcywgZnVuw6fDo28gaW50ZXJuYXMgc8OjbyBjb3JyaWdpZGFzLCBhbGd1bWFzIHPDo28gZXhjbHXDrWRhcywgb3V0cmFzIGFkaWNpb25hZGFzIGUgYWxndW1hcyB2ZXplcyBhdMOpIG1lc21vIG8gbm9tZSBkYSBmdW7Dp8OjbyDDqSBtb2RpZmljYWRvLiBNYXMgY29tbyBjb25zZWd1aW1vcyBnYXJhbnRpciBxdWUgbm9zc28gY8OzZGlnbyBzZWphIHJlcHJvZHV0w612ZWwsIHF1YW5kbyBlbGUgZGVwZW5kZSBkZSB1bWEgb3V0cmEgcGVzc29hIGF0dWFsaXphbmRvIGZ1bsOnw7VlcyBlIGRlcGVuZMOqbmNpYXMgbm9zIG5vc3NvcyBzY3JpcHRzPyBVbWEgZGFzIHNvbHXDp8O1ZXMgw6kgbyBwYWNvdGUge2ByZW52YH0KCiMgR2FyYW50aW5kbyBhIHJlcHJvZHV0aWJpbGlkYWRlIGRhcyBmdW7Dp8O1ZXM6IHtgcmVudmB9CgpBIGdyYW5kZSBzYWNhZGEgZG8ge2ByZW52YH0gcGFyYSBnYXJhbnRpciBhIHJlcHJvZHV0aWJpbGlkYWRlIGRhcyBmdW7Dp8O1ZXMgZG9zIHBhY290ZXMgdXRpbGl6YWRvcyDDqSBxdWUgZWxlIGluc3RhbGEgZXN0YXMgZGVwZW5kw6puY2lhcyBudW1hIHBhc3RhIGVzcGVjw61maWNhIGRvIHByb2pldG8gcXVlIGNvbnTDqW0gdGFpcyBkZXBlbmTDqm5jaWEuIERlc3RhIGZvcm1hLCBhbyB1dGlsaXphciB1bSBwcm9qZXRvIGRlIG91dHJhIHBlc3NvYSwgb3UgbyBzZXUgcHLDs3ByaW8gcHJvamV0byBubyBmdXR1cm8sIHZvY8OqIGlyw6EgdXRpbGl6YXIgYXMgbWVzbWFzIHZlcnPDtWVzIGRvcyBwYWNvdGVzLgoKIyMge2ByZW52YH0gbmEgcHLDoXRpY2EKClF1YXRybyBmdW7Dp8O1ZXMgc8OjbyBlc3NlbmNpYWlzIHBhcmEgdXRpbGl6YXIgbyBwYWNvdGUge2ByZW52YH0uIExlbWJyZS1zZSAqKnNlbXByZSBmYcOnYSBpc3NvIGRlbnRybyBkZSB1bSBwcm9qZXRvKioKCjEuIGByZW52Ojppbml0KClgIHByaW1laXJhIGHDp8OjbyBhIHNlciByZWFsaXphZGEgcGFyYSBpbmljaWFyIG8gdXNvIGRvIHBhY290ZSBubyBzZXUgcHJvamV0by4gCgoyLiBgcmVudjo6c3RhdHVzKClgIGNvbmZlcmUgbyBzdGF0dXMgZGFzIGRlcGVuZMOqbmNpYXMgY29udGlkYXMgbm8gc2V1IHByb2pldG8KCjMuIGByZW52OjpzbmFwc2hvdCgpYCB1dGlsaXplIGVzc2EgZnVuw6fDo28gdG9kYSB2ZXogcXVlIGluc3RhbGFyIHVtIHBhY290ZSBub3ZvLCBpc3NvIGdhcmFudGlyw6EgcXVlIGEgdmVyc8OjbyBkZXN0ZSBwYWNvdGUgZXN0YXLDoSByZWdpc3RyYWRhIG5vcyBhcnF1aXZvcyBlc3BlY2lhaXMgY3JpYWRvcyBwZWxvIHtgcmVudmB9Cgo0LiBgcmVudjo6cmVzdG9yZSgpYCBlc3RhIGZ1bsOnw6NvIMOpIHV0aWxpemFkYSBxdWFuZG8gdm9jw6ogcXVpc2VyIHJlcHJvZHV6aXIgYWxndW0gcHJvamV0by4gUG9yIGV4ZW1wbG8sIGFvIGJhaXhhciB1bSBwcm9qZXRvIGRvIEdpdEh1YiBhYnJhIGEgaW1hZ2VtIGRvIFJwcm9qZWN0IGUgdXRpbGl6ZSBhIGZ1bsOnw6NvIGByZXN0b3JlKClgIGlzc28gaXLDoSBkZXNlbmNhZGVhciBhIGluc3RhbGHDp8OjbyBkYXMgdmVyc8O1ZXMgZG9zIHBhY290ZXMgdXRpbGl6YWRhcyBubyBwcm9qZXRvIGVtIHNldSBjb21wdXRhZG9yLCBnYXJhbnRpbmRvIGFzc2ltIGEgcmVwcm9kdXRpYmlsaWRhZGUKCgojIEdhcmFudGluZG8gYSByZXByb2R1dGliaWxpZGFkZSBkYXMgZnVuw6fDtWVzOiB7YGdyb3VuZGhvZ2B9CgpPdXRyYSBvcMOnw6NvIMOpIG8gw7N0aW1vIHBhY290ZSB7YGdyb3VuZGhvZ2B9LCBxdWUgZXhlcmNlIGZ1bsOnw7VlcyBzaW1pbGFyZXMgYW8gYHJlbnZgIG1hcywgdGVjbmljYW1lbnRlLCBkZSBtYW5laXJhcyBkaXN0aW50YXMuIE8gb2JqZXRpdm8gZmluYWwgw6kgbyBtZXNtbywgYXVtZW50YXIgYSBjaGFuY2UgZGUgcmVwcm9kdXRpYmlsaWRhZGUgZGUgY8OzZGlnb3MgZW0gUiBhbyByZXNvbHZlciBhIGNvbXBhdGliaWxpZGFkZSBkZSB2ZXJzw7VlcyBkZSBwYWNvdGVzIGVzdGF0w61zdGljb3MgdXRpbGl6YWRvcyBuZXN0ZXMgc2NyaXB0cy4KCkEgZ3JhbmRlIGRpZmVyZW7Dp2EgZW50cmUgbyBwYWNvdGUge2ByZW52YH0gZSBvIHtgZ3JvdW5kaG9nYH0gw6kgbyBmYXRvIGRlIHF1ZSBvIHNlZ3VuZG8gZnVuY2lvbmEgaXNvbGFkYW1lbnRlIGVtIHNjcmlwdHMsIGVucXVhbnRvIG8gcHJpbWVpciwgbmVjZXNzYXJpYW1lbnRlLCBmYXogdXNvIGRvcyBwcm9qZXRvcyBubyBSLgoKIyMge2Bncm91bmRob2dgfSBuYSBwcsOhdGljYQoKUGFyYSB1dGlsaXphciBvIHtgZ3JvdW5kaG9nYH0gZGV2ZW1vcyBjaGFtYXIgYXMgZGVwZW5kw6puY2lhcyAocGFjb3RlcykgdXRpbGl6YW5kbyB1bWEgZnVuw6fDo28gZG8gZ3JvdW5kaG9nIGRhIHNlZ3VpbnRlIG1hbmVpcmEKCmBgYHtyIGVjaG89VFJVRSwgZXZhbD1GQUxTRX0KbGlicmFyeShncm91bmRob2cpCmdyb3VuZGhvZy5kYXk9IjIwMjAtMTEtMDEiCnBrZ3M9YygncHdyJywnbWV0YWZvcicsJ2RhdGEudGFibGVzJykKZ3JvdW5kaG9nLmxpYnJhcnkocGtncywgZ3JvdW5kaG9nLmRheSkKYGBgCgpPdSBzZWphLCB1dGlsaXphbW9zIGRvaXMgYXJndW1lbnRvcyBuYSBmdW7Dp8OjbyBgZ3JvdW5kaG9nLmxpYnJhcnlgIHVtIGluZGljYW5kbyBvcyBwYWNvdGVzIHF1ZSBkZXZlbSBzZXIgY2FycmVnYWRvcyBlIHVtIHNlZ3VuZG8sIGHDrSBhIGdyYW5kZSBkaWZlcmVuw6dhIGRvIGdyb3VuZGhvZywgaW5kaWNhbmRvIHVtYSBkYXRhIGRlIHVzbyBkbyBwYWNvdGUuIEVzdGEgZGF0YSBmdW5jaW9uYXLDoSBwYXJhIGJhaXhhciBhIHZlcnPDo28gZG8gcGFjb3RlIG1haXMgcmVjZW50ZSB0ZW5kbyBjb21vIHJlZmVyw6puY2lhIGEgZGF0YSBpbmRpY2FkYS4KCiMgRXhlcmPDrWNpbwoKVGVudGUgYXMgZHVhcyBmb3JtYXMgZGUgbGVyIHBhY290ZXMgYXByZXNlbnRhZGFzIG5lc3RhIHNlw6fDo28sIHZlamEgbyBxdWUgbXVkb3UgKG91IG7Do28pIG5vIHNldSBkaXJldMOzcmlvLgoKIyBMZWl0dXJhcyBhZGljaW9uYWlzCgpQYXJhIG1haXMgaW5mb3JtYcOnw7VlcyBzb2JyZSBvIHBhY290ZSB7YHJlbnZgfSB2ZWphIGVzdGUgW21hdGVyaWFsXShodHRwczovL3JlcHJvZHVjaWJpbGl0eS5yb2Nrcy9tYXRlcmlhbHMvZGF5My8wMS1yZW52LykuIFBhcmEgbWFpcyBpbmZvcm1hw6fDtWVzIHNvYnJlIG8ge2Bncm91bmRob2dgfSB2ZWphIG8gW2Jsb2ddKGh0dHBzOi8vZGF0YWNvbGFkYS5vcmcvOTUjZm9vdG5vdGVfMl81ODUyKSBlc2NyaXRvIHBvciB1bSBkb3MgZGVzZW52b2x2ZWRvcmVzIGRvIHBhY290ZS4gQSBwcm9ww7NzaXRvLCBvIGJsb2cgW0RhdGEgQ29sYWRhXShodHRwczovL2RhdGFjb2xhZGEub3JnLykgw6kgdW1hIGZvbnRlIHNlbnNhY2lvbmFsIGRlIGlkZWlhcyBlIGRpc2N1c3PDtWVzIHNvYnJlIGNpw6puY2lhLCByZXByb2R1dGliaWxpZGFkZSBlIHR1ZG8gbyBtYWlzLgo=</div>
 
 
 </div>
@@ -658,7 +662,7 @@ $(document).ready(function () {
 <!-- code folding -->
 <script>
 $(document).ready(function () {
-  window.initializeSourceEmbed("sites-basics.Rmd");
+  window.initializeSourceEmbed("renv-basics.Rmd");
 });
 </script>
 
