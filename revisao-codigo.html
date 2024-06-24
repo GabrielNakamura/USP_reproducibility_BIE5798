@@ -15,7 +15,7 @@
 
 <title>Revisão de código por pares</title>
 
-<script src="site_libs/header-attrs-2.17/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -31,7 +31,7 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
@@ -364,6 +364,9 @@ div.tocify {
     <li>
       <a href="conflitos.html">Resolvendo conflitos</a>
     </li>
+    <li>
+      <a href="releasing.html">Release</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -388,6 +391,9 @@ div.tocify {
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="renv-basics.html">Manejando versões de pacotes</a>
+    </li>
     <li>
       <a href="rocker-basics.html">Containers</a>
     </li>
@@ -461,7 +467,7 @@ Evolutionary Biology. EcoEvoRxiv. <a
 href="https://ecoevorxiv.org/repository/view/5393/"
 class="uri">https://ecoevorxiv.org/repository/view/5393/</a></p>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUmV2aXPDo28gZGUgY8OzZGlnbyBwb3IgcGFyZXMiCmF1dGhvcjogIk1lbGluYSBMZWl0ZSIKZGF0ZTogIjIwMjMtMDgtMTciCm91dHB1dDogaHRtbF9kb2N1bWVudAotLS0KCgpDb21vIG9zIGPDs2RpZ29zIGRlIGFuw6FsaXNlcyBlbSBlY29sb2dpYSBzZSB0b3JuYXJhbSB0YW1iw6ltIHVtIHByb2R1dG8gZG8gcHJvamV0byBkZSBwZXNxdWlzYSwgYm9hcyBwcsOhdGljYXMgdGFtYsOpbSBkZXZlbSBsZXZhciBlbSBjb250YSBhIHJldmlzw6NvIG7Do28gc8OzIGRhIHB1YmxpY2HDp8OjbyBjaWVudMOtZmljYSwgbWFzIHRhbWLDqW0gZG8gY8OzZGlnbyBkZSBhbsOhbGlzZXMuIAoKTmVzdGEgYXVsYSBkaXNjdXRpbW9zIGFzIGZvcm1hcyBkZSByZXZpc8OjbyBkZSBjw7NkaWdvLCBzdWFzIHZhbnRhZ2VucyBlIHRhbWLDqW0gZm9ybWFzIGRlIGluY2VudGl2YXIgZSBmb21lbnRhciBlc3RhIHByw6F0aWNhIGRlbnRybyBkb3MgZ3J1cG9zIGRlIHBlc3F1aXNhLgoKRG9pcyBhcnRpZ29zIGJlbSByZWNlbnRlcyBzZXJ2aXJhbSBkZSBiYXNlIHBhcmEgYXMgZGlzY3Vzc8O1ZXM6CgpDdWxpbmEsIEEuLCBCZXJnLCBJLiB2YW4gZGVuLCBFdmFucywgUy4sICYgU8OhbmNoZXotVMOzamFyLCBBLiAoMjAyMCkuIExvdyBhdmFpbGFiaWxpdHkgb2YgY29kZSBpbiBlY29sb2d5OiBBIGNhbGwgZm9yIHVyZ2VudCBhY3Rpb24uIFBMT1MgQmlvbG9neSwgMTgoNyksIGUzMDAwNzYzLiBodHRwczovL2RvaS5vcmcvMTAuMTM3MS9qb3VybmFsLnBiaW8uMzAwMDc2MwoKSXZpbWV5LUNvb2ssIEUuIFIuLCBQaWNrLCBKLiBMLiwgQmFpcm9zLU5vdmFrLCBLLiwgQ3VsaW5hLCBBLiwgR291bGQsIEUuLCBHcmFpbmdlciwgTS4sIE1hcnNoYWxsLCBCLiwgTW9yZWF1LCBELiwgUGFxdWV0LCBNLiwgUm95YXV0w6ksIFIuLCBTYW5jaGV6LVRvamFyLCBBLiwgU2lsdmEsIEkuLCAmIFdpbmRlY2tlciwgUy4gKDIwMjMpLiBJbXBsZW1lbnRpbmcgQ29kZSBSZXZpZXcgaW4gdGhlIFNjaWVudGlmaWMgV29ya2Zsb3c6IEluc2lnaHRzIGZyb20gRWNvbG9neSBhbmQgRXZvbHV0aW9uYXJ5IEJpb2xvZ3kuIEVjb0V2b1J4aXYuIGh0dHBzOi8vZWNvZXZvcnhpdi5vcmcvcmVwb3NpdG9yeS92aWV3LzUzOTMvCg==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlJldmlzw6NvIGRlIGPDs2RpZ28gcG9yIHBhcmVzIg0KYXV0aG9yOiAiTWVsaW5hIExlaXRlIg0KZGF0ZTogIjIwMjMtMDgtMTciDQpvdXRwdXQ6IGh0bWxfZG9jdW1lbnQNCi0tLQ0KDQoNCkNvbW8gb3MgY8OzZGlnb3MgZGUgYW7DoWxpc2VzIGVtIGVjb2xvZ2lhIHNlIHRvcm5hcmFtIHRhbWLDqW0gdW0gcHJvZHV0byBkbyBwcm9qZXRvIGRlIHBlc3F1aXNhLCBib2FzIHByw6F0aWNhcyB0YW1iw6ltIGRldmVtIGxldmFyIGVtIGNvbnRhIGEgcmV2aXPDo28gbsOjbyBzw7MgZGEgcHVibGljYcOnw6NvIGNpZW50w61maWNhLCBtYXMgdGFtYsOpbSBkbyBjw7NkaWdvIGRlIGFuw6FsaXNlcy4gDQoNCk5lc3RhIGF1bGEgZGlzY3V0aW1vcyBhcyBmb3JtYXMgZGUgcmV2aXPDo28gZGUgY8OzZGlnbywgc3VhcyB2YW50YWdlbnMgZSB0YW1iw6ltIGZvcm1hcyBkZSBpbmNlbnRpdmFyIGUgZm9tZW50YXIgZXN0YSBwcsOhdGljYSBkZW50cm8gZG9zIGdydXBvcyBkZSBwZXNxdWlzYS4NCg0KRG9pcyBhcnRpZ29zIGJlbSByZWNlbnRlcyBzZXJ2aXJhbSBkZSBiYXNlIHBhcmEgYXMgZGlzY3Vzc8O1ZXM6DQoNCkN1bGluYSwgQS4sIEJlcmcsIEkuIHZhbiBkZW4sIEV2YW5zLCBTLiwgJiBTw6FuY2hlei1Uw7NqYXIsIEEuICgyMDIwKS4gTG93IGF2YWlsYWJpbGl0eSBvZiBjb2RlIGluIGVjb2xvZ3k6IEEgY2FsbCBmb3IgdXJnZW50IGFjdGlvbi4gUExPUyBCaW9sb2d5LCAxOCg3KSwgZTMwMDA3NjMuIGh0dHBzOi8vZG9pLm9yZy8xMC4xMzcxL2pvdXJuYWwucGJpby4zMDAwNzYzDQoNCkl2aW1leS1Db29rLCBFLiBSLiwgUGljaywgSi4gTC4sIEJhaXJvcy1Ob3ZhaywgSy4sIEN1bGluYSwgQS4sIEdvdWxkLCBFLiwgR3JhaW5nZXIsIE0uLCBNYXJzaGFsbCwgQi4sIE1vcmVhdSwgRC4sIFBhcXVldCwgTS4sIFJveWF1dMOpLCBSLiwgU2FuY2hlei1Ub2phciwgQS4sIFNpbHZhLCBJLiwgJiBXaW5kZWNrZXIsIFMuICgyMDIzKS4gSW1wbGVtZW50aW5nIENvZGUgUmV2aWV3IGluIHRoZSBTY2llbnRpZmljIFdvcmtmbG93OiBJbnNpZ2h0cyBmcm9tIEVjb2xvZ3kgYW5kIEV2b2x1dGlvbmFyeSBCaW9sb2d5LiBFY29Fdm9SeGl2LiBodHRwczovL2Vjb2V2b3J4aXYub3JnL3JlcG9zaXRvcnkvdmlldy81MzkzLw0K</div>
 
 
 </div>
