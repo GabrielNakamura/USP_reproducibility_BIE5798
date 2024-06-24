@@ -6,7 +6,7 @@ title: "Boas Práticas e Ferramentas da Ciência Aberta na Ecologia - BIE5798"
 
 Olá!
 
-Obrigado pelo interesse em participar da disciplina "Boas Práticas e Ferramentas da Ciência Aberta na Ecologia - BIE5798", que será ministrada entre os dias **07 e 11 de Agosto de 2023** no Departamento de Ecologia, IB-USP, São Paulo. Nesta disciplina serão abordados conceitos teóricos, tendências e ferramentas práticas para desenvolver pesquisas que vão ao encontro dos princípios e movimento da ciência aberta. 
+Obrigado pelo interesse em participar da disciplina "Boas Práticas e Ferramentas da Ciência Aberta na Ecologia - BIE5798", que será ministrada entre os dias **08, 10, 12, 15 e 17 de Julho de 2024** no Departamento de Ecologia, IB-USP, São Paulo. Nesta disciplina serão abordados conceitos teóricos, tendências e ferramentas práticas para desenvolver pesquisas que vão ao encontro dos princípios e movimento da ciência aberta. 
 
 Este sítio servirá como um guia para nossas aulas. Nele vocês encontrarão os materiais necessários ([dados](https://github.com/GabrielNakamura/USP_reproducibility_BIE5798)) bem como os scripts que utilizaremos durante as aulas para as atividades práticas. Ah! O site continuará funcionando após o término da disciplina, portanto, sempre que tiver alguma dúvida é só voltar aqui e revisitar o que vimos nas aulas.
 
@@ -32,7 +32,7 @@ Para me achar e saber mais sobre mim, veja meu [site](https://melinaleite.weebly
 knitr::include_graphics("figs/gabriel-avatar.jpg")
 ```
 
-Gabriel é formado em licenciatura em Ciências Biológicas (apesar da dúvida entre Ciências Sociais e História), fez algumas andanças de difícil reprodutibilidade para obter o mestrado (Ecologia e Conservação UFMS) e doutorado (Ecologia UFRGS). Após um tempo fora (posdoc Texas A&M University), a saudade do pequi e da guariroba do cerrado falaram mais alto e atualmente trabalha na Universidade Federal de Goiás como posdoc do INCT-EECBio. Atualmente vem desenvolvendo  métodos e ferramentas estatísticas em ecologia de comunidades, macroecologia e macroevolução. Tem interesse também em entender os viéses da dinâmica de produção científica. [Aqui](http://lattes.cnpq.br/2456515948049565) um pouquinho mais do que venho desenvolvendo.
+Gabriel é formado em licenciatura em Ciências Biológicas (apesar da dúvida entre Ciências Sociais e História), fez algumas andanças de difícil reprodutibilidade para obter o mestrado (Ecologia e Conservação UFMS) e doutorado (Ecologia UFRGS). Após um tempo fora (posdoc Texas A&M University), a saudade do pequi e da guariroba do cerrado falou mais alto e retornou como posdoc da Universidade Federal de Goiás no INCT-EECBio. Atualmente é posdoc na Universidade de São Paulo. Vem desenvolvendo  métodos e ferramentas estatísticas em ecologia de comunidades, macroecologia e macroevolução. Tem interesse também em entender os viéses da dinâmica de produção científica. [Aqui](http://lattes.cnpq.br/2456515948049565) um pouquinho mais do que venho desenvolvendo.
 
 
 # Cronograma das aulas
@@ -42,7 +42,7 @@ Abaixo está o cronograma das aulas que iremos seguir. Algumas coisas podem muda
 ```{r, eval=T, echo=FALSE}
 crono <- suppressWarnings(read.csv("cronograma.csv", header = T, sep = ","))  
 rownames(crono) <- c("Manhã \n 9-12h", "Tarde \n 14-17h")
-colnames(crono) <- paste(7:11, ("Ago"), sep = " ")
+colnames(crono) <- paste(c(8, 10, 12, 15, 17), ("Jul"), sep = " ")
 crono[1, 1] <- c("Ciência Aberta + Apresentação da disciplina. ")
 crono[2, 1] <- c("Dados abertos: plano de gestão, organização, metadados, publicação")
 crono[1, 2] <- c("Organização local de projetos: pastas, scripts limpos, etc")
@@ -86,8 +86,8 @@ Com o intuito de manter o foco na compreensão dos conceitos e processos que ser
 Para fazer o download deste repositório é só clicar neste botão
 
 ```{r echo=FALSE,eval=TRUE}
-library(downloadthis)
-download_link(
+
+downloadthis::download_link(
   link = "https://github.com/GabrielNakamura/USP_reproducibility_BIE5798/archive/refs/heads/master.zip",
   button_label = "Download do repositório",
   button_type = "danger",
