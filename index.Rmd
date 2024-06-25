@@ -21,7 +21,7 @@ O curso será ministrado por Melina Leite e Gabriel Nakamura.
 knitr::include_graphics("figs/melina-foto.png")
 ```
 
-Sou ecóloga e cientista de dados no departamento de Ecologia da USP. Tenho graduação em biologia (UFRJ), mestrado (UFRJ) e doutorado em Ecologia (USP). Acumulei também um MBA em Gestão Ambiental (Poli-USP) e MBA em Ciência de Dados (ESALQ-USP). Ao longo dos anos trabalhei em diferentes áreas da ecologia e biologia da conservação como ecologia da paisagem, de eomunidades, de populações e ecologia aplicada. Tenho bastante interesse na aplicação métodos estatísticos para descobertas ecológicas (modelos mistos são meu xodó). Adoro escalada, trilhas e esportes de aventura no geral! Ah, e sou uma entusiasta do movimento da **Ciência Aberta**!! 
+Sou ecóloga e cientista de dados no departamento de Ecologia da USP. Tenho graduação em biologia (UFRJ), mestrado (UFRJ) e doutorado em Ecologia (USP). Acumulei também um MBA em Gestão Ambiental (Poli-USP) e MBA em Ciência de Dados (ESALQ-USP). Ao longo dos anos trabalhei em diferentes áreas da ecologia e biologia da conservação como ecologia da paisagem, de comunidades, de populações e ecologia aplicada. Tenho bastante interesse na aplicação métodos estatísticos para descobertas ecológicas (modelos mistos são meu xodó). Adoro escalada, trilhas e esportes de aventura no geral! Ah, e sou uma entusiasta do movimento da **Ciência Aberta**!! 
 
 Para me achar e saber mais sobre mim, veja meu [site](https://melinaleite.weebly.com/).
 
