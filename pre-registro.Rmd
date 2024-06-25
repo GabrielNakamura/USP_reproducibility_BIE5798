@@ -1,5 +1,5 @@
 ---
-title: "Pré-registro de orojetos científicos"
+title: "Pré-registro de projetos científicos"
 author: "Melina Leite"
 date: "`r Sys.Date()`"
 output: html_document
