@@ -52,10 +52,10 @@ crono[1, 3] <- c("Git, Github, integração")
 crono[2, 3] <- c("Prática em controle de versão/ Ações básicas")
 #crono[1, 4] <- c("Prática em controle de versão/ Forks, commits, pull requests")
 #crono[2, 4] <- c("Prática em controle de versão/ Forks, commits, pull requests/ Pacotes")
-crono[1, 4] <- c("Literate programming/ Rmarkdown/ Integração contínua")
-crono[2, 4] <- c("Dockers e Target")
-crono[1, 5] <- c("Publicação em acesso aberto: Preprints, tipos de acesso aberto")
-crono[2, 5] <- c("Finalização e Feedbacks")
+crono[1, 4] <- c("Literate programming/ Rmarkdown/Quarto")
+crono[2, 4] <- c("Revisão de código")
+crono[1, 5] <- c("Publicação: Preprints, tipos de acesso aberto")
+crono[2, 5] <- c("Extra: Dockers e Target / Finalização")
 
 #DT::datatable(crono, editable = "cell")
 ```
@@ -68,6 +68,7 @@ crono |>
 
 
 **OBS 1**: O início das aulas matinais será aberto para dúvidas e discussões em grupo sobre assuntos de dias anteriores. 
+
 **OBS 2**: O fim das aulas vespertinas (16-17h) também serão livres para discussões e dúvidas de projetos individuais.
 
 # Preparação pré-aula e materiais para práticas
@@ -76,7 +77,7 @@ Aqui algumas informações sobre os materiais utilizados durante esta aula, os p
 
 ## Programas/platarformas utilizadas:
 
-Você precisará ter instaldo previamente a última versão do [R](https://cran.r-project.org/) e [Rstudio Desktop](https://posit.co/downloads/), e também deverá ter uma conta no [GitHub](https://github.com/pricing). Todas as ferramentas são gratuitas ou têm versão gratuita. Traga seu computador para as aulas **TODOS OS DIAS**! 
+Você precisará ter instalado previamente a última versão do [R](https://cran.r-project.org/) e [Rstudio Desktop](https://posit.co/downloads/), e também deverá ter uma conta no [GitHub](https://github.com/pricing). Todas as ferramentas são gratuitas ou têm versão gratuita. Traga seu computador para as aulas **TODOS OS DIAS**! 
 
 ## Dados
 
