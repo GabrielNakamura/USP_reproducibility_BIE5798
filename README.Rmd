@@ -35,6 +35,8 @@ Este curso tratará de conceitos e ferramentas computacionais utilizadas para ga
 
 Este repositório contém o códigos fonte e dados que serão utilizados durante o curso. As atividades práticas e exercícios de apoio podem ser 
     encontradas neste [sítio](https://gabrielnakamura.github.io/USP_reproducibility_BIE5798/) 
+    
+Slides de aulas teóricas podem ser acessados [aqui](https://gabrielnakamura.github.io/USP_BIE5798_apresentacoes/)
 
 
 # Responsáveis pela disciplina
