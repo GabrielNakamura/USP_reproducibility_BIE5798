@@ -50,6 +50,8 @@ navbar:
         href: rocker-basics.html
       - text: "Pipelines com Targets"
         href: targets_basics.html
+      - text: "Metadados com EML"
+        href: metadata_EML_pratice.html
     - text: "Acesso aberto"
       href: publicacoes.html
     - text: "Outras tendências"
