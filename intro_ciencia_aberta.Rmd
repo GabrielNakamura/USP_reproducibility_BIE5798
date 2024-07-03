@@ -9,13 +9,13 @@ Nesta primeira aula, navegaremos pelas fascinantes paisagens da ciência aberta,
 
 A **ciência aberta** é um movimento dentro da ciência que busca a abertura do processo de conhecimento científico, de forma que TODAS as atividades científicas, e não só o resultado final, sejam praticadas de forma transparente, colaborativa, e que seus resultados sejam confiáveis e re-utilizáveis, tanto para outros cientistas quanto para a sociedade em geral.
 
-A grosso modo, podemos dizer a ciência aberta é um grande guarda-chuva formado por várias iniciativas de reestruturação da forma de fazer ciência, e portanto, recebe influência de diferentes agentes como os próprios cientistas, as agências de fomento/financiadores, governos, e cidadãos.
+A grosso modo, podemos dizer que a ciência aberta é um grande guarda-chuva formado por várias iniciativas de reestruturação da forma de fazer ciência, e portanto, recebe influência de diferentes agentes como os próprios cientistas, as agências de fomento/financiadores, governos, e cidadãos.
 
 Nesta aula, vamos discutir primeiro o que **não é ciência aberta** - má conduta, fraudes, plágio, pesquisa irreprodutível, erros não corrigidos - e a importância da **integridade e boas práticas científicas.**
 
 Vamos refletir um pouco em como a **má ciência** pode estar sendo selecionada no ambiente acadêmico (Smaldino & McElreath 2016, Ioannidis 2012) devido a incentivos institucionais destorcidos voltados para quantidade - "publish-A-LOT-or-perish", o prestígio manipulado por revistas e as métricas de qualidade/quantidade usadas para avaliação de revistas, pesquisadores e instituições.
 
-Discutiremos as principais **dimensões da ciência aberta**, taxonomias e esquemas que nos ajudem a entender um pouco melhor de quais elementos é feito o movimento da ciência aberta.
+Discutiremos as principais **dimensões da ciência aberta**, taxonomias e esquemas que nos ajudem a entender um pouco melhor os principais elementos do movimento da ciência aberta.
 
 Abordaremos algumas **políticas de ciência aberta**, focada em iniciativas nacionais e a reflexão sobre os vários discursos de ciência aberta dentro destas políticas nacionais, internacionais e supra-nacionais.
 
@@ -91,16 +91,18 @@ Abaixo, 10 razões para praticarmos e nos importamos com uma ciência mais abert
 
 22. Center for Open Science. <https://www.cos.io.>
 
-23. LA Referencia. [https://www.lareferencia.info/en/](https://www.lareferencia.info/en/.)
+23. LA Referencia.<https://www.lareferencia.info/en/>
 
-24. Novo curso da Fiocruz trata da gestão e compartilhamento de dados abertos de pesquisa. In: Portal de Periódicos - Fiocruz. [https://periodicos.fiocruz.br/node/1063](https://periodicos.fiocruz.br/node/1063.)
+24. Novo curso da Fiocruz trata da gestão e compartilhamento de dados abertos de pesquisa. In: Portal de Periódicos - Fiocruz.<https://periodicos.fiocruz.br/node/1063>
 
-25. O que é Ciência Aberta? - 1º Oferta. In: Campus Virtual Fiocruz. [https://campusvirtual.fiocruz.br/portal/?q=node/38010](https://campusvirtual.fiocruz.br/portal/?q=node/38010.)
+25. O que é Ciência Aberta? - 1º Oferta. In: Campus Virtual Fiocruz.< https://campusvirtual.fiocruz.br/portal/?q=node/38010>
 
-26. Open Science \@ FAPESP. [https://fapesp.br/openscience/](https://fapesp.br/openscience/.)
+26. Open Science \@ FAPESP. <https://fapesp.br/openscience/>
 
-27. Rede Brasileira De Reprodutibilidade. [https://www.reprodutibilidade.org](https://www.reprodutibilidade.org.)
+27. Rede Brasileira De Reprodutibilidade. <https://www.reprodutibilidade.org>
 
-28. ReproducibiliTea. [https://reproducibilitea.org/](https://reproducibilitea.org/.)
+28. ReproducibiliTea. <https://reproducibilitea.org/>
 
-29. SciELO - Brazil. [https://www.scielo.br/](https://www.scielo.br/.)
+29. SciELO - Brazil. <https://www.scielo.br/>
+
+30. NEPER: Núcleo de Estratégias em Planejamento Experimental e Reprodutibilidade. ICB-USP <https://sites.usp.br/neper/>
