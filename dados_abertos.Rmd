@@ -37,7 +37,7 @@ Nessa aula vamos navegar no universo dos dados ecológicos, discutindo um pouco 
 
 # Algumas revistas de dados
 
-Base de dados sobre políticas de dados de revistas em Ecologia e evolução:
+Base de dados sobre políticas de dados de revistas em Ecologia e Evolução:
 
 -   Berberi I, Roche D (2021) Living database of journal data policies in E&E. <https://doi.org/10.17605/OSF.IO/D6SP3>
 
@@ -151,7 +151,7 @@ Alguns exemplos em ecologia de florestas quem mantém estrutura de dados compart
 
 -   Roche DG, Kruuk LEB, Lanfear R, Binning SA (2015) Public Data Archiving in Ecology and Evolution: How Well Are We Doing? PLoS Biol 13:e1002295. <https://doi.org/10.1371/journal.pbio.1002295>
 
--   Vanz SA de S, Passos PCSJ, Caregnato SE, Pavão CMG, Borges EN, Rocha RP da, Gabriel Junior RF, Azambuja LAB (2018) Acesso aberto a dados de pesquisa no Brasil : práticas e percepções dos pesquisadores: relatório 2018. Universidade Federal do Rio Grande do Sul. <https://lume.ufrgs.br/handle/10183/185195>
+-   Vanz SA de S, Passos PCSJ, Caregnato SE, Pavão CMG, Borges EN, Rocha RP da, Gabriel Junior RF, Azambuja LAB (2018) Acesso aberto a dados de pesquisa no Brasil: práticas e percepções dos pesquisadores: relatório 2018. Universidade Federal do Rio Grande do Sul. <https://lume.ufrgs.br/handle/10183/185195>
 
 -   Vines TH, Albert AYK, Andrew RL, Débarre F, Bock DG, Franklin MT, Gilbert KJ, Moore J-S, Renaut S, Rennison DJ (2014) The Availability of Research Data Declines Rapidly with Article Age. Current Biology 24:94--97. <https://doi.org/10.1016/j.cub.2013.11.014>
 

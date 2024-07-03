@@ -19,7 +19,7 @@ Dada tais importâncias citadas acima, os metadados ideais devem seguir um esque
 
 ## Leituras sugeridas
 
-Para uma itrodução mais completa sobre os metadados sugiro [este](https://sbclter.msi.ucsb.edu/external/EML/EML_documents/eml_metadata_guide.html) artigo. Para uma introdução da importância dos metadados para contruir conjuntos de dados integrados sugiro o artigo de [Jones et al. (2006)](https://www.annualreviews.org/doi/10.1146/annurev.ecolsys.37.091305.110031). Para um exemplo de base de dados online que se utiliza das potencialidades dos metadados sugiro visitar o [KNB - Knowledge Network Biocomplexity](https://knb.ecoinformatics.org/about).
+Para uma introdução mais completa sobre os metadados sugiro [este](https://sbclter.msi.ucsb.edu/external/EML/EML_documents/eml_metadata_guide.html) artigo. Para uma introdução da importância dos metadados para contruir conjuntos de dados integrados sugiro o artigo de [Jones et al. (2006)](https://www.annualreviews.org/doi/10.1146/annurev.ecolsys.37.091305.110031). Para um exemplo de base de dados online que se utiliza das potencialidades dos metadados sugiro visitar o [KNB - Knowledge Network Biocomplexity](https://knb.ecoinformatics.org/about).
 
 ## Exemplos de metadados 
 
