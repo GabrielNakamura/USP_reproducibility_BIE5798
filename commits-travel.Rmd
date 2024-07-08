@@ -107,3 +107,8 @@ Explore um pouco os commits que realizaram. Abra a página do github e também a
 
 Vamos supor que realizamos um commit errado, e agora queremos voltar ao commit anterior, mas sem perder o trabalho que fizemos nos arquivos. Para isso podemos usar a abordagem anterior, navegando entre os arquivos e selecionando o arquivo que queremos em um determinado estado, substituimos pelo arquivo atual e fazemos um novo commit. Esta opção pode ser a mais segura se estamos começando a mexer no versionamento. Outra opção é explorar as funções do git chamadas `reset`. As funções reset basicamente move o HEAD do seu diretório para um commit no passado. Esta abordagem pode causar algumas dores de cabeça no início, portanto recomendo usa-lá com cautela. Para mais informações sobre isso dê uma olhada [nesse site](https://devconnected.com/how-to-git-reset-to-head/#:~:text=To%20hard%20reset%20files%20to,option%20and%20specify%20the%20HEAD.&text=The%20purpose%20of%20the%20%E2%80%9Cgit,before%20HEAD%20and%20so%20on).)
 
+
+# Inutilidades públicas necessárias
+
+No fim do dia, aprendemos fazer commits apenas para utilizar essa ferramenta [aqui](https://starlogs.dev/). Cole o link de seu repositório contendo alguns commits e veja o que acontece
+

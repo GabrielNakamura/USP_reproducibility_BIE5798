@@ -584,11 +584,12 @@ o R markdown (juntamente com os pacotes <code>knitr</code>,
 fale uma dada língua, o peixe faz o trabalho de tradução para você. A
 vantagem é que com o R markdown não há nenhuma necessidade de colocar
 nada desagradável na orelha :)</p>
-<div class="float">
-<img src="figs/babelfish.jpeg"
-alt="R markdown é como um peixe Babel, ele faz você falar uma linguagem mesmo não sabendo" />
-<div class="figcaption">R markdown é como um peixe Babel, ele faz você
-falar uma linguagem mesmo não sabendo</div>
+<div class="figure">
+<img src="figs/babelfish.jpeg" alt="R markdown é como um peixe Babel, ele faz você falar uma linguagem mesmo não sabendo" width="220" />
+<p class="caption">
+R markdown é como um peixe Babel, ele faz você falar uma linguagem mesmo
+não sabendo
+</p>
 </div>
 <div id="produzindo-um-documento-r-markdown" class="section level2">
 <h2>Produzindo um documento R markdown</h2>
@@ -604,11 +605,11 @@ todas as instruções sobre o documento que estamos produzindo, incluindo
 o nome, a data, o autor e qual será o documento que será gerado a partir
 daquele .Rmd. Nesse caso, como podemos ver na figura abaixo, o yml é bem
 simples, e derá origem a um documento no formato .html</p>
-<p><img src="figs/rmarkdown-yml.png" /><!-- --></p>
+<p><img src="figs/rmarkdown-yml.png" width="1277" /></p>
 <p>O yml pode ser simples como o que vimos anteriormente, ou pode ser
 mais complicado, com mais elementos, tal como o yml que passa as
 instruções para construir o site deste material</p>
-<p><img src="figs/rmarkdown-yml-morecomplicated.png" /><!-- --></p>
+<p><img src="figs/rmarkdown-yml-morecomplicated.png" width="834" /></p>
 <p>De maneira geral, o importante é entender que o yml é o elemento que
 rege a forma que o documento será construído. Para sites (o motivo pelo
 qual eu mais uso o R markdown), o output no formato
@@ -634,7 +635,7 @@ computadores Mac), ou <code>Crtl</code> + <code>option</code> +
 <code>I</code> (nos computadores Windows)</p>
 <p>um chunck como esse vai aparecer</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;figs/rmarkdown-chunck.png&quot;</span>)</span></code></pre></div>
-<p><img src="figs/rmarkdown-chunck.png" /><!-- --></p>
+<p><img src="figs/rmarkdown-chunck.png" width="834" /></p>
 <p>Os dois pedaços indicados com setas no meio do texto são os chunks de
 código, repare que eles apresentam “argumentos” depois da letra
 <code>r</code>, esses argumentos são instruções para dizer como o código
@@ -665,7 +666,7 @@ através do console</p>
 <p>Ou ainda pode ser feito direto no RStudio clicando no botão knit na
 parte superior do RStudio, como mostrado na figura abaixo</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;figs/rmarkdown-knit-button.png&quot;</span>)</span></code></pre></div>
-<p><img src="figs/rmarkdown-knit-button.png" /><!-- --></p>
+<p><img src="figs/rmarkdown-knit-button.png" width="1274" /></p>
 <p>Ao clicar no botão Knit o RStudio renderizará o documento R Markdown
 para o formato estipulado no cabeçalho yml. Uma janela irá se abrir com
 a demonstração do documento renderizado.</p>

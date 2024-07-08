@@ -606,13 +606,13 @@ estrutura:</p>
 Porém, para que o pacote targets funciona precisamos transformar esta
 estrutura de acordo com um pipeline targets, que por sua vez necessita
 da seguinte estrutura:</p>
-<p><img src="figs/dir_targets.png" style="display: block; margin: auto;" /></p>
+<p><img src="figs/dir_targets.png" width="682" style="display: block; margin: auto;" /></p>
 <p>Neste diretório precisamos transformar a sequência apresentada
 anteriormente em uma sequência de funções. Portanto os scripts na pasta
 R serão transformados em funções que serão colocadas dentro da pasta R,
 com o nome de <code>functions.R</code>, e que apresentará a seguinte
 forma:</p>
-<p><img src="figs/pipeline-target.png" style="display: block; margin: auto;" /></p>
+<p><img src="figs/pipeline-target.png" width="647" style="display: block; margin: auto;" /></p>
 <p>Veja que a mesma sequência de análise está agora representada como
 funções, naquilo que chamamos de uma <em>pipeline function</em>. Este
 formato é necessário pois apenas assim o targets irá funcionar.</p>
@@ -623,7 +623,7 @@ seguinte maneira:</p>
 <p>Isso criará um documento na raiz do seu projeto denominado
 <code>_targets.R</code>, como ilustrado na figura abaixo, que representa
 um diretório que segue um workflow do targets</p>
-<p><img src="figs/target_target-file.png" style="display: block; margin: auto;" /></p>
+<p><img src="figs/target_target-file.png" width="1274" style="display: block; margin: auto;" /></p>
 <p>O documento criado informará a sequência do workflow de análise que o
 pacote targets deve seguir. Após editar o documento para este exemplo
 ele ficará da seguinte forma</p>
@@ -648,7 +648,7 @@ obedecer</p></li>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>targets<span class="sc">::</span><span class="fu">tar_make</span>()</span></code></pre></div>
 <p>A sequência do workflow vai iniciar e o tempo decorrido vai aparecer
 no console</p>
-<p><img src="figs/target_run.png" style="display: block; margin: auto;" /></p>
+<p><img src="figs/target_run.png" width="663" style="display: block; margin: auto;" /></p>
 <div id="visualizando-o-workflow" class="section level3">
 <h3>Visualizando o workflow</h3>
 <p>Uma das vantagens do target é que podemos visualizar a sequência do
@@ -656,9 +656,9 @@ workflow e se ele está atualizado ou não. Para isso usamos a seguinte
 função</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>targets<span class="sc">::</span><span class="fu">tar_visnetwork</span>()</span></code></pre></div>
 <p>Esta função vai produzir um gráfico como mostrado nesta figura</p>
-<p><img src="figs/target_viz.png" style="display: block; margin: auto;" /></p>
+<p><img src="figs/target_viz.png" width="1275" style="display: block; margin: auto;" /></p>
 <p>Podemos também acessar o output do workflow</p>
-<p><img src="figs/target_viz_2.png" style="display: block; margin: auto;" /></p>
+<p><img src="figs/target_viz_2.png" width="1275" style="display: block; margin: auto;" /></p>
 </div>
 <div id="identificando-mudanças-no-workflow" class="section level3">
 <h3>Identificando mudanças no workflow</h3>
@@ -671,12 +671,12 @@ figura resultante do modelo. O targets identifica onde esta modificação
 foi feita e aponta a parte do workflow que precisa ser rodado novamente.
 Podemos identificar isso através da função <code>tar_viznetwork()</code>
 que vai gerar a seguinte figura (dado a situação descrita acima)</p>
-<p><img src="figs/target_mudanca.png" style="display: block; margin: auto;" /></p>
+<p><img src="figs/target_mudanca.png" width="1276" style="display: block; margin: auto;" /></p>
 <p>A identificação do local exato de mudança do workflow é possível
 graças ao target, evitando que tenhamos que rodar todo o workflow do
 início ao fim, prática que é chamada de <a
 href="https://www.worldhistory.org/sisyphus/">loop Sisypheano</a></p>
-<p><img src="figs/Sisyphus.jpeg" style="display: block; margin: auto;" /></p>
+<p><img src="figs/Sisyphus.jpeg" width="125" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 </div>

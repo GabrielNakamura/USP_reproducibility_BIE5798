@@ -359,4 +359,6 @@ Hora de praticar com seus dados, ou ainda com os dados do palmerpenguins. Faça 
 
 [Hadley Wickham](http://adv-r.had.co.nz/Style.html)
 
+[Oh Shit, Git!?!](https://ohshitgit.com/)
+
 

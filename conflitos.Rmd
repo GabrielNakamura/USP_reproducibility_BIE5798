@@ -19,5 +19,41 @@ Não há nada mais frustrante no mundo do versionamento que um push ou um pull r
 
 # Resolvendo conflitos de versões
 
-## O que são os conflitos? Quais as principais causas?
+## O que são os conflitos?
 
+Conflitos são, de maneira muito sucinta, duas (ou mais) versões de um mesmo arquivo. Conflitos são comuns mesmo quando não estamos utilizando ferramentas de versionamento. Por exemplo, quando tentamos "colar" um documento em uma pasta com um arquivo que já apresenta o mesmo nome. Neste momento temos que tomar decisões: Manter o arquivo antigo? Substituir o arquivo antigo pelo novo arquivo? Manter ambos os arquivos? 
+Essas são as mesmas decisões que devemos tomar quando lidamos com conflitos de versões utilizando o git. Com a diferença que temos muito mais controle de decisão do manejo dos conflitos nos arquivos sob versionamento.
+
+## Quais as principais causas?
+
+Os conflitos surgem por uma série de razões. Baseado no nosso uso pessoal do versionamento, as duas razões mais comuns que geram versões conflitantes são: 
+
+1 - Devido ao uso de arquivos em repositórios compartilhados, onde duas ou mais pessoas criam versões diferentes de um mesmo arquivo comum. 
+
+2 - Devido ao uso de arquivos em diferentes máquinas. Mesmo que o repositório seja de um único proprietário, caso esteja sendo utilizado em mais de um computador, versões diferentes de um mesmo arquivo podem ser criados.
+
+Novamente, essas são as duas fontes mais comuns de conflitos que nós lidamos na nossa prática diária, mas outras formas existem.
+
+# Conflitos na prática
+
+## Como identificar conflitos
+
+Quando gerados, os conflitos aparecem em nossos códigos da seguinte maneira
+
+```{r echo=FALSE, eval=TRUE,out.width="80%"}
+knitr::include_graphics(here::here("figs", "conflicts-all.png"))
+```
+
+O arquivo com conflito vai ser indicado no seu console, ao abrir este arquivo o local de conflito vai aparecer como indicado na figura acima. 
+
+O que é importante entender: A região entre os caracteres <<<<<< HEAD ======= indica a situação do seu arquivo local. A região do código entre os caracteres ===== >>>>>>>>> [caracteres e números como indicado na figura] indica a situação do arquivo no remoto.
+
+A partir disso uma decisão deve ser tomada:
+
+1 - manter um dos dois estados do repositório
+
+2 - realizar um híbrido 
+
+3 - excluir ambas
+
+Após tomada essa decisão os caracteres especiais devem ser removidos do texto
