@@ -190,3 +190,12 @@ Alguns exemplos em ecologia de florestas quem mantém estrutura de dados compart
 -   Video YouTube sobre conversão metadados em tabela [Excel para EML](https://www.youtube.com/watch?v=rn8Uee49LsM) (Kui Li)
 
 -   Smith C (2022) EMLassemblyline: A tool kit for building EML metadata workflows. <https://ediorg.github.io/EMLassemblyline/index.html>
+
+# Extra
+
+Para quem quiser saber um pouco mais sobre a importância de resgate de dados em ecologia nós sugerimos assistir este documentário produzido pela [Gracielle Higino](http://gracielle.science/). Nele o resgate de dados é abordado de maneira sensível e acessível, destacando a importância deste processo para a ciência.
+
+
+```{r echo=FALSE,eval=TRUE}
+vembedr::embed_url("https://vimeo.com/819068030")
+```
