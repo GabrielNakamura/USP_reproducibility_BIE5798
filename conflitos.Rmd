@@ -15,11 +15,9 @@ klippy::klippy()
 
 # Apresentação
 
-Não há nada mais frustrante no mundo do versionamento que um push ou um pull rejeitado. Mas ao incorporarmos as ferramentas de versionamento em nossa rotina de trabalho será inevitável que em algum momento vamos nos deparar com alguma mensagem de rejeição de um push ou pull que, a maioria das vezes, tem como principal razão a existência de conflitos em versões de documentos. Portanto, nesta seção vamos entender como resolver conflitos em versionamento
+Não há nada mais frustrante no mundo do versionamento que um push ou um pull rejeitado. Mas ao incorporarmos as ferramentas de versionamento em nossa rotina de trabalho será inevitável em algum momento não esbarrar em alguma mensagem de rejeição de um push ou pull que, a maioria das vezes, tem como principal razão a existência de conflitos em versões de documentos. Portanto, nesta seção vamos entender o que são conflitos de versionamento, quais suas principais causas e como podemos resolvê-los.
 
-# Resolvendo conflitos de versões
-
-## O que são os conflitos?
+# O que são os conflitos?
 
 Conflitos são, de maneira muito sucinta, duas (ou mais) versões de um mesmo arquivo. Conflitos são comuns mesmo quando não estamos utilizando ferramentas de versionamento. Por exemplo, quando tentamos "colar" um documento em uma pasta com um arquivo que já apresenta o mesmo nome. Neste momento temos que tomar decisões: Manter o arquivo antigo? Substituir o arquivo antigo pelo novo arquivo? Manter ambos os arquivos? 
 Essas são as mesmas decisões que devemos tomar quando lidamos com conflitos de versões utilizando o git. Com a diferença que temos muito mais controle de decisão do manejo dos conflitos nos arquivos sob versionamento.
@@ -28,15 +26,16 @@ Essas são as mesmas decisões que devemos tomar quando lidamos com conflitos de
 
 Os conflitos surgem por uma série de razões. Baseado no nosso uso pessoal do versionamento, as duas razões mais comuns que geram versões conflitantes são: 
 
-1 - Devido ao uso de arquivos em repositórios compartilhados, onde duas ou mais pessoas criam versões diferentes de um mesmo arquivo comum. 
+1 - Devido ao uso de arquivos em repositórios compartilhados, onde duas ou mais pessoas criam versões diferentes de um mesmo arquivo em comum. 
 
 2 - Devido ao uso de arquivos em diferentes máquinas. Mesmo que o repositório seja de um único proprietário, caso esteja sendo utilizado em mais de um computador, versões diferentes de um mesmo arquivo podem ser criados.
 
-Novamente, essas são as duas fontes mais comuns de conflitos que nós lidamos na nossa prática diária, mas outras formas existem.
+Novamente, essas são as duas fontes mais comuns de conflitos que nós nos deparamos na nossa prática diária, mas é importante lembrar que outras fontes de conflito existem. O importante é saber identificar a fonte de conflito e encotrar a melhor solução para sua resolução. Veremos isso na próxima seção.
 
-# Conflitos na prática
 
-## Como identificar conflitos
+# Como identificar conflitos
+
+O conflito irá aparecer em seu console da seguinte maneira:
 
 Quando gerados, os conflitos aparecem em nossos códigos da seguinte maneira
 
@@ -57,3 +56,12 @@ A partir disso uma decisão deve ser tomada:
 3 - excluir ambas
 
 Após tomada essa decisão os caracteres especiais devem ser removidos do texto
+
+# Referências para resolução de conflitos
+
+Aqui trago algumas das referências mais úteis para a resolução de conflitos. 
+Primeiro, um velho conhecido, o livro da Jenny Brian. O [**capítulo 22**](https://happygitwithr.com/git-branches.html?q=confli#dealing-with-conflicts) é um apanhado muito interessante que apresenta diferentes formas de resolução de conflitos, incluindo os prós e contras de cada uma delas.
+
+A segunda referência é o site ["Oh shit, Git!?!?"](https://ohshitgit.com/). Este site não se trata de um conjunto didático, mas sim um compilado de soluções práticas a problemas recorentes no mundo do versionamento, incluindo problemas de conflitos.
+
+A terceira referência..
