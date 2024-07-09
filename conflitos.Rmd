@@ -64,4 +64,4 @@ Primeiro, um velho conhecido, o livro da Jenny Brian. O [**capítulo 22**](https
 
 A segunda referência é o site ["Oh shit, Git!?!?"](https://ohshitgit.com/). Este site não se trata de um conjunto didático, mas sim um compilado de soluções práticas a problemas recorentes no mundo do versionamento, incluindo problemas de conflitos.
 
-A terceira referência..
+A terceira referência é este material produzido por [Tapas Adhikary](https://www.freecodecamp.org/news/resolve-merge-conflicts-in-git-a-practical-guide/), que apresenta de maneira detalhada a origem dos conflitos e como resolvê-los
