@@ -36,6 +36,8 @@ navbar:
         href: conflitos.html
       - text: "Release"
         href: releasing.html
+      - text: "Arquivos grandes"
+        href: git_large_files.html
     - text: "Programação letrada"
       menu:
       - text: "Rmarkdown"
