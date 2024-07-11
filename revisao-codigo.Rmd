@@ -62,7 +62,7 @@ Quando realizar a revisão do código/repositório de análise?
 
     -   Revisar código em artigos já publicados. Esta revisão pode ser feita direto no GitHub via Issue ou Pull Request ou mesmo contactando inicialmente os autores (e talvez editores da revista onde o trabalho foi publicado)
 
-## Dicas para os autores do código a ser revisado
+## Dicas para autores
 
 Ajude o revisor a te ajudar!
 
@@ -77,6 +77,8 @@ Eu acredito na criação do hábito de escrever desde o início códigos sempre 
 Ao longo da escrita do código, é saudável fazer uma pausa de ve em quando e revisar o estilo de escrita e o padrão de organização que você adotou no início e ver se você manteve ou não a consistência ao longo do tempo. É muito fácil começar adotanto uma padronização e terminar com outra diferente, principalmente se o código está sendo escrito ao longo de meses. Mas existem ferramentas para fazer isso de forma mais automatizada e rápida!
 
 Existem vários estilos de escrita de código, e várias dicas por aí para seguir ou adaptar ao seu gosto. Alguns dos mais usados são o estilo de escrita do [tidyverse](https://style.tidyverse.org/), que tem o pacote R [`styler`](https://styler.r-lib.org/) que pode ajustar seu código ao estilo usando um addin do Rstudio.
+
+[![Styler - pacote R que ajusta seu código ao estilo tydverse](figs/styler_logo.png){width="100"}](https://styler.r-lib.org/)
 
 Outro pacote, além do `styler` que ajuda a padronizar um arquivo o pedaço de código a um estilo é o [`formatR`](https://yihui.org/formatr/).
 
@@ -136,7 +138,7 @@ Para modificar o padrão de indentação no Rstudio siga [essa dica](https://sta
 -->
 ````
 
-## Comente/documente seus passos
+### Comente/documente seus passos
 
 Comentários ao longo dos scripts explicando porquê você está fazendo certas coisas ajuda muito a guiar o revisor/leitor ao longo do código. Escrever código em Rmarkdown e/ou Quarto resolve essa necessidade de explicar o passo a passo das análises, pois você pode separar a parte de explicação (texto) da parte de código [Roteiro aqui](https://gabrielnakamura.github.io/USP_reproducibility_BIE5798/rmarkdown-basics.html).
 
@@ -146,7 +148,7 @@ Os comentários de código não devem ser um "band-aid" para nomes ruins ou cód
 
 Assista essa brilhante palestra ["Code smell and feels"](https://www.youtube.com/watch?v=7oyiPBjLAWY) da rainha, Jenny Bryan, sobre estilo de código!
 
-## Dicas para os revisores do código
+## Dicas para revisores
 
 Lembre-se que há várias formas de se abordar um mesmo problema, o revisor não precisa impor sua forma. E cuidado para não impor estilo de escrita! Mas pode verificar inconsistência que venha a atrapalhar a leitura do código.
 
@@ -159,6 +161,8 @@ Lembre-se que há várias formas de se abordar um mesmo problema, o revisor não
 -   **sintático** – grafia incorreta de um estado ou função
 
 E eles propõem uma forma organizada de revisar o código seguindo 4 Rs (em inglês):
+
+[![Os 4 Rs principais para revisão de código](figs/code-review_4R.png)](https://doi.org/10.1111/jeb.14230)
 
 -   O código está como **Reportado**?
 
