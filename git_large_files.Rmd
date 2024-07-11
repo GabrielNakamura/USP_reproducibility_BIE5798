@@ -1,0 +1,41 @@
+---
+title: "Lidando com arquivos grandes num repositório no GitHub"
+author: "Melina Leite"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+
+Muitos projetos de pesquisa têm arquivos de dados, ou arquivos temporários de análises, que são grandes e o GitHub vai reclamar se você tiver arquivos acima de 50 MB. Se você tentar adicionar um arquivo com mais do que 100 MB ao seu repositório, você não vai conseguir.
+
+Existem algumas alternativas para lidar com arquivos grandes. Uma delas é utilizando um serviço oferecido pelo próprio GitHub, chamado Git Large Files Storage  (veja a [documentação do GitHub](https://docs.github.com/pt/repositories/working-with-files/managing-large-files/about-large-files-on-github)).
+
+Uma alternativa é usar o pacote R [`piggyback`](https://docs.ropensci.org/piggyback/), que fornece uma interface R para armazenar arquivos como recurso/ativo de versão do GitHub (veja sobre versão/release [nesse roteiro](https://gabrielnakamura.github.io/USP_reproducibility_BIE5798/releasing.html) e na [documentação do GitHub](https://docs.github.com/pt/repositories/releasing-projects-on-github/about-releases). Ou seja, o `piggyback` vai ajudar a criar versões do repositório e incluir nesta versão os arquivos grandes necessários. Porém, não vai fazer versionamento deste arquivo e toda vez que houver alteração no arquivo grande, você precisará criar uma nova versão do repositório para adicioná-la. A limitação de tamanho para os arquivos é de 2 GB.
+
+
+## Git LFS
+
+O Git Large Files Storage é uma extensão git do GitHub para versionamento de grandes arquivos. É útil para projetos que contêm arquivos grandes que, particularmente, são modificados regularmente e que precisam ser versionados. A extensão substitui arquivos grandes, como amostras de áudio, vídeos, conjuntos de dados e gráficos, por ponteiros de texto dentro do Git, enquanto armazena o conteúdo do arquivo em um servidor remoto como o GitHub.com. Ou seja, o Git LFS cria um arquivo de ponteiro que funciona como uma referência ao arquivo real, e o GitHub vai gerenciar esse arquivo de ponteiro no seu repositório. Quando você clona o repositório, o GitHub usa o arquivo de ponteiro como um mapa para encontrar o arquivo grande para você.
+
+A versão gratuita de utilização do git LFS é de 1 a 2 GB de armazenamento e o mesmo por mês de largura de banda. Caso precise de mais armazenamento, você pode comprar cotas adicionais para git LFS. Por US$10,00 você tem capacidade de armazenamento e largura de banda mensal de 100 GB (valores de Julho de 2024).
+
+Largura de banda e uso de armazenamento contam apenas na conta do proprietário do repositório. Na bifurcação, largura de banda e o uso do armazenamento contam contra a raiz da rede do repositório. Qualquer pessoa com acesso para gravação a um repositório pode fazer push de arquivos para o Git LFS sem afetar suas compras de pacotes de dados ou cotas de bandwidth e armazenamento pessoais. Criar forks e transferir um repositório conta no uso de bandwidth do repositório principal. (fonte; https://docs.github.com/pt/billing/managing-billing-for-git-large-file-storage/about-billing-for-git-large-file-storage)
+
+Uma desvantagem é que colaboradores e pessoas que queira clonar seu repositório precisarão também instalar o git LFS em seus computadores para serem capazes de baixar os arquivos grandes. Caso contrário, apenas os arquivos "ponteiros" serão baixados. Se você usar esse serviço em algum dos seus repositórios, lembre-se de alertar o uso do git LFS aos leitores e indicar como fazer o clone/download/fork do repositório corretamente. Veja esse [documento](https://docs.github.com/pt/repositories/working-with-files/managing-large-files/collaboration-with-git-large-file-storage) para saber mais sobre colaboração com o Git LFS
+
+Para utilizar o git LFS siga o [roteiro da página oficial do git LFS](https://git-lfs.com/) para instalar, adicionar e gerenciar os documentos grandes via linha de comando.
+
+
+
+## Piggyback
+
+O [`piggyback`](https://docs.ropensci.org/piggyback/) é uma alternativa gratuita ao Git LFS e se usa da possibilidade de criar versões do repositório e, assim, empacotar os arquivos grandes junto desta versão. Ele faz isso provendo uma interface R para manejar os arquivos grandes (downloads e uploads) e as versões, que são então passados para a API do GitHub. 
+
+Não é necessário nenhuma autenticação para fazer download de dados de repositórios públicos usando Piggyback. Mas recomenda-se ajustar um Token para evitar limites de transferência e, claro, a autenticacção é necessária para repositórios privados. Mais sobre tokens veja esse [roteiro](https://gabrielnakamura.github.io/USP_reproducibility_BIE5798/basics_git.html#Configura%C3%A7%C3%A3o_do_Git_e_integra%C3%A7%C3%A3o_com_RStudio).
+
+Vale lembrar que o `piggyback` não é uma solução para arquivamento de dados, nem é o Git LFS). O piggyback destina-se apenas a reduzir o atrito de trabalhar com dados durante o processo de pesquisa (por exemplo, fornecer dados acessíveis a colaboradores ou sistemas de integração contínua durante o processo de pesquisa, inclusive para repositórios privados). A página do pacote, assim como nós, recomenda o arquivamento dos dados em um repositório de dados adequado (temático ou genérico, dependendo do interesse do pesquisador e da natureza dos dados), que forneça um DOI de preferência.
+
+Para saber mais sobre o `piggyback` e sua funcionalidade, visite a [página do pacote]((https://docs.ropensci.org/piggyback/)), que contém roteiros para iniciantes e informações relevantes sobre o pacote.
+
+
+

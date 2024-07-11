@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Melina Leite" />
+
+<meta name="date" content="2024-07-11" />
+
+<title>Lidando com arquivos grandes num repositório no GitHub</title>
+
+<script src="site_libs/header-attrs-2.27/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="site_libs/navigation-1.1/sourceembed.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+
+<style type="text/css">
+#rmd-source-code {
+  display: none;
+}
+</style>
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Boas Práticas e Ferramentas da Ciência Aberta na Ecologia - BIE5798</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Início</a>
+</li>
+<li>
+  <a href="intro_ciencia_aberta.html">O que é ciência aberta?</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Dados abertos
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="dados_abertos.html">O que são dados abertos?</a>
+    </li>
+    <li>
+      <a href="metadata_EML.html">Metadados</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="Organizacao_dir_local.html">Organização local</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Versionamento
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="basics_git.html">ABC do versionamento</a>
+    </li>
+    <li>
+      <a href="commits-travel.html">Viajando no tempo</a>
+    </li>
+    <li>
+      <a href="colabs_github.html">Trabalho colaborativo</a>
+    </li>
+    <li>
+      <a href="gitgnore.html">Ignorando arquivos</a>
+    </li>
+    <li>
+      <a href="conflitos.html">Resolvendo conflitos</a>
+    </li>
+    <li>
+      <a href="releasing.html">Release</a>
+    </li>
+    <li>
+      <a href="git_large_files.html">Arquivos grandes</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Programação letrada
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="rmarkdown-basics.html">Rmarkdown</a>
+    </li>
+    <li>
+      <a href="sites-basics.html">Sites</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Avançado
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="renv-basics.html">Manejando versões de pacotes</a>
+    </li>
+    <li>
+      <a href="rocker-basics.html">Containers</a>
+    </li>
+    <li>
+      <a href="targets_basics.html">Pipelines com Targets</a>
+    </li>
+    <li>
+      <a href="metadata_EML_pratice.html">Metadados com EML</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="publicacoes.html">Acesso aberto</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Outras tendências
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="pre-registro.html">Pré-registro</a>
+    </li>
+    <li>
+      <a href="revisao-codigo.html">Revisão de código</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-download-source" href="#">Download Rmd</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Lidando com arquivos grandes num
+repositório no GitHub</h1>
+<h4 class="author">Melina Leite</h4>
+<h4 class="date">2024-07-11</h4>
+
+</div>
+
+
+<p>Muitos projetos de pesquisa têm arquivos de dados, ou arquivos
+temporários de análises, que são grandes e o GitHub vai reclamar se você
+tiver arquivos acima de 50 MB. Se você tentar adicionar um arquivo com
+mais do que 100 MB ao seu repositório, você não vai conseguir.</p>
+<p>Existem algumas alternativas para lidar com arquivos grandes. Uma
+delas é utilizando um serviço oferecido pelo próprio GitHub, chamado Git
+Large Files Storage (veja a <a
+href="https://docs.github.com/pt/repositories/working-with-files/managing-large-files/about-large-files-on-github">documentação
+do GitHub</a>).</p>
+<p>Uma alternativa é usar o pacote R <a
+href="https://docs.ropensci.org/piggyback/"><code>piggyback</code></a>,
+que fornece uma interface R para armazenar arquivos como recurso/ativo
+de versão do GitHub (veja sobre versão/release <a
+href="https://gabrielnakamura.github.io/USP_reproducibility_BIE5798/releasing.html">nesse
+roteiro</a> e na <a
+href="https://docs.github.com/pt/repositories/releasing-projects-on-github/about-releases">documentação
+do GitHub</a>. Ou seja, o <code>piggyback</code> vai ajudar a criar
+versões do repositório e incluir nesta versão os arquivos grandes
+necessários. Porém, não vai fazer versionamento deste arquivo e toda vez
+que houver alteração no arquivo grande, você precisará criar uma nova
+versão do repositório para adicioná-la. A limitação de tamanho para os
+arquivos é de 2 GB.</p>
+<div id="git-lfs" class="section level2">
+<h2>Git LFS</h2>
+<p>O Git Large Files Storage é uma extensão git do GitHub para
+versionamento de grandes arquivos. É útil para projetos que contêm
+arquivos grandes que, particularmente, são modificados regularmente e
+que precisam ser versionados. A extensão substitui arquivos grandes,
+como amostras de áudio, vídeos, conjuntos de dados e gráficos, por
+ponteiros de texto dentro do Git, enquanto armazena o conteúdo do
+arquivo em um servidor remoto como o GitHub.com. Ou seja, o Git LFS cria
+um arquivo de ponteiro que funciona como uma referência ao arquivo real,
+e o GitHub vai gerenciar esse arquivo de ponteiro no seu repositório.
+Quando você clona o repositório, o GitHub usa o arquivo de ponteiro como
+um mapa para encontrar o arquivo grande para você.</p>
+<p>A versão gratuita de utilização do git LFS é de 1 a 2 GB de
+armazenamento e o mesmo por mês de largura de banda. Caso precise de
+mais armazenamento, você pode comprar cotas adicionais para git LFS. Por
+US$10,00 você tem capacidade de armazenamento e largura de banda mensal
+de 100 GB (valores de Julho de 2024).</p>
+<p>Largura de banda e uso de armazenamento contam apenas na conta do
+proprietário do repositório. Na bifurcação, largura de banda e o uso do
+armazenamento contam contra a raiz da rede do repositório. Qualquer
+pessoa com acesso para gravação a um repositório pode fazer push de
+arquivos para o Git LFS sem afetar suas compras de pacotes de dados ou
+cotas de bandwidth e armazenamento pessoais. Criar forks e transferir um
+repositório conta no uso de bandwidth do repositório principal. (fonte;
+<a
+href="https://docs.github.com/pt/billing/managing-billing-for-git-large-file-storage/about-billing-for-git-large-file-storage"
+class="uri">https://docs.github.com/pt/billing/managing-billing-for-git-large-file-storage/about-billing-for-git-large-file-storage</a>)</p>
+<p>Uma desvantagem é que colaboradores e pessoas que queira clonar seu
+repositório precisarão também instalar o git LFS em seus computadores
+para serem capazes de baixar os arquivos grandes. Caso contrário, apenas
+os arquivos “ponteiros” serão baixados. Se você usar esse serviço em
+algum dos seus repositórios, lembre-se de alertar o uso do git LFS aos
+leitores e indicar como fazer o clone/download/fork do repositório
+corretamente. Veja esse <a
+href="https://docs.github.com/pt/repositories/working-with-files/managing-large-files/collaboration-with-git-large-file-storage">documento</a>
+para saber mais sobre colaboração com o Git LFS</p>
+<p>Para utilizar o git LFS siga o <a href="https://git-lfs.com/">roteiro
+da página oficial do git LFS</a> para instalar, adicionar e gerenciar os
+documentos grandes via linha de comando.</p>
+</div>
+<div id="piggyback" class="section level2">
+<h2>Piggyback</h2>
+<p>O <a
+href="https://docs.ropensci.org/piggyback/"><code>piggyback</code></a> é
+uma alternativa gratuita ao Git LFS e se usa da possibilidade de criar
+versões do repositório e, assim, empacotar os arquivos grandes junto
+desta versão. Ele faz isso provendo uma interface R para manejar os
+arquivos grandes (downloads e uploads) e as versões, que são então
+passados para a API do GitHub.</p>
+<p>Não é necessário nenhuma autenticação para fazer download de dados de
+repositórios públicos usando Piggyback. Mas recomenda-se ajustar um
+Token para evitar limites de transferência e, claro, a autenticacção é
+necessária para repositórios privados. Mais sobre tokens veja esse <a
+href="https://gabrielnakamura.github.io/USP_reproducibility_BIE5798/basics_git.html#Configura%C3%A7%C3%A3o_do_Git_e_integra%C3%A7%C3%A3o_com_RStudio">roteiro</a>.</p>
+<p>Vale lembrar que o <code>piggyback</code> não é uma solução para
+arquivamento de dados, nem é o Git LFS). O piggyback destina-se apenas a
+reduzir o atrito de trabalhar com dados durante o processo de pesquisa
+(por exemplo, fornecer dados acessíveis a colaboradores ou sistemas de
+integração contínua durante o processo de pesquisa, inclusive para
+repositórios privados). A página do pacote, assim como nós, recomenda o
+arquivamento dos dados em um repositório de dados adequado (temático ou
+genérico, dependendo do interesse do pesquisador e da natureza dos
+dados), que forneça um DOI de preferência.</p>
+<p>Para saber mais sobre o <code>piggyback</code> e sua funcionalidade,
+visite a <a href="(https://docs.ropensci.org/piggyback/)">página do
+pacote</a>, que contém roteiros para iniciantes e informações relevantes
+sobre o pacote.</p>
+</div>
+
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiTGlkYW5kbyBjb20gYXJxdWl2b3MgZ3JhbmRlcyBudW0gcmVwb3NpdMOzcmlvIG5vIEdpdEh1YiIKYXV0aG9yOiAiTWVsaW5hIExlaXRlIgpkYXRlOiAiYHIgU3lzLkRhdGUoKWAiCm91dHB1dDogaHRtbF9kb2N1bWVudAotLS0KCgpNdWl0b3MgcHJvamV0b3MgZGUgcGVzcXVpc2EgdMOqbSBhcnF1aXZvcyBkZSBkYWRvcywgb3UgYXJxdWl2b3MgdGVtcG9yw6FyaW9zIGRlIGFuw6FsaXNlcywgcXVlIHPDo28gZ3JhbmRlcyBlIG8gR2l0SHViIHZhaSByZWNsYW1hciBzZSB2b2PDqiB0aXZlciBhcnF1aXZvcyBhY2ltYSBkZSA1MCBNQi4gU2Ugdm9jw6ogdGVudGFyIGFkaWNpb25hciB1bSBhcnF1aXZvIGNvbSBtYWlzIGRvIHF1ZSAxMDAgTUIgYW8gc2V1IHJlcG9zaXTDs3Jpbywgdm9jw6ogbsOjbyB2YWkgY29uc2VndWlyLgoKRXhpc3RlbSBhbGd1bWFzIGFsdGVybmF0aXZhcyBwYXJhIGxpZGFyIGNvbSBhcnF1aXZvcyBncmFuZGVzLiBVbWEgZGVsYXMgw6kgdXRpbGl6YW5kbyB1bSBzZXJ2acOnbyBvZmVyZWNpZG8gcGVsbyBwcsOzcHJpbyBHaXRIdWIsIGNoYW1hZG8gR2l0IExhcmdlIEZpbGVzIFN0b3JhZ2UgICh2ZWphIGEgW2RvY3VtZW50YcOnw6NvIGRvIEdpdEh1Yl0oaHR0cHM6Ly9kb2NzLmdpdGh1Yi5jb20vcHQvcmVwb3NpdG9yaWVzL3dvcmtpbmctd2l0aC1maWxlcy9tYW5hZ2luZy1sYXJnZS1maWxlcy9hYm91dC1sYXJnZS1maWxlcy1vbi1naXRodWIpKS4KClVtYSBhbHRlcm5hdGl2YSDDqSB1c2FyIG8gcGFjb3RlIFIgW2BwaWdneWJhY2tgXShodHRwczovL2RvY3Mucm9wZW5zY2kub3JnL3BpZ2d5YmFjay8pLCBxdWUgZm9ybmVjZSB1bWEgaW50ZXJmYWNlIFIgcGFyYSBhcm1hemVuYXIgYXJxdWl2b3MgY29tbyByZWN1cnNvL2F0aXZvIGRlIHZlcnPDo28gZG8gR2l0SHViICh2ZWphIHNvYnJlIHZlcnPDo28vcmVsZWFzZSBbbmVzc2Ugcm90ZWlyb10oaHR0cHM6Ly9nYWJyaWVsbmFrYW11cmEuZ2l0aHViLmlvL1VTUF9yZXByb2R1Y2liaWxpdHlfQklFNTc5OC9yZWxlYXNpbmcuaHRtbCkgZSBuYSBbZG9jdW1lbnRhw6fDo28gZG8gR2l0SHViXShodHRwczovL2RvY3MuZ2l0aHViLmNvbS9wdC9yZXBvc2l0b3JpZXMvcmVsZWFzaW5nLXByb2plY3RzLW9uLWdpdGh1Yi9hYm91dC1yZWxlYXNlcykuIE91IHNlamEsIG8gYHBpZ2d5YmFja2AgdmFpIGFqdWRhciBhIGNyaWFyIHZlcnPDtWVzIGRvIHJlcG9zaXTDs3JpbyBlIGluY2x1aXIgbmVzdGEgdmVyc8OjbyBvcyBhcnF1aXZvcyBncmFuZGVzIG5lY2Vzc8Ohcmlvcy4gUG9yw6ltLCBuw6NvIHZhaSBmYXplciB2ZXJzaW9uYW1lbnRvIGRlc3RlIGFycXVpdm8gZSB0b2RhIHZleiBxdWUgaG91dmVyIGFsdGVyYcOnw6NvIG5vIGFycXVpdm8gZ3JhbmRlLCB2b2PDqiBwcmVjaXNhcsOhIGNyaWFyIHVtYSBub3ZhIHZlcnPDo28gZG8gcmVwb3NpdMOzcmlvIHBhcmEgYWRpY2lvbsOhLWxhLiBBIGxpbWl0YcOnw6NvIGRlIHRhbWFuaG8gcGFyYSBvcyBhcnF1aXZvcyDDqSBkZSAyIEdCLgoKCiMjIEdpdCBMRlMKCk8gR2l0IExhcmdlIEZpbGVzIFN0b3JhZ2Ugw6kgdW1hIGV4dGVuc8OjbyBnaXQgZG8gR2l0SHViIHBhcmEgdmVyc2lvbmFtZW50byBkZSBncmFuZGVzIGFycXVpdm9zLiDDiSDDunRpbCBwYXJhIHByb2pldG9zIHF1ZSBjb250w6ptIGFycXVpdm9zIGdyYW5kZXMgcXVlLCBwYXJ0aWN1bGFybWVudGUsIHPDo28gbW9kaWZpY2Fkb3MgcmVndWxhcm1lbnRlIGUgcXVlIHByZWNpc2FtIHNlciB2ZXJzaW9uYWRvcy4gQSBleHRlbnPDo28gc3Vic3RpdHVpIGFycXVpdm9zIGdyYW5kZXMsIGNvbW8gYW1vc3RyYXMgZGUgw6F1ZGlvLCB2w61kZW9zLCBjb25qdW50b3MgZGUgZGFkb3MgZSBncsOhZmljb3MsIHBvciBwb250ZWlyb3MgZGUgdGV4dG8gZGVudHJvIGRvIEdpdCwgZW5xdWFudG8gYXJtYXplbmEgbyBjb250ZcO6ZG8gZG8gYXJxdWl2byBlbSB1bSBzZXJ2aWRvciByZW1vdG8gY29tbyBvIEdpdEh1Yi5jb20uIE91IHNlamEsIG8gR2l0IExGUyBjcmlhIHVtIGFycXVpdm8gZGUgcG9udGVpcm8gcXVlIGZ1bmNpb25hIGNvbW8gdW1hIHJlZmVyw6puY2lhIGFvIGFycXVpdm8gcmVhbCwgZSBvIEdpdEh1YiB2YWkgZ2VyZW5jaWFyIGVzc2UgYXJxdWl2byBkZSBwb250ZWlybyBubyBzZXUgcmVwb3NpdMOzcmlvLiBRdWFuZG8gdm9jw6ogY2xvbmEgbyByZXBvc2l0w7NyaW8sIG8gR2l0SHViIHVzYSBvIGFycXVpdm8gZGUgcG9udGVpcm8gY29tbyB1bSBtYXBhIHBhcmEgZW5jb250cmFyIG8gYXJxdWl2byBncmFuZGUgcGFyYSB2b2PDqi4KCkEgdmVyc8OjbyBncmF0dWl0YSBkZSB1dGlsaXphw6fDo28gZG8gZ2l0IExGUyDDqSBkZSAxIGEgMiBHQiBkZSBhcm1hemVuYW1lbnRvIGUgbyBtZXNtbyBwb3IgbcOqcyBkZSBsYXJndXJhIGRlIGJhbmRhLiBDYXNvIHByZWNpc2UgZGUgbWFpcyBhcm1hemVuYW1lbnRvLCB2b2PDqiBwb2RlIGNvbXByYXIgY290YXMgYWRpY2lvbmFpcyBwYXJhIGdpdCBMRlMuIFBvciBVUyQxMCwwMCB2b2PDqiB0ZW0gY2FwYWNpZGFkZSBkZSBhcm1hemVuYW1lbnRvIGUgbGFyZ3VyYSBkZSBiYW5kYSBtZW5zYWwgZGUgMTAwIEdCICh2YWxvcmVzIGRlIEp1bGhvIGRlIDIwMjQpLgoKTGFyZ3VyYSBkZSBiYW5kYSBlIHVzbyBkZSBhcm1hemVuYW1lbnRvIGNvbnRhbSBhcGVuYXMgbmEgY29udGEgZG8gcHJvcHJpZXTDoXJpbyBkbyByZXBvc2l0w7NyaW8uIE5hIGJpZnVyY2HDp8OjbywgbGFyZ3VyYSBkZSBiYW5kYSBlIG8gdXNvIGRvIGFybWF6ZW5hbWVudG8gY29udGFtIGNvbnRyYSBhIHJhaXogZGEgcmVkZSBkbyByZXBvc2l0w7NyaW8uIFF1YWxxdWVyIHBlc3NvYSBjb20gYWNlc3NvIHBhcmEgZ3JhdmHDp8OjbyBhIHVtIHJlcG9zaXTDs3JpbyBwb2RlIGZhemVyIHB1c2ggZGUgYXJxdWl2b3MgcGFyYSBvIEdpdCBMRlMgc2VtIGFmZXRhciBzdWFzIGNvbXByYXMgZGUgcGFjb3RlcyBkZSBkYWRvcyBvdSBjb3RhcyBkZSBiYW5kd2lkdGggZSBhcm1hemVuYW1lbnRvIHBlc3NvYWlzLiBDcmlhciBmb3JrcyBlIHRyYW5zZmVyaXIgdW0gcmVwb3NpdMOzcmlvIGNvbnRhIG5vIHVzbyBkZSBiYW5kd2lkdGggZG8gcmVwb3NpdMOzcmlvIHByaW5jaXBhbC4gKGZvbnRlOyBodHRwczovL2RvY3MuZ2l0aHViLmNvbS9wdC9iaWxsaW5nL21hbmFnaW5nLWJpbGxpbmctZm9yLWdpdC1sYXJnZS1maWxlLXN0b3JhZ2UvYWJvdXQtYmlsbGluZy1mb3ItZ2l0LWxhcmdlLWZpbGUtc3RvcmFnZSkKClVtYSBkZXN2YW50YWdlbSDDqSBxdWUgY29sYWJvcmFkb3JlcyBlIHBlc3NvYXMgcXVlIHF1ZWlyYSBjbG9uYXIgc2V1IHJlcG9zaXTDs3JpbyBwcmVjaXNhcsOjbyB0YW1iw6ltIGluc3RhbGFyIG8gZ2l0IExGUyBlbSBzZXVzIGNvbXB1dGFkb3JlcyBwYXJhIHNlcmVtIGNhcGF6ZXMgZGUgYmFpeGFyIG9zIGFycXVpdm9zIGdyYW5kZXMuIENhc28gY29udHLDoXJpbywgYXBlbmFzIG9zIGFycXVpdm9zICJwb250ZWlyb3MiIHNlcsOjbyBiYWl4YWRvcy4gU2Ugdm9jw6ogdXNhciBlc3NlIHNlcnZpw6dvIGVtIGFsZ3VtIGRvcyBzZXVzIHJlcG9zaXTDs3Jpb3MsIGxlbWJyZS1zZSBkZSBhbGVydGFyIG8gdXNvIGRvIGdpdCBMRlMgYW9zIGxlaXRvcmVzIGUgaW5kaWNhciBjb21vIGZhemVyIG8gY2xvbmUvZG93bmxvYWQvZm9yayBkbyByZXBvc2l0w7NyaW8gY29ycmV0YW1lbnRlLiBWZWphIGVzc2UgW2RvY3VtZW50b10oaHR0cHM6Ly9kb2NzLmdpdGh1Yi5jb20vcHQvcmVwb3NpdG9yaWVzL3dvcmtpbmctd2l0aC1maWxlcy9tYW5hZ2luZy1sYXJnZS1maWxlcy9jb2xsYWJvcmF0aW9uLXdpdGgtZ2l0LWxhcmdlLWZpbGUtc3RvcmFnZSkgcGFyYSBzYWJlciBtYWlzIHNvYnJlIGNvbGFib3Jhw6fDo28gY29tIG8gR2l0IExGUwoKUGFyYSB1dGlsaXphciBvIGdpdCBMRlMgc2lnYSBvIFtyb3RlaXJvIGRhIHDDoWdpbmEgb2ZpY2lhbCBkbyBnaXQgTEZTXShodHRwczovL2dpdC1sZnMuY29tLykgcGFyYSBpbnN0YWxhciwgYWRpY2lvbmFyIGUgZ2VyZW5jaWFyIG9zIGRvY3VtZW50b3MgZ3JhbmRlcyB2aWEgbGluaGEgZGUgY29tYW5kby4KCgoKIyMgUGlnZ3liYWNrCgpPIFtgcGlnZ3liYWNrYF0oaHR0cHM6Ly9kb2NzLnJvcGVuc2NpLm9yZy9waWdneWJhY2svKSDDqSB1bWEgYWx0ZXJuYXRpdmEgZ3JhdHVpdGEgYW8gR2l0IExGUyBlIHNlIHVzYSBkYSBwb3NzaWJpbGlkYWRlIGRlIGNyaWFyIHZlcnPDtWVzIGRvIHJlcG9zaXTDs3JpbyBlLCBhc3NpbSwgZW1wYWNvdGFyIG9zIGFycXVpdm9zIGdyYW5kZXMganVudG8gZGVzdGEgdmVyc8Ojby4gRWxlIGZheiBpc3NvIHByb3ZlbmRvIHVtYSBpbnRlcmZhY2UgUiBwYXJhIG1hbmVqYXIgb3MgYXJxdWl2b3MgZ3JhbmRlcyAoZG93bmxvYWRzIGUgdXBsb2FkcykgZSBhcyB2ZXJzw7VlcywgcXVlIHPDo28gZW50w6NvIHBhc3NhZG9zIHBhcmEgYSBBUEkgZG8gR2l0SHViLiAKCk7Do28gw6kgbmVjZXNzw6FyaW8gbmVuaHVtYSBhdXRlbnRpY2HDp8OjbyBwYXJhIGZhemVyIGRvd25sb2FkIGRlIGRhZG9zIGRlIHJlcG9zaXTDs3Jpb3MgcMO6YmxpY29zIHVzYW5kbyBQaWdneWJhY2suIE1hcyByZWNvbWVuZGEtc2UgYWp1c3RhciB1bSBUb2tlbiBwYXJhIGV2aXRhciBsaW1pdGVzIGRlIHRyYW5zZmVyw6puY2lhIGUsIGNsYXJvLCBhIGF1dGVudGljYWPDp8OjbyDDqSBuZWNlc3PDoXJpYSBwYXJhIHJlcG9zaXTDs3Jpb3MgcHJpdmFkb3MuIE1haXMgc29icmUgdG9rZW5zIHZlamEgZXNzZSBbcm90ZWlyb10oaHR0cHM6Ly9nYWJyaWVsbmFrYW11cmEuZ2l0aHViLmlvL1VTUF9yZXByb2R1Y2liaWxpdHlfQklFNTc5OC9iYXNpY3NfZ2l0Lmh0bWwjQ29uZmlndXJhJUMzJUE3JUMzJUEzb19kb19HaXRfZV9pbnRlZ3JhJUMzJUE3JUMzJUEzb19jb21fUlN0dWRpbykuCgpWYWxlIGxlbWJyYXIgcXVlIG8gYHBpZ2d5YmFja2AgbsOjbyDDqSB1bWEgc29sdcOnw6NvIHBhcmEgYXJxdWl2YW1lbnRvIGRlIGRhZG9zLCBuZW0gw6kgbyBHaXQgTEZTKS4gTyBwaWdneWJhY2sgZGVzdGluYS1zZSBhcGVuYXMgYSByZWR1emlyIG8gYXRyaXRvIGRlIHRyYWJhbGhhciBjb20gZGFkb3MgZHVyYW50ZSBvIHByb2Nlc3NvIGRlIHBlc3F1aXNhIChwb3IgZXhlbXBsbywgZm9ybmVjZXIgZGFkb3MgYWNlc3PDrXZlaXMgYSBjb2xhYm9yYWRvcmVzIG91IHNpc3RlbWFzIGRlIGludGVncmHDp8OjbyBjb250w61udWEgZHVyYW50ZSBvIHByb2Nlc3NvIGRlIHBlc3F1aXNhLCBpbmNsdXNpdmUgcGFyYSByZXBvc2l0w7NyaW9zIHByaXZhZG9zKS4gQSBww6FnaW5hIGRvIHBhY290ZSwgYXNzaW0gY29tbyBuw7NzLCByZWNvbWVuZGEgbyBhcnF1aXZhbWVudG8gZG9zIGRhZG9zIGVtIHVtIHJlcG9zaXTDs3JpbyBkZSBkYWRvcyBhZGVxdWFkbyAodGVtw6F0aWNvIG91IGdlbsOpcmljbywgZGVwZW5kZW5kbyBkbyBpbnRlcmVzc2UgZG8gcGVzcXVpc2Fkb3IgZSBkYSBuYXR1cmV6YSBkb3MgZGFkb3MpLCBxdWUgZm9ybmXDp2EgdW0gRE9JIGRlIHByZWZlcsOqbmNpYS4KClBhcmEgc2FiZXIgbWFpcyBzb2JyZSBvIGBwaWdneWJhY2tgIGUgc3VhIGZ1bmNpb25hbGlkYWRlLCB2aXNpdGUgYSBbcMOhZ2luYSBkbyBwYWNvdGVdKChodHRwczovL2RvY3Mucm9wZW5zY2kub3JnL3BpZ2d5YmFjay8pKSwgcXVlIGNvbnTDqW0gcm90ZWlyb3MgcGFyYSBpbmljaWFudGVzIGUgaW5mb3JtYcOnw7VlcyByZWxldmFudGVzIHNvYnJlIG8gcGFjb3RlLgoKCgo=</div>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeSourceEmbed("git_large_files.Rmd");
+});
+</script>
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
