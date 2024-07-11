@@ -28,16 +28,14 @@ navbar:
         href: basics_git.html
       - text: "Viajando no tempo"
         href: commits-travel.html
-      - text: "Trabalho colaborativo"
-        href: colabs_github.html
       - text: "Ignorando arquivos"
         href: gitgnore.html
+      - text: "Trabalho colaborativo"
+        href: colabs_github.html
       - text: "Resolvendo conflitos"
         href: conflitos.html
       - text: "Release"
         href: releasing.html
-      - text: "Arquivos grandes"
-        href: git_large_files.html
     - text: "Programação letrada"
       menu:
       - text: "Rmarkdown"
@@ -46,7 +44,7 @@ navbar:
         href: sites-basics.html
     - text: "Avançado"
       menu:
-      - text: "Manejando versões de pacotes"
+      - text: "Manejo de versões de pacotes"
         href: renv-basics.html
       - text: "Containers"
         href: rocker-basics.html
@@ -54,6 +52,8 @@ navbar:
         href: targets_basics.html
       - text: "Metadados com EML"
         href: metadata_EML_pratice.html
+      - text: "Manejo de arquivos grandes"
+        href: git_large_files.html
     - text: "Acesso aberto"
       href: publicacoes.html
     - text: "Outras tendências"
