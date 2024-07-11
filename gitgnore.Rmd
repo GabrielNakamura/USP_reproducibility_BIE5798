@@ -53,6 +53,21 @@ Existem uma série de padrões. Assumindo que seu .gitignore vai estar na raiz d
 |logs/*day/debug.log|logs/monday/debug.log<br>logs/tuesday/debug.log</br>_but not_</br>logs/latest/debug.log|Wildcards podem ser usados em qualquer diretório dentro do repositório.|
 |logs/debug.log|logs/debug.log</br>_mas não_</br>debug.log</br>build/logs/debug.log|Padrões especificando um arquivo em um diretório particular correspondem apenas ao caminho a partir da raiz.|
 
+# Alguns problemas: ignorando arquivos após adicionados 
+
+Um problema comum de se deparar é quando adicionamos um arquivo, ou uma pasta no repositório que está sendo versionado, e logo após nos damos conta de que não gostaríamos de que estes arquivos fossem versionados.
+
+Adicioná-los no .gitignore não vai resolver o problema, pois o git já entendeu que eles devem ser monitorados. Neste caso teremos que fazer um pequeno procedimento antes de adicioná-los no .gitignore.
+
+Primeiro precisamos remover estes, ou este, arquivo da "memória" de monitoramento do git. Para isso iremos digitar na linha de comando `git -rm --cached nome-do-arquivo.extensão` 
+
+Após esse procedimento adicionamos o nome do arquivo no .gitignore
+
+A partir deste momento o arquivo adicionado não será mais monitorado pelo git, mas ainda vai estar presente no seu diretório. Além disso, o histórico de commits que foi realizado enquanto esse arquivo estava sendo monitorado não vai desaparecer.
+
+Portanto, a melhor prática sempre é pensar bem antes de adicionar qualquer arquivo na pasta monitorada pelo git.
+
+
 # Outras referências úteis
 
 Para mais referências sobre padrões e como montar o arquivo .gitignore, consulte estas fontes
