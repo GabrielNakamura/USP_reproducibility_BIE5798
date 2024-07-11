@@ -11,7 +11,7 @@
 
 <meta name="author" content="Gabriel Nakamura" />
 
-<meta name="date" content="2024-07-09" />
+<meta name="date" content="2024-07-11" />
 
 <title>Utilizando o gitignore</title>
 
@@ -448,7 +448,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Utilizando o gitignore</h1>
 <h4 class="author">Gabriel Nakamura</h4>
-<h4 class="date">2024-07-09</h4>
+<h4 class="date">2024-07-11</h4>
 
 </div>
 
@@ -459,9 +459,176 @@ div.tocify {
 </script>
 <div id="apresentação" class="section level1">
 <h1>Apresentação</h1>
+<p>Nem sempre queremos que o git monitore todos os arquivos presentes no
+nosso diretório. Isso pode se dar por alguns motivos. O arquivo pode
+conter informações que você não queira que seja pública, ou ainda, uma
+pasta inteira contém dados que são pesados demais para serem
+versionados, as razões para escapar do monitoramento do versionamento
+podem ser muitas. A questão é, como podemos evitar com que estes
+arquivos, ou pastas inteiras, sejam versionados pelo git?</p>
+<p>Para isso usaremos um arquivo especial chamado
+<strong>.gitignore´</strong>. Você deve se lembrar que já vimos
+brevemente este arquivo quando criamos o repositório. Ao iniciar o
+repositório remoto, o próprio Github nos dá a opção de criar um arquivo
+do tipo .gitignore a partir de um modelo pré definido, como mostrado na
+imagem abaixo.</p>
+<div class="figure" style="text-align: center">
+<img src="figs/template_gitignore.png" alt="Página inicial para criação de repositórios no github com seta destacando o local de escolher o gitignore" width="394" />
+<p class="caption">
+Página inicial para criação de repositórios no github com seta
+destacando o local de escolher o gitignore
+</p>
+</div>
+</div>
+<div id="editando-o-.gitignore" class="section level1">
+<h1>Editando o .gitignore</h1>
+<p>Cada linha no .gitignore indica um arquivo que será ignorado. Linhas
+em branco não indicam arquivo algum, e são usadas para separar arquivos
+que serão ignorados no .gitignore, facilitando sua leitura.</p>
+<p>Existem maneiras diferentes de indicar os arquivos que serão
+ignorados pelo git. Podemos ignorar arquivos individualmente,
+simplesmente colocando o caminho relativo do arquivo, juntamente com o
+nome do arquivo acompanhado de sua extensão. Por exemplo, se quisermos
+ignorar o arquivo chamado <code>meignore.doc</code> que se encontra na
+raiz do projeto, devemos apenas acrescentar em uma linha no gitignore
+contendo <code>meignore.doc</code>.</p>
+<p>O .gitignore também nos possibilita a utilização de padrões para
+ignorar um conjunto de arquivos. Por exemplo, digamos que queremos
+ignorar todos os arquivos que tem extensão .jpeg em um subdiretório do
+seu working directory. Para tanto podemos inserir no arquivo .gitignore
+uma linha contendo <code>pasta/*.jpeg</code>.</p>
+</div>
+<div id="alguns-exemplos" class="section level1">
+<h1>Alguns exemplos</h1>
+<p>Existem uma série de padrões. Assumindo que seu .gitignore vai estar
+na raiz do diretório (top-level) podemos listar alguns padrões úteis e
+como eles se aplicam aos arquivos de um dado diretório. Esta tabela é
+uma adaptação <a
+href="https://gist.github.com/jstnlvns/ebaa046fae16543cc9efc7f24bcd0e31">desta
+versão original</a></p>
+<table>
+<colgroup>
+<col width="20%" />
+<col width="45%" />
+<col width="34%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Padrão</th>
+<th>Exemplos que são detectados</th>
+<th>Explicação</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>**/logs</td>
+<td>logs/debug.log</br>logs/monday/foo.bar</br>build/logs/debug.log</td>
+<td>Acrescentar dois asteriscos para detectar qualquer diretório no seu
+repositório.</td>
+</tr>
+<tr class="even">
+<td>**/logs/debug.log</td>
+<td>logs/debug.log</br>build/logs/debug.log</br><em>mas
+não</em></br>logs/build/debug.log</td>
+<td>Detecta qualquer arquivo baseado em seu nome e o nome do diretório
+pai.</td>
+</tr>
+<tr class="odd">
+<td>*.log</td>
+<td>debug.log</br>foo.log</br>.log</br>logs/debug.log</td>
+<td>Detecta qualquer (ou zero) caracteres de arquivos que tenha a
+extensão .log.</td>
+</tr>
+<tr class="even">
+<td>*.log<br>!important.log</td>
+<td>debug.log</br>trace.log</br><em>mas
+não</em></br>important.log</br>logs/important.log</td>
+<td>Nega (não ignora) o padrão informado. Se um arquivo corresponde ao
+padrão, mas também corresponde ao padrão para não ser ignorado, este
+arquivo não vai ser ignorado.</td>
+</tr>
+<tr class="odd">
+<td>/debug.log</td>
+<td>debug.log</br><em>but not</em></br>logs/debug.log</td>
+<td>Usando o slash faz correspondencia apenas a arquivos na raiz do
+repositório.</td>
+</tr>
+<tr class="even">
+<td>debug.log</td>
+<td>debug.log</br>logs/debug.log</td>
+<td>Corresponde ao padrão em qualquer repositório</td>
+</tr>
+<tr class="odd">
+<td>debug?.log</td>
+<td>debug0.log</br>debugg.log</br><em>mas não</em></br>debug10.log</td>
+<td>Uma interrogação vai corresponder exatamente a um caracter.</td>
+</tr>
+<tr class="even">
+<td>debug[0-9].log</td>
+<td>debug0.log</br>debug1.log</br><em>mas não</em></br>debug10.log</td>
+<td>Colchetes podem ser usados para correponder a qualquer caracter
+dentro de um limite especificado.</td>
+</tr>
+<tr class="odd">
+<td>debug[!01].log</td>
+<td>debug2.log</br><em>mas
+não</em></br>debug0.log</br>debug1.log</br>debug01.log</td>
+<td>Ponto de exclamação também pode ser usado para ignorar um caracter
+específico.</td>
+</tr>
+<tr class="even">
+<td>debug[a-z].log</td>
+<td>debuga.log</br>debugb.log</br><em>mas não</em></br>debug1.log</td>
+<td>Os limites dentro dos colchetes podem ser numéricos ou
+alfabéticos.</td>
+</tr>
+<tr class="odd">
+<td>logs</td>
+<td>logs</br>logs/debug.log</br>logs/latest/foo.bar</br>build/logs</br>build/logs/debug.log</td>
+<td>Se não for inserida uma barra, o padrão irá corresponder tanto a
+pastas quanto os arquivos dentro das pastas que correspondem ao padrão
+indicado.</td>
+</tr>
+<tr class="even">
+<td>logs/</td>
+<td>logs/debug.log</br>logs/latest/foo.bar</br>build/logs/foo.bar</br>build/logs/latest/debug.log</td>
+<td>A barra indica que o padrão corresponde a um diretório específico.
+Todo conteúdo de qualquer diretório no repositório que corresponda ao
+padrão, e todos os arquivos dentro dele, serão ignorados.</td>
+</tr>
+<tr class="odd">
+<td>logs/*day/debug.log</td>
+<td>logs/monday/debug.log<br>logs/tuesday/debug.log</br><em>but
+not</em></br>logs/latest/debug.log</td>
+<td>Wildcards podem ser usados em qualquer diretório dentro do
+repositório.</td>
+</tr>
+<tr class="even">
+<td>logs/debug.log</td>
+<td>logs/debug.log</br><em>mas
+não</em></br>debug.log</br>build/logs/debug.log</td>
+<td>Padrões especificando um arquivo em um diretório particular
+correspondem apenas ao caminho a partir da raiz.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="outras-referências-úteis" class="section level1">
+<h1>Outras referências úteis</h1>
+<p>Para mais referências sobre padrões e como montar o arquivo
+.gitignore, consulte estas fontes</p>
+<ul>
+<li><p><a
+href="https://docs.github.com/pt/get-started/getting-started-with-git/ignoring-files">Documentação
+do Github</a></p></li>
+<li><p><a href="https://git-scm.com/docs/gitignore">Documentação do
+Git</a></p></li>
+<li><p><a href="https://github.com/github/gitignore">Alguns modelos de
+arquivos .gitignore</a></p></li>
+</ul>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAnVXRpbGl6YW5kbyBvIGdpdGlnbm9yZScKYXV0aG9yOiAiR2FicmllbCBOYWthbXVyYSIKZGF0ZTogImByIFN5cy5EYXRlKClgIgpvdXRwdXQ6IGh0bWxfZG9jdW1lbnQKLS0tCgpgYGB7ciBzZXR1cCwgaW5jbHVkZT1GQUxTRX0Ka25pdHI6Om9wdHNfY2h1bmskc2V0KGVjaG8gPSBUUlVFLCBmaWcuYWxpZ24gPSAiY2VudGVyIikKYGBgCgpgYGB7ciBrbGlwcHksIGVjaG89RkFMU0UsIGluY2x1ZGU9VFJVRX0Ka2xpcHB5OjprbGlwcHkoKQpgYGAKCiMgQXByZXNlbnRhw6fDo28KCg==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogJ1V0aWxpemFuZG8gbyBnaXRpZ25vcmUnDQphdXRob3I6ICJHYWJyaWVsIE5ha2FtdXJhIg0KZGF0ZTogImByIFN5cy5EYXRlKClgIg0Kb3V0cHV0OiBodG1sX2RvY3VtZW50DQotLS0NCg0KYGBge3Igc2V0dXAsIGluY2x1ZGU9RkFMU0V9DQprbml0cjo6b3B0c19jaHVuayRzZXQoZWNobyA9IFRSVUUsIGZpZy5hbGlnbiA9ICJjZW50ZXIiKQ0KYGBgDQoNCmBgYHtyIGtsaXBweSwgZWNobz1GQUxTRSwgaW5jbHVkZT1UUlVFfQ0Ka2xpcHB5OjprbGlwcHkoKQ0KYGBgDQoNCiMgQXByZXNlbnRhw6fDo28NCg0KTmVtIHNlbXByZSBxdWVyZW1vcyBxdWUgbyBnaXQgbW9uaXRvcmUgdG9kb3Mgb3MgYXJxdWl2b3MgcHJlc2VudGVzIG5vIG5vc3NvIGRpcmV0w7NyaW8uIElzc28gcG9kZSBzZSBkYXIgcG9yIGFsZ3VucyBtb3Rpdm9zLiBPIGFycXVpdm8gcG9kZSBjb250ZXIgaW5mb3JtYcOnw7VlcyBxdWUgdm9jw6ogbsOjbyBxdWVpcmEgcXVlIHNlamEgcMO6YmxpY2EsIG91IGFpbmRhLCB1bWEgcGFzdGEgaW50ZWlyYSBjb250w6ltIGRhZG9zIHF1ZSBzw6NvIHBlc2Fkb3MgZGVtYWlzIHBhcmEgc2VyZW0gdmVyc2lvbmFkb3MsIGFzIHJhesO1ZXMgcGFyYSBlc2NhcGFyIGRvIG1vbml0b3JhbWVudG8gZG8gdmVyc2lvbmFtZW50byBwb2RlbSBzZXIgbXVpdGFzLiBBIHF1ZXN0w6NvIMOpLCBjb21vIHBvZGVtb3MgZXZpdGFyIGNvbSBxdWUgZXN0ZXMgYXJxdWl2b3MsIG91IHBhc3RhcyBpbnRlaXJhcywgc2VqYW0gdmVyc2lvbmFkb3MgcGVsbyBnaXQ/IA0KDQpQYXJhIGlzc28gdXNhcmVtb3MgdW0gYXJxdWl2byBlc3BlY2lhbCBjaGFtYWRvICoqLmdpdGlnbm9yZcK0KiouIFZvY8OqIGRldmUgc2UgbGVtYnJhciBxdWUgasOhIHZpbW9zIGJyZXZlbWVudGUgZXN0ZSBhcnF1aXZvIHF1YW5kbyBjcmlhbW9zIG8gcmVwb3NpdMOzcmlvLiBBbyBpbmljaWFyIG8gcmVwb3NpdMOzcmlvIHJlbW90bywgbyBwcsOzcHJpbyBHaXRodWIgbm9zIGTDoSBhIG9ww6fDo28gZGUgY3JpYXIgdW0gYXJxdWl2byBkbyB0aXBvIC5naXRpZ25vcmUgYSBwYXJ0aXIgZGUgdW0gbW9kZWxvIHByw6kgZGVmaW5pZG8sIGNvbW8gbW9zdHJhZG8gbmEgaW1hZ2VtIGFiYWl4by4NCg0KYGBge3IgZWNobz1GQUxTRSwgZXZhbD1UUlVFLCBmaWcuY2FwPSJQw6FnaW5hIGluaWNpYWwgcGFyYSBjcmlhw6fDo28gZGUgcmVwb3NpdMOzcmlvcyBubyBnaXRodWIgY29tIHNldGEgZGVzdGFjYW5kbyBvIGxvY2FsIGRlIGVzY29saGVyIG8gZ2l0aWdub3JlIn0NCmtuaXRyOjppbmNsdWRlX2dyYXBoaWNzKCJmaWdzL3RlbXBsYXRlX2dpdGlnbm9yZS5wbmciKQ0KDQpgYGANCg0KIyBFZGl0YW5kbyBvIC5naXRpZ25vcmUNCg0KQ2FkYSBsaW5oYSBubyAuZ2l0aWdub3JlIGluZGljYSB1bSBhcnF1aXZvIHF1ZSBzZXLDoSBpZ25vcmFkby4gTGluaGFzIGVtIGJyYW5jbyBuw6NvIGluZGljYW0gYXJxdWl2byBhbGd1bSwgZSBzw6NvIHVzYWRhcyBwYXJhIHNlcGFyYXIgYXJxdWl2b3MgcXVlIHNlcsOjbyBpZ25vcmFkb3Mgbm8gLmdpdGlnbm9yZSwgZmFjaWxpdGFuZG8gc3VhIGxlaXR1cmEuDQoNCkV4aXN0ZW0gbWFuZWlyYXMgZGlmZXJlbnRlcyBkZSBpbmRpY2FyIG9zIGFycXVpdm9zIHF1ZSBzZXLDo28gaWdub3JhZG9zIHBlbG8gZ2l0LiBQb2RlbW9zIGlnbm9yYXIgYXJxdWl2b3MgaW5kaXZpZHVhbG1lbnRlLCBzaW1wbGVzbWVudGUgY29sb2NhbmRvIG8gY2FtaW5obyByZWxhdGl2byBkbyBhcnF1aXZvLCBqdW50YW1lbnRlIGNvbSBvIG5vbWUgZG8gYXJxdWl2byBhY29tcGFuaGFkbyBkZSBzdWEgZXh0ZW5zw6NvLiBQb3IgZXhlbXBsbywgc2UgcXVpc2VybW9zIGlnbm9yYXIgbyBhcnF1aXZvIGNoYW1hZG8gYG1laWdub3JlLmRvY2AgcXVlIHNlIGVuY29udHJhIG5hIHJhaXogZG8gcHJvamV0bywgZGV2ZW1vcyBhcGVuYXMgYWNyZXNjZW50YXIgZW0gdW1hIGxpbmhhIG5vIGdpdGlnbm9yZSBjb250ZW5kbyBgbWVpZ25vcmUuZG9jYC4NCg0KTyAuZ2l0aWdub3JlIHRhbWLDqW0gbm9zIHBvc3NpYmlsaXRhIGEgdXRpbGl6YcOnw6NvIGRlIHBhZHLDtWVzIHBhcmEgaWdub3JhciB1bSBjb25qdW50byBkZSBhcnF1aXZvcy4gUG9yIGV4ZW1wbG8sIGRpZ2Ftb3MgcXVlIHF1ZXJlbW9zIGlnbm9yYXIgdG9kb3Mgb3MgYXJxdWl2b3MgcXVlIHRlbSBleHRlbnPDo28gLmpwZWcgZW0gdW0gc3ViZGlyZXTDs3JpbyBkbyBzZXUgd29ya2luZyBkaXJlY3RvcnkuIFBhcmEgdGFudG8gcG9kZW1vcyBpbnNlcmlyIG5vIGFycXVpdm8gLmdpdGlnbm9yZSB1bWEgbGluaGEgY29udGVuZG8gYHBhc3RhLyouanBlZ2AuDQoNCiMgQWxndW5zIGV4ZW1wbG9zDQoNCkV4aXN0ZW0gdW1hIHPDqXJpZSBkZSBwYWRyw7Vlcy4gQXNzdW1pbmRvIHF1ZSBzZXUgLmdpdGlnbm9yZSB2YWkgZXN0YXIgbmEgcmFpeiBkbyBkaXJldMOzcmlvICAodG9wLWxldmVsKSBwb2RlbW9zIGxpc3RhciBhbGd1bnMgcGFkcsO1ZXMgw7p0ZWlzIGUgY29tbyBlbGVzIHNlIGFwbGljYW0gYW9zIGFycXVpdm9zIGRlIHVtIGRhZG8gZGlyZXTDs3Jpby4gRXN0YSB0YWJlbGEgw6kgdW1hIGFkYXB0YcOnw6NvIFtkZXN0YSB2ZXJzw6NvIG9yaWdpbmFsXShodHRwczovL2dpc3QuZ2l0aHViLmNvbS9qc3RubHZucy9lYmFhMDQ2ZmFlMTY1NDNjYzllZmM3ZjI0YmNkMGUzMSkNCg0KfFBhZHLDo298RXhlbXBsb3MgcXVlIHPDo28gZGV0ZWN0YWRvc3xFeHBsaWNhw6fDo298DQp8LS0tLS0tLXwtLS0tLS0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tLXwNCnwqKi9sb2dzfGxvZ3MvZGVidWcubG9nPC9icj5sb2dzL21vbmRheS9mb28uYmFyPC9icj5idWlsZC9sb2dzL2RlYnVnLmxvZ3xBY3Jlc2NlbnRhciBkb2lzIGFzdGVyaXNjb3MgcGFyYSBkZXRlY3RhciBxdWFscXVlciBkaXJldMOzcmlvIG5vIHNldSByZXBvc2l0w7NyaW8ufA0KfCoqL2xvZ3MvZGVidWcubG9nfGxvZ3MvZGVidWcubG9nPC9icj5idWlsZC9sb2dzL2RlYnVnLmxvZzwvYnI+X21hcyBuw6NvXzwvYnI+bG9ncy9idWlsZC9kZWJ1Zy5sb2d8RGV0ZWN0YSBxdWFscXVlciBhcnF1aXZvIGJhc2VhZG8gZW0gc2V1IG5vbWUgZSBvIG5vbWUgZG8gZGlyZXTDs3JpbyBwYWkufA0KfCoubG9nfGRlYnVnLmxvZzwvYnI+Zm9vLmxvZzwvYnI+LmxvZzwvYnI+bG9ncy9kZWJ1Zy5sb2d8RGV0ZWN0YSBxdWFscXVlciAob3UgemVybykgY2FyYWN0ZXJlcyBkZSBhcnF1aXZvcyBxdWUgdGVuaGEgYSBleHRlbnPDo28gLmxvZy4NCnwqLmxvZzxicj4haW1wb3J0YW50LmxvZ3xkZWJ1Zy5sb2c8L2JyPnRyYWNlLmxvZzwvYnI+X21hcyBuw6NvXzwvYnI+aW1wb3J0YW50LmxvZzwvYnI+bG9ncy9pbXBvcnRhbnQubG9nfE5lZ2EgKG7Do28gaWdub3JhKSBvIHBhZHLDo28gaW5mb3JtYWRvLiBTZSB1bSBhcnF1aXZvIGNvcnJlc3BvbmRlIGFvIHBhZHLDo28sIG1hcyB0YW1iw6ltIGNvcnJlc3BvbmRlIGFvIHBhZHLDo28gcGFyYSBuw6NvIHNlciBpZ25vcmFkbywgZXN0ZSBhcnF1aXZvIG7Do28gdmFpIHNlciBpZ25vcmFkby58DQp8L2RlYnVnLmxvZ3xkZWJ1Zy5sb2c8L2JyPl9idXQgbm90XzwvYnI+bG9ncy9kZWJ1Zy5sb2d8VXNhbmRvIG8gc2xhc2ggZmF6IGNvcnJlc3BvbmRlbmNpYSBhcGVuYXMgYSBhcnF1aXZvcyBuYSByYWl6IGRvIHJlcG9zaXTDs3Jpby58DQp8ZGVidWcubG9nfGRlYnVnLmxvZzwvYnI+bG9ncy9kZWJ1Zy5sb2d8Q29ycmVzcG9uZGUgYW8gcGFkcsOjbyBlbSBxdWFscXVlciByZXBvc2l0w7NyaW98DQp8ZGVidWc/LmxvZ3xkZWJ1ZzAubG9nPC9icj5kZWJ1Z2cubG9nPC9icj5fbWFzIG7Do29fPC9icj5kZWJ1ZzEwLmxvZ3xVbWEgaW50ZXJyb2dhw6fDo28gdmFpIGNvcnJlc3BvbmRlciBleGF0YW1lbnRlIGEgdW0gY2FyYWN0ZXIufA0KfGRlYnVnWzAtOV0ubG9nfGRlYnVnMC5sb2c8L2JyPmRlYnVnMS5sb2c8L2JyPl9tYXMgbsOjb188L2JyPmRlYnVnMTAubG9nfENvbGNoZXRlcyBwb2RlbSBzZXIgdXNhZG9zIHBhcmEgY29ycmVwb25kZXIgYSBxdWFscXVlciBjYXJhY3RlciBkZW50cm8gZGUgdW0gbGltaXRlIGVzcGVjaWZpY2Fkby58DQp8ZGVidWdbITAxXS5sb2d8ZGVidWcyLmxvZzwvYnI+X21hcyBuw6NvXzwvYnI+ZGVidWcwLmxvZzwvYnI+ZGVidWcxLmxvZzwvYnI+ZGVidWcwMS5sb2d8UG9udG8gZGUgZXhjbGFtYcOnw6NvIHRhbWLDqW0gcG9kZSBzZXIgdXNhZG8gcGFyYSBpZ25vcmFyIHVtIGNhcmFjdGVyIGVzcGVjw61maWNvLnwNCnxkZWJ1Z1thLXpdLmxvZ3xkZWJ1Z2EubG9nPC9icj5kZWJ1Z2IubG9nPC9icj5fbWFzIG7Do29fPC9icj5kZWJ1ZzEubG9nfE9zIGxpbWl0ZXMgZGVudHJvIGRvcyBjb2xjaGV0ZXMgcG9kZW0gc2VyIG51bcOpcmljb3Mgb3UgYWxmYWLDqXRpY29zLnwNCnxsb2dzfGxvZ3M8L2JyPmxvZ3MvZGVidWcubG9nPC9icj5sb2dzL2xhdGVzdC9mb28uYmFyPC9icj5idWlsZC9sb2dzPC9icj5idWlsZC9sb2dzL2RlYnVnLmxvZ3xTZSBuw6NvIGZvciBpbnNlcmlkYSB1bWEgYmFycmEsIG8gcGFkcsOjbyBpcsOhIGNvcnJlc3BvbmRlciB0YW50byBhIHBhc3RhcyBxdWFudG8gb3MgYXJxdWl2b3MgZGVudHJvIGRhcyBwYXN0YXMgcXVlIGNvcnJlc3BvbmRlbSBhbyBwYWRyw6NvIGluZGljYWRvLnwNCnxsb2dzL3xsb2dzL2RlYnVnLmxvZzwvYnI+bG9ncy9sYXRlc3QvZm9vLmJhcjwvYnI+YnVpbGQvbG9ncy9mb28uYmFyPC9icj5idWlsZC9sb2dzL2xhdGVzdC9kZWJ1Zy5sb2d8QSBiYXJyYSBpbmRpY2EgcXVlIG8gcGFkcsOjbyBjb3JyZXNwb25kZSBhIHVtIGRpcmV0w7NyaW8gZXNwZWPDrWZpY28uIFRvZG8gY29udGXDumRvIGRlIHF1YWxxdWVyIGRpcmV0w7NyaW8gbm8gcmVwb3NpdMOzcmlvIHF1ZSBjb3JyZXNwb25kYSBhbyBwYWRyw6NvLCBlIHRvZG9zIG9zIGFycXVpdm9zIGRlbnRybyBkZWxlLCBzZXLDo28gaWdub3JhZG9zLnwNCnxsb2dzLypkYXkvZGVidWcubG9nfGxvZ3MvbW9uZGF5L2RlYnVnLmxvZzxicj5sb2dzL3R1ZXNkYXkvZGVidWcubG9nPC9icj5fYnV0IG5vdF88L2JyPmxvZ3MvbGF0ZXN0L2RlYnVnLmxvZ3xXaWxkY2FyZHMgcG9kZW0gc2VyIHVzYWRvcyBlbSBxdWFscXVlciBkaXJldMOzcmlvIGRlbnRybyBkbyByZXBvc2l0w7NyaW8ufA0KfGxvZ3MvZGVidWcubG9nfGxvZ3MvZGVidWcubG9nPC9icj5fbWFzIG7Do29fPC9icj5kZWJ1Zy5sb2c8L2JyPmJ1aWxkL2xvZ3MvZGVidWcubG9nfFBhZHLDtWVzIGVzcGVjaWZpY2FuZG8gdW0gYXJxdWl2byBlbSB1bSBkaXJldMOzcmlvIHBhcnRpY3VsYXIgY29ycmVzcG9uZGVtIGFwZW5hcyBhbyBjYW1pbmhvIGEgcGFydGlyIGRhIHJhaXoufA0KDQojIE91dHJhcyByZWZlcsOqbmNpYXMgw7p0ZWlzDQoNClBhcmEgbWFpcyByZWZlcsOqbmNpYXMgc29icmUgcGFkcsO1ZXMgZSBjb21vIG1vbnRhciBvIGFycXVpdm8gLmdpdGlnbm9yZSwgY29uc3VsdGUgZXN0YXMgZm9udGVzDQoNCi0gW0RvY3VtZW50YcOnw6NvIGRvIEdpdGh1Yl0oaHR0cHM6Ly9kb2NzLmdpdGh1Yi5jb20vcHQvZ2V0LXN0YXJ0ZWQvZ2V0dGluZy1zdGFydGVkLXdpdGgtZ2l0L2lnbm9yaW5nLWZpbGVzKQ0KDQotIFtEb2N1bWVudGHDp8OjbyBkbyBHaXRdKGh0dHBzOi8vZ2l0LXNjbS5jb20vZG9jcy9naXRpZ25vcmUpDQoNCi0gW0FsZ3VucyBtb2RlbG9zIGRlIGFycXVpdm9zIC5naXRpZ25vcmVdKGh0dHBzOi8vZ2l0aHViLmNvbS9naXRodWIvZ2l0aWdub3JlKQ0KDQo=</div>
 
 
 </div>

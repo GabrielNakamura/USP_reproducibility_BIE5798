@@ -15,3 +15,51 @@ klippy::klippy()
 
 # Apresentação
 
+Nem sempre queremos que o git monitore todos os arquivos presentes no nosso diretório. Isso pode se dar por alguns motivos. O arquivo pode conter informações que você não queira que seja pública, ou ainda, uma pasta inteira contém dados que são pesados demais para serem versionados, as razões para escapar do monitoramento do versionamento podem ser muitas. A questão é, como podemos evitar com que estes arquivos, ou pastas inteiras, sejam versionados pelo git? 
+
+Para isso usaremos um arquivo especial chamado **.gitignore´**. Você deve se lembrar que já vimos brevemente este arquivo quando criamos o repositório. Ao iniciar o repositório remoto, o próprio Github nos dá a opção de criar um arquivo do tipo .gitignore a partir de um modelo pré definido, como mostrado na imagem abaixo.
+
+```{r echo=FALSE, eval=TRUE, fig.cap="Página inicial para criação de repositórios no github com seta destacando o local de escolher o gitignore"}
+knitr::include_graphics("figs/template_gitignore.png")
+
+```
+
+# Editando o .gitignore
+
+Cada linha no .gitignore indica um arquivo que será ignorado. Linhas em branco não indicam arquivo algum, e são usadas para separar arquivos que serão ignorados no .gitignore, facilitando sua leitura.
+
+Existem maneiras diferentes de indicar os arquivos que serão ignorados pelo git. Podemos ignorar arquivos individualmente, simplesmente colocando o caminho relativo do arquivo, juntamente com o nome do arquivo acompanhado de sua extensão. Por exemplo, se quisermos ignorar o arquivo chamado `meignore.doc` que se encontra na raiz do projeto, devemos apenas acrescentar em uma linha no gitignore contendo `meignore.doc`.
+
+O .gitignore também nos possibilita a utilização de padrões para ignorar um conjunto de arquivos. Por exemplo, digamos que queremos ignorar todos os arquivos que tem extensão .jpeg em um subdiretório do seu working directory. Para tanto podemos inserir no arquivo .gitignore uma linha contendo `pasta/*.jpeg`.
+
+# Alguns exemplos
+
+Existem uma série de padrões. Assumindo que seu .gitignore vai estar na raiz do diretório  (top-level) podemos listar alguns padrões úteis e como eles se aplicam aos arquivos de um dado diretório. Esta tabela é uma adaptação [desta versão original](https://gist.github.com/jstnlvns/ebaa046fae16543cc9efc7f24bcd0e31)
+
+|Padrão|Exemplos que são detectados|Explicação|
+|-------|----------------|------------|
+|**/logs|logs/debug.log</br>logs/monday/foo.bar</br>build/logs/debug.log|Acrescentar dois asteriscos para detectar qualquer diretório no seu repositório.|
+|**/logs/debug.log|logs/debug.log</br>build/logs/debug.log</br>_mas não_</br>logs/build/debug.log|Detecta qualquer arquivo baseado em seu nome e o nome do diretório pai.|
+|*.log|debug.log</br>foo.log</br>.log</br>logs/debug.log|Detecta qualquer (ou zero) caracteres de arquivos que tenha a extensão .log.
+|*.log<br>!important.log|debug.log</br>trace.log</br>_mas não_</br>important.log</br>logs/important.log|Nega (não ignora) o padrão informado. Se um arquivo corresponde ao padrão, mas também corresponde ao padrão para não ser ignorado, este arquivo não vai ser ignorado.|
+|/debug.log|debug.log</br>_but not_</br>logs/debug.log|Usando o slash faz correspondencia apenas a arquivos na raiz do repositório.|
+|debug.log|debug.log</br>logs/debug.log|Corresponde ao padrão em qualquer repositório|
+|debug?.log|debug0.log</br>debugg.log</br>_mas não_</br>debug10.log|Uma interrogação vai corresponder exatamente a um caracter.|
+|debug[0-9].log|debug0.log</br>debug1.log</br>_mas não_</br>debug10.log|Colchetes podem ser usados para correponder a qualquer caracter dentro de um limite especificado.|
+|debug[!01].log|debug2.log</br>_mas não_</br>debug0.log</br>debug1.log</br>debug01.log|Ponto de exclamação também pode ser usado para ignorar um caracter específico.|
+|debug[a-z].log|debuga.log</br>debugb.log</br>_mas não_</br>debug1.log|Os limites dentro dos colchetes podem ser numéricos ou alfabéticos.|
+|logs|logs</br>logs/debug.log</br>logs/latest/foo.bar</br>build/logs</br>build/logs/debug.log|Se não for inserida uma barra, o padrão irá corresponder tanto a pastas quanto os arquivos dentro das pastas que correspondem ao padrão indicado.|
+|logs/|logs/debug.log</br>logs/latest/foo.bar</br>build/logs/foo.bar</br>build/logs/latest/debug.log|A barra indica que o padrão corresponde a um diretório específico. Todo conteúdo de qualquer diretório no repositório que corresponda ao padrão, e todos os arquivos dentro dele, serão ignorados.|
+|logs/*day/debug.log|logs/monday/debug.log<br>logs/tuesday/debug.log</br>_but not_</br>logs/latest/debug.log|Wildcards podem ser usados em qualquer diretório dentro do repositório.|
+|logs/debug.log|logs/debug.log</br>_mas não_</br>debug.log</br>build/logs/debug.log|Padrões especificando um arquivo em um diretório particular correspondem apenas ao caminho a partir da raiz.|
+
+# Outras referências úteis
+
+Para mais referências sobre padrões e como montar o arquivo .gitignore, consulte estas fontes
+
+- [Documentação do Github](https://docs.github.com/pt/get-started/getting-started-with-git/ignoring-files)
+
+- [Documentação do Git](https://git-scm.com/docs/gitignore)
+
+- [Alguns modelos de arquivos .gitignore](https://github.com/github/gitignore)
+
