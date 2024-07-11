@@ -19,7 +19,7 @@ Nem sempre queremos que o git monitore todos os arquivos presentes no nosso dire
 
 Para isso usaremos um arquivo especial chamado **.gitignore´**. Você deve se lembrar que já vimos brevemente este arquivo quando criamos o repositório. Ao iniciar o repositório remoto, o próprio Github nos dá a opção de criar um arquivo do tipo .gitignore a partir de um modelo pré definido, como mostrado na imagem abaixo.
 
-```{r echo=FALSE, eval=TRUE, fig.cap="Página inicial para criação de repositórios no github com seta destacando o local de escolher o gitignore"}
+```{r echo=FALSE, eval=TRUE}
 knitr::include_graphics("figs/template_gitignore.png")
 
 ```
