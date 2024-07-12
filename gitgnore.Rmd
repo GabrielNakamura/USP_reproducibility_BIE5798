@@ -59,7 +59,7 @@ Um problema comum de se deparar é quando adicionamos um arquivo, ou uma pasta n
 
 Adicioná-los no .gitignore não vai resolver o problema, pois o git já entendeu que eles devem ser monitorados. Neste caso teremos que fazer um pequeno procedimento antes de adicioná-los no .gitignore.
 
-Primeiro precisamos remover estes, ou este, arquivo da "memória" de monitoramento do git. Para isso iremos digitar na linha de comando `git -rm --cached nome-do-arquivo.extensão` 
+Primeiro precisamos remover estes, ou este, arquivo da "memória" de monitoramento do git. Para isso iremos digitar na linha de comando `git rm --cached nome-do-arquivo.extensão` 
 
 Após esse procedimento adicionamos o nome do arquivo no .gitignore
 
