@@ -13,21 +13,21 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Programação literada é a tradução livre do termo em inglês *literate programming*, que significa criar documentos que são possíveis de serem lidos tanto por humanos quanto por máquinas (computadores). No contexto deste curso, programação literada significa basicamente a possibilidade de misturar em um mesmo documento textos e pedaços de códigos.
 
-Se ainda é muito abstrato este conceito, um exemplo de textos produzidos usando programação literada é... este texto que você lê nesse momento. Ao longo de todo o curso vimos textos misturados com pedaços de código, de modo que a cada vez que precisasse acessar um código e o significado do que ele faz você pode encontrar tudo em um mesmo lugar.
+Se ainda é muito abstrato este conceito, um exemplo de texto produzido usando programação literada é... este texto que você lê nesse momento. Ao longo de todo o curso vimos textos misturados com pedaços de código, de modo que a cada vez que precisasse acessar um código e o significado do que ele faz você pode encontrar tudo em um mesmo lugar.
 
 # R markdown 
 
-R markdown é, nas palavras dos próprios criadores, um conjunto de ferramentas que possibilita produzir documentos que seguem as bases do literate programming. O R markdown pode ser utilizado tanto para a simples produção de documentos onde incluímos códigos no meio para nossa própria conveniência, como para produzir documentos em outros formatos (html, docx, latex etc) para estender a comunicação dos achados científicos (ou produzir um blog).
+R markdown é, nas palavras dos próprios criadores, um conjunto de ferramentas que possibilita produzir documentos que seguem as bases do literate programming. O R markdown pode ser utilizado tanto para a simples produção de documentos onde incluímos códigos no meio para nossa própria conveniência, como para produzir documentos em outros formatos (html, docx, latex etc) para estender a comunicação dos achados científicos (ou produzir um site).
 
-Portanto, podemos dizer, de maneira geral, que o R markdown possibilita a produção de documentos em linguagens que nós nem sabemos escrever (e.g. não sei escrever em html, consigo produzir sites a partir de Rmarkdow). Para quem gosta do famoso Guia do Mochileiro das Galáxias, o R markdown (juntamente com os pacotes `knitr`, `pandoc`) funciona como o peixe Babel, mesmo que você não fale uma dada língua, o peixe faz o trabalho de tradução para você. A vantagem é que com o R markdown não há nenhuma necessidade de colocar nada desagradável na orelha :)
+Portanto, podemos dizer, de maneira geral, que o R markdown possibilita a produção de documentos em linguagens que nós nem sabemos escrever (e.g. não sei escrever em html, consigo produzir sites a partir de Rmarkdow). Para quem gosta da famosa **trilogia de cinco livros** do grande [Douglas Adams](https://en.wikipedia.org/wiki/Douglas_Adams), [O Guia do Mochileiro das Galáxias](https://en.wikipedia.org/wiki/The_Hitchhiker%27s_Guide_to_the_Galaxy), o R markdown (juntamente com os pacotes `knitr`, `pandoc`) funciona como o peixe Babel, mesmo que você não fale (neste caso, escreva) uma dada língua, o peixe faz o trabalho de tradução para você. A vantagem é que com o R markdown não há nenhuma necessidade de introduzir nada desagradável na sua orelha.
 
 ```{r echo=FALSE,eval=TRUE,fig.cap="R markdown é como um peixe Babel, ele faz você falar uma linguagem mesmo não sabendo"}
-knitr::include_graphics("figs/babelfish.jpeg")
+knitr::include_graphics("figs/babel-fish_anatomy.jpg")
 ```
 
 ## Produzindo um documento R markdown
 
-Para produzir um documento R markdown é extremamente simples. Basta clicar na parte superior do RStudio em File, depois New File e selecionar R Markdown. Isso vai fazer com que ele abra um documento R Markdown (.Rmd) numa nova aba do seu RStudio. Agora vamos ver os componentes de um Rmd
+Produzir um documento R markdown é extremamente simples. Basta clicar na parte superior do RStudio em File, depois New File e selecionar R Markdown. Isso vai fazer com que ele abra um documento R Markdown (.Rmd) numa nova aba do seu RStudio. Agora vamos ver os componentes de um documento .Rmd
 
 ### o documento yml
 
@@ -43,7 +43,11 @@ O yml pode ser simples como o que vimos anteriormente, ou pode ser mais complica
 knitr::include_graphics("figs/rmarkdown-yml-morecomplicated.png")
 ```
 
-De maneira geral, o importante é entender que o yml é o elemento que rege a forma que o documento será construído. Para sites (o motivo pelo qual eu mais uso o R markdown), o output no formato `html_document` já é suficiente.
+De maneira geral, o importante é entender que o yml é o elemento que rege a forma que o documento será construído. Para construção de sites (meu principal uso do R markdown), o output no formato `html_document` já é suficiente.
+
+```{r echo=FALSE,eval=TRUE,fig.cap="O yml é o regente do seu site"}
+knitr::include_graphics("figs/orquestra-rmarkdown.jpg")
+```
 
 ### chuncks de código
 
@@ -53,9 +57,9 @@ A imagem abaixo oferece um bom exemplo do que são **chunks**
 knitr::include_graphics("figs/chunck-chocolate.jpeg")
 ```
 
-Nesta imagem acima os pedaços de chocolate inseridos no meio da massa de cookie são chamados em inglês de chunks. Da mesma forma, mas menos saborosa (ou tão saboroso quanto, não para o estômago), os códigos embebidos no meio de pedaços de texto são chamados de chunks. 
+Nesta imagem acima os pedaços de chocolate inseridos no meio da massa de cookie são chamados em inglês de chunks. Da mesma forma, mas menos saborosa (ou tão saboroso quanto, mas não para o estômago), os códigos inseridos no meio de pedaços de texto são chamados de chunks. 
 
-Para gerar chuncks de códigos você pode usar um atalho no teclado que é `Cmd` + `option` + `I` (nos computadores Mac), ou `Crtl` + `option` + `I` (nos computadores Windows)
+Para gerar chuncks de códigos você pode usar um atalho no teclado que é `Cmd` + `option` + `I` (Mac), ou `Crtl` + `option` + `I` (Windows)
 
 um chunck como esse vai aparecer
 
@@ -87,6 +91,10 @@ knitr::include_graphics("figs/rmarkdown-knit-button.png")
 ```
 
 Ao clicar no botão Knit o RStudio renderizará o documento R Markdown para o formato estipulado no cabeçalho yml. Uma janela irá se abrir com a demonstração do documento renderizado.
+
+```{r echo=TRUE,eval=TRUE}
+knitr::include_graphics("figs/knitr-puppy.jpeg")
+```
 
 Documentos em R markdown auxiliam no processo de tornar a pesquisa mais aberta e reprodutível, pois oferecem a possibilidade de produzir documentos altamente explicativos com textos e códigos, que podem ser utilizados posteriormente como suplemento para artigos ou ainda para comunicar com seus colaboradores durante a elaboração de um estudo. Para finalizar essa seção, um vídeo lembrando a importância da reprodutibilidade em pesquisa.
 
