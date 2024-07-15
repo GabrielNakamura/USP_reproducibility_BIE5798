@@ -9,9 +9,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Melina Leite" />
+<meta name="author" content="Melina Leite e Gabriel Nakamura" />
 
-<meta name="date" content="2024-07-14" />
+<meta name="date" content="2024-07-15" />
 
 <title>Ambiente reprodutível com ‘Renv’</title>
 
@@ -547,13 +547,14 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Ambiente reprodutível com ‘Renv’</h1>
-<h4 class="author">Melina Leite</h4>
-<h4 class="date">2024-07-14</h4>
+<h4 class="author">Melina Leite e Gabriel Nakamura</h4>
+<h4 class="date">2024-07-15</h4>
 
 </div>
 
 
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD # Compatibilidade com pacotes</p>
+<div id="compatibilidade-com-pacotes" class="section level1">
+<h1>Compatibilidade com pacotes</h1>
 <p>Até agora aprendemos como reduzir os erros comuns de
 reprodutibilidade computacional associados a arquivos presentes no nosso
 diretório. Porém, na maioria dos projetos não utilizamos apenas arquivos
@@ -568,9 +569,27 @@ função é modificado. Mas como conseguimos garantir que nosso código seja
 reprodutível, quando ele depende de uma outra pessoa atualizando funções
 e dependências nos nossos scripts? Uma das soluções é o pacote
 {<code>renv</code>}</p>
+</div>
 <div id="garantindo-a-reprodutibilidade-das-funções-renv"
 class="section level1">
 <h1>Garantindo a reprodutibilidade das funções: {<code>renv</code>}</h1>
+<p>O pacote <code>Renv</code> é um pacote para criar ambientes
+reprodutíveis em seus projetos de análise no R. A ideia do
+<code>Renv</code> é criar uma biblioteca para salvar os pacotes e as
+versões usadas no seu seu workflow de trabalho, de forma que quando você
+ou alguém baixa seu repositório inteiro, a biblioteca vem junto com
+todos os pacotes. Assim, cada projeto terá sua própria biblioteca!!!</p>
+<p>Geralmente a biliboteca do R (um diretório contendo os pacotes
+instalados com <code>install.packages()</code>), é única e guardada em
+alguma pasta no seu computador.</p>
+<p>Para saber onde está sua biblioteca, dê o comando:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">.libPaths</span>()</span></code></pre></div>
+<p>Ao iniciar o <code>Renv</code> no repositório do seu projeto, você
+verá a adição de uma pasta <code>renv/library</code> onde serão
+guardados os pacotes usados.</p>
+<p><a href="https://rstudio.github.io/renv/articles/renv.html"><img
+src="figs/renv_scheme.png"
+alt="Esquema de funcionamento do Renv retirado da vinheta do pacote." /></a></p>
 <p>A grande sacada do {<code>renv</code>} para garantir a
 reprodutibilidade das funções dos pacotes utilizados é que ele instala
 estas dependências numa pasta específica do projeto que contém tais
@@ -618,10 +637,10 @@ R.</p>
 <p>Para utilizar o {<code>groundhog</code>} devemos chamar as
 dependências (pacotes) utilizando uma função do groundhog da seguinte
 maneira</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(groundhog)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>groundhog.day<span class="ot">=</span><span class="st">&quot;2020-11-01&quot;</span></span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>pkgs<span class="ot">=</span><span class="fu">c</span>(<span class="st">&#39;pwr&#39;</span>,<span class="st">&#39;metafor&#39;</span>,<span class="st">&#39;data.tables&#39;</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="fu">groundhog.library</span>(pkgs, groundhog.day)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(groundhog)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>groundhog.day<span class="ot">=</span><span class="st">&quot;2020-11-01&quot;</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>pkgs<span class="ot">=</span><span class="fu">c</span>(<span class="st">&#39;pwr&#39;</span>,<span class="st">&#39;metafor&#39;</span>,<span class="st">&#39;data.tables&#39;</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="fu">groundhog.library</span>(pkgs, groundhog.day)</span></code></pre></div>
 <p>Ou seja, utilizamos dois argumentos na função
 <code>groundhog.library</code> um indicando os pacotes que devem ser
 carregados e um segundo, aí a grande diferença do groundhog, indicando
@@ -636,41 +655,17 @@ que mudou (ou não) no seu diretório.</p>
 </div>
 <div id="leituras-adicionais" class="section level1">
 <h1>Leituras adicionais</h1>
-</div>
-<div
-id="para-mais-informações-sobre-o-pacote-renv-veja-este-material.-para-mais-informações-sobre-o-groundhog-veja-o-blog-escrito-por-um-dos-desenvolvedores-do-pacote.-a-propósito-o-blog-data-colada-é-uma-fonte-sensacional-de-ideias-e-discussões-sobre-ciência-reprodutibilidade-e-tudo-o-mais."
-class="section level1">
-<h1>Para mais informações sobre o pacote {<code>renv</code>} veja este
-<a
+<p>Para mais informações sobre o pacote {<code>renv</code>} veja este <a
 href="https://reproducibility.rocks/materials/day3/01-renv/">material</a>.
 Para mais informações sobre o {<code>groundhog</code>} veja o <a
 href="https://datacolada.org/95#footnote_2_5852">blog</a> escrito por um
 dos desenvolvedores do pacote. A propósito, o blog <a
 href="https://datacolada.org/">Data Colada</a> é uma fonte sensacional
 de ideias e discussões sobre ciência, reprodutibilidade e tudo o
-mais.</h1>
-<p>O pacote <code>Renv</code> é um pacote para criar ambientes
-reprodutíveis em seus projetos de análise no R. A ideia do
-<code>Renv</code> é criar uma biblioteca para salvar os pacotes e as
-versões usadas no seu seu workflow de trabalho, de forma que quando você
-ou alguém baixa seu repositório inteiro, a biblioteca vem junto com
-todos os pacotes. Assim, cada projeto terá sua própria biblioteca!!!</p>
-<p>Geralmente a biliboteca do R (um diretório contendo os pacotes
-instalados com <code>install.packages()</code>), é única e guardada em
-alguma pasta no seu computador.</p>
-<p>Para saber onde está sua biblioteca, dê o comando:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">.libPaths</span>()</span></code></pre></div>
-<p>Ao iniciar o <code>Renv</code> no repositório do seu projeto, você
-verá a adição de uma pasta <code>renv/library</code> onde serão
-guardados os pacotes usados.</p>
-<p><a href="https://rstudio.github.io/renv/articles/renv.html"><img
-src="figs/renv_scheme.png"
-alt="Esquema de funcionamento do Renv retirado da vinheta do pacote." /></a>
-&gt;&gt;&gt;&gt;&gt;&gt;&gt;
-cfc4d76845645fc5600ddd55e379443abfb929ce</p>
+mais.</p>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiQW1iaWVudGUgcmVwcm9kdXTDrXZlbCBjb20gJ1JlbnYnIgphdXRob3I6ICJNZWxpbmEgTGVpdGUiCmRhdGU6ICJgciBTeXMuRGF0ZSgpYCIKb3V0cHV0OiBodG1sX2RvY3VtZW50Ci0tLQoKPDw8PDw8PCBIRUFECiMgQ29tcGF0aWJpbGlkYWRlIGNvbSBwYWNvdGVzCgpBdMOpIGFnb3JhIGFwcmVuZGVtb3MgY29tbyByZWR1emlyIG9zIGVycm9zIGNvbXVucyBkZSByZXByb2R1dGliaWxpZGFkZSBjb21wdXRhY2lvbmFsIGFzc29jaWFkb3MgYSBhcnF1aXZvcyBwcmVzZW50ZXMgbm8gbm9zc28gZGlyZXTDs3Jpby4gUG9yw6ltLCBuYSBtYWlvcmlhIGRvcyBwcm9qZXRvcyBuw6NvIHV0aWxpemFtb3MgYXBlbmFzIGFycXVpdm9zIHF1ZSBlc3TDo28gcHJlc2VudGVzIG5vIGRpcmV0w7NyaW8gbG9jYWwgb3UgcmVtb3RvLCBwb3IgZXhlbXBsbywgb3MgcGFjb3RlcyEKCk9zIHBhY290ZXMgc8OjbyBkaXNwb25pYmlsaXphZG9zIGFiZXJ0YW1lbnRlIGUgbyBxdWUgZmF6ZW1vcyDDqSBiYWl4YXIgdW1hIHZlcnPDo28gZGVzdGUgcGFjb3RlIGVtIG5vc3NvIGNvbXB1dGFkb3IuIFBvcsOpbSwgcGFjb3RlcyBuZW0gc2VtcHJlIChvdSBhIG1haW9yaWEgZGFzIHZlemVzKSwgZmljYW0gZGEgbWFuZWlyYSBjb21vIG9zIGJhaXhhbW9zLiBQYWNvdGVzIHPDo28gZWRpdGFkb3MgcG9yIHNldXMgcHJvcG9uZW50ZXMsIGZ1bsOnw6NvIGludGVybmFzIHPDo28gY29ycmlnaWRhcywgYWxndW1hcyBzw6NvIGV4Y2x1w61kYXMsIG91dHJhcyBhZGljaW9uYWRhcyBlIGFsZ3VtYXMgdmV6ZXMgYXTDqSBtZXNtbyBvIG5vbWUgZGEgZnVuw6fDo28gw6kgbW9kaWZpY2Fkby4gTWFzIGNvbW8gY29uc2VndWltb3MgZ2FyYW50aXIgcXVlIG5vc3NvIGPDs2RpZ28gc2VqYSByZXByb2R1dMOtdmVsLCBxdWFuZG8gZWxlIGRlcGVuZGUgZGUgdW1hIG91dHJhIHBlc3NvYSBhdHVhbGl6YW5kbyBmdW7Dp8O1ZXMgZSBkZXBlbmTDqm5jaWFzIG5vcyBub3Nzb3Mgc2NyaXB0cz8gVW1hIGRhcyBzb2x1w6fDtWVzIMOpIG8gcGFjb3RlIHtgcmVudmB9CgojIEdhcmFudGluZG8gYSByZXByb2R1dGliaWxpZGFkZSBkYXMgZnVuw6fDtWVzOiB7YHJlbnZgfQoKQSBncmFuZGUgc2FjYWRhIGRvIHtgcmVudmB9IHBhcmEgZ2FyYW50aXIgYSByZXByb2R1dGliaWxpZGFkZSBkYXMgZnVuw6fDtWVzIGRvcyBwYWNvdGVzIHV0aWxpemFkb3Mgw6kgcXVlIGVsZSBpbnN0YWxhIGVzdGFzIGRlcGVuZMOqbmNpYXMgbnVtYSBwYXN0YSBlc3BlY8OtZmljYSBkbyBwcm9qZXRvIHF1ZSBjb250w6ltIHRhaXMgZGVwZW5kw6puY2lhLiBEZXN0YSBmb3JtYSwgYW8gdXRpbGl6YXIgdW0gcHJvamV0byBkZSBvdXRyYSBwZXNzb2EsIG91IG8gc2V1IHByw7NwcmlvIHByb2pldG8gbm8gZnV0dXJvLCB2b2PDqiBpcsOhIHV0aWxpemFyIGFzIG1lc21hcyB2ZXJzw7VlcyBkb3MgcGFjb3Rlcy4KCiMjIHtgcmVudmB9IG5hIHByw6F0aWNhCgpRdWF0cm8gZnVuw6fDtWVzIHPDo28gZXNzZW5jaWFpcyBwYXJhIHV0aWxpemFyIG8gcGFjb3RlIHtgcmVudmB9LiBMZW1icmUtc2UgKipzZW1wcmUgZmHDp2EgaXNzbyBkZW50cm8gZGUgdW0gcHJvamV0byoqCgoxLiBgcmVudjo6aW5pdCgpYCBwcmltZWlyYSBhw6fDo28gYSBzZXIgcmVhbGl6YWRhIHBhcmEgaW5pY2lhciBvIHVzbyBkbyBwYWNvdGUgbm8gc2V1IHByb2pldG8uIAoKMi4gYHJlbnY6OnN0YXR1cygpYCBjb25mZXJlIG8gc3RhdHVzIGRhcyBkZXBlbmTDqm5jaWFzIGNvbnRpZGFzIG5vIHNldSBwcm9qZXRvCgozLiBgcmVudjo6c25hcHNob3QoKWAgdXRpbGl6ZSBlc3NhIGZ1bsOnw6NvIHRvZGEgdmV6IHF1ZSBpbnN0YWxhciB1bSBwYWNvdGUgbm92bywgaXNzbyBnYXJhbnRpcsOhIHF1ZSBhIHZlcnPDo28gZGVzdGUgcGFjb3RlIGVzdGFyw6EgcmVnaXN0cmFkYSBub3MgYXJxdWl2b3MgZXNwZWNpYWlzIGNyaWFkb3MgcGVsbyB7YHJlbnZgfQoKNC4gYHJlbnY6OnJlc3RvcmUoKWAgZXN0YSBmdW7Dp8OjbyDDqSB1dGlsaXphZGEgcXVhbmRvIHZvY8OqIHF1aXNlciByZXByb2R1emlyIGFsZ3VtIHByb2pldG8uIFBvciBleGVtcGxvLCBhbyBiYWl4YXIgdW0gcHJvamV0byBkbyBHaXRIdWIgYWJyYSBhIGltYWdlbSBkbyBScHJvamVjdCBlIHV0aWxpemUgYSBmdW7Dp8OjbyBgcmVzdG9yZSgpYCBpc3NvIGlyw6EgZGVzZW5jYWRlYXIgYSBpbnN0YWxhw6fDo28gZGFzIHZlcnPDtWVzIGRvcyBwYWNvdGVzIHV0aWxpemFkYXMgbm8gcHJvamV0byBlbSBzZXUgY29tcHV0YWRvciwgZ2FyYW50aW5kbyBhc3NpbSBhIHJlcHJvZHV0aWJpbGlkYWRlCgoKIyBHYXJhbnRpbmRvIGEgcmVwcm9kdXRpYmlsaWRhZGUgZGFzIGZ1bsOnw7Vlczoge2Bncm91bmRob2dgfQoKT3V0cmEgb3DDp8OjbyDDqSBvIMOzdGltbyBwYWNvdGUge2Bncm91bmRob2dgfSwgcXVlIGV4ZXJjZSBmdW7Dp8O1ZXMgc2ltaWxhcmVzIGFvIGByZW52YCBtYXMsIHRlY25pY2FtZW50ZSwgZGUgbWFuZWlyYXMgZGlzdGludGFzLiBPIG9iamV0aXZvIGZpbmFsIMOpIG8gbWVzbW8sIGF1bWVudGFyIGEgY2hhbmNlIGRlIHJlcHJvZHV0aWJpbGlkYWRlIGRlIGPDs2RpZ29zIGVtIFIgYW8gcmVzb2x2ZXIgYSBjb21wYXRpYmlsaWRhZGUgZGUgdmVyc8O1ZXMgZGUgcGFjb3RlcyBlc3RhdMOtc3RpY29zIHV0aWxpemFkb3MgbmVzdGVzIHNjcmlwdHMuCgpBIGdyYW5kZSBkaWZlcmVuw6dhIGVudHJlIG8gcGFjb3RlIHtgcmVudmB9IGUgbyB7YGdyb3VuZGhvZ2B9IMOpIG8gZmF0byBkZSBxdWUgbyBzZWd1bmRvIGZ1bmNpb25hIGlzb2xhZGFtZW50ZSBlbSBzY3JpcHRzLCBlbnF1YW50byBvIHByaW1laXIsIG5lY2Vzc2FyaWFtZW50ZSwgZmF6IHVzbyBkb3MgcHJvamV0b3Mgbm8gUi4KCiMjIHtgZ3JvdW5kaG9nYH0gbmEgcHLDoXRpY2EKClBhcmEgdXRpbGl6YXIgbyB7YGdyb3VuZGhvZ2B9IGRldmVtb3MgY2hhbWFyIGFzIGRlcGVuZMOqbmNpYXMgKHBhY290ZXMpIHV0aWxpemFuZG8gdW1hIGZ1bsOnw6NvIGRvIGdyb3VuZGhvZyBkYSBzZWd1aW50ZSBtYW5laXJhCgpgYGB7ciBlY2hvPVRSVUUsIGV2YWw9RkFMU0V9CmxpYnJhcnkoZ3JvdW5kaG9nKQpncm91bmRob2cuZGF5PSIyMDIwLTExLTAxIgpwa2dzPWMoJ3B3cicsJ21ldGFmb3InLCdkYXRhLnRhYmxlcycpCmdyb3VuZGhvZy5saWJyYXJ5KHBrZ3MsIGdyb3VuZGhvZy5kYXkpCmBgYAoKT3Ugc2VqYSwgdXRpbGl6YW1vcyBkb2lzIGFyZ3VtZW50b3MgbmEgZnVuw6fDo28gYGdyb3VuZGhvZy5saWJyYXJ5YCB1bSBpbmRpY2FuZG8gb3MgcGFjb3RlcyBxdWUgZGV2ZW0gc2VyIGNhcnJlZ2Fkb3MgZSB1bSBzZWd1bmRvLCBhw60gYSBncmFuZGUgZGlmZXJlbsOnYSBkbyBncm91bmRob2csIGluZGljYW5kbyB1bWEgZGF0YSBkZSB1c28gZG8gcGFjb3RlLiBFc3RhIGRhdGEgZnVuY2lvbmFyw6EgcGFyYSBiYWl4YXIgYSB2ZXJzw6NvIGRvIHBhY290ZSBtYWlzIHJlY2VudGUgdGVuZG8gY29tbyByZWZlcsOqbmNpYSBhIGRhdGEgaW5kaWNhZGEuCgojIEV4ZXJjw61jaW8KClRlbnRlIGFzIGR1YXMgZm9ybWFzIGRlIGxlciBwYWNvdGVzIGFwcmVzZW50YWRhcyBuZXN0YSBzZcOnw6NvLCB2ZWphIG8gcXVlIG11ZG91IChvdSBuw6NvKSBubyBzZXUgZGlyZXTDs3Jpby4KCiMgTGVpdHVyYXMgYWRpY2lvbmFpcwoKUGFyYSBtYWlzIGluZm9ybWHDp8O1ZXMgc29icmUgbyBwYWNvdGUge2ByZW52YH0gdmVqYSBlc3RlIFttYXRlcmlhbF0oaHR0cHM6Ly9yZXByb2R1Y2liaWxpdHkucm9ja3MvbWF0ZXJpYWxzL2RheTMvMDEtcmVudi8pLiBQYXJhIG1haXMgaW5mb3JtYcOnw7VlcyBzb2JyZSBvIHtgZ3JvdW5kaG9nYH0gdmVqYSBvIFtibG9nXShodHRwczovL2RhdGFjb2xhZGEub3JnLzk1I2Zvb3Rub3RlXzJfNTg1MikgZXNjcml0byBwb3IgdW0gZG9zIGRlc2Vudm9sdmVkb3JlcyBkbyBwYWNvdGUuIEEgcHJvcMOzc2l0bywgbyBibG9nIFtEYXRhIENvbGFkYV0oaHR0cHM6Ly9kYXRhY29sYWRhLm9yZy8pIMOpIHVtYSBmb250ZSBzZW5zYWNpb25hbCBkZSBpZGVpYXMgZSBkaXNjdXNzw7VlcyBzb2JyZSBjacOqbmNpYSwgcmVwcm9kdXRpYmlsaWRhZGUgZSB0dWRvIG8gbWFpcy4KPT09PT09PQpPIHBhY290ZSBgUmVudmAgw6kgdW0gcGFjb3RlIHBhcmEgY3JpYXIgYW1iaWVudGVzIHJlcHJvZHV0w612ZWlzIGVtIHNldXMgcHJvamV0b3MgZGUgYW7DoWxpc2Ugbm8gUi4gQSBpZGVpYSBkbyBgUmVudmAgw6kgY3JpYXIgdW1hIGJpYmxpb3RlY2EgcGFyYSBzYWx2YXIgb3MgcGFjb3RlcyBlIGFzIHZlcnPDtWVzIHVzYWRhcyBubyBzZXUgc2V1IHdvcmtmbG93IGRlIHRyYWJhbGhvLCBkZSBmb3JtYSBxdWUgcXVhbmRvIHZvY8OqIG91IGFsZ3XDqW0gYmFpeGEgc2V1IHJlcG9zaXTDs3JpbyBpbnRlaXJvLCBhIGJpYmxpb3RlY2EgdmVtIGp1bnRvIGNvbSB0b2RvcyBvcyBwYWNvdGVzLiBBc3NpbSwgY2FkYSBwcm9qZXRvIHRlcsOhIHN1YSBwcsOzcHJpYSBiaWJsaW90ZWNhISEhCgpHZXJhbG1lbnRlIGEgYmlsaWJvdGVjYSBkbyBSICh1bSBkaXJldMOzcmlvIGNvbnRlbmRvIG9zIHBhY290ZXMgaW5zdGFsYWRvcyBjb20gYGluc3RhbGwucGFja2FnZXMoKWApLCDDqSDDum5pY2EgZSBndWFyZGFkYSBlbSBhbGd1bWEgcGFzdGEgbm8gc2V1IGNvbXB1dGFkb3IuCgpQYXJhIHNhYmVyIG9uZGUgZXN0w6Egc3VhIGJpYmxpb3RlY2EsIGTDqiBvIGNvbWFuZG86CgpgYGB7ciwgZXZhbD1GfQoubGliUGF0aHMoKQpgYGAKCkFvIGluaWNpYXIgbyBgUmVudmAgbm8gcmVwb3NpdMOzcmlvIGRvIHNldSBwcm9qZXRvLCB2b2PDqiB2ZXLDoSBhIGFkacOnw6NvIGRlIHVtYSBwYXN0YSBgcmVudi9saWJyYXJ5YCBvbmRlIHNlcsOjbyBndWFyZGFkb3Mgb3MgcGFjb3RlcyB1c2Fkb3MuCgpbIVtFc3F1ZW1hIGRlIGZ1bmNpb25hbWVudG8gZG8gUmVudiByZXRpcmFkbyBkYSB2aW5oZXRhIGRvIHBhY290ZS5dKGZpZ3MvcmVudl9zY2hlbWUucG5nKV0oaHR0cHM6Ly9yc3R1ZGlvLmdpdGh1Yi5pby9yZW52L2FydGljbGVzL3JlbnYuaHRtbCkKPj4+Pj4+PiBjZmM0ZDc2ODQ1NjQ1ZmM1NjAwZGRkNTVlMzc5NDQzYWJmYjkyOWNlCg==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiQW1iaWVudGUgcmVwcm9kdXTDrXZlbCBjb20gJ1JlbnYnIgphdXRob3I6ICJNZWxpbmEgTGVpdGUgZSBHYWJyaWVsIE5ha2FtdXJhIgpkYXRlOiAiYHIgU3lzLkRhdGUoKWAiCm91dHB1dDogaHRtbF9kb2N1bWVudAotLS0KCiMgQ29tcGF0aWJpbGlkYWRlIGNvbSBwYWNvdGVzCgpBdMOpIGFnb3JhIGFwcmVuZGVtb3MgY29tbyByZWR1emlyIG9zIGVycm9zIGNvbXVucyBkZSByZXByb2R1dGliaWxpZGFkZSBjb21wdXRhY2lvbmFsIGFzc29jaWFkb3MgYSBhcnF1aXZvcyBwcmVzZW50ZXMgbm8gbm9zc28gZGlyZXTDs3Jpby4gUG9yw6ltLCBuYSBtYWlvcmlhIGRvcyBwcm9qZXRvcyBuw6NvIHV0aWxpemFtb3MgYXBlbmFzIGFycXVpdm9zIHF1ZSBlc3TDo28gcHJlc2VudGVzIG5vIGRpcmV0w7NyaW8gbG9jYWwgb3UgcmVtb3RvLCBwb3IgZXhlbXBsbywgb3MgcGFjb3RlcyEKCk9zIHBhY290ZXMgc8OjbyBkaXNwb25pYmlsaXphZG9zIGFiZXJ0YW1lbnRlIGUgbyBxdWUgZmF6ZW1vcyDDqSBiYWl4YXIgdW1hIHZlcnPDo28gZGVzdGUgcGFjb3RlIGVtIG5vc3NvIGNvbXB1dGFkb3IuIFBvcsOpbSwgcGFjb3RlcyBuZW0gc2VtcHJlIChvdSBhIG1haW9yaWEgZGFzIHZlemVzKSwgZmljYW0gZGEgbWFuZWlyYSBjb21vIG9zIGJhaXhhbW9zLiBQYWNvdGVzIHPDo28gZWRpdGFkb3MgcG9yIHNldXMgcHJvcG9uZW50ZXMsIGZ1bsOnw6NvIGludGVybmFzIHPDo28gY29ycmlnaWRhcywgYWxndW1hcyBzw6NvIGV4Y2x1w61kYXMsIG91dHJhcyBhZGljaW9uYWRhcyBlIGFsZ3VtYXMgdmV6ZXMgYXTDqSBtZXNtbyBvIG5vbWUgZGEgZnVuw6fDo28gw6kgbW9kaWZpY2Fkby4gTWFzIGNvbW8gY29uc2VndWltb3MgZ2FyYW50aXIgcXVlIG5vc3NvIGPDs2RpZ28gc2VqYSByZXByb2R1dMOtdmVsLCBxdWFuZG8gZWxlIGRlcGVuZGUgZGUgdW1hIG91dHJhIHBlc3NvYSBhdHVhbGl6YW5kbyBmdW7Dp8O1ZXMgZSBkZXBlbmTDqm5jaWFzIG5vcyBub3Nzb3Mgc2NyaXB0cz8gVW1hIGRhcyBzb2x1w6fDtWVzIMOpIG8gcGFjb3RlIHtgcmVudmB9CgojIEdhcmFudGluZG8gYSByZXByb2R1dGliaWxpZGFkZSBkYXMgZnVuw6fDtWVzOiB7YHJlbnZgfQoKTyBwYWNvdGUgYFJlbnZgIMOpIHVtIHBhY290ZSBwYXJhIGNyaWFyIGFtYmllbnRlcyByZXByb2R1dMOtdmVpcyBlbSBzZXVzIHByb2pldG9zIGRlIGFuw6FsaXNlIG5vIFIuIEEgaWRlaWEgZG8gYFJlbnZgIMOpIGNyaWFyIHVtYSBiaWJsaW90ZWNhIHBhcmEgc2FsdmFyIG9zIHBhY290ZXMgZSBhcyB2ZXJzw7VlcyB1c2FkYXMgbm8gc2V1IHNldSB3b3JrZmxvdyBkZSB0cmFiYWxobywgZGUgZm9ybWEgcXVlIHF1YW5kbyB2b2PDqiBvdSBhbGd1w6ltIGJhaXhhIHNldSByZXBvc2l0w7NyaW8gaW50ZWlybywgYSBiaWJsaW90ZWNhIHZlbSBqdW50byBjb20gdG9kb3Mgb3MgcGFjb3Rlcy4gQXNzaW0sIGNhZGEgcHJvamV0byB0ZXLDoSBzdWEgcHLDs3ByaWEgYmlibGlvdGVjYSEhIQoKR2VyYWxtZW50ZSBhIGJpbGlib3RlY2EgZG8gUiAodW0gZGlyZXTDs3JpbyBjb250ZW5kbyBvcyBwYWNvdGVzIGluc3RhbGFkb3MgY29tIGBpbnN0YWxsLnBhY2thZ2VzKClgKSwgw6kgw7puaWNhIGUgZ3VhcmRhZGEgZW0gYWxndW1hIHBhc3RhIG5vIHNldSBjb21wdXRhZG9yLgoKUGFyYSBzYWJlciBvbmRlIGVzdMOhIHN1YSBiaWJsaW90ZWNhLCBkw6ogbyBjb21hbmRvOgoKYGBge3IsIGV2YWw9Rn0KLmxpYlBhdGhzKCkKYGBgCgpBbyBpbmljaWFyIG8gYFJlbnZgIG5vIHJlcG9zaXTDs3JpbyBkbyBzZXUgcHJvamV0bywgdm9jw6ogdmVyw6EgYSBhZGnDp8OjbyBkZSB1bWEgcGFzdGEgYHJlbnYvbGlicmFyeWAgb25kZSBzZXLDo28gZ3VhcmRhZG9zIG9zIHBhY290ZXMgdXNhZG9zLgoKWyFbRXNxdWVtYSBkZSBmdW5jaW9uYW1lbnRvIGRvIFJlbnYgcmV0aXJhZG8gZGEgdmluaGV0YSBkbyBwYWNvdGUuXShmaWdzL3JlbnZfc2NoZW1lLnBuZyldKGh0dHBzOi8vcnN0dWRpby5naXRodWIuaW8vcmVudi9hcnRpY2xlcy9yZW52Lmh0bWwpCgpBIGdyYW5kZSBzYWNhZGEgZG8ge2ByZW52YH0gcGFyYSBnYXJhbnRpciBhIHJlcHJvZHV0aWJpbGlkYWRlIGRhcyBmdW7Dp8O1ZXMgZG9zIHBhY290ZXMgdXRpbGl6YWRvcyDDqSBxdWUgZWxlIGluc3RhbGEgZXN0YXMgZGVwZW5kw6puY2lhcyBudW1hIHBhc3RhIGVzcGVjw61maWNhIGRvIHByb2pldG8gcXVlIGNvbnTDqW0gdGFpcyBkZXBlbmTDqm5jaWEuIERlc3RhIGZvcm1hLCBhbyB1dGlsaXphciB1bSBwcm9qZXRvIGRlIG91dHJhIHBlc3NvYSwgb3UgbyBzZXUgcHLDs3ByaW8gcHJvamV0byBubyBmdXR1cm8sIHZvY8OqIGlyw6EgdXRpbGl6YXIgYXMgbWVzbWFzIHZlcnPDtWVzIGRvcyBwYWNvdGVzLgoKIyMge2ByZW52YH0gbmEgcHLDoXRpY2EKClF1YXRybyBmdW7Dp8O1ZXMgc8OjbyBlc3NlbmNpYWlzIHBhcmEgdXRpbGl6YXIgbyBwYWNvdGUge2ByZW52YH0uIExlbWJyZS1zZSAqKnNlbXByZSBmYcOnYSBpc3NvIGRlbnRybyBkZSB1bSBwcm9qZXRvKioKCjEuIGByZW52Ojppbml0KClgIHByaW1laXJhIGHDp8OjbyBhIHNlciByZWFsaXphZGEgcGFyYSBpbmljaWFyIG8gdXNvIGRvIHBhY290ZSBubyBzZXUgcHJvamV0by4gCgoyLiBgcmVudjo6c3RhdHVzKClgIGNvbmZlcmUgbyBzdGF0dXMgZGFzIGRlcGVuZMOqbmNpYXMgY29udGlkYXMgbm8gc2V1IHByb2pldG8KCjMuIGByZW52OjpzbmFwc2hvdCgpYCB1dGlsaXplIGVzc2EgZnVuw6fDo28gdG9kYSB2ZXogcXVlIGluc3RhbGFyIHVtIHBhY290ZSBub3ZvLCBpc3NvIGdhcmFudGlyw6EgcXVlIGEgdmVyc8OjbyBkZXN0ZSBwYWNvdGUgZXN0YXLDoSByZWdpc3RyYWRhIG5vcyBhcnF1aXZvcyBlc3BlY2lhaXMgY3JpYWRvcyBwZWxvIHtgcmVudmB9Cgo0LiBgcmVudjo6cmVzdG9yZSgpYCBlc3RhIGZ1bsOnw6NvIMOpIHV0aWxpemFkYSBxdWFuZG8gdm9jw6ogcXVpc2VyIHJlcHJvZHV6aXIgYWxndW0gcHJvamV0by4gUG9yIGV4ZW1wbG8sIGFvIGJhaXhhciB1bSBwcm9qZXRvIGRvIEdpdEh1YiBhYnJhIGEgaW1hZ2VtIGRvIFJwcm9qZWN0IGUgdXRpbGl6ZSBhIGZ1bsOnw6NvIGByZXN0b3JlKClgIGlzc28gaXLDoSBkZXNlbmNhZGVhciBhIGluc3RhbGHDp8OjbyBkYXMgdmVyc8O1ZXMgZG9zIHBhY290ZXMgdXRpbGl6YWRhcyBubyBwcm9qZXRvIGVtIHNldSBjb21wdXRhZG9yLCBnYXJhbnRpbmRvIGFzc2ltIGEgcmVwcm9kdXRpYmlsaWRhZGUKCgojIEdhcmFudGluZG8gYSByZXByb2R1dGliaWxpZGFkZSBkYXMgZnVuw6fDtWVzOiB7YGdyb3VuZGhvZ2B9CgpPdXRyYSBvcMOnw6NvIMOpIG8gw7N0aW1vIHBhY290ZSB7YGdyb3VuZGhvZ2B9LCBxdWUgZXhlcmNlIGZ1bsOnw7VlcyBzaW1pbGFyZXMgYW8gYHJlbnZgIG1hcywgdGVjbmljYW1lbnRlLCBkZSBtYW5laXJhcyBkaXN0aW50YXMuIE8gb2JqZXRpdm8gZmluYWwgw6kgbyBtZXNtbywgYXVtZW50YXIgYSBjaGFuY2UgZGUgcmVwcm9kdXRpYmlsaWRhZGUgZGUgY8OzZGlnb3MgZW0gUiBhbyByZXNvbHZlciBhIGNvbXBhdGliaWxpZGFkZSBkZSB2ZXJzw7VlcyBkZSBwYWNvdGVzIGVzdGF0w61zdGljb3MgdXRpbGl6YWRvcyBuZXN0ZXMgc2NyaXB0cy4KCkEgZ3JhbmRlIGRpZmVyZW7Dp2EgZW50cmUgbyBwYWNvdGUge2ByZW52YH0gZSBvIHtgZ3JvdW5kaG9nYH0gw6kgbyBmYXRvIGRlIHF1ZSBvIHNlZ3VuZG8gZnVuY2lvbmEgaXNvbGFkYW1lbnRlIGVtIHNjcmlwdHMsIGVucXVhbnRvIG8gcHJpbWVpciwgbmVjZXNzYXJpYW1lbnRlLCBmYXogdXNvIGRvcyBwcm9qZXRvcyBubyBSLgoKIyMge2Bncm91bmRob2dgfSBuYSBwcsOhdGljYQoKUGFyYSB1dGlsaXphciBvIHtgZ3JvdW5kaG9nYH0gZGV2ZW1vcyBjaGFtYXIgYXMgZGVwZW5kw6puY2lhcyAocGFjb3RlcykgdXRpbGl6YW5kbyB1bWEgZnVuw6fDo28gZG8gZ3JvdW5kaG9nIGRhIHNlZ3VpbnRlIG1hbmVpcmEKCmBgYHtyIGVjaG89VFJVRSwgZXZhbD1GQUxTRX0KbGlicmFyeShncm91bmRob2cpCmdyb3VuZGhvZy5kYXk9IjIwMjAtMTEtMDEiCnBrZ3M9YygncHdyJywnbWV0YWZvcicsJ2RhdGEudGFibGVzJykKZ3JvdW5kaG9nLmxpYnJhcnkocGtncywgZ3JvdW5kaG9nLmRheSkKYGBgCgpPdSBzZWphLCB1dGlsaXphbW9zIGRvaXMgYXJndW1lbnRvcyBuYSBmdW7Dp8OjbyBgZ3JvdW5kaG9nLmxpYnJhcnlgIHVtIGluZGljYW5kbyBvcyBwYWNvdGVzIHF1ZSBkZXZlbSBzZXIgY2FycmVnYWRvcyBlIHVtIHNlZ3VuZG8sIGHDrSBhIGdyYW5kZSBkaWZlcmVuw6dhIGRvIGdyb3VuZGhvZywgaW5kaWNhbmRvIHVtYSBkYXRhIGRlIHVzbyBkbyBwYWNvdGUuIEVzdGEgZGF0YSBmdW5jaW9uYXLDoSBwYXJhIGJhaXhhciBhIHZlcnPDo28gZG8gcGFjb3RlIG1haXMgcmVjZW50ZSB0ZW5kbyBjb21vIHJlZmVyw6puY2lhIGEgZGF0YSBpbmRpY2FkYS4KCiMgRXhlcmPDrWNpbwoKVGVudGUgYXMgZHVhcyBmb3JtYXMgZGUgbGVyIHBhY290ZXMgYXByZXNlbnRhZGFzIG5lc3RhIHNlw6fDo28sIHZlamEgbyBxdWUgbXVkb3UgKG91IG7Do28pIG5vIHNldSBkaXJldMOzcmlvLgoKIyBMZWl0dXJhcyBhZGljaW9uYWlzCgpQYXJhIG1haXMgaW5mb3JtYcOnw7VlcyBzb2JyZSBvIHBhY290ZSB7YHJlbnZgfSB2ZWphIGVzdGUgW21hdGVyaWFsXShodHRwczovL3JlcHJvZHVjaWJpbGl0eS5yb2Nrcy9tYXRlcmlhbHMvZGF5My8wMS1yZW52LykuIFBhcmEgbWFpcyBpbmZvcm1hw6fDtWVzIHNvYnJlIG8ge2Bncm91bmRob2dgfSB2ZWphIG8gW2Jsb2ddKGh0dHBzOi8vZGF0YWNvbGFkYS5vcmcvOTUjZm9vdG5vdGVfMl81ODUyKSBlc2NyaXRvIHBvciB1bSBkb3MgZGVzZW52b2x2ZWRvcmVzIGRvIHBhY290ZS4gQSBwcm9ww7NzaXRvLCBvIGJsb2cgW0RhdGEgQ29sYWRhXShodHRwczovL2RhdGFjb2xhZGEub3JnLykgw6kgdW1hIGZvbnRlIHNlbnNhY2lvbmFsIGRlIGlkZWlhcyBlIGRpc2N1c3PDtWVzIHNvYnJlIGNpw6puY2lhLCByZXByb2R1dGliaWxpZGFkZSBlIHR1ZG8gbyBtYWlzLgoK</div>
 
 
 </div>
