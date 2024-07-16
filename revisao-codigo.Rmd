@@ -7,6 +7,8 @@ csl: refs/references-style.csl
 output: html_document
 ---
 
+# Visão geral
+
 Como os códigos de análises em ecologia, junto com os dados, se tornaram também um produto do projeto de pesquisa, boas práticas devem levar em conta a revisão não só da publicação científica, mas também do código de análises.
 
 Nesta aula discutimos a revisão de código com um olhar sobre códigos de análises de dados, suas vantagens e também formas de incentivar e fomentar esta prática dentro dos grupos de pesquisa.
@@ -22,11 +24,15 @@ Geralmente, vamos revisar um repositório/código que está associado a uma publ
 
 -   CONSEQUÊNCIA:
 
-    -   Muita retratação de artigos de alto impacto por erros em código que mudam resultado
+    -   Muitas retratações de artigos de alto impacto por erros em código que mudam resultados e conclusões
 
 -   SOLUÇÃO:
 
     -   Mudanças culturais para trazer a revisão de código em todos os estágio da pesquisa.
+    
+- IMPEDIMENTO:
+
+    -   Poucos (ou nenhum) incentivos para a realização de revisão de códigos.
 
 Vantagens da revisão do seu código de análise [@leeCodeReviewAnxiety2024]:
 
@@ -42,7 +48,7 @@ Vantagens da revisão do seu código de análise [@leeCodeReviewAnxiety2024]:
     -   Soluções criativas e colaborativas de problemas
     -   Confiança
     -   Formação de comunidade
-    -   Aprendizado não só no conteúdo, mas também a dar feedbacks construtivo
+    -   Aprendizado não só através de conteúdo, mas também com feedbacks construtivos
 
 -   Trazer mudança na cultura da pesquisa!
 
@@ -74,7 +80,7 @@ Eu acredito na criação do hábito de escrever desde o início códigos sempre 
 
 **Estilo de código** é um conjunto de regras sobre sobre estética (alinhamento e espaçamento do código), nomenclatura (de variáveis, funções etc.), comentários, estruturação (por exemplo, evitar lógica complexa) etc. Essas regras ajudam a melhorar a clareza do código e a colaboração.
 
-Ao longo da escrita do código, é saudável fazer uma pausa de ve em quando e revisar o estilo de escrita e o padrão de organização que você adotou no início e ver se você manteve ou não a consistência ao longo do tempo. É muito fácil começar adotanto uma padronização e terminar com outra diferente, principalmente se o código está sendo escrito ao longo de meses. Mas existem ferramentas para fazer isso de forma mais automatizada e rápida!
+Ao longo da escrita do código, é saudável fazer uma pausa de vez em quando e revisar o estilo de escrita e o padrão de organização que você adotou no início e ver se você manteve ou não a consistência ao longo do tempo. É muito fácil começar adotanto uma padronização e terminar com outra diferente, principalmente se o código está sendo escrito ao longo de meses. Mas existem ferramentas para fazer isso de forma mais automatizada e rápida!
 
 Existem vários estilos de escrita de código, e várias dicas por aí para seguir ou adaptar ao seu gosto. Alguns dos mais usados são o estilo de escrita do [tidyverse](https://style.tidyverse.org/), que tem o pacote R [`styler`](https://styler.r-lib.org/) que pode ajustar seu código ao estilo usando um addin do Rstudio.
 
@@ -109,7 +115,7 @@ starwars %>%
   )
 ```
 
-O segundo chunk tem consistentemente espaçamento entre os elementos da função, entre símbolos de `=` ou `%>%` (pipe). Também notamos uma quebra de linha entre o objeto a ser modificado (`starwars`) e as funções a serem aplicadas sequencialmente (`select` e `mutate`).
+O segundo chunk tem espaçamento consistente entre os elementos da função, entre símbolos de `=` ou `%>%` (pipe). Também notamos uma quebra de linha entre o objeto a ser modificado (`starwars`) e as funções a serem aplicadas sequencialmente (`select` e `mutate`).
 
 Uma opção seria colocar os argumentos de `mutate` na mesma linha, já que todos cabem dentro do que consideramos espaçamento de 80 caracteres ("80-columns"), que é um tipo de padronização em código existente há mais de 80 anos como um padrão para tamanho de linha (veja essa [discussão no Stackoverflow](https://stackoverflow.com/questions/1667961/is-there-a-standard-for-code-margins)).
 
@@ -150,7 +156,7 @@ Assista essa brilhante palestra ["Code smell and feels"](https://www.youtube.com
 
 ## Dicas para revisores
 
-Lembre-se que há várias formas de se abordar um mesmo problema, o revisor não precisa impor sua forma. E cuidado para não impor estilo de escrita! Mas pode verificar inconsistência que venha a atrapalhar a leitura do código.
+Lembre-se que há várias formas de se abordar um mesmo problema, o revisor não precisa impor sua forma. E cuidado para não impor estilo de escrita! Mas pode verificar inconsistências que venham a atrapalhar a leitura do código.
 
 **O que deve ser avaliado na revisão do código?** Seguindo @ivimey-cookImplementingCodeReview2023a, existem 3 tipos de erros em código:
 
@@ -174,8 +180,8 @@ E eles propõem uma forma organizada de revisar o código seguindo 4 Rs (em ingl
 
     -   Erros **programáticos** e **sintáticos** podem fazer o código, ou partes dele, não rodar.
     -   Pacotes não instalados (fora do ambiente) também ou versão diferente do revisor:
-        -   Pacotes que ajudam: `renv`, `groundhog`, `dockers`
-    -   Solução para outputs de análises que demoram muito: salvar arquivos intermediários para facilitar reprodutibilidade
+        -   Pacotes que ajudam: `renv`, `groundhog`
+    -   Solução para outputs de análises que demoram muito: salvar arquivos intermediários para facilitar reprodutibilidade (e.g. extensão .rds)
 
 -   O código é **Confiável** (Reliable)?
 
@@ -189,7 +195,7 @@ E eles propõem uma forma organizada de revisar o código seguindo 4 Rs (em ingl
 
     -   Garantir que os resultados finais, quando o código é rodado novamente, correspondam àqueles reportados na análise e resultados do texto principal.
     -   Tolerância com análises que lidam com estocasticidade: `set.seed()`
-        -   também levar em conta quantas casas decimas espera-se o mesmo resultado (escala)
+        -   também levar em conta quantas casas decimas espera-se o mesmo resultado (precisão)
 
 Baseado no checklist de revisão de código criado por @ivimey-cookImplementingCodeReview2023a, nós elaboramos um arquivo de texto para guiar revisores de código:
 
