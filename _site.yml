@@ -48,7 +48,7 @@ navbar:
         href: renv-basics.html
       - text: "Containers"
         href: rocker-basics.html
-      - text: "Pipelines com Targets"
+      - text: "Fluxo de trabalho"
         href: targets_basics.html
       - text: "Metadados com EML"
         href: metadata_EML_pratice.html

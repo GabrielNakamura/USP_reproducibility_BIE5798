@@ -1,5 +1,5 @@
 ---
-title: 'Pipelines com targets'
+title: 'Fluxo de trabalho com targets'
 author: "Gabriel Nakamura"
 date: "`r Sys.Date()`"
 output: html_document
@@ -15,12 +15,26 @@ klippy::klippy()
 
 # Apresentação
 
-Algumas análises são extremamente demoradas para rodar, mas um trabalho reprodutível computacionamente requer que estas análises rodem repetidamente, porém isso pode custar muitas horas, ou até mesmo dias para rodar algumas rotinas. Uma solução para otimizar a sequência de trabalho é o pacote `{targets}`
+Algumas análises são extremamente demoradas para rodar, ou ainda apresentam muitos passos na sua execução. Desde a limpeza dos dados originais, transformações, múltiplas análises e apresentações destas análises através de figuras ou tabelas. Todo esse conjunto de ações quando tomadas em conjunto é o que chamamos de *pipeline* ou *fluxo de trabalho*. Devido a complexidade e tempo que este fluxo pode assumir é comum perdermos controle da sequência que cada tarefa deve ser executada. 
+
+Devido a isso, muitas vezes nos pegamos rodando nossos códigos de maneira repetida, e algumas vezes sem nem mesmo saber se precisamos rodá-los. Isso é o que chamamos de [loop sisypheano](https://en.wikipedia.org/wiki/Sisyphus). Ao invés de rolar uma pedra morro acima toda vez, o que fazemos é rodar as mesmas análises repetidamente.
 
 
-# `{targets}`
+```{r echo=FALSE,eval=TRUE,fig.cap="Sisyphus rolando a pedra morro acima, para a eternidade. A principal diferença entre mim e Sisyphus são os músculos"}
+knitr::include_graphics("figs/sisyphys.jpeg")
+```
 
-O pacote `{targets}` possibilita otimizar a sequência de trabalho (pipeline) por organizar esta sequência e identificar ações na pipeline que devem ou não devem ser realizadas.
+
+Uma solução para quebrar o loop sisefeano e otimizar nosso fluxo de trabalho é a utilização do pacote `{targets}`. A partir de agora, esperamos que as únicas pedras rolantes que vamos nos deparar sejam essa do vídeo abaixo.
+
+```{r echo=FALSE,eval=TRUE}
+vembedr::embed_url("https://www.youtube.com/watch?v=poXvMBhjSWk&ab_channel=4MLgigs")
+```
+
+
+# O pacote `{targets}`
+
+O pacote `{targets}` possibilita otimizar a sequência de trabalho (pipeline) por organizar esta sequência e identificar ações no fluxo de trabalho que devem ou não devem ser realizadas.
 
 ## Exemplo
 
@@ -140,9 +154,4 @@ Uma das maiores potencialidades do targets é identificar de maneira eficiente p
 knitr::include_graphics("figs/target_mudanca.png")
 ```
 
-A identificação do local exato de mudança do workflow é possível graças ao target, evitando que tenhamos que rodar todo o workflow do início ao fim, prática que é chamada de [loop Sisypheano](https://www.worldhistory.org/sisyphus/)
-
-```{r echo=FALSE,eval=TRUE}
-knitr::include_graphics("figs/Sisyphus.jpeg")
-```
 
